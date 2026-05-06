@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Delivery Excellence</title>
+    <script>
+      // GitHub Pages SPA redirect: encode the path into the query string
+      // so index.html can pick it up and restore the correct route.
+      var l = window.location;
+      var segments = 1; // keep 1 path segment as base (/delivery-excellence)
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segments).join('/') + '/?p=/' +
+        l.pathname.slice(1).split('/').slice(segments).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
