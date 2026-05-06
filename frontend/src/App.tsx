@@ -13,6 +13,7 @@ import Portfolio from './pages/Portfolio';
 import Catalog from './pages/Catalog';
 import Agent from './pages/Agent';
 import Backlog from './pages/Backlog';
+import DealApprovals from './pages/DealApprovals';
 
 // Strip trailing slash so React Router gets a clean basename
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
@@ -36,6 +37,7 @@ export default function App() {
               <Route path="/delivery/:id" element={<DeliveryDetail />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/catalog" element={<Catalog />} />
+              <Route path="/deal-approvals" element={<DealApprovals />} />
               <Route path="/backlog" element={<Backlog />} />
               <Route path="/agent" element={<Agent />} />
             </Routes>

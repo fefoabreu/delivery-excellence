@@ -60,6 +60,14 @@ export const agentApi = {
   healthAnalysis: (data: { message: string; context_id?: string }) => api.post('/agent/health-analysis', data),
 };
 
+export const dealApprovalsApi = {
+  getConfig: () => api.get('/deal-approvals/config'),
+  list: () => api.get('/deal-approvals/'),
+  get: (id: string) => api.get(`/deal-approvals/${id}`),
+  takeAction: (id: string, data: object) => api.post(`/deal-approvals/${id}/action`, data),
+  regenerateAI: (id: string) => api.post(`/deal-approvals/${id}/regenerate-ai`),
+};
+
 export const backlogApi = {
   getTree: (params?: { epic_area?: string; assigned_to?: string }) => api.get('/backlog/tree', { params }),
   list: (params?: object) => api.get('/backlog/', { params }),

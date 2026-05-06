@@ -201,6 +201,63 @@ class StatusUpdate(Base):
     project = relationship("DeliveryProject", back_populates="status_updates")
 
 
+class DealProfile(Base):
+    """Extended scoring profile for contracts under AI-driven deal approval."""
+    __tablename__ = "deal_profiles"
+    id = Column(String, primary_key=True, default=new_id)
+    contract_id = Column(String, ForeignKey("contracts.id"), unique=True)
+
+    # Strategic & Financial
+    strategy_pillars = Column(Text)           # JSON array: ["cloud", "ai", "security"]
+    internal_investment_pct = Column(Float, default=0)   # IOI / company co-invest %
+    sold_margin_pct = Column(Float, default=30)
+
+    # Risk & Complexity
+    solution_complexity = Column(String)      # low | medium | high
+    vendor_name = Column(String)
+    vendor_participation_pct = Column(Float, default=0)
+
+    # Delivery history
+    similar_projects_count = Column(Integer, default=0)
+    delivery_success_rate = Column(Float, default=80)   # % of similar projects green
+    reference_projects = Column(Text)         # JSON array of project names
+
+    # IP & Assets
+    playbook_available = Column(Boolean, default=False)
+    sow_template_used = Column(Boolean, default=False)
+    ip_leverage_score = Column(Float, default=5)
+
+    # Compliance
+    regulatory_requirements = Column(Text)   # JSON array: ["HIPAA", "GDPR"]
+    compliance_risk = Column(String, default="low")  # low | medium | high
+
+    # Azure / Consumption
+    azure_consumption_monthly = Column(Float, default=0)   # $ monthly ACR
+    azure_acr_percentage = Column(Float, default=0)        # % of deal value in ACR
+
+    # Market / Account
+    expansion_type = Column(String)           # new_logo | whitespace | expansion | renewal
+    is_delivery_led = Column(Boolean, default=False)
+
+    # Pre-computed scoring (JSON object with each dimension 0-10)
+    score_breakdown = Column(Text)            # JSON: {on_strategy: 9.5, risk: 7.0, ...}
+    deal_score = Column(Float, default=0)     # Weighted 0-100
+    approval_tier = Column(Integer, default=3)  # 1 | 2 | 3
+
+    # AI recommendation
+    ai_recommendation_status = Column(String)  # APPROVE | APPROVE_WITH_CONDITIONS | RECOMMEND_REVIEW | FLAG_REJECTION
+    ai_recommendation_text = Column(Text)
+    ai_conditions = Column(Text)              # JSON array of conditions/concerns
+
+    # Approval action
+    action_taken = Column(String)             # approved | conditionally_approved | in_review | rejected | None
+    action_by = Column(String)
+    action_notes = Column(Text)
+    action_date = Column(DateTime)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+
 class WorkItem(Base):
     __tablename__ = "work_items"
     id = Column(String, primary_key=True, default=new_id)

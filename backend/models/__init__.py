@@ -10,4 +10,5 @@ from .models import (
     RAIDItem,
     StatusUpdate,
     WorkItem,
+    DealProfile,
 )

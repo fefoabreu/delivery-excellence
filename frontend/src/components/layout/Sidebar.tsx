@@ -10,6 +10,7 @@ const nav = [
   { type: 'divider', label: 'PRE-SALES' },
   { label: 'Pipeline', to: '/pipeline', icon: TrendingUp },
   { label: 'Contracts & SOWs', to: '/contracts', icon: FileText },
+  { label: 'AI Deal Approvals', to: '/deal-approvals', icon: Bot },
   { label: 'Service Catalog', to: '/catalog', icon: Package },
   { type: 'divider', label: 'DELIVERY' },
   { label: 'Handoff Center', to: '/handoffs', icon: GitBranch },
