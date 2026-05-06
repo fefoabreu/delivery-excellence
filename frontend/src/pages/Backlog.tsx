@@ -86,7 +86,7 @@ function StatusChip({ status }: { status: string }) {
 function PriorityIcon({ priority }: { priority: string }) {
   const cfg = PRIORITY_CFG[priority] || PRIORITY_CFG.medium;
   const Icon = cfg.icon;
-  return <Icon className={clsx('w-3.5 h-3.5 flex-shrink-0', cfg.color)} title={cfg.label} />;
+  return <Icon className={clsx('w-3.5 h-3.5 flex-shrink-0', cfg.color)} aria-label={cfg.label} />;
 }
 
 function PersonaAvatar({ name, size = 'sm' }: { name?: string; size?: 'sm' | 'xs' }) {
