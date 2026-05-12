@@ -16,13 +16,12 @@ WEIGHTS = {
     "risk_profile":         0.15,
     "sow_quality":          0.12,
     "delivery_success":     0.10,
-    "estimate_accuracy":    0.10,
+    "estimation_accuracy":  0.10,
     "compliance":           0.08,
     "ip_leverage":          0.08,
     "vendor_participation": 0.07,
     "azure_consumption":    0.07,
-    "white_space":          0.05,
-    "internal_investment":  0.03,
+    "sold_margin":          0.08,
 }
 
 def weighted_score(breakdown: dict) -> float:
@@ -62,9 +61,9 @@ DEALS = [
             expansion_type="new_logo",
             is_delivery_led=False,
             breakdown=dict(on_strategy=9.0, risk_profile=5.5, sow_quality=8.5,
-                           delivery_success=8.8, estimate_accuracy=7.5, compliance=9.0,
+                           delivery_success=8.8, estimation_accuracy=7.5, compliance=9.0,
                            ip_leverage=9.0, vendor_participation=7.5, azure_consumption=10.0,
-                           white_space=10.0, internal_investment=8.0),
+                           sold_margin=9.3),
             ai_status="APPROVE",
             ai_text=("Strong strategic alignment with cloud-first mandate. New logo with substantial "
                      "ACR upside ($185K/month). SOW is comprehensive with tiered workload inventory "
@@ -110,9 +109,9 @@ DEALS = [
             expansion_type="new_logo",
             is_delivery_led=False,
             breakdown=dict(on_strategy=9.5, risk_profile=7.5, sow_quality=9.0,
-                           delivery_success=9.2, estimate_accuracy=8.5, compliance=9.0,
+                           delivery_success=9.2, estimation_accuracy=8.5, compliance=9.0,
                            ip_leverage=9.5, vendor_participation=8.0, azure_consumption=8.0,
-                           white_space=10.0, internal_investment=7.5),
+                           sold_margin=10.0),
             ai_status="APPROVE",
             ai_text=("Highest recommendation. Board-mandated security transformation with clear scope, "
                      "zero vendor dilution, and the strongest IP leverage in our security portfolio — "
@@ -157,9 +156,9 @@ DEALS = [
             expansion_type="new_logo",
             is_delivery_led=False,
             breakdown=dict(on_strategy=10.0, risk_profile=5.5, sow_quality=8.5,
-                           delivery_success=8.5, estimate_accuracy=6.5, compliance=7.5,
+                           delivery_success=8.5, estimation_accuracy=6.5, compliance=7.5,
                            ip_leverage=8.5, vendor_participation=8.0, azure_consumption=9.5,
-                           white_space=10.0, internal_investment=9.0),
+                           sold_margin=10.0),
             ai_status="APPROVE",
             ai_text=("Flagship AI deal — highest strategic priority in the FY pipeline. 20% company "
                      "investment signals internal commitment and materially de-risks the commercial "
@@ -208,9 +207,9 @@ DEALS = [
             expansion_type="whitespace",
             is_delivery_led=False,
             breakdown=dict(on_strategy=9.0, risk_profile=7.5, sow_quality=8.8,
-                           delivery_success=9.1, estimate_accuracy=8.5, compliance=6.0,
+                           delivery_success=9.1, estimation_accuracy=8.5, compliance=6.0,
                            ip_leverage=9.0, vendor_participation=8.0, azure_consumption=6.5,
-                           white_space=8.0, internal_investment=5.0),
+                           sold_margin=10.0),
             ai_status="APPROVE",
             ai_text=("Clean, well-scoped deal. 38% margin is among the best in the current pending "
                      "portfolio. Six comparable security engagements with 91% delivery success rate "
@@ -256,9 +255,9 @@ DEALS = [
             expansion_type="expansion",
             is_delivery_led=False,
             breakdown=dict(on_strategy=9.0, risk_profile=5.0, sow_quality=7.5,
-                           delivery_success=8.3, estimate_accuracy=7.0, compliance=5.0,
+                           delivery_success=8.3, estimation_accuracy=7.0, compliance=5.0,
                            ip_leverage=8.0, vendor_participation=7.5, azure_consumption=9.5,
-                           white_space=7.0, internal_investment=6.0),
+                           sold_margin=8.7),
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_text=("Strategically sound cloud migration with excellent ACR outcome ($96K/month). "
                      "Delivery success rate on comparable migrations is acceptable at 83%. Primary "
@@ -307,9 +306,9 @@ DEALS = [
             expansion_type="expansion",
             is_delivery_led=False,
             breakdown=dict(on_strategy=7.5, risk_profile=5.5, sow_quality=8.0,
-                           delivery_success=8.6, estimate_accuracy=8.5, compliance=9.0,
+                           delivery_success=8.6, estimation_accuracy=8.5, compliance=9.0,
                            ip_leverage=8.5, vendor_participation=8.0, azure_consumption=5.5,
-                           white_space=7.0, internal_investment=5.0),
+                           sold_margin=10.0),
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_text=("D365 F&O delivery track record is strong and estimate accuracy is high "
                      "(well-defined service catalog). SAP ECC replacement at this scale, however, "
@@ -359,9 +358,9 @@ DEALS = [
             expansion_type="new_logo",
             is_delivery_led=False,
             breakdown=dict(on_strategy=8.5, risk_profile=5.0, sow_quality=8.0,
-                           delivery_success=8.9, estimate_accuracy=8.0, compliance=5.0,
+                           delivery_success=8.9, estimation_accuracy=8.0, compliance=5.0,
                            ip_leverage=8.0, vendor_participation=8.0, azure_consumption=7.5,
-                           white_space=10.0, internal_investment=7.0),
+                           sold_margin=10.0),
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_text=("Strategic healthcare deal with strong delivery confidence — Lamna Healthcare "
                      "(9.2/10 CSAT) is a directly comparable engagement. 8% company co-investment "
@@ -411,9 +410,9 @@ DEALS = [
             expansion_type="new_logo",
             is_delivery_led=False,
             breakdown=dict(on_strategy=7.0, risk_profile=3.5, sow_quality=6.5,
-                           delivery_success=7.0, estimate_accuracy=5.0, compliance=4.5,
+                           delivery_success=7.0, estimation_accuracy=5.0, compliance=4.5,
                            ip_leverage=6.0, vendor_participation=6.0, azure_consumption=5.5,
-                           white_space=10.0, internal_investment=5.0),
+                           sold_margin=7.3),
             ai_status="RECOMMEND_REVIEW",
             ai_text=("This deal requires Architecture Review Board sign-off before approval. "
                      "Multi-country D365 F&O at this scale (14 entities, 4 waves, 28 months) "
@@ -445,7 +444,7 @@ def compute_score(breakdown: dict) -> float:
 def assign_tier(total_value: float, complexity: str, score: float) -> int:
     if total_value <= 500_000 and score >= 75 and complexity == "low":
         return 1
-    if total_value <= 1_500_000 and score >= 65 and complexity in ("low", "medium"):
+    if total_value <= 10_000_000 and score >= 65 and complexity in ("low", "medium"):
         return 2
     return 3
 

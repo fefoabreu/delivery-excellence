@@ -37,7 +37,7 @@ OKR_CONFIG = {
     "kpis": [
         {"label": "Tier 1 SLA", "value": "24 hrs", "target": "Auto-approve"},
         {"label": "Tier 2 SLA", "value": "48 hrs", "target": "Manager"},
-        {"label": "Tier 3 SLA", "value": "5 biz days", "target": "Exec Committee"},
+        {"label": "Tier 3 SLA", "value": "3 biz days", "target": "Exec Committee"},
         {"label": "SOW Quality Gate", "value": "Score ≥ 7.0", "target": "Required"},
     ],
     "tiers": [
@@ -47,13 +47,13 @@ OKR_CONFIG = {
          "color": "green", "icon": "zap",
          "description": "Policy-compliant deals are auto-approved by the AI engine with audit trail."},
         {"tier": 2, "label": "Manager Review",
-         "criteria": ["Deal value $500K–$2M", "Deal score ≥ 65", "Medium complexity or 1 condition"],
+         "criteria": ["Deal value $500K–$10M", "Deal score ≥ 65", "Medium complexity or 1 condition"],
          "sla": "48 hours", "approver": "Karina — Americas Leader",
          "color": "blue", "icon": "user-check",
          "description": "AI-pre-scored and pre-approved in principle; manager confirms conditions and signs."},
         {"tier": 3, "label": "Executive Committee",
-         "criteria": ["Deal value > $2M", "Score < 65", "High complexity or multiple conditions"],
-         "sla": "5 business days", "approver": "Edwina — VP Professional Services",
+         "criteria": ["Deal value > $10M", "Score < 65", "High complexity or multiple conditions"],
+         "sla": "3 business days", "approver": "Edwina — VP Professional Services",
          "color": "purple", "icon": "shield",
          "description": "Full committee review with AI briefing package. AI recommends, executives decide."},
     ],
@@ -64,13 +64,11 @@ SCORE_DIMS = [
     ("risk_profile",         "Risk Profile",              "Inverse risk: solution complexity, deal size, vendor dependency"),
     ("sow_quality",          "SOW Quality",               "Scope completeness, exclusions, assumptions, acceptance criteria"),
     ("delivery_success",     "Delivery Success Rate",     "Historical success rate on comparable engagements"),
-    ("estimate_accuracy",    "Estimate Accuracy",         "Confidence in effort estimates based on complexity and comparables"),
+    ("estimation_accuracy",  "Estimation Accuracy",       "Confidence in effort estimates based on complexity and comparables"),
     ("compliance",           "Compliance Burden",         "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"),
     ("ip_leverage",          "IP & Asset Leverage",       "Reuse of playbooks, SOW templates, and delivery accelerators"),
     ("vendor_participation", "Vendor Participation",      "Partner/subcontractor % — impact on margin and delivery control"),
     ("azure_consumption",    "Azure Consumption",         "Monthly ACR generated — strategic value to Microsoft ecosystem"),
-    ("white_space",          "White Space / New Logo",    "New logo, white space, or existing account expansion signal"),
-    ("internal_investment",  "Internal Investment",       "Company co-investment (IOI) indicating internal strategic commitment"),
 ]
 
 

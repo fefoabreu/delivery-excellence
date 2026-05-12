@@ -272,7 +272,7 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
           )}
           <span>{p.solution_complexity} complexity</span>
           <span>{p.delivery_success_rate}% delivery success rate</span>
-          {p.internal_investment_pct > 0 && <span className="text-emerald-600 font-medium">{p.internal_investment_pct}% IOI</span>}
+          {p.internal_investment_pct > 0 && <span className="text-emerald-600 font-medium">{fmt(deal.total_value * p.internal_investment_pct / 100)} ({p.internal_investment_pct}% ECIF)</span>}
         </div>
 
         {/* ── Deal Score + Dimensions ── */}
@@ -297,6 +297,15 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
                 <ScoreBar key={key} label={label} description={''} score={p.score_breakdown[key]} />
               )
             ))}
+            <div className="flex items-center gap-3 py-1.5 border-t border-gray-200 mt-1 pt-2">
+              <div className="w-36 text-xs text-gray-600 font-medium flex-shrink-0">Internal Investment</div>
+              <div className="flex-1 text-xs font-medium">
+                {p.internal_investment_pct > 0
+                  ? <span className="text-emerald-700">{fmt(deal.total_value * p.internal_investment_pct / 100)} ({p.internal_investment_pct}% of contract)</span>
+                  : <span className="text-gray-400">No ECIF committed</span>
+                }
+              </div>
+            </div>
           </div>
         </div>
 
