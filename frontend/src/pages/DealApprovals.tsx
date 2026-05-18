@@ -409,7 +409,7 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
               <div className="text-xs font-semibold text-gray-700 capitalize">
                 {pendingAction.replace('_', ' ')} — confirm approver
               </div>
-              <input className="input text-sm" placeholder="Your name (e.g. Edwina — VP PS)"
+              <input className="input text-sm" placeholder="Your name (e.g. Elena Fontaine — VP PS)"
                 value={actionBy} onChange={e => setActionBy(e.target.value)} />
               <textarea className="input text-sm" rows={2} placeholder="Notes or conditions (optional)"
                 value={actionNotes} onChange={e => setActionNotes(e.target.value)} />

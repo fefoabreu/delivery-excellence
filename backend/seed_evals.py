@@ -28,37 +28,37 @@ def run():
     ACTIONS = {
         "Fourth Coffee": (
             "approved",
-            "Edwina — VP Professional Services",
+            "Elena Fontaine — VP Professional Services",
             "Strong new-logo deal with clear ACR upside. Conditions met at submission. Approved.",
             5,
         ),
         "A. Datum Corporation": (
             "approved",
-            "Karina — Americas Leader",
+            "Katrina Rhodes — Americas Leader",
             "Enterprise security play with solid delivery track record. Standard terms. Approved.",
             4,
         ),
         "Contoso Hotels": (
             "conditionally_approved",  # AI said APPROVE, human was more strict
-            "Edwina — VP Professional Services",
+            "Elena Fontaine — VP Professional Services",
             "Approved with condition: require hypercare plan and exec sponsor EBR within 30 days.",
             3,
         ),
         "Alpine Insurance": (
             "approved",
-            "Karina — Americas Leader",
+            "Katrina Rhodes — Americas Leader",
             "Clean deal, standard compliance framework, strong margin. Approved at Tier 2.",
             6,
         ),
         "Contoso Financial": (
             "approved",  # AI said APPROVE_WITH_CONDITIONS, human was more lenient
-            "Edwina — VP Professional Services",
+            "Elena Fontaine — VP Professional Services",
             "Conditions reviewed and waived. Finance confirmed volume discount. Approved clean.",
             2,
         ),
         "Northwind Traders": (
             "conditionally_approved",
-            "Edwina — VP Professional Services",
+            "Elena Fontaine — VP Professional Services",
             "Approved subject to confirming phased rollout plan and governance steering committee.",
             7,
         ),
@@ -105,7 +105,7 @@ def run():
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_conditions=["Resolve ExpressRoute procurement risk before execution phase",
                            "Confirm Azure migration factory resourcing"],
-            action="conditionally_approved", action_by="Edwina — VP Professional Services",
+            action="conditionally_approved", action_by="Elena Fontaine — VP Professional Services",
         ),
         dict(
             project_name="Proseware SOC Modernization",
@@ -117,7 +117,7 @@ def run():
             strategy_pillars=["security"], solution_complexity="medium",
             sold_margin_pct=34.0, delivery_success_rate=95.0,
             ai_status="APPROVE", ai_conditions=[],
-            action="approved", action_by="Karina — Americas Leader",
+            action="approved", action_by="Katrina Rhodes — Americas Leader",
         ),
         dict(
             project_name="Southridge D365 F&O Transformation",
@@ -129,7 +129,7 @@ def run():
             strategy_pillars=["dynamics"], solution_complexity="medium",
             sold_margin_pct=32.0, delivery_success_rate=88.0,
             ai_status="APPROVE", ai_conditions=[],
-            action="approved", action_by="Karina — Americas Leader",
+            action="approved", action_by="Katrina Rhodes — Americas Leader",
         ),
         dict(
             project_name="Blue Yonder Microsoft Fabric Platform",
@@ -142,7 +142,7 @@ def run():
             strategy_pillars=["data_analytics"], solution_complexity="high",
             sold_margin_pct=31.0, delivery_success_rate=85.0,
             ai_status="APPROVE", ai_conditions=[],
-            action="approved", action_by="Edwina — VP Professional Services",
+            action="approved", action_by="Elena Fontaine — VP Professional Services",
         ),
         dict(
             project_name="Wingtip Toys Cloud Native Modernization",
@@ -157,7 +157,7 @@ def run():
             ai_conditions=["Scope definition incomplete — refactor vs. re-platform decision outstanding",
                            "No reference projects for this client segment at this scale",
                            "Margin below threshold for deal complexity"],
-            action="in_review", action_by="Edwina — VP Professional Services",
+            action="in_review", action_by="Elena Fontaine — VP Professional Services",
         ),
         dict(
             project_name="City Power & Light SOC Modernization",
@@ -169,7 +169,7 @@ def run():
             strategy_pillars=["security"], solution_complexity="medium",
             sold_margin_pct=35.0, delivery_success_rate=92.0,
             ai_status="APPROVE", ai_conditions=[],
-            action="approved", action_by="Karina — Americas Leader",
+            action="approved", action_by="Katrina Rhodes — Americas Leader",
         ),
         dict(
             project_name="Datum Corp AI Innovation Platform",
@@ -181,7 +181,7 @@ def run():
             strategy_pillars=["ai_agentic"], solution_complexity="high",
             sold_margin_pct=33.0, delivery_success_rate=90.0,
             ai_status="APPROVE", ai_conditions=[],
-            action="approved", action_by="Edwina — VP Professional Services",
+            action="approved", action_by="Elena Fontaine — VP Professional Services",
         ),
         dict(
             project_name="Lucerne Publishing Zero Trust",
@@ -195,7 +195,7 @@ def run():
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_conditions=["Client change-freeze window conflicts with Phase 2 rollout timeline",
                            "Zero Trust identity scope needs refinement with client IT"],
-            action="conditionally_approved", action_by="Karina — Americas Leader",
+            action="conditionally_approved", action_by="Katrina Rhodes — Americas Leader",
         ),
         dict(
             project_name="Margie's Travel Copilot Deployment",
@@ -208,7 +208,7 @@ def run():
             sold_margin_pct=30.0, delivery_success_rate=78.0,
             ai_status="APPROVE_WITH_CONDITIONS",
             ai_conditions=["Client AI readiness assessment required before Phase 2 unlock"],
-            action="conditionally_approved", action_by="Karina — Americas Leader",
+            action="conditionally_approved", action_by="Katrina Rhodes — Americas Leader",
         ),
         dict(
             project_name="Contoso Sports D365 CE",
@@ -223,7 +223,7 @@ def run():
             ai_conditions=["D365 CE scope spans 3 business units with conflicting requirements",
                            "Client governance structure unclear — no single exec sponsor confirmed",
                            "Prior Dynamics engagement had scope overrun of 22%"],
-            action="in_review", action_by="Edwina — VP Professional Services",
+            action="in_review", action_by="Elena Fontaine — VP Professional Services",
         ),
     ]
 

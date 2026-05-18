@@ -61,9 +61,9 @@ const PRIORITY_CFG: Record<string, { icon: typeof ArrowUp; color: string; label:
 };
 
 const PERSONA_CFG: Record<string, { initials: string; bg: string; text: string; full: string }> = {
-  Edwina: { initials: 'EW', bg: 'bg-indigo-600', text: 'text-white', full: 'Edwina — VP Professional Services' },
-  Karina: { initials: 'KA', bg: 'bg-teal-600',   text: 'text-white', full: 'Karina — Americas Leader' },
-  Maikel: { initials: 'MK', bg: 'bg-purple-700', text: 'text-white', full: 'Maikel — VP Delivery Excellence' },
+  'Elena Fontaine': { initials: 'EF', bg: 'bg-indigo-600', text: 'text-white', full: 'Elena Fontaine — VP Professional Services' },
+  'Katrina Rhodes': { initials: 'KR', bg: 'bg-teal-600',   text: 'text-white', full: 'Katrina Rhodes — Americas Leader' },
+  'Marc van Vliet': { initials: 'MvV', bg: 'bg-purple-700', text: 'text-white', full: 'Marc van Vliet — VP Delivery Excellence' },
 };
 
 const EPIC_COLORS = [
@@ -334,7 +334,7 @@ export default function Backlog() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="page-title">Delivery Excellence Backlog</h1>
-            <p className="text-sm text-gray-500 mt-0.5">Strategic initiatives across 9 epics · Edwina · Karina · Maikel</p>
+            <p className="text-sm text-gray-500 mt-0.5">Strategic initiatives across 9 epics · Elena Fontaine · Katrina Rhodes · Marc van Vliet</p>
           </div>
           <button onClick={load} className="btn-ghost flex items-center gap-1 text-gray-400"><RefreshCw className="w-4 h-4" /></button>
         </div>
@@ -418,9 +418,9 @@ export default function Backlog() {
 
         <select className="input w-auto text-sm py-1.5" value={personaFilter} onChange={e => setPersonaFilter(e.target.value)}>
           <option value="">All Personas</option>
-          <option value="Edwina">Edwina — VP PS</option>
-          <option value="Karina">Karina — Americas</option>
-          <option value="Maikel">Maikel — VP DE</option>
+          <option value="Elena Fontaine">Elena Fontaine — VP PS</option>
+          <option value="Katrina Rhodes">Katrina Rhodes — Americas</option>
+          <option value="Marc van Vliet">Marc van Vliet — VP DE</option>
         </select>
 
         {(epicFilter || personaFilter) && (

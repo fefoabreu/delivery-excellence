@@ -268,7 +268,7 @@ class WorkItem(Base):
     title = Column(String, nullable=False)
     description = Column(Text)
     acceptance_criteria = Column(Text)           # JSON array
-    assigned_to = Column(String)                 # Edwina | Karina | Maikel
+    assigned_to = Column(String)                 # Elena Fontaine | Katrina Rhodes | Marc van Vliet
     status = Column(String, default="new")       # new, active, in_progress, resolved, closed
     priority = Column(String, default="medium")  # critical, high, medium, low
     story_points = Column(Integer)
