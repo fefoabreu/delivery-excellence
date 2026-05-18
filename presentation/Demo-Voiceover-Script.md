@@ -1,222 +1,218 @@
-# A-CLM Demo — Loom Voiceover Script (v2)
+# A-CLM Demo — Loom Voiceover Script (v3)
 **Format: Screen recording · Tool: Loom**
-**Target: 5:30–6 minutes · ~780 words**
-**Navigation: Executive Dashboard → AI Deal Approvals (teaser) → A-CLM Framework → AI Deal Approvals (detailed) → AI Evals**
+**Target: 5–5:30 minutes · ~700 words**
+**Navigation: Executive Dashboard (30s) → Deal Approvals teaser → A-CLM Framework (main) → Deal Approvals detailed → AI Evals**
 
 ---
 > **Before you hit record:**
-> - Open `localhost:5173` — you should land on the Executive Dashboard (`/`)
-> - Have `/deal-approvals`, `/aclm`, and `/evals` ready as background tabs
-> - Full-screen the browser
-> - Scroll the Executive Dashboard to the top so the KPI cards are visible from the first frame
+> - Open `localhost:5173` — land on the Executive Dashboard (`/`)
+> - Background tabs ready: `/deal-approvals`, `/aclm`, `/evals`
+> - Full-screen the browser, dashboard scrolled to top
 ---
 
-## [INTRO — Executive Dashboard, scrolled to top]
-*[~1 min 10 sec]*
+## [INTRO — Executive Dashboard]
+*[~0:30]*
 
-Hi, I'm Fernando Abreu — I've spent the last 10 years at Microsoft as a Principal Project Manager.
-I started as a software engineer, moved into consulting to help customers adopt Agile practices
-and PMO methodologies, and was eventually invited to build a Modern Applications
-professional services practice.
+Hi, I'm Fernando Abreu — 10 years at Microsoft as a Principal Project Manager,
+specialising in lead-to-order strategy, complex deal shaping,
+and the delivery excellence side of the business.
 
-My time at Microsoft has been centered on business growth and delivery excellence —
-specialising in lead-to-order strategy and complex deal shaping,
-helping executives shepherd the approval of Microsoft's largest consulting engagements,
-all while running global programs to strengthen and streamline the process.
+*[Gesture at the dashboard]*
 
-And that's just my side hustle. My full-time job is being a proud girl dad, loving husband,
-and distinguished pet parent. Originally from Brazil, spent a chapter as a French Canadian,
-and I'm now a naturalized American living in beautiful Richmond, Virginia.
+What you're looking at is a concept environment I built to give my idea a home —
+a full-stack app, React, FastAPI, Python, SQLite, built on Claude Code.
+The dashboard is just context: a realistic professional services portfolio.
+The problem I want to tackle lives right here.
 
-*[Gesture across the dashboard]*
-
-What you're looking at is a concept environment I built — I'm calling it Delivery Excellence.
-It's a full-stack application — React, FastAPI, SQLite — that I put together as the home
-for an idea I've been developing about how to reimagine the deal approval process using AI agents.
-
-The dashboard gives you the context: a realistic professional services portfolio.
-Pipeline in flight. Active delivery projects. Portfolio health at a glance.
-The problem I want to tackle lives inside exactly this kind of environment.
+Let me show you what I mean.
 
 ---
 
-## [AI DEAL APPROVALS — quick teaser]
+## [AI DEAL APPROVALS — teaser]
 *[~0:25]*
 
-*[Click AI Deal Approvals in the sidebar → /deal-approvals]*
+*[Click AI Deal Approvals → /deal-approvals]*
 
-Before I walk you through the framework, let me give you a quick look at where it all lands.
 This is the AI-driven deal approvals page — the operational surface of the concept.
-Tier-based routing, deal health scores, AI recommendations. We'll come back here in detail.
-For now, just take in the shape of it.
+Tiered workflow, deal health scores, AI recommendations.
+We'll come back here. For now, just take in the shape of it.
 
-*[Let it breathe for a beat — don't narrate every element]*
+*[Pause — let it breathe]*
 
-Now — let me walk you through the thinking behind it.
+Now let me walk you through the thinking behind it.
 
 ---
 
-## [A-CLM FRAMEWORK — click "A-CLM Framework →" button, top right]
-*[~1 min 25 sec]*
+## [A-CLM FRAMEWORK — click "A-CLM Framework →", top right]
+*[~2:00]*
 
 *[Navigate to /aclm]*
 
-This is A-CLM — Agentic Contract Lifecycle Management. And I want to be upfront:
-this is a concept model. It's how I think about the problem, not a production blueprint.
+This is A-CLM — Agentic Contract Lifecycle Management.
+I want to be clear: this is a concept model. It's how I think about the problem.
 
-It's grounded in my decade of direct experience in the deal approval process at Microsoft —
-every stage, every friction point, every escalation I've lived through.
-Combined with research I did on where the industry is moving —
+It's grounded in my direct experience in the deal approval process —
+every stage, every friction point, every escalation I've lived through —
+combined with research on where the industry is heading:
 BCG, McKinsey, Accenture, the Microsoft platform roadmap,
-where Salesforce and Google are placing their bets.
+Salesforce, Google, the frontier.
 
-This is my interpretation of where all of that converges — and my take on what it
-could mean for the consulting deal approval process. Enterprise implementation
-would require much deeper process engineering and technical input.
-What I'm sharing here is the direction.
+This is my interpretation of where it all converges.
+Real enterprise deployment would go much deeper.
+What I'm sharing is the thought process — how I'd approach this as a Technical PM.
 
 *[Scroll to Strategic Foundation]*
 
-The **Strategic Foundation** gives the concept its intellectual grounding —
-six pillars covering agentic AI routing, playbook enforcement, predictive deal scoring,
-the enterprise tech layer, industry benchmarks, and the frontier.
-The frontier matters to me — outcome-tied contracts, AI governance clauses, autonomous commerce.
-It's not hypothetical. It's happening. This model is my take on what it means for deal approvals.
+**Strategic Foundation.** Six pillars grounding the model in 2026 market reality.
+
+The ones I want to call out: Agentic AI in CLM — not rule-based workflow automation,
+but agents that reason about contracts and route them autonomously.
+Playbook enforcement — AI that checks every deal against approved clause standards
+before it ever reaches a human. Predictive deal scoring — every deal arrives
+with a risk-scored brief, not a forty-page document.
+
+And the frontier — outcome-tied contracts, AI governance clauses, autonomous commerce.
+This isn't hypothetical. It's happening now.
+This model is my take on what it means for the consulting approval process.
 
 *[Scroll to Governance Framework]*
 
-The **Governance Framework** is where I've spent a lot of my thinking,
-because I've seen what happens when AI skips this part.
-Empowerment tables, authorization policies, regional rules across Americas, EMEA, and APAC,
-the approval playbook, legal compliance, and responsible AI built in as a design principle —
-not a checkbox. The concept: AI operates within policy, not around it.
+**Governance Framework.** This is where I live professionally, and I care about it deeply.
 
-*[Scroll to Deal Approval Process]*
+Six tenets: empowerment tables that define who approves what at each value and risk tier.
+Enterprise authorization policies. Regional business rules across Americas, EMEA, and APAC —
+because what's standard in the US is not standard in Germany or Singapore.
+The approval playbook. Legal compliance. And responsible AI as a design principle,
+not an afterthought.
 
-The **Approval Process** is directional —
-five stages based on how deals actually move through the consulting lifecycle.
-Opportunity Approval, Deal Shaping, Technical and Business review,
-Pricing and Investment, final Deal Approval. AI-validated at each gate.
-Each of these stages, in a real context, would need serious process work.
+The concept: AI operates within policy, not around it.
+That's non-negotiable in a regulated consulting environment.
+
+*[Scroll to Deal Approval Process — scroll through it quickly]*
+
+**Deal Approval Process.** Five sequential stages — I won't belabour this,
+it's directional. Opportunity Approval through Deal Shaping,
+Technical and Business review, Pricing and Investment, final Deal Approval.
+AI-validated at every gate. In practice, each stage would need serious process work.
 This is the model I'd start from.
 
-*[Scroll to Agent Ecosystem]*
+*[Scroll to Agent Ecosystem — slow down here]*
 
-And the **Agent Ecosystem** — this is the part that excites me most.
-Three agents in a closed loop. A Pipeline Agent reading the funnel,
-sending forward signals on what's coming. A Delivery Agent feeding live performance
+**Agent Ecosystem.** This is the part that excites me most.
+
+Three agents in a closed loop.
+A Pipeline Agent continuously reading the opportunity funnel —
+sending forward signals on deal types, complexity tiers, where bottlenecks are likely to form.
+A Delivery Agent on the other side, feeding live performance metrics
 back from projects that were approved and are now in delivery.
-The A-CLM Cockpit connecting both.
+And the A-CLM Cockpit at the centre, connecting both.
 
-The concept here is that approved deals shouldn't disappear from the system —
-they should feed back and make the next approval smarter.
-That's the closed loop I'm proposing.
+The concept: approved deals shouldn't disappear from the system.
+They should feed back and make the next approval smarter.
+That's the closed loop I'm proposing — and that's what separates this
+from a workflow tool. It's a learning system.
 
-*[Pause]*
-
-That's the framework. Let me show you how it comes to life.
+Now that we're grounded in the concept — let me show you what it looks like in action.
 
 ---
 
 ## [AI DEAL APPROVALS — detailed demo]
-*[~1 min 30 sec]*
+*[~1:20]*
 
 *[Navigate back to /deal-approvals]*
 
-*[Scroll to Tiered Approval Workflow]*
+*[Scroll to Tiered Workflow]*
 
-Back to the deal approvals page — now with more detail.
+The tier model is central to everything.
+Tier 1: low-risk, standard-scope deals where the AI acts on behalf of the executive.
+Tier 3: complex, high-stakes engagements where the AI's job is to prepare the human,
+not replace them.
 
-The tier model is core to this concept. Tier 1 is where AI should do the heavy lifting.
-Low-risk, standard-scope deals — the executive has set the policy, the AI executes it,
-the audit trail is complete. Tier 3 is the opposite — the executive needs to be in the room,
-and the AI's job is to prepare them, not replace them.
+*[Scroll to a high-scoring Tier 1 or Tier 2 deal — point to the score]*
 
-*[Scroll down to a high-scoring deal tile — point to the score circle]*
+Here's a deal scoring in the high 80s.
+Strong strategic alignment, clean compliance, strong delivery track record.
+In my framework, this qualifies for AI-driven approval on the executive's behalf.
+The policy is set. The AI executes. No one's day gets interrupted for this one.
 
-Here's a deal scoring in the high 80s. Strong strategic alignment,
-clean compliance profile, strong delivery track record on comparable engagements.
-In my framework, this is exactly the type of deal that qualifies for AI-driven approval
-on behalf of the executive. The policy is set. The AI acts on it.
-No one needs to interrupt their day for this one.
+*[Scroll to a complex deal with APPROVE_WITH_CONDITIONS]*
 
-*[Scroll to a complex deal — point to the lower score and APPROVE WITH CONDITIONS recommendation]*
+Contrast that with this. Large engagement — multiple service lines,
+vendor involvement, regulatory requirements.
+The AI recommendation is Approve with Conditions.
+It's surfacing the three highest-risk factors, with conditions attached.
+Not saying no — handing the executive a structured brief
+so they can make a faster, better-informed decision.
 
-Now contrast that with this. A large, complex engagement —
-multiple service lines, vendor participation, regulatory requirements.
-The score is lower, and the AI recommendation is Approve with Conditions.
-Notice how it surfaces the three highest-risk factors with specific conditions attached.
-This isn't the AI saying no — it's handing the executive a structured brief.
-They can make a faster, better-informed decision.
+*[Take the conditionally approved action — type a name and a brief note]*
 
-*[Take the conditionally approved action — type a name and brief note]*
-
-I'll approve this one conditionally — right here, name, notes, conditions logged.
-Full audit trail, automated.
+Approve with conditions — name, notes, logged. Full audit trail.
 
 *[Scroll to a RECOMMEND_REVIEW deal]*
 
-And then there's this one. Scope definition issues. No comparable reference at this scale.
-The AI recommendation: Recommend Review. It's essentially saying —
-I don't have enough signal to call this one. A human should look at it.
-That, to me, is responsible AI in action.
+And here's one the AI flags for human review.
+Scope definition incomplete. No comparable reference at this scale.
+The AI is saying: I don't have enough signal to call this.
+A human should look at it. That's responsible AI — knowing when to step back.
 
-The concept I'm demonstrating is graduated autonomy —
-the AI acts where it should, and steps back where it shouldn't.
+Graduated autonomy. Acts where it should. Steps back where it shouldn't.
 
 ---
 
-## [AI EVALS — click "AI Evals →" button, top right]
-*[~0:40]*
+## [AI EVALS — click "AI Evals →", top right]
+*[~0:45]*
 
 *[Navigate to /evals]*
 
-Now here's the concept I want to land clearly — and it's one I care about a lot.
+Now here's the concept I want to land — and it matters to me as a PM.
 
-The Evals page. Because in any AI system, the most important question is:
-how do you actually know it's working?
+How do you know the model is actually working?
+How do you make sure that every feature you introduce is tied to a real gain —
+not just adding complexity?
 
-*[Point to alignment rate]*
+*[Point to the alignment rate]*
 
-87.5% human-AI alignment. In 14 of 16 decisions, the model agreed with the human approver.
-Tier 1 and 2 at 100%. Tier 3 at 78% — which is expected.
-The most complex deals are exactly where human judgment should diverge from the AI.
+This is Eval 1 — Human-AI Alignment. 87.5%.
+In 14 of 16 decisions, the model agreed with the human approver.
+Tier 1 and 2 at 100%. Tier 3 at 78% — expected.
+Complex deals are where human judgment should diverge.
 
 *[Scroll to Score vs Delivery]*
 
-Eval 2 is the one that lands for me. Does the deal score predict delivery outcomes?
-High-scored deals — 80% green in delivery. Medium-scored — 100% amber. Low-scored — 100% red.
-The model is calling it. Not perfectly, but directionally right.
+Eval 2 is the one that matters most to me.
+Does the deal score actually predict what happens in delivery?
+High-scored deals — 80% delivering green. Medium — 100% amber. Low — 100% red.
+The model is calling it right.
 
-This is what I mean by Business Value Testing —
-the idea that every change to the model gets measured against a baseline. Not assumed. Proven.
-That's the rigor I'd bring to a real deployment.
+*[Step back slightly in tone — this is the conviction moment]*
+
+This is Business Value Testing. As a PM, this is how I'd drive feature prioritisation —
+every improvement to the model gets measured against a baseline.
+The agents are evaluated not just on what they do, but on how well they align
+with real human decision-making. That's how you build trust in an AI system.
+Not by asserting it works. By proving it.
 
 ---
 
-## [CLOSE — stay on Evals]
-*[~0:20]*
+## [CLOSE]
+*[~0:15]*
 
-I've put together a companion presentation — white paper style — that goes deeper
-into the business proposition behind all of this.
-Both the deck and this demo environment are available at my GitHub, at fefoabreu.me.
+A companion presentation and this demo environment are both available
+at my GitHub, at fefoabreu.me.
 
-This is how I think. This is how I approach a complex process problem —
-with a framework, a concept model, and an honest focus on business value.
-I hope it gives you a good sense of what I'd bring to the role.
+This is how I think. I hope it gives you a sense of what I'd bring to the role.
 
 Thanks for watching.
 
 ---
 
-*Total: ~780 words · ~5:45–6:00 at a natural, conversational demo pace*
+*Total: ~700 words · ~5:15–5:30 at a natural, conversational pace*
 
 ---
 ### Recording tips
-- On the Executive Dashboard: let the camera rest on the KPI cards for a second before you start speaking — the visual context lands before the words do
-- When you say "this is a concept" — own it, don't apologize for it. It's a strength
-- On the A-CLM page: scroll slowly between sections and pause after each element name before describing it
-- On the deal tiles: hover over the score circle and the AI recommendation before you describe them
-- For the conditions approval: type naturally — the typing itself is part of showing the workflow
-- On Evals: let the Score vs. Delivery chart sit for a breath before narrating it — the 80/100/100 pattern speaks for itself
-- Close warmly and directly — eye contact into the camera on the last line
+- Intro: 30 seconds hard cap — resist the urge to add more
+- A-CLM is the main event — slow down on Strategic Foundation and Agent Ecosystem
+- Deal Approval Process: scroll through it at a walking pace, don't stop on individual stages
+- On the deal tiles: hover before you speak — let the visual register first
+- Score vs. Delivery on Evals: pause after the three percentages, let them land
+- Close: warm, direct, look at the camera — not the screen
