@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine
 from models.models import Base
-from routers import catalog, opportunities, contracts, handoff, delivery, portfolio, agent, backlog, deal_approvals
+from routers import catalog, opportunities, contracts, handoff, delivery, portfolio, agent, backlog, deal_approvals, evals
 
 Base.metadata.create_all(bind=engine)
 
@@ -25,6 +25,7 @@ app.include_router(portfolio.router)
 app.include_router(agent.router)
 app.include_router(backlog.router)
 app.include_router(deal_approvals.router)
+app.include_router(evals.router)
 
 
 @app.get("/api/health")

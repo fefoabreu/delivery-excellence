@@ -70,7 +70,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="px-4 py-3 border-t border-white/10">
-        <div className="text-xs text-gray-500">Microsoft Professional Services</div>
+        <div className="text-xs text-gray-500">Contoso Professional Services</div>
         <div className="text-xs text-gray-600">Delivery Excellence v1.0</div>
       </div>
     </aside>

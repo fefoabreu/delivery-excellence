@@ -37,7 +37,7 @@ export default function Catalog() {
 
   return (
     <div>
-      <Header title="Service Catalog" subtitle="Microsoft Professional Services offerings — Cloud, AI, Dynamics, Security & Data" />
+      <Header title="Service Catalog" subtitle="Contoso Professional Services offerings — Cloud, AI, Dynamics, Security & Data" />
 
       <div className="flex items-center gap-3 mb-6">
         <div className="relative flex-1 max-w-sm">

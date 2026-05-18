@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Zap, UserCheck, Shield, CheckCircle, AlertTriangle, XCircle,
   Search, RefreshCw, ChevronDown, ChevronUp, Bot, TrendingUp,
@@ -441,6 +442,7 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
 
 // ── Main Page ──────────────────────────────────────────────────────────────
 export default function DealApprovals() {
+  const navigate = useNavigate();
   const [deals, setDeals] = useState<Deal[]>([]);
   const [config, setConfig] = useState<OKRConfig | null>(null);
   const [loading, setLoading] = useState(true);
@@ -487,10 +489,28 @@ export default function DealApprovals() {
               Policy-led, automated, and agent-assisted approvals — shifting from exception-driven workflows to scalable, AI-validated deal governance that accelerates deal velocity while maintaining compliance.
             </p>
           </div>
-          <button onClick={() => { setLoading(true); dealApprovalsApi.list().then(r => setDeals(r.data)).finally(() => setLoading(false)); }}
-            className="btn-ghost flex items-center gap-1 text-gray-400">
-            <RefreshCw className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate('/evals')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 text-xs font-semibold hover:bg-purple-100 transition-colors"
+            >
+              <Target className="w-3.5 h-3.5" />
+              AI Evals
+              <ArrowRight className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => navigate('/aclm')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-ms-blue/30 bg-ms-blue/5 text-ms-blue text-xs font-semibold hover:bg-ms-blue/10 transition-colors"
+            >
+              <Bot className="w-3.5 h-3.5" />
+              A-CLM Framework
+              <ArrowRight className="w-3 h-3" />
+            </button>
+            <button onClick={() => { setLoading(true); dealApprovalsApi.list().then(r => setDeals(r.data)).finally(() => setLoading(false)); }}
+              className="btn-ghost flex items-center gap-1 text-gray-400">
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Portfolio summary */}

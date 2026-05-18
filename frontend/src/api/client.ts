@@ -98,6 +98,10 @@ export const dealApprovalsApi = {
   regenerateAI: noop,
 };
 
+export const evalsApi = {
+  getSummary: () => IS_STATIC ? Promise.resolve({ data: {} }) : api.get('/evals/summary'),
+};
+
 export const backlogApi = {
   getTree: (params?: { epic_area?: string; assigned_to?: string }) => IS_STATIC
     ? staticGet('/backlog-tree').then(r => {
