@@ -70,6 +70,10 @@ Google, AWS and SalesForce are tackling this opportunity, and the 2yr roadmap ah
 What I'm sharing is the thought process — how I'd approach this as a Technical PM.
 Real enterprise deployment would go much deeper.
 
+The problem I'm addressing is one I've lived for years: thousands of approval transactions a year,
+managed manually — dragging deal cycles across multiple weeks on average —
+every week that deal sits in a queue is a week of revenue not recognised
+and a client not achieving their outcomes.
 
 *[Scroll to Strategic Foundation]*
 
@@ -144,6 +148,8 @@ it's a process quality gain. That's the harder, more valuable lever.
 
 The second is Acceleration — for the transactions that remain,
 AI routing and playbook enforcement compress the cycle from 18 days to 5.
+At portfolio scale, that's months of aggregate revenue delay per year —
+and that's the number that gets a CRO's attention.
 
 *[Scroll briefly to the Value Scorecard]*
 
@@ -179,6 +185,10 @@ executives for the approval at hand. That's the job I do today.
 
 *[Scroll to a high-scoring Tier 1 or Tier 2 deal — point to the score]*
 
+The score is a composite — strategic alignment, risk profile, delivery track record,
+compliance posture, margin quality — each dimension weighted, each grounded in the approval playbook.
+The AI doesn't guess. It follows the same logic a seasoned approver would, at scale.
+
 Here are a few deals scoring in the high 80s.
 Strong strategic alignment, clean compliance, strong delivery track record.
 In this framework, it qualifies for AI-driven approval on the executive's behalf.
@@ -196,6 +206,9 @@ so they can make a faster, better-informed decision.
 *[Take the conditionally approved action — type a name and a brief note]*
 
 Approve with conditions — name, notes, logged. Full audit trail.
+That matters more than it sounds — in a regulated environment, knowing who approved what,
+on what basis, and what conditions were attached is often the difference between
+a clean audit and an expensive conversation.
 
 *[Scroll to a RECOMMEND_REVIEW deal]*
 
@@ -229,6 +242,9 @@ In 14 of 16 decisions, the model agreed with the human approver.
 Tier 1 and 2 at 100%. Tier 3 at 78% — expected.
 Complex deals are where human judgment should diverge and a decision log showing
 how much approvers agree with the AI recommendation to retrofeed the model.
+And every time a human overrides the AI — whether they were more lenient or more strict —
+that decision is logged and feeds the next model improvement cycle.
+Disagreement isn't noise. It's signal.
 
 *[Scroll to Score vs Delivery]*
 
@@ -243,6 +259,8 @@ This is Business Value Testing. As a PM, this is how I'd drive feature prioritis
 every improvement to the model gets measured against a baseline.
 The agents are evaluated not just on what they do, but on how well they align
 with approvers/executives decision-making.
+The dimension with the highest variance and the largest weight is the next item on the feature backlog.
+The model tells you what to build next — that's how you run product management in an AI system.
 
 ---
 
