@@ -99,7 +99,7 @@ function SlideDimRow({ dim }: { dim: RiskDimension }) {
 }
 
 // ── Slide: Reference row ───────────────────────────────────────────────────
-function SlideRefRow({ ref: r }: { ref: ReferenceProject }) {
+function SlideRefRow({ project: r }: { project: ReferenceProject }) {
   const label = r.outcome === 'success' ? 'Success' : r.outcome === 'partial' ? 'Partial' : 'Failed';
   const col = r.outcome === 'success' ? 'text-emerald-600' : r.outcome === 'partial' ? 'text-amber-600' : 'text-red-600';
   return (
@@ -320,7 +320,7 @@ function RiskSlide({ dealName, clientName, data }: { dealName: string; clientNam
             <div>
               <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Comparable Precedents</div>
               <div className="space-y-1">
-                {data.referenceProjects.map((r, i) => <SlideRefRow key={i} ref={r} />)}
+                {data.referenceProjects.map((r, i) => <SlideRefRow key={i} project={r} />)}
               </div>
             </div>
 
