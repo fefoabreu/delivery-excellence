@@ -1,16 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
-  X, CheckCircle, AlertTriangle, ShieldAlert, ChevronRight,
-  TrendingUp, Users, Radio, FileText,
+  X, ChevronDown, CheckCircle, AlertTriangle, TrendingUp,
+  Users, Radio, Presentation, ChevronRight,
 } from 'lucide-react';
 import clsx from 'clsx';
 import {
-  RiskProfileData, RiskSection, RiskDimension, ReferenceProject,
-  AgentMatch, MarketSignal, riskColor,
+  RiskProfileData, RiskSection, RiskDimension,
+  ReferenceProject, AgentMatch, MarketSignal, riskColor,
 } from '../../data/risk-profile-data';
 import { ContentBlock } from '../../data/sow-data';
 
-// ── Types ──────────────────────────────────────────────────────────────────
 interface Props {
   dealName: string;
   clientName: string;
@@ -30,28 +29,24 @@ const SECTION_TO_DIM: Record<string, string> = {
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 function outcomeIcon(o: ReferenceProject['outcome']) {
-  if (o === 'success') return <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />;
-  if (o === 'partial') return <AlertTriangle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />;
-  return <X className="w-3.5 h-3.5 text-red-500 flex-shrink-0" />;
+  if (o === 'success') return <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />;
+  if (o === 'partial') return <AlertTriangle className="w-3 h-3 text-amber-500 flex-shrink-0" />;
+  return <X className="w-3 h-3 text-red-500 flex-shrink-0" />;
 }
 
-function outcomeLabel(o: ReferenceProject['outcome']) {
-  return o === 'success' ? 'Successful' : o === 'partial' ? 'Partial' : 'Failed';
-}
-
-function severityColor(s: MarketSignal['severity']) {
-  if (s === 'info') return 'text-blue-700 bg-blue-50 border-blue-200';
-  if (s === 'warning') return 'text-amber-700 bg-amber-50 border-amber-200';
-  return 'text-red-700 bg-red-50 border-red-200';
+function severityDot(s: MarketSignal['severity']) {
+  return s === 'critical' ? 'bg-red-500' : s === 'warning' ? 'bg-amber-500' : 'bg-blue-500';
 }
 
 // ── Content Block Renderer ─────────────────────────────────────────────────
-function Block({ block }: { block: ContentBlock }) {
-  if (block.t === 'p') return <p className="text-[13px] text-gray-700 leading-relaxed mb-3">{block.text}</p>;
+function Block({ block, compact }: { block: ContentBlock; compact?: boolean }) {
+  if (block.t === 'p') return (
+    <p className={clsx('text-gray-700 leading-relaxed mb-2', compact ? 'text-[11px]' : 'text-[12px]')}>{block.text}</p>
+  );
   if (block.t === 'bullets') return (
-    <ul className="mb-3 space-y-1.5">
+    <ul className="mb-2 space-y-1">
       {block.items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-[13px] text-gray-700">
+        <li key={i} className={clsx('flex items-start gap-1.5 text-gray-700', compact ? 'text-[11px]' : 'text-[12px]')}>
           <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
           <span className="leading-relaxed">{item}</span>
         </li>
@@ -59,15 +54,15 @@ function Block({ block }: { block: ContentBlock }) {
     </ul>
   );
   if (block.t === 'table') return (
-    <div className="mb-4 overflow-x-auto">
-      <table className="w-full text-[12px] border-collapse">
+    <div className="mb-3 overflow-x-auto">
+      <table className="w-full text-[11px] border-collapse">
         <thead><tr className="bg-gray-100">
-          {block.headers.map((h, i) => <th key={i} className="text-left px-3 py-2 font-semibold text-gray-700 border border-gray-200">{h}</th>)}
+          {block.headers.map((h, i) => <th key={i} className="text-left px-2 py-1.5 font-semibold text-gray-700 border border-gray-200">{h}</th>)}
         </tr></thead>
         <tbody>
           {block.rows.map((row, i) => (
             <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-              {row.map((cell, j) => <td key={j} className="px-3 py-2 text-gray-700 border border-gray-200 leading-relaxed">{cell}</td>)}
+              {row.map((cell, j) => <td key={j} className="px-2 py-1.5 text-gray-700 border border-gray-200">{cell}</td>)}
             </tr>
           ))}
         </tbody>
@@ -77,216 +72,305 @@ function Block({ block }: { block: ContentBlock }) {
   return null;
 }
 
-// ── Risk Section (left pane) ───────────────────────────────────────────────
-function DocSection({ section, active, onClick, refCb }: {
-  section: RiskSection; active: boolean; onClick: () => void;
-  refCb: (el: HTMLDivElement | null) => void;
-}) {
-  const borderColor = section.sectionType === 'precedent' ? 'border-l-amber-400'
-    : section.sectionType === 'agents' ? 'border-l-blue-400'
-    : section.sectionType === 'signals' ? 'border-l-orange-400'
-    : active ? 'border-l-slate-600' : 'border-l-transparent';
-
+// ── Slide: Executive Brief cards ───────────────────────────────────────────
+function BriefCard({ label, text, accent }: { label: string; text: string; accent?: boolean }) {
   return (
-    <div ref={refCb} id={section.id} onClick={onClick}
-      className={clsx('mb-6 pl-4 border-l-2 transition-all duration-200 cursor-pointer hover:border-l-slate-300', active ? borderColor : 'border-l-transparent hover:border-l-slate-200')}>
-      <h2 className={clsx('text-[14px] font-bold mb-3 flex items-center gap-2', active ? 'text-slate-800' : 'text-gray-900')}>
-        {section.sectionType === 'precedent' && <TrendingUp className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />}
-        {section.sectionType === 'agents' && <Users className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />}
-        {section.sectionType === 'signals' && <Radio className="w-3.5 h-3.5 text-orange-500 flex-shrink-0" />}
-        {section.number} {section.title}
-      </h2>
-      {section.content.map((b, i) => <Block key={i} block={b} />)}
+    <div className={clsx('rounded-lg border p-3 flex flex-col gap-1', accent ? 'bg-slate-800 border-slate-700' : 'bg-white border-gray-200')}>
+      <div className={clsx('text-[9px] font-bold uppercase tracking-widest', accent ? 'text-slate-400' : 'text-gray-400')}>{label}</div>
+      <p className={clsx('text-[11px] leading-relaxed line-clamp-4', accent ? 'text-white' : 'text-gray-700')}>{text}</p>
     </div>
   );
 }
 
-// ── Dimension Row (right pane scorecard) ───────────────────────────────────
-function DimRow({ dim, active }: { dim: RiskDimension; active: boolean }) {
+// ── Slide: Dimension row ───────────────────────────────────────────────────
+function SlideDimRow({ dim }: { dim: RiskDimension }) {
   const rc = riskColor(dim.score);
   const pct = (dim.score / 10) * 100;
   return (
-    <div className={clsx('flex items-center gap-2 py-1.5 px-2 rounded transition-colors', active && 'bg-slate-100')}>
+    <div className="flex items-center gap-2 py-0.5">
       <div className={clsx('w-2 h-2 rounded-full flex-shrink-0', rc.dot)} />
-      <span className={clsx('text-[11px] flex-1 truncate', active ? 'font-semibold text-slate-800' : 'text-gray-600')}>{dim.label}</span>
-      <div className="w-14 h-1.5 bg-gray-100 rounded-full overflow-hidden flex-shrink-0">
+      <span className="text-[10px] text-gray-600 w-36 flex-shrink-0 truncate">{dim.label}</span>
+      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
         <div className={clsx('h-full rounded-full', rc.dot)} style={{ width: `${pct}%` }} />
       </div>
-      <span className={clsx('text-[11px] font-bold w-6 text-right flex-shrink-0', rc.text)}>{dim.score.toFixed(1)}</span>
+      <span className={clsx('text-[10px] font-bold w-6 text-right flex-shrink-0', rc.text)}>{dim.score.toFixed(1)}</span>
     </div>
   );
 }
 
-// ── Standard analysis panel ────────────────────────────────────────────────
-function StandardAnalysis({ dim }: { dim: RiskDimension }) {
-  const rc = riskColor(dim.score);
-  const verdict = dim.score >= 8.5 ? 'Low Risk' : dim.score >= 7.0 ? 'Managed' : dim.score >= 5.5 ? 'Elevated' : dim.score >= 4.0 ? 'High Risk' : 'Critical';
+// ── Slide: Reference row ───────────────────────────────────────────────────
+function SlideRefRow({ ref: r }: { ref: ReferenceProject }) {
+  const label = r.outcome === 'success' ? 'Success' : r.outcome === 'partial' ? 'Partial' : 'Failed';
+  const col = r.outcome === 'success' ? 'text-emerald-600' : r.outcome === 'partial' ? 'text-amber-600' : 'text-red-600';
   return (
-    <div className="mt-4 border-t border-gray-100 pt-4">
-      <div className="flex items-center gap-2 mb-3">
-        <div className={clsx('text-[10px] font-bold uppercase tracking-widest', rc.text)}>{dim.label}</div>
-        <div className={clsx('text-[10px] font-semibold px-1.5 py-0.5 rounded border', rc.bg, rc.text, rc.border)}>
-          {verdict} · {dim.score.toFixed(1)}
-        </div>
-        <div className="text-[10px] text-gray-400 ml-auto">{dim.weight}</div>
-      </div>
-      {dim.strength && (
-        <div className="mb-3">
-          <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Strength</div>
-          <p className="text-[12px] text-gray-700 leading-relaxed">{dim.strength}</p>
-        </div>
-      )}
-      {dim.gaps.length > 0 && (
-        <div className="mb-3">
-          <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Gap{dim.gaps.length > 1 ? 's' : ''}</div>
-          {dim.gaps.map((g, i) => (
-            <div key={i} className="flex items-start gap-1.5 mb-1.5">
-              <AlertTriangle className="w-3 h-3 text-amber-500 mt-0.5 flex-shrink-0" />
-              <p className="text-[12px] text-gray-700 leading-relaxed">{g}</p>
-            </div>
-          ))}
-        </div>
-      )}
-      <div>
-        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Recommendation</div>
-        <div className="flex items-start gap-1.5">
-          <ChevronRight className="w-3 h-3 text-slate-600 mt-0.5 flex-shrink-0" />
-          <p className="text-[12px] text-slate-700 font-medium leading-relaxed">{dim.recommendation}</p>
-        </div>
-      </div>
+    <div className="flex items-center gap-2 py-0.5">
+      {outcomeIcon(r.outcome)}
+      <span className="text-[10px] text-gray-700 flex-1 truncate">{r.name}</span>
+      <span className={clsx('text-[10px] font-semibold flex-shrink-0', col)}>{label}</span>
     </div>
   );
 }
 
-// ── Precedent heatmap panel ────────────────────────────────────────────────
-function PrecedentPanel({ projects }: { projects: ReferenceProject[] }) {
-  const [active, setActive] = useState<number | null>(null);
+// ── Slide: Agent row ───────────────────────────────────────────────────────
+function SlideAgentRow({ agent }: { agent: AgentMatch }) {
+  const initials = agent.name.split(' ').map(n => n[0]).join('').slice(0, 2);
+  const topCsat = agent.credits[0]?.csat;
   return (
-    <div className="mt-4 border-t border-gray-100 pt-4">
-      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Comparable Precedents</div>
-      <div className="space-y-2 mb-4">
-        {projects.map((p, i) => (
-          <div key={i}
-            onClick={() => setActive(i === active ? null : i)}
-            className={clsx('border rounded-lg p-2.5 cursor-pointer transition-colors', active === i ? 'border-slate-300 bg-slate-50' : 'border-gray-200 hover:border-slate-200 hover:bg-gray-50')}>
-            <div className="flex items-start gap-2">
-              {outcomeIcon(p.outcome)}
-              <div className="flex-1 min-w-0">
-                <div className="text-[11px] font-semibold text-gray-900 leading-snug">{p.name}</div>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-[10px] text-gray-500">{p.industry} · {p.year}</span>
-                  <span className={clsx('text-[10px] font-semibold', p.outcome === 'success' ? 'text-emerald-600' : p.outcome === 'partial' ? 'text-amber-600' : 'text-red-600')}>
-                    {outcomeLabel(p.outcome)}
-                  </span>
-                  <span className="text-[10px] text-gray-400 ml-auto">{p.relevance} relevance</span>
+    <div className="flex items-center gap-2 py-0.5">
+      <div className="w-5 h-5 rounded-full bg-slate-700 text-white flex items-center justify-center text-[9px] font-bold flex-shrink-0">{initials}</div>
+      <div className="flex-1 min-w-0">
+        <div className="text-[10px] font-semibold text-gray-800 truncate">{agent.name}</div>
+        <div className="text-[9px] text-gray-400 truncate">{agent.role}</div>
+      </div>
+      {topCsat && <span className="text-[10px] font-bold text-emerald-600 flex-shrink-0">{topCsat.toFixed(1)}</span>}
+    </div>
+  );
+}
+
+// ── Right Panel: Collapsible section ───────────────────────────────────────
+function AccordionSection({ section, data }: { section: RiskSection; data: RiskProfileData }) {
+  const [open, setOpen] = useState(false);
+  const dimKey = SECTION_TO_DIM[section.id];
+  const dim = dimKey ? data.dimensions.find(d => d.key === dimKey) : undefined;
+  const rc = dim ? riskColor(dim.score) : null;
+
+  const sectionIcon = section.sectionType === 'precedent'
+    ? <TrendingUp className="w-3 h-3 text-amber-500 flex-shrink-0" />
+    : section.sectionType === 'agents'
+    ? <Users className="w-3 h-3 text-blue-500 flex-shrink-0" />
+    : section.sectionType === 'signals'
+    ? <Radio className="w-3 h-3 text-orange-500 flex-shrink-0" />
+    : dim && rc ? <div className={clsx('w-2 h-2 rounded-full flex-shrink-0', rc.dot)} /> : null;
+
+  return (
+    <div className="border-b border-gray-100">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-2 px-3 py-2.5 text-left hover:bg-gray-50 transition-colors"
+      >
+        {sectionIcon}
+        <span className="text-[11px] font-medium text-gray-700 flex-1">{section.number} {section.title}</span>
+        {dim && rc && <span className={clsx('text-[10px] font-bold flex-shrink-0', rc.text)}>{dim.score.toFixed(1)}</span>}
+        <ChevronDown className={clsx('w-3.5 h-3.5 text-gray-400 flex-shrink-0 transition-transform duration-150', open && 'rotate-180')} />
+      </button>
+
+      {open && (
+        <div className="px-3 pb-3 border-t border-gray-50">
+          {/* Section content */}
+          <div className="mt-2">
+            {section.content.map((b, i) => <Block key={i} block={b} compact />)}
+          </div>
+
+          {/* Dimension analysis (standard sections) */}
+          {dim && rc && (
+            <div className="mt-2 pt-2 border-t border-gray-100">
+              <div className={clsx('inline-flex items-center gap-1.5 text-[10px] font-bold px-1.5 py-0.5 rounded border mb-2', rc.bg, rc.text, rc.border)}>
+                {dim.score >= 8.5 ? 'Low Risk' : dim.score >= 7.0 ? 'Managed' : dim.score >= 5.5 ? 'Elevated' : dim.score >= 4.0 ? 'High Risk' : 'Critical'} · {dim.score.toFixed(1)}
+              </div>
+              {dim.strength && (
+                <div className="mb-2">
+                  <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wide mb-0.5">Strength</div>
+                  <p className="text-[11px] text-gray-700 leading-relaxed">{dim.strength}</p>
                 </div>
+              )}
+              {dim.gaps.length > 0 && (
+                <div className="mb-2">
+                  <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wide mb-0.5">Gaps</div>
+                  {dim.gaps.map((g, i) => (
+                    <div key={i} className="flex items-start gap-1 mb-1">
+                      <AlertTriangle className="w-2.5 h-2.5 text-amber-500 mt-0.5 flex-shrink-0" />
+                      <p className="text-[11px] text-gray-700 leading-relaxed">{g}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="flex items-start gap-1">
+                <ChevronRight className="w-2.5 h-2.5 text-slate-600 mt-0.5 flex-shrink-0" />
+                <p className="text-[11px] text-slate-700 font-medium leading-relaxed">{dim.recommendation}</p>
               </div>
             </div>
-            {active === i && (
-              <div className="mt-2 pt-2 border-t border-gray-100">
-                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Lesson</div>
-                <p className="text-[11px] text-gray-700 leading-relaxed">{p.lesson}</p>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-      {active === null && <p className="text-[11px] text-gray-400 text-center">Click a project to view its lesson.</p>}
-    </div>
-  );
-}
+          )}
 
-// ── Agent match panel ──────────────────────────────────────────────────────
-function AgentsPanel({ agents }: { agents: AgentMatch[] }) {
-  return (
-    <div className="mt-4 border-t border-gray-100 pt-4">
-      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Capability Matches</div>
-      {agents.length === 0 && <p className="text-[12px] text-gray-400 text-center">No confirmed agent matches on file.</p>}
-      {agents.map((a, i) => (
-        <div key={i} className="border border-gray-200 rounded-lg p-3 mb-3 bg-slate-50">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-              {a.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-            </div>
-            <div>
-              <div className="text-[12px] font-semibold text-gray-900">{a.name}</div>
-              <div className="text-[10px] text-gray-500">{a.role}</div>
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <div>
-              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mb-1">Delivery Credits</div>
-              {a.credits.map((c, j) => (
-                <div key={j} className="flex items-center gap-2 text-[11px]">
-                  <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />
-                  <span className="text-gray-700 truncate">{c.project}</span>
-                  <span className="text-emerald-700 font-semibold ml-auto flex-shrink-0">CSAT {c.csat.toFixed(1)}</span>
+          {/* Precedent special view */}
+          {section.sectionType === 'precedent' && (
+            <div className="mt-2 space-y-2">
+              {data.referenceProjects.map((rp, i) => (
+                <div key={i} className="border border-gray-200 rounded p-2">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    {outcomeIcon(rp.outcome)}
+                    <span className="text-[11px] font-semibold text-gray-900 leading-snug">{rp.name}</span>
+                  </div>
+                  <div className="text-[10px] text-gray-400 mb-1">{rp.industry} · {rp.year} · {rp.relevance} relevance</div>
+                  <p className="text-[11px] text-gray-600 leading-relaxed">{rp.lesson}</p>
                 </div>
               ))}
             </div>
-            <div className="flex gap-3 text-[10px] text-gray-500 pt-1">
-              <span><span className="font-semibold">Avail:</span> {a.availability}</span>
+          )}
+
+          {/* Agents special view */}
+          {section.sectionType === 'agents' && (
+            <div className="mt-2 space-y-2">
+              {data.agentMatches.map((a, i) => (
+                <div key={i} className="border border-gray-200 rounded p-2">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center text-[9px] font-bold">
+                      {a.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-semibold text-gray-900">{a.name}</div>
+                      <div className="text-[9px] text-gray-400">{a.role}</div>
+                    </div>
+                  </div>
+                  {a.credits.map((c, j) => (
+                    <div key={j} className="flex items-center gap-1.5 text-[10px]">
+                      <CheckCircle className="w-2.5 h-2.5 text-emerald-500 flex-shrink-0" />
+                      <span className="text-gray-600 flex-1 truncate">{c.project}</span>
+                      <span className="text-emerald-600 font-semibold">CSAT {c.csat.toFixed(1)}</span>
+                    </div>
+                  ))}
+                  <div className="text-[9px] text-gray-400 mt-1">{a.availability} · {a.regions.join(', ')}</div>
+                </div>
+              ))}
             </div>
-            <div className="text-[10px] text-gray-500">
-              <span className="font-semibold">Regions:</span> {a.regions.join(', ')}
+          )}
+
+          {/* Signals special view */}
+          {section.sectionType === 'signals' && (
+            <div className="mt-2 space-y-2">
+              {data.marketSignals.length === 0 && <p className="text-[11px] text-gray-400">No active market signals.</p>}
+              {data.marketSignals.map((s, i) => (
+                <div key={i} className="border border-gray-200 rounded p-2">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <div className={clsx('w-2 h-2 rounded-full flex-shrink-0', severityDot(s.severity))} />
+                    <span className="text-[10px] font-bold text-gray-700">{s.feed}</span>
+                    <span className="text-[9px] text-gray-400 ml-auto">{s.date}</span>
+                  </div>
+                  <p className="text-[11px] text-gray-600 leading-relaxed">{s.alert}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
         </div>
-      ))}
+      )}
     </div>
   );
 }
 
-// ── Market signals panel ───────────────────────────────────────────────────
-function SignalsPanel({ signals }: { signals: MarketSignal[] }) {
-  if (signals.length === 0) return (
-    <div className="mt-4 border-t border-gray-100 pt-4 text-center">
-      <Radio className="w-5 h-5 mx-auto mb-2 text-gray-300" />
-      <p className="text-[12px] text-gray-400">No active market signals for this deal.</p>
-    </div>
-  );
-  return (
-    <div className="mt-4 border-t border-gray-100 pt-4">
-      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Active Market Signals</div>
-      {signals.map((s, i) => (
-        <div key={i} className={clsx('border rounded-lg p-3 mb-3 text-[12px]', severityColor(s.severity))}>
-          <div className="flex items-center justify-between mb-1">
-            <span className="font-bold text-[11px]">{s.feed}</span>
-            <span className="text-[10px] opacity-70">{s.date}</span>
-          </div>
-          <p className="leading-relaxed mb-1.5">{s.alert}</p>
-          <div className="text-[10px] opacity-70">Affects: {s.dimension}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ── Executive Brief (right pane top) ──────────────────────────────────────
-function ExecBrief({ data }: { data: RiskProfileData }) {
+// ── Main Slide ─────────────────────────────────────────────────────────────
+function RiskSlide({ dealName, clientName, data }: { dealName: string; clientName: string; data: RiskProfileData }) {
   const rc = riskColor(data.compositeScore);
   const b = data.executiveBrief;
-  const rows: [string, string][] = [
-    ['Headline Risk', b.headlineRisk],
-    ['Precedent Signal', b.precedentSignal],
-    ['Delivery Confidence', b.deliveryConfidence],
-    ['Market Context', b.marketContext],
-    ['Decision Guidance', b.decisionGuidance],
-  ];
+
   return (
-    <div className="px-4 pt-4 pb-3 border-b border-gray-100 flex-shrink-0">
-      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">AI Risk Intelligence</div>
-      <div className={clsx('flex items-center justify-between p-2.5 rounded-lg border mb-3', rc.bg, rc.border)}>
-        <span className={clsx('text-[11px] font-bold', rc.text)}>{rc.badge}</span>
-        <span className={clsx('text-lg font-bold', rc.text)}>{data.compositeScore.toFixed(1)}<span className="text-[11px] font-normal opacity-70"> / 10</span></span>
-      </div>
-      <div className="space-y-2">
-        {rows.map(([label, text]) => (
-          <div key={label}>
-            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wide">{label}</div>
-            <p className="text-[11px] text-gray-700 leading-relaxed mt-0.5">{text}</p>
+    <div className="bg-white rounded shadow-xl flex flex-col overflow-hidden w-full h-full">
+      {/* Risk tier accent bar */}
+      <div className={clsx('h-1.5 w-full flex-shrink-0', rc.dot)} />
+
+      {/* Slide content */}
+      <div className="flex-1 overflow-y-auto px-8 py-6">
+
+        {/* ── Slide Header ── */}
+        <div className="flex items-start justify-between mb-5">
+          <div>
+            <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Risk Profile Assessment · Confidential</div>
+            <h1 className="text-[19px] font-bold text-gray-900 leading-tight">{dealName}</h1>
+            <div className="text-[12px] text-gray-500 mt-0.5">{clientName}</div>
           </div>
-        ))}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <div className={clsx('px-3 py-1.5 rounded-lg border text-[12px] font-bold', rc.bg, rc.text, rc.border)}>
+              {rc.badge}
+            </div>
+            <div className="text-right">
+              <div className={clsx('text-[28px] font-bold leading-none', rc.text)}>{data.compositeScore.toFixed(1)}</div>
+              <div className="text-[10px] text-gray-400">/ 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-100 mb-5" />
+
+        {/* ── Executive Brief: 5 signal cards ── */}
+        <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-2">Executive Risk Brief</div>
+        <div className="grid grid-cols-3 gap-2 mb-2">
+          <BriefCard label="Headline Risk" text={b.headlineRisk} accent />
+          <BriefCard label="Precedent Signal" text={b.precedentSignal} />
+          <BriefCard label="Delivery Confidence" text={b.deliveryConfidence} />
+        </div>
+        <div className="grid grid-cols-2 gap-2 mb-6">
+          <BriefCard label="Market Context" text={b.marketContext} />
+          <BriefCard label="Decision Guidance" text={b.decisionGuidance} />
+        </div>
+
+        <div className="border-t border-gray-100 mb-5" />
+
+        {/* ── Lower section: dimensions | references / agents / signals ── */}
+        <div className="grid grid-cols-[1fr_180px] gap-6">
+
+          {/* Dimension scorecard */}
+          <div>
+            <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-2">Risk Dimensions</div>
+            <div className="space-y-1.5">
+              {data.dimensions.map(dim => <SlideDimRow key={dim.key} dim={dim} />)}
+            </div>
+          </div>
+
+          {/* Right column: refs / agents / signals */}
+          <div className="space-y-4">
+            {/* Reference projects */}
+            <div>
+              <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Comparable Precedents</div>
+              <div className="space-y-1">
+                {data.referenceProjects.map((r, i) => <SlideRefRow key={i} ref={r} />)}
+              </div>
+            </div>
+
+            {/* Agents */}
+            {data.agentMatches.length > 0 && (
+              <div>
+                <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Delivery Match</div>
+                <div className="space-y-1.5">
+                  {data.agentMatches.map((a, i) => <SlideAgentRow key={i} agent={a} />)}
+                </div>
+              </div>
+            )}
+
+            {/* Market signals */}
+            {data.marketSignals.length > 0 && (
+              <div>
+                <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Market Signals</div>
+                <div className="space-y-1">
+                  {data.marketSignals.map((s, i) => (
+                    <div key={i} className="flex items-start gap-1.5">
+                      <div className={clsx('w-2 h-2 rounded-full mt-0.5 flex-shrink-0', severityDot(s.severity))} />
+                      <p className="text-[10px] text-gray-600 leading-relaxed line-clamp-2">{s.alert}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Alignment flags */}
+            <div>
+              <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Alignment Signals</div>
+              <div className="space-y-1">
+                {data.alignmentFlags.map((f, i) => (
+                  <div key={i} className="flex items-start gap-1.5">
+                    {f.status === 'ok'
+                      ? <CheckCircle className="w-2.5 h-2.5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                      : <AlertTriangle className="w-2.5 h-2.5 text-amber-500 mt-0.5 flex-shrink-0" />}
+                    <span className={clsx('text-[10px] leading-snug', f.status === 'ok' ? 'text-emerald-700' : 'text-amber-700')}>{f.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Slide footer */}
+      <div className="flex-shrink-0 border-t border-gray-100 px-8 py-2 flex items-center justify-between">
+        <span className="text-[9px] text-gray-400">Delivery Excellence · Risk Profile Framework v1.0 · AI-Generated · {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        <span className="text-[9px] text-gray-300">Slide 1 of 1</span>
       </div>
     </div>
   );
@@ -294,9 +378,7 @@ function ExecBrief({ data }: { data: RiskProfileData }) {
 
 // ── Main Modal ─────────────────────────────────────────────────────────────
 export default function RiskProfileModal({ dealName, clientName, data, onClose }: Props) {
-  const [activeSection, setActiveSection] = useState('executive-brief');
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const rc = riskColor(data.compositeScore);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -304,35 +386,15 @@ export default function RiskProfileModal({ dealName, clientName, data, onClose }
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
-  useEffect(() => {
-    const root = scrollRef.current;
-    if (!root) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter(e => e.isIntersecting);
-        if (visible.length > 0) setActiveSection(visible[0].target.id);
-      },
-      { root, threshold: 0.25, rootMargin: '-10% 0px -55% 0px' },
-    );
-    sectionRefs.current.forEach(el => { if (el) observer.observe(el); });
-    return () => observer.disconnect();
-  }, [data]);
-
-  const activeDimKey = SECTION_TO_DIM[activeSection];
-  const activeDim = activeDimKey ? data.dimensions.find(d => d.key === activeDimKey) : undefined;
-  const activeSecObj = data.sections.find(s => s.id === activeSection);
-
-  const rc = riskColor(data.compositeScore);
-
   return (
     <div className="fixed inset-0 z-50 flex flex-col">
       <div className="absolute inset-0 bg-black/60" onClick={onClose} />
       <div className="relative flex flex-col m-3 rounded-lg overflow-hidden shadow-2xl flex-1 min-h-0">
 
-        {/* ── Title Bar ── */}
+        {/* ── PowerPoint Title Bar ── */}
         <div className="flex items-center px-4 h-10 flex-shrink-0 gap-3" style={{ background: '#1e293b' }}>
-          <ShieldAlert className="w-4 h-4 text-white opacity-80 flex-shrink-0" />
-          <span className="text-white text-[13px] font-medium flex-1 truncate">{dealName} — Risk Profile Assessment</span>
+          <Presentation className="w-4 h-4 text-white opacity-80 flex-shrink-0" />
+          <span className="text-white text-[13px] font-medium flex-1 truncate">{dealName} — Risk Profile</span>
           <div className={clsx('flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-bold', rc.bg, rc.text)}>
             {rc.badge} · {data.compositeScore.toFixed(1)} / 10
           </div>
@@ -341,85 +403,32 @@ export default function RiskProfileModal({ dealName, clientName, data, onClose }
           </button>
         </div>
 
-        {/* ── Sub-header ── */}
-        <div className="flex items-center px-4 h-7 gap-6 flex-shrink-0" style={{ background: '#334155', borderBottom: '1px solid #475569' }}>
-          <span className="text-[11px] text-slate-300">{clientName}</span>
-          <span className="text-[11px] text-slate-500">·</span>
-          <span className="text-[11px] text-slate-400">Deal Risk Assessment · Delivery Excellence AI</span>
-          <span className="ml-auto text-[10px] text-slate-500">Risk Profile Framework v1.0 · {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        {/* ── PowerPoint Ribbon ── */}
+        <div className="flex items-center px-4 h-7 gap-5 flex-shrink-0" style={{ background: '#f3f2f1', borderBottom: '1px solid #d0d0d0' }}>
+          {['File', 'Home', 'Insert', 'Design', 'Transitions', 'Slide Show', 'Review'].map(tab => (
+            <span key={tab} className="text-[11px] text-gray-600 cursor-default select-none hover:bg-gray-200 px-1.5 py-0.5 rounded">{tab}</span>
+          ))}
+          <span className="ml-auto text-[10px] text-gray-400 select-none">Delivery Excellence · AI Risk Intelligence</span>
         </div>
 
-        {/* ── Content Area ── */}
-        <div className="flex flex-1 min-h-0" style={{ background: '#e2e8f0' }}>
+        {/* ── Slides Area + Right Panel ── */}
+        <div className="flex flex-1 min-h-0">
 
-          {/* Left — Document Pane */}
-          <div ref={scrollRef} className="flex-1 overflow-y-auto py-8 px-6 min-w-0">
-            <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-sm">
-              <div className="px-12 pt-10 pb-6 border-b border-gray-100">
-                <div className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Risk Profile Assessment · Confidential</div>
-                <h1 className="text-xl font-bold text-gray-900 mb-1 leading-snug">{dealName}</h1>
-                <div className="flex items-center gap-3">
-                  <span className="text-[12px] text-gray-500">{clientName}</span>
-                  <span className={clsx('text-[11px] font-bold px-2 py-0.5 rounded border', rc.bg, rc.text, rc.border)}>{rc.badge}</span>
-                </div>
-              </div>
-              <div className="px-12 py-8">
-                {data.sections.map(section => (
-                  <DocSection key={section.id} section={section} active={activeSection === section.id}
-                    onClick={() => setActiveSection(section.id)}
-                    refCb={el => { if (el) sectionRefs.current.set(section.id, el); else sectionRefs.current.delete(section.id); }}
-                  />
-                ))}
-              </div>
-            </div>
+          {/* Slide canvas (center — takes remaining width) */}
+          <div className="flex-1 overflow-hidden flex items-stretch p-6" style={{ background: '#c8c8c8' }}>
+            <RiskSlide dealName={dealName} clientName={clientName} data={data} />
           </div>
 
-          {/* Right — Analysis Pane */}
-          <div className="w-80 bg-white border-l border-gray-200 flex flex-col overflow-y-auto flex-shrink-0">
-
-            {/* Executive Brief (always visible at top) */}
-            <ExecBrief data={data} />
-
-            {/* Dimension scorecard */}
-            <div className="px-4 pt-3 pb-3 border-b border-gray-100 flex-shrink-0">
-              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Risk Dimensions</div>
-              <div className="space-y-0.5">
-                {data.dimensions.map(dim => (
-                  <DimRow key={dim.key} dim={dim} active={activeDimKey === dim.key} />
-                ))}
-              </div>
+          {/* Right panel — collapsible sections ── */}
+          <div className="w-72 bg-white border-l border-gray-200 flex flex-col overflow-hidden flex-shrink-0">
+            <div className="px-3 py-2 border-b border-gray-200 flex-shrink-0">
+              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Detailed Assessment</div>
+              <div className="text-[9px] text-gray-400 mt-0.5">Click any section to expand</div>
             </div>
-
-            {/* Active section analysis or special view */}
-            <div className="px-4 flex-1 min-h-0">
-              {activeSecObj?.sectionType === 'precedent' && <PrecedentPanel projects={data.referenceProjects} />}
-              {activeSecObj?.sectionType === 'agents' && <AgentsPanel agents={data.agentMatches} />}
-              {activeSecObj?.sectionType === 'signals' && <SignalsPanel signals={data.marketSignals} />}
-              {activeSecObj?.sectionType === 'standard' && activeDim && <StandardAnalysis dim={activeDim} />}
-              {(activeSecObj?.sectionType === 'brief' || !activeSecObj) && (
-                <div className="mt-4 text-center text-[12px] text-gray-400 leading-relaxed px-2">
-                  <FileText className="w-6 h-6 mx-auto mb-2 text-gray-300" />
-                  Click any section to view the AI risk analysis for that dimension.
-                </div>
-              )}
-            </div>
-
-            {/* Alignment flags */}
-            <div className="px-4 py-4 border-t border-gray-100 flex-shrink-0">
-              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Risk Alignment Signals</div>
-              <div className="space-y-2">
-                {data.alignmentFlags.map((flag, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    {flag.status === 'ok'
-                      ? <CheckCircle className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />
-                      : <AlertTriangle className="w-3.5 h-3.5 text-amber-500 mt-0.5 flex-shrink-0" />}
-                    <div>
-                      <div className={clsx('text-[11px] font-medium', flag.status === 'ok' ? 'text-emerald-700' : 'text-amber-700')}>{flag.label}</div>
-                      {flag.detail && <div className="text-[10px] text-gray-500 leading-snug mt-0.5">{flag.detail}</div>}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="flex-1 overflow-y-auto">
+              {data.sections.map(section => (
+                <AccordionSection key={section.id} section={section} data={data} />
+              ))}
             </div>
           </div>
         </div>
