@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { dealApprovalsApi } from '../api/client';
+import SOWReviewModal from '../components/shared/SOWReviewModal';
+import { SOW_DATA } from '../data/sow-data';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface ScoreDimension { 0: string; 1: string; 2: string; }
@@ -174,13 +176,31 @@ function TierWorkflow({ tiers, deals }: { tiers: OKRConfig['tiers']; deals: Deal
 }
 
 // ── Score Bar Row ──────────────────────────────────────────────────────────
-function ScoreBar({ label, description, score }: { label: string; description: string; score: number }) {
+function ScoreBar({ label, description, score, glowing, onClick }: {
+  label: string; description: string; score: number;
+  glowing?: boolean; onClick?: () => void;
+}) {
   const pct = (score / 10) * 100;
   const colorCls = SCORE_COLOR(score);
   return (
-    <div className="group">
-      <div className="flex items-center gap-3 py-1.5">
-        <div className="w-36 text-xs text-gray-600 font-medium flex-shrink-0 truncate" title={description}>{label}</div>
+    <div
+      className={clsx('group', glowing && 'cursor-pointer')}
+      onClick={onClick}
+      title={glowing ? 'Click to review SOW quality analysis' : description}
+    >
+      <div className={clsx(
+        'flex items-center gap-3 py-1.5 rounded transition-colors',
+        glowing && 'hover:bg-blue-50/60 px-1 -mx-1',
+      )}>
+        <div className="w-36 flex items-center gap-1.5 flex-shrink-0">
+          <span className={clsx('text-xs font-medium truncate', glowing ? 'text-blue-700' : 'text-gray-600')}>{label}</span>
+          {glowing && (
+            <span className="relative flex h-2 w-2 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+              <span className={clsx('relative inline-flex rounded-full h-2 w-2 bg-blue-500 animate-sow-glow')} />
+            </span>
+          )}
+        </div>
         <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
           <div className={clsx('h-full rounded-full transition-all', colorCls)} style={{ width: `${pct}%` }} />
         </div>
@@ -203,6 +223,9 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
   const [pendingAction, setPendingAction] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [regenerating, setRegenerating] = useState(false);
+  const [sowOpen, setSowOpen] = useState(false);
+
+  const sowData = SOW_DATA[deal.client_name];
 
   const p = deal.profile;
   const tierCfg = TIER_CFG[p.approval_tier];
@@ -295,7 +318,14 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
           <div className="space-y-0.5">
             {deal.score_dimensions.map(([key, label]) => (
               p.score_breakdown[key] !== undefined && (
-                <ScoreBar key={key} label={label} description={''} score={p.score_breakdown[key]} />
+                <ScoreBar
+                  key={key}
+                  label={label}
+                  description={''}
+                  score={p.score_breakdown[key]}
+                  glowing={key === 'sow_quality' && !!sowData}
+                  onClick={key === 'sow_quality' && sowData ? () => setSowOpen(true) : undefined}
+                />
               )
             ))}
             <div className="flex items-center gap-3 py-1.5 border-t border-gray-200 mt-1 pt-2">
@@ -435,6 +465,15 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
           </div>
           {p.action_notes && <span className="text-xs text-gray-400 italic truncate max-w-xs">{p.action_notes}</span>}
         </div>
+      )}
+
+      {sowOpen && sowData && (
+        <SOWReviewModal
+          dealName={deal.name}
+          clientName={deal.client_name}
+          sowData={sowData}
+          onClose={() => setSowOpen(false)}
+        />
       )}
     </div>
   );
