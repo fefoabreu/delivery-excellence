@@ -9,6 +9,8 @@ import clsx from 'clsx';
 import { dealApprovalsApi } from '../api/client';
 import SOWReviewModal from '../components/shared/SOWReviewModal';
 import { SOW_DATA } from '../data/sow-data';
+import RiskProfileModal from '../components/shared/RiskProfileModal';
+import { RISK_PROFILE_DATA } from '../data/risk-profile-data';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface ScoreDimension { 0: string; 1: string; 2: string; }
@@ -224,8 +226,10 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
   const [submitting, setSubmitting] = useState(false);
   const [regenerating, setRegenerating] = useState(false);
   const [sowOpen, setSowOpen] = useState(false);
+  const [riskOpen, setRiskOpen] = useState(false);
 
   const sowData = SOW_DATA[deal.client_name];
+  const riskData = RISK_PROFILE_DATA[deal.client_name];
 
   const p = deal.profile;
   const tierCfg = TIER_CFG[p.approval_tier];
@@ -323,8 +327,8 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
                   label={label}
                   description={''}
                   score={p.score_breakdown[key]}
-                  glowing={key === 'sow_quality' && !!sowData}
-                  onClick={key === 'sow_quality' && sowData ? () => setSowOpen(true) : undefined}
+                  glowing={(key === 'sow_quality' && !!sowData) || (key === 'risk_profile' && !!riskData)}
+                  onClick={key === 'sow_quality' && sowData ? () => setSowOpen(true) : key === 'risk_profile' && riskData ? () => setRiskOpen(true) : undefined}
                 />
               )
             ))}
@@ -473,6 +477,14 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
           clientName={deal.client_name}
           sowData={sowData}
           onClose={() => setSowOpen(false)}
+        />
+      )}
+      {riskOpen && riskData && (
+        <RiskProfileModal
+          dealName={deal.name}
+          clientName={deal.client_name}
+          data={riskData}
+          onClose={() => setRiskOpen(false)}
         />
       )}
     </div>
