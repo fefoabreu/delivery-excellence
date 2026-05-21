@@ -1,0 +1,314 @@
+{
+  "alignment": {
+    "total_scored": 8,
+    "total_decided": 5,
+    "aligned": 3,
+    "alignment_rate": 0.6,
+    "divergence": {
+      "human_more_lenient": 0,
+      "human_more_strict": 2
+    },
+    "by_tier": {
+      "1": { "total": 0, "aligned": 0, "rate": 0 },
+      "2": { "total": 1, "aligned": 1, "rate": 1.0 },
+      "3": { "total": 4, "aligned": 2, "rate": 0.5 }
+    },
+    "decisions": [
+      {
+        "contract_id": "c001",
+        "name": "A. Datum Corporation — Enterprise Zero Trust & SOC Transformation",
+        "client_name": "A. Datum Corporation",
+        "total_value": 1820000,
+        "deal_score": 88.0,
+        "tier": 3,
+        "ai_status": "APPROVE",
+        "action": "approved",
+        "aligned": true,
+        "direction": null,
+        "action_by": "Elena Fontaine — VP Professional Services",
+        "action_date": "2026-05-10T14:22:00"
+      },
+      {
+        "contract_id": "c002",
+        "name": "Alpine Insurance Group — Zero Trust Architecture & Identity Modernization",
+        "client_name": "Alpine Insurance Group",
+        "total_value": 980000,
+        "deal_score": 83.1,
+        "tier": 2,
+        "ai_status": "APPROVE",
+        "action": "approved",
+        "aligned": true,
+        "direction": null,
+        "action_by": "Katrina Rhodes — Americas Leader",
+        "action_date": "2026-05-08T09:45:00"
+      },
+      {
+        "contract_id": "c003",
+        "name": "Fourth Coffee Corp — Azure Data Center Exit Program",
+        "client_name": "Fourth Coffee Corporation",
+        "total_value": 4200000,
+        "deal_score": 82.3,
+        "tier": 3,
+        "ai_status": "APPROVE",
+        "action": "conditionally_approved",
+        "aligned": false,
+        "direction": "strict",
+        "action_by": "Elena Fontaine — VP Professional Services",
+        "action_date": "2026-05-14T11:30:00"
+      },
+      {
+        "contract_id": "c004",
+        "name": "Contoso Hotels & Resorts — AI Guest Experience Platform",
+        "client_name": "Contoso Hotels & Resorts",
+        "total_value": 3150000,
+        "deal_score": 81.5,
+        "tier": 3,
+        "ai_status": "APPROVE",
+        "action": "approved",
+        "aligned": true,
+        "direction": null,
+        "action_by": "Elena Fontaine — VP Professional Services",
+        "action_date": "2026-05-12T16:05:00"
+      },
+      {
+        "contract_id": "c005",
+        "name": "Northwind Traders — Dynamics 365 Finance & Operations (SAP ECC Replacement)",
+        "client_name": "Northwind Traders",
+        "total_value": 5900000,
+        "deal_score": 77.7,
+        "tier": 3,
+        "ai_status": "APPROVE_WITH_CONDITIONS",
+        "action": "in_review",
+        "aligned": false,
+        "direction": "strict",
+        "action_by": "Katrina Rhodes — Americas Leader",
+        "action_date": "2026-05-16T10:15:00"
+      }
+    ]
+  },
+  "score_distribution": {
+    "total": 8,
+    "avg": 77.6,
+    "bands": {
+      "0-49":   0,
+      "50-64":  1,
+      "65-74":  1,
+      "75-84":  5,
+      "85-100": 1
+    },
+    "by_tier": {
+      "1": { "avg": 0,    "count": 0 },
+      "2": { "avg": 83.1, "count": 1 },
+      "3": { "avg": 76.6, "count": 7 }
+    }
+  },
+  "score_vs_delivery": {
+    "correlated_count": 9,
+    "by_band": {
+      "high": {
+        "green": 4,
+        "amber": 1,
+        "red":   0,
+        "deals": [
+          {
+            "name": "VanArsdel Copilot & AI Platform",
+            "client_name": "VanArsdel Ltd.",
+            "deal_score": 88.0,
+            "overall_health": "green",
+            "completion_pct": 100,
+            "burn_rate": 97.2,
+            "ai_status": "APPROVE"
+          },
+          {
+            "name": "Trey Research D365 Sales & CS",
+            "client_name": "Trey Research",
+            "deal_score": 84.5,
+            "overall_health": "green",
+            "completion_pct": 100,
+            "burn_rate": 94.1,
+            "ai_status": "APPROVE"
+          },
+          {
+            "name": "Lamna Healthcare Azure & Security Foundation",
+            "client_name": "Lamna Healthcare",
+            "deal_score": 79.2,
+            "overall_health": "green",
+            "completion_pct": 100,
+            "burn_rate": 101.4,
+            "ai_status": "APPROVE"
+          },
+          {
+            "name": "Proseware SOC Modernization",
+            "client_name": "Proseware Inc.",
+            "deal_score": 77.1,
+            "overall_health": "green",
+            "completion_pct": 22,
+            "burn_rate": 21.3,
+            "ai_status": "APPROVE"
+          },
+          {
+            "name": "Blue Yonder Microsoft Fabric Platform",
+            "client_name": "Blue Yonder",
+            "deal_score": 77.8,
+            "overall_health": "amber",
+            "completion_pct": 48,
+            "burn_rate": 61.4,
+            "ai_status": "APPROVE"
+          }
+        ]
+      },
+      "medium": {
+        "green": 0,
+        "amber": 2,
+        "red":   0,
+        "deals": [
+          {
+            "name": "Lucerne Publishing Zero Trust",
+            "client_name": "Lucerne Publishing",
+            "deal_score": 68.3,
+            "overall_health": "amber",
+            "completion_pct": 32,
+            "burn_rate": 38.7,
+            "ai_status": "APPROVE_WITH_CONDITIONS"
+          },
+          {
+            "name": "Adatum Cloud Foundation",
+            "client_name": "A. Datum Corporation",
+            "deal_score": 65.4,
+            "overall_health": "amber",
+            "completion_pct": 42,
+            "burn_rate": 55.2,
+            "ai_status": "APPROVE_WITH_CONDITIONS"
+          }
+        ]
+      },
+      "low": {
+        "green": 0,
+        "amber": 0,
+        "red":   2,
+        "deals": [
+          {
+            "name": "Contoso Sports D365 CE",
+            "client_name": "Contoso Sports",
+            "deal_score": 55.1,
+            "overall_health": "red",
+            "completion_pct": 28,
+            "burn_rate": 44.8,
+            "ai_status": "RECOMMEND_REVIEW"
+          },
+          {
+            "name": "Wingtip Toys Cloud Native Modernization",
+            "client_name": "Wingtip Toys",
+            "deal_score": 48.6,
+            "overall_health": "red",
+            "completion_pct": 38,
+            "burn_rate": 62.1,
+            "ai_status": "RECOMMEND_REVIEW"
+          }
+        ]
+      }
+    }
+  },
+  "dimensions": [
+    {
+      "key": "compliance",
+      "label": "Compliance Burden",
+      "weight": 0.08,
+      "avg": 6.9,
+      "min": 4.5,
+      "max": 9.0,
+      "variance": 1.76,
+      "count": 8
+    },
+    {
+      "key": "azure_consumption",
+      "label": "Azure Consumption",
+      "weight": 0.07,
+      "avg": 7.8,
+      "min": 5.5,
+      "max": 10.0,
+      "variance": 1.60,
+      "count": 8
+    },
+    {
+      "key": "risk_profile",
+      "label": "Risk Profile",
+      "weight": 0.15,
+      "avg": 5.7,
+      "min": 3.5,
+      "max": 7.5,
+      "variance": 1.38,
+      "count": 8
+    },
+    {
+      "key": "estimation_accuracy",
+      "label": "Estimation Accuracy",
+      "weight": 0.10,
+      "avg": 7.4,
+      "min": 5.0,
+      "max": 8.5,
+      "variance": 1.17,
+      "count": 8
+    },
+    {
+      "key": "ip_leverage",
+      "label": "IP & Asset Leverage",
+      "weight": 0.08,
+      "avg": 8.3,
+      "min": 6.0,
+      "max": 9.5,
+      "variance": 1.03,
+      "count": 8
+    },
+    {
+      "key": "on_strategy",
+      "label": "Strategic Alignment",
+      "weight": 0.15,
+      "avg": 8.4,
+      "min": 7.0,
+      "max": 10.0,
+      "variance": 0.97,
+      "count": 8
+    },
+    {
+      "key": "sold_margin",
+      "label": "Margin Quality",
+      "weight": 0.08,
+      "avg": 9.4,
+      "min": 7.3,
+      "max": 10.0,
+      "variance": 0.90,
+      "count": 8
+    },
+    {
+      "key": "sow_quality",
+      "label": "SOW Quality",
+      "weight": 0.12,
+      "avg": 8.1,
+      "min": 6.5,
+      "max": 9.0,
+      "variance": 0.77,
+      "count": 8
+    },
+    {
+      "key": "delivery_success",
+      "label": "Delivery Success Rate",
+      "weight": 0.10,
+      "avg": 8.5,
+      "min": 7.0,
+      "max": 9.2,
+      "variance": 0.66,
+      "count": 8
+    },
+    {
+      "key": "vendor_participation",
+      "label": "Vendor Participation",
+      "weight": 0.07,
+      "avg": 7.6,
+      "min": 6.0,
+      "max": 8.0,
+      "variance": 0.63,
+      "count": 8
+    }
+  ]
+}

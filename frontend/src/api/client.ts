@@ -99,7 +99,7 @@ export const dealApprovalsApi = {
 };
 
 export const evalsApi = {
-  getSummary: () => IS_STATIC ? Promise.resolve({ data: {} }) : api.get('/evals/summary'),
+  getSummary: () => IS_STATIC ? staticGet('/evals-summary') : api.get('/evals/summary'),
 };
 
 export const backlogApi = {
