@@ -98,6 +98,11 @@ export const dealApprovalsApi = {
   regenerateAI: noop,
 };
 
+export const qualityAssuranceApi = {
+  getConfig: () => IS_STATIC ? staticGet('/quality-assurance-config') : api.get('/quality-assurance/config'),
+  getData: () => IS_STATIC ? staticGet('/quality-assurance') : api.get('/quality-assurance/'),
+};
+
 export const evalsApi = {
   getSummary: () => IS_STATIC ? staticGet('/evals-summary') : api.get('/evals/summary'),
 };

@@ -1,0 +1,94 @@
+{
+  "objective": "Maximize Delivery Quality and Client Satisfaction Through AI-Driven Proactive Quality Assurance",
+  "krs": [
+    {
+      "id": "kr1",
+      "label": "Early Detection Rate",
+      "unit": "%",
+      "current": 64.0,
+      "target": 70.0,
+      "direction": "higher",
+      "description": "Red projects predicted >30 days before status change"
+    },
+    {
+      "id": "kr2",
+      "label": "G2G Recovery Rate",
+      "unit": "%",
+      "current": 50.0,
+      "target": 60.0,
+      "direction": "higher",
+      "description": "Get-to-Green plans returning to Green within 60 days"
+    },
+    {
+      "id": "kr3",
+      "label": "Portfolio Health",
+      "unit": "%",
+      "current": 71.0,
+      "target": 75.0,
+      "direction": "higher",
+      "description": "Active projects maintaining Green status"
+    },
+    {
+      "id": "kr4",
+      "label": "Review Prep Time",
+      "unit": "hrs",
+      "current": 4.2,
+      "target": 2.5,
+      "direction": "lower",
+      "description": "Average time to prepare regional health review materials"
+    },
+    {
+      "id": "kr5",
+      "label": "Knowledge Reuse",
+      "unit": "%",
+      "current": 55.0,
+      "target": 80.0,
+      "direction": "higher",
+      "description": "New projects receiving relevant lessons-learned at kickoff"
+    },
+    {
+      "id": "kr6",
+      "label": "Client NPS Delta",
+      "unit": "pts",
+      "current": 8.0,
+      "target": 15.0,
+      "direction": "higher",
+      "description": "NPS improvement for projects using client-facing QA agent"
+    }
+  ],
+  "kpis": [
+    { "label": "Avg EW Score", "value": "42", "target": "< 40" },
+    { "label": "MTTR", "value": "3.2 days", "target": "< 2 days" },
+    { "label": "RAID Coverage", "value": "86%", "target": "> 95%" },
+    { "label": "Checkpoint Rate", "value": "78%", "target": "> 90%" }
+  ],
+  "alert_tiers": [
+    {
+      "level": "watch",
+      "label": "Watch",
+      "threshold": 60,
+      "description": "PM and Delivery Lead notified. Acknowledge, update RAID log, address flags.",
+      "color": "amber",
+      "sla": "5 business days",
+      "notified": "PM + Delivery Lead"
+    },
+    {
+      "level": "caution",
+      "label": "Caution",
+      "threshold": 75,
+      "description": "QA Director reviews within 48 hours and decides on intervention.",
+      "color": "orange",
+      "sla": "48 hours",
+      "notified": "QA Director"
+    },
+    {
+      "level": "critical",
+      "label": "Critical",
+      "threshold": 85,
+      "description": "Executive notification with AI-generated risk brief. Review within 1 week.",
+      "color": "red",
+      "sla": "1 week",
+      "notified": "Executive Team"
+    }
+  ]
+}

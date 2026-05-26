@@ -14,6 +14,7 @@ import Catalog from './pages/Catalog';
 import Agent from './pages/Agent';
 import Backlog from './pages/Backlog';
 import DealApprovals from './pages/DealApprovals';
+import QualityAssurance from './pages/QualityAssurance';
 import ACLM from './pages/ACLM';
 import ACLMCockpit from './pages/ACLMCockpit';
 import Evals from './pages/Evals';
@@ -41,6 +42,7 @@ export default function App() {
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/deal-approvals" element={<DealApprovals />} />
+              <Route path="/quality-assurance" element={<QualityAssurance />} />
               <Route path="/aclm" element={<ACLM />} />
               <Route path="/aclm-cockpit" element={<ACLMCockpit />} />
               <Route path="/evals" element={<Evals />} />

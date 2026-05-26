@@ -1424,4 +1424,610 @@ export const SOW_DATA: Record<string, SOWData> = {
       { label: 'SI Partner → Governance & Commercial', status: 'warning', detail: 'SI Partner decision authority, indemnification terms, and country-level scope boundaries are undefined in both governance and commercial sections.' },
     ],
   },
+
+  // ─── 9. CITY POWER & LIGHT ───────────────────────────────────────────────
+  'City Power & Light': {
+    compositeScore: 8.2,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will deploy Microsoft Sentinel across both IT and OT environments for City Power & Light, a regulated electric utility with 5,200 IT endpoints and multiple SCADA, DCS, and substation automation networks. The 12-month engagement establishes a unified SOC. Defender for IoT provides OT-native asset discovery via passive monitoring only — no agents are deployed on production OT systems.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'City Power & Light'], ['Engagement Type', 'IT/OT SOC Modernization'], ['Engagement Period', '12 months'], ['IT Scope', '5,200 endpoints, 30 Sentinel connectors'], ['OT Scope', 'SCADA, DCS, substation automation — read-only passive monitoring']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['100% OT asset discovery across all named OT networks within 90 days', 'IT MTTD <15 minutes via Sentinel SIEM + SOAR automation', 'OT anomaly detection operational across all in-scope environments by Month 8 with zero production disruption', 'NERC CIP compliance posture ≥85% as measured by Sentinel compliance dashboard'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['OT assets mapped', '0', '100% of named OT networks', 'Defender for IoT inventory'], ['IT MTTD', '>2 hours', '<15 min', 'Sentinel incident tracker'], ['NERC CIP posture', 'Not measured', '≥85%', 'Sentinel NERC CIP dashboard']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — OT Discovery & Sentinel Foundation', 'Months 1–4', 'Defender for IoT passive OT discovery, 30 IT data connectors, NERC CIP gap assessment', 'OT Asset Inventory, NERC CIP Gap Report, Sentinel Foundation Report'],
+          ['Phase 2 — SOC Build & OT Integration', 'Months 4–9', 'OT-specific analytics rules (Purdue model), SOAR playbooks (IT+OT), Defender XDR for IT', 'Analytics Rules Library, SOAR Playbook Library, SOC Runbook'],
+          ['Phase 3 — Compliance & Hardening', 'Months 9–12', 'NERC CIP analytics pack, SOC team training, threat intel integration, hardening review', 'NERC CIP Dashboard, Training Report, Hardening Assessment'],
+        ]},
+        { t: 'bullets', items: ['OT monitoring is passive only — no agents on production OT systems; Defender for IoT sensors operate out-of-band via SPAN port mirroring'] },
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Active OT security controls — any remediation or configuration change to OT systems requires a separate Change Order and client OT Engineering approval', 'Physical security systems and control room hardening', 'Penetration testing of IT or OT environments', 'OT networks or sites beyond the named scope in Appendix A', 'NERC CIP regulatory filing or audit preparation — compliance tooling and advisory guidance only'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client OT Engineering team approves all Defender for IoT sensor placement locations before Phase 1 begins', 'OT network topology documentation (Purdue model diagram) provided by client in Week 2', 'All in-scope OT networks support SPAN port mirroring for passive traffic capture', 'Client provides joint IT/OT stakeholder for Phase 2 playbook development sessions', 'Defender for IoT sensor hardware procured by client before Phase 1 deployment'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['OT Asset Inventory + NERC CIP Gap Report', 'Month 4', 'Yes', '25% on acceptance'], ['Sentinel SOC Operational + OT Integration Live', 'Month 9', 'Yes', '35% on SOC runbook acceptance'], ['NERC CIP Dashboard + Program Close', 'Month 12', 'Yes', '40% on hardening assessment']] },
+        { t: 'p', text: 'Critical path: OT sensor hardware procurement (client-owned) must be complete before Month 1 Week 3 or Phase 1 OT discovery is delayed proportionally.' },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Joint IT/OT Steering: CISO + VP Grid Operations (client) + Engagement Director (Microsoft) — bi-weekly', 'OT Change Advisory Board: any Defender for IoT configuration requires CAB approval with 48-hour minimum review', 'Escalation: L1 → SOC PM | L2 → Delivery Lead | L3 → Engagement Executive / CISO', 'NERC CIP Compliance Track: monthly review with client Regulatory Affairs team'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None committed'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Expense policy', 'On-site OT site visits at cost; capped at 4% of contract value'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['OT SPAN port not available on target switches', 'Medium', 'Medium', 'SPAN port feasibility assessed in Week 1 before sensor hardware procurement'],
+          ['OT Engineering resists passive monitoring on production SCADA', 'Medium', 'High', 'VP Grid Operations as Steering Committee member; discovery scope agreed at kickoff'],
+          ['NERC CIP analytics pack requires custom rules beyond standard pack', 'Low', 'Medium', 'NERC CIP scope confirmed with Regulatory Affairs before Phase 3; custom rules via Change Order'],
+          ['IT/OT SOAR playbook coordination delays playbook go-live', 'Medium', 'Medium', 'Phase 2 playbook workshops designed as joint IT/OT sessions from the start'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 8.5, strength: 'OT asset discovery (100%) and IT MTTD (<15 min) targets are measurable with named instruments.', gaps: ['NERC CIP baseline is "not measured" — improvement magnitude is unknown until Phase 1 assessment is complete'], recommendation: 'Commission NERC CIP baseline assessment in Week 1 to establish verified current posture before Phase 2.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 8.0, strength: 'Passive-only OT monitoring constraint is explicitly stated and the three-phase structure cleanly separates discovery, build, and compliance.', gaps: ['Named OT sites (Appendix A) are referenced but the appendix is not attached', 'SOAR playbook count and OT-specific triggers are not specified'], recommendation: 'Attach Appendix A (named OT sites) before contract execution and define 5 named OT-specific SOAR playbook triggers.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 8.5, strength: 'Active OT intervention exclusion is precisely stated with a Change Order mechanism. Penetration testing exclusion prevents scope ambiguity.', gaps: ['OT vendor exclusion does not name specific SCADA/DCS vendors in scope'], recommendation: 'Name specific SCADA and DCS vendors to prevent interpretation disputes during delivery.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 8.0, strength: 'OT Engineering sensor placement approval and Purdue model diagram provision are specific, time-bound, and appropriately client-owned.', gaps: ['SPAN port mirroring availability is assumed across all named OT networks but not pre-verified'], recommendation: 'Add a Week 1 SPAN port feasibility check as a Phase 1 kickoff activity before hardware is procured.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.5, strength: 'Three milestones with go/no-go gates and payment triggers distributed across the 12 months.', gaps: ['OT sensor hardware procurement (client-owned) is a critical path item with no milestone or date'], recommendation: 'Add a Month 1 Week 3 hardware procurement confirmation gate with a formal timeline revision trigger if not met.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 8.0, strength: 'Fixed fee with on-site travel cap (4%) provides cost predictability for an engagement requiring physical OT site access.', gaps: ['OT site visit frequency and locations not specified — travel cap adequacy is unverifiable'], recommendation: 'Include an OT site visit plan with estimated frequency in Appendix A to make the 4% cap verifiable.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 8.5, strength: 'OT Change Advisory Board with 48-hour minimum review is an excellent OT-specific governance control. Joint IT/OT Steering is appropriate for convergence.', gaps: ['OT Engineering final approval authority within CAB is not named'], recommendation: 'Name the OT Engineering CAB approver (VP Grid Operations or designated OT architect) before engagement start.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 7.5, strength: 'OT Engineering resistance risk and SPAN port availability risk are specific and actionable — above average for IT/OT SOW.', gaps: ['No risk for production OT disruption from Defender for IoT sensor failure — the highest-consequence risk for a utility'], recommendation: 'Add an OT disruption risk with immediate sensor shutdown procedure and 15-minute client OT Engineering notification protocol.' },
+    ],
+    alignmentFlags: [
+      { label: 'OT Scope → Appendix A', status: 'warning', detail: 'Named OT sites (Appendix A) are referenced but the appendix is not yet attached to the SOW.' },
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'NERC CIP Baseline → Outcomes', status: 'warning', detail: 'NERC CIP posture improvement target (≥85%) has no verified baseline — current state is "not measured."' },
+      { label: 'OT CAB → Governance', status: 'ok' },
+    ],
+  },
+
+  // ─── 10. DATUM CORPORATION ───────────────────────────────────────────────
+  'Datum Corporation': {
+    compositeScore: 7.0,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will design and build a multi-agent AI platform for Datum Corporation on Azure AI Studio with Semantic Kernel orchestration. The 10-month engagement delivers three production AI agents — a customer intent classification agent, a dynamic pricing recommendation agent, and an intelligent case routing agent — along with a Responsible AI governance framework and Azure OpenAI private endpoint architecture. Microsoft has committed a 12% internal investment (IOI) aligned to the engagement\'s strategic priority.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Datum Corporation'], ['Engagement Type', 'Multi-Agent AI Platform Build'], ['Engagement Period', '10 months'], ['Agents in Scope', '3 production AI agents on Azure AI Studio'], ['IOI', '12% committed']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['Customer conversion rate improved by ≥12% within 60 days of intent classification agent go-live', 'Pricing recommendation accepted rate ≥75% by Month 10', 'Case routing accuracy ≥90% against human baseline within 45 days of routing agent go-live', 'Responsible AI governance framework operational before any agent is deployed to production'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Customer conversion rate', 'Current rate (client to provide)', '+12%', 'CRM conversion analytics'], ['Pricing accept rate', 'N/A (new agent)', '≥75%', 'Pricing system log'], ['Case routing accuracy', 'Human baseline (client to provide)', '≥90%', 'Case management audit log']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Architecture & RAI', 'Months 1–2', 'Azure OpenAI private endpoint, agent architecture design, data pipeline review, RAI framework v1', 'AI Architecture Blueprint, RAI Framework v1'],
+          ['Phase 2 — Agent Build', 'Months 2–7', 'Intent classification agent, pricing recommendation agent, case routing agent, A/B testing framework', 'Three production agents, A/B Test Reports (×3)'],
+          ['Phase 3 — Rollout & Governance', 'Months 7–10', 'Production deployment, RAI monitoring dashboards, client AI operations enablement, hypercare', 'Rollout Report, AI Ops Runbook, RAI Dashboard'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Agents beyond the 3 named in Phase 2 — additional agents require a Change Order', 'Custom CRM or pricing system development beyond API integration', 'On-premises model hosting — all inference runs on Azure OpenAI', 'Training data curation beyond the data pipeline review in Phase 1', 'GDPR legal review — client Privacy Counsel owns regulatory compliance'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client will provide historical conversion and case routing data (minimum 18 months) before Phase 2 model training begins', 'Azure OpenAI private endpoint capacity confirmed with Microsoft account team before Phase 2', 'CRM and pricing system APIs are documented and accessible before Phase 2 integration begins', 'IOI (12%) is confirmed and approved by Microsoft account team before contract execution', 'Client will designate an AI product owner (0.5 FTE) to co-develop agent acceptance criteria throughout the engagement'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['AI Architecture + RAI Framework Accepted', 'Month 2', 'Yes', '20% on acceptance'], ['All 3 Agents in A/B Testing', 'Month 7', 'Yes', '35% on A/B test reports'], ['Production Rollout Complete', 'Month 10', 'Yes', '45% on rollout report']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['AI Product Steering: Chief Product Officer (client) + Engagement Director (Microsoft) — bi-weekly', 'RAI Review Board: Client Privacy Officer + MS Responsible AI Lead — monthly, with mandatory review before each agent production deployment', 'Change control: Model performance deviations >10% from A/B test targets trigger escalation to Steering Committee'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['IOI', '12% offset applied to Phase 1 architecture work; conditions per IOI approval memo'], ['Azure consumption', 'Azure OpenAI inference costs are client-owned (separate from engagement fee)'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['AI model underperforms conversion target at go-live', 'Medium', 'High', 'A/B testing gates production deployment on validated lift; 4-week optimization sprint available in Phase 3'],
+          ['Insufficient historical training data quality', 'Medium', 'High', 'Data quality assessment deliverable in Phase 1 before model training begins'],
+          ['IOI approval memo not finalized before contract execution', 'Low', 'Medium', 'IOI to be attached as Appendix A; condition precedent to contract execution'],
+          ['CRM or pricing API changes mid-engagement', 'Medium', 'Medium', 'API version pinning in integration design; API changes trigger Change Order'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 7.0, strength: 'Conversion rate (+12%) and routing accuracy (≥90%) targets are specific and tied to measurement instruments.', gaps: ['Both conversion and case routing baselines are "client to provide" — unverified at SOW signing', 'Pricing accept rate baseline is N/A — improvement cannot be measured against history'], recommendation: 'Commission a baseline data sprint in Week 1 to lock current-state metrics before any model training begins.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 7.0, strength: 'Three agents are named and their functions are distinct. A/B testing framework is included as a deployment gate.', gaps: ['Acceptance criteria for each agent are not defined — what constitutes a passed A/B test?', 'Data pipeline scope is thin — only "review" is specified, not build or transformation work'], recommendation: 'Define per-agent acceptance criteria (minimum performance thresholds) in Phase 1 before any agent development begins.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 7.5, strength: 'Agent count cap and on-premises model hosting exclusion are explicitly stated.', gaps: ['Training data curation exclusion is vague — what specific data preparation activities are excluded?'], recommendation: 'Define data preparation boundary: MS provides data pipeline review and specification; client data team executes curation.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 6.5, strength: 'IOI confirmation and data volume minimum (18 months) are specific pre-conditions.', gaps: ['Data quality standards are not defined — 18 months of data may be insufficient if quality is poor', 'Agent acceptance criteria are deferred to the engagement but not defined as a Phase 1 deliverable with a pass/fail gate'], recommendation: 'Add a data quality assessment as a Phase 1 deliverable with minimum quality thresholds (e.g., <3% null values in required fields).' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.5, strength: 'Three milestones with payment triggers; A/B test gate before production is a strong quality control.', gaps: ['No individual agent milestone — Phase 2 covers all 3 agents without interim checkpoints if one agent falls behind'], recommendation: 'Add per-agent A/B test milestones in Month 4, 5.5, and 7 so individual agent delays are surfaced early.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 7.0, strength: 'Azure OpenAI inference costs are cleanly separated from engagement fee — no ambiguity on infrastructure vs. services billing.', gaps: ['IOI approval memo not attached — conditions could be disputed at invoicing', 'Fixed fee on AI model performance has inherent uncertainty risk if optimization sprint is needed'], recommendation: 'Attach IOI memo as Appendix A before contract execution. Add a conditional Phase 3 optimization sprint budget.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 7.5, strength: 'RAI Review Board as a mandatory gate before each agent production deployment is best practice.', gaps: ['Change control for model performance deviation defines escalation but not the response protocol — who decides to proceed vs. pause?'], recommendation: 'Add a performance deviation response matrix: deviation >10% triggers Steering Committee review; >20% triggers mandatory pause and root cause analysis.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 6.5, strength: 'Training data quality risk and API version pinning are specific and actionable.', gaps: ['No risk for RAI framework approval delays blocking agent deployments', 'No risk for Azure OpenAI capacity constraints during production inference load'], recommendation: 'Add RAI approval timeline risk: RAI Board review initiated 3 weeks before each planned agent go-live to avoid last-minute delays.' },
+    ],
+    alignmentFlags: [
+      { label: 'IOI → Commercial Terms', status: 'warning', detail: 'IOI approval memo is referenced in Section 8 but not attached as an exhibit to the SOW.' },
+      { label: 'Agent Acceptance Criteria → Scope', status: 'warning', detail: 'A/B test milestone in Section 6 requires a "passed A/B test" but acceptance criteria are not defined anywhere in the SOW.' },
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'RAI Gate → Timeline', status: 'ok' },
+    ],
+  },
+
+  // ─── 11. PROSEWARE INC ───────────────────────────────────────────────────
+  'Proseware Inc': {
+    compositeScore: 8.8,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will deliver a comprehensive SOC modernization for Proseware Inc, deploying Microsoft Sentinel as the primary SIEM with 40+ data connectors, custom analytics rules, and SOAR automation. The 10-month engagement includes Microsoft Defender XDR across all 4,800 endpoints, Entra ID Conditional Access, and a 24×7 SOC transition. No subcontractors are involved.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Proseware Inc'], ['Engagement Type', 'SOC Modernization — Sentinel & Defender XDR'], ['Engagement Period', '10 months'], ['Endpoint Coverage', '4,800 endpoints'], ['Data Connectors', '40+ Sentinel connectors']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['Sentinel SIEM operational as primary threat detection platform with 40+ connectors by Month 7', 'Mean Time to Detect (MTTD) for security incidents reduced to <10 minutes', '100% of 4,800 endpoints enrolled in Defender XDR with Intune-managed compliance policies', 'SOC operating 24×7 with SOAR-driven tier-1 response automation by program close', '100% MFA enforcement with zero standing privileged access across all admin accounts'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['IT MTTD', 'No SIEM (manual detection)', '<10 minutes', 'Sentinel incident tracker'], ['Endpoint compliance rate', 'Unknown', '100% enrolled', 'Defender compliance report'], ['MFA enforcement rate', '<60% (estimated)', '100%', 'Entra ID MFA report']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Foundation', 'Months 1–3', 'Sentinel workspace, 40 data connector configuration, Entra ID Conditional Access, identity estate discovery', 'Sentinel Foundation Report, CA Policy Library, Identity Baseline Report'],
+          ['Phase 2 — SOAR & Defender', 'Months 3–7', 'Custom analytics rules, SOAR playbook library, Defender XDR for 4,800 endpoints, Intune compliance baselines', 'SOAR Playbook Library, Defender Enrollment Report, SOC Runbook'],
+          ['Phase 3 — 24×7 SOC Transition', 'Months 7–10', '24×7 SOC operating model, SOAR tuning, attack surface reduction, final hardening review', 'SOC Operating Model, Hardening Assessment'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Physical security controls', 'Penetration testing or red team exercises', 'Custom security software development beyond Sentinel analytics rule authoring', 'Third-party SIEM data migration or historical log ingestion beyond 90 days', 'Security awareness training beyond two train-the-trainer sessions for the SOC team'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client will provide Azure AD tenant admin access within 5 business days of kickoff', 'All 40 Sentinel data connectors are approved by client IT Security before Phase 1 ends', 'Existing Microsoft E5 licensing covers Entra ID P2, Defender XDR, and Sentinel consumption', 'Client CISO designates a dedicated security architect (0.5 FTE) throughout the engagement', 'Connector pre-qualification checklist issued to client IT in Week 1'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Sentinel Foundation + Identity Baseline', 'Month 3', 'Yes', '25% on Identity Baseline Report'], ['Sentinel SIEM Operational — 40 connectors + SOAR', 'Month 7', 'Yes', '35% on Sentinel Deployment Report'], ['24×7 SOC Live + Hardening Assessment', 'Month 10', 'Yes', '40% on SOC Operating Model']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Steering Committee: CISO (client) + Engagement Director (Microsoft) — bi-weekly', 'Working team: Weekly security review with client architecture team and MS solution architect', 'Escalation: L1 → Security PM | L2 → Delivery Lead | L3 → Engagement Executive / CISO', 'Change control: Written request → 3-business-day assessment → CISO + Engagement Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee — phased billing aligned to milestone acceptance'], ['ECIF', '8% offset applied to Phase 1 Foundation work'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Expense policy', 'Included in fixed fee; no separate expense billing'], ['Payment terms', 'Net 30 from invoice date']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['40 Sentinel connectors cannot all be activated without API readiness from source systems', 'Medium', 'Medium', 'Connector pre-qualification checklist issued in Week 1; unready connectors deferred with Change Order'],
+          ['SOAR false-positive rate requires extended tuning beyond Phase 2 schedule', 'Medium', 'Low', 'Two-week SOAR tuning buffer in Phase 3; client SOC team co-develops rules during Phase 2'],
+          ['Legacy systems incompatible with Conditional Access — require exclusion or extended timeline', 'Low', 'Medium', 'Legacy system discovery in Phase 1 with documented CA exception list'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 9.0, strength: 'MTTD target (<10 min), 100% endpoint enrollment, and MFA enforcement are all measurable with named instruments.', gaps: ['MFA baseline "estimated <60%" should be replaced with a verified audit figure before Phase 1 ends'], recommendation: 'Commission an identity audit in Week 1 to replace estimated baselines with verified current-state figures.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 9.0, strength: 'Three-phase structure is cleanly decomposed with named deliverables. Connector count (40) and endpoint count (4,800) are explicit.', gaps: ['SOAR playbook count is not specified — what incidents does SOAR automate?'], recommendation: 'Define a list of 8–10 named SOAR playbooks to be developed in Phase 2.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 8.5, strength: 'Penetration testing, custom software, and historical log ingestion limits are precisely excluded.', gaps: ['No statement on legacy system authentication exceptions if Conditional Access cannot cover all systems'], recommendation: 'Add a legacy system CA exception protocol: documented exceptions listed with CISO sign-off in Phase 1 close.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 9.0, strength: 'Connector pre-qualification checklist in Week 1, licensing verification, and client 0.5 FTE commitment are specific and enforceable.', gaps: ['Licensing assumption (E5 coverage) should be formally verified before Phase 1 begins — if incorrect, scope and cost shift materially'], recommendation: 'Add a licensing verification step as a Day 1 activity with client confirmation sign-off before Phase 2 begins.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 9.0, strength: 'Every milestone is tied to an accepted deliverable with a payment trigger. Three go/no-go gates across the 10 months.', gaps: ['No buffer between Phase 2 SOAR delivery and Phase 3 SOC transition — SOAR tuning may compress 24×7 readiness timeline'], recommendation: 'Insert a 2-week SOAR validation period between Phase 2 close and Phase 3 SOC transition kickoff.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 9.0, strength: 'ECIF offset on Phase 1 is phase-scoped. No vendor dilution. No separate expense billing — simplest commercial structure.', gaps: ['ECIF conditions of application are stated but the verification gate is not documented'], recommendation: 'Confirm ECIF is applied upon Phase 1 milestone acceptance, not on engagement start — add one sentence to Section 8.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 8.5, strength: 'Bi-weekly Steering Committee and weekly security review cadence is appropriate. Change control is defined with named approvers.', gaps: ['No defined SLA for client response to change requests beyond the 3-day vendor assessment window'], recommendation: 'Define a 3-business-day client response SLA to change requests; silence after deadline = request approved as submitted.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 8.5, strength: 'Connector pre-qualification risk and SOAR tuning risk are both specific, actionable, and include a mitigation mechanism.', gaps: ['No risk for SOAR automation causing unintended service disruption (auto-remediation false positive)'], recommendation: 'Add a SOAR auto-remediation risk with a "no automated blocking actions without 30-day supervised period" mitigation.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'Connector Pre-qualification → Assumptions', status: 'ok' },
+      { label: 'ECIF → Commercial Terms', status: 'warning', detail: 'ECIF application conditions are stated but the verification gate and timing are not documented.' },
+      { label: 'SOAR Tuning → Timeline Buffer', status: 'ok' },
+    ],
+  },
+
+  // ─── 12. BLUE YONDER INC ────────────────────────────────────────────────
+  'Blue Yonder Inc': {
+    compositeScore: 7.8,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will implement Microsoft Fabric as the unified analytics platform for Blue Yonder Inc, replacing a fragmented landscape of 6 legacy data tools (including on-premises SQL Server data warehouse, Azure Data Factory legacy pipelines, Power BI Premium, Tableau, Informatica, and an Apache Hive cluster). The 12-month engagement covers Fabric workspace architecture, data migration from all 6 legacy tools, enterprise semantic model development, and a 150-user enablement program.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Blue Yonder Inc'], ['Engagement Type', 'Enterprise Data Platform — Microsoft Fabric'], ['Engagement Period', '12 months'], ['Legacy Tools Replaced', '6 tools (SQL DW, ADF, Power BI Premium, Tableau, Informatica, Hive)'], ['Users', '150 data consumers and analysts']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['All 6 legacy data tools decommissioned and data migrated to Fabric by Month 12', 'Report refresh time reduced from current average baseline to <30 minutes across all business-critical dashboards', 'Self-service analytics adoption: 150 users trained and proficient on Fabric by Month 12', 'Azure ACR of $85,000/month established by Month 12 from Fabric capacity consumption'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Legacy tools decommissioned', '0 of 6', '6 of 6', 'Tool decommission log'], ['Report refresh time', 'Current average (client to provide)', '<30 minutes', 'Fabric monitoring dashboard'], ['User proficiency', 'N/A (new platform)', '≥80% pass on role assessment', 'Training completion report'], ['Azure ACR', '$0 Fabric', '$85,000/month', 'Azure Cost Management']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Architecture & Assessment', 'Months 1–3', 'Fabric workspace design, data estate assessment, migration sequencing plan, governance framework, tool retirement roadmap', 'Fabric Architecture Blueprint, Migration Sequencing Plan, Data Governance Framework'],
+          ['Phase 2 — Migration & Build', 'Months 3–9', 'Data migration from 6 legacy tools (sequenced by business priority), semantic model development, OneLake configuration, Lakehouse builds', 'Migration Completion Reports (×6 tools), Semantic Model Library, OneLake Design'],
+          ['Phase 3 — Enablement & Handover', 'Months 9–12', '150-user training program, self-service analytics enablement, Fabric admin runbook, Power BI report migration and optimization', 'Training Completion Report, Admin Runbook, Optimized Report Library'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Custom application development beyond Fabric-native capabilities', 'Historical data migration beyond 3 years from each legacy tool (by default; additional history requires Change Order)', 'Training for more than 150 users — additional users require a Change Order', 'Tableau to Power BI report migration for reports not in the prioritized Top 50 report list', 'Third-party BI tool integrations beyond the 6 named legacy systems'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client will provide data dictionary and schema documentation for all 6 legacy tools before Phase 1 ends', 'Microsoft Fabric capacity (F64 or equivalent) is provisioned by client before Phase 2 begins', 'Client data engineering team (minimum 2 FTE) is dedicated to the program throughout Phase 2', 'Top 50 report prioritization list is agreed with business stakeholders before Phase 2 begins', '3-year data retention default is confirmed with business and legal teams before migration begins'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Fabric Architecture + Migration Plan Accepted', 'Month 3', 'Yes', '20% on blueprint acceptance'], ['4 of 6 Legacy Tools Migrated', 'Month 9', 'Yes', '40% on migration reports'], ['All 6 Tools Migrated + 150 Users Trained', 'Month 12', 'Yes', '40% on training and completion reports']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Steering Committee: Chief Data Officer (client) + Engagement Director (Microsoft) — bi-weekly', 'Data migration working group: weekly status with client data engineering team and MS delivery lead', 'Migration sequencing gate: each tool migration requires a go/no-go based on data quality validation before cutover', 'Change control: Written request → 5-business-day assessment → CDO + MS Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None committed for this engagement'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Fabric capacity cost', 'Client-owned (separate from engagement fee); estimated $85,000/month at F64'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['Legacy tool data quality issues delay migration — schema complexity or data corruption discovered post-assessment', 'Medium', 'High', 'Phase 1 data estate assessment surfaces issues before Phase 2 migration; quality gate per tool before cutover'],
+          ['Top 50 report prioritization takes longer than expected — business stakeholders disagree on priorities', 'Medium', 'Medium', 'Prioritization workshop facilitated in Phase 1 with CDO as tie-breaker; Top 50 locked as Phase 1 exit deliverable'],
+          ['Fabric capacity quota insufficient for production data volumes during Phase 2', 'Low', 'Medium', 'Capacity validation in Phase 1 design; upsize request submitted before Phase 2 begins'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 8.0, strength: 'Tool decommission count (6) and ACR target ($85K/month) are measurable. User proficiency target uses role-based assessment.', gaps: ['Report refresh time baseline is "client to provide" — improvement magnitude is unknown at SOW signing'], recommendation: 'Commission a report performance baseline in Week 1 to lock the current average refresh time before Phase 2 targets are set.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 8.0, strength: 'All 6 legacy tools are named. Migration sequenced by business priority. Top 50 report list is explicitly bounded.', gaps: ['Semantic model count is not specified — how many enterprise models are in scope?', 'Data retention default (3 years) is a significant scoping assumption that should be a signed decision, not an assumption'], recommendation: 'Add a semantic model count and scope definition as a Phase 1 deliverable. Obtain client and legal sign-off on the 3-year retention default before migration begins.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 7.5, strength: 'Historical data migration limit (3 years) and user count cap (150) are explicitly stated.', gaps: ['Custom application development exclusion is vague — does not define what constitutes "beyond Fabric-native capabilities"'], recommendation: 'Add a one-paragraph definition of Fabric-native capabilities vs. custom development to prevent mid-engagement disputes.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 7.5, strength: 'Client data engineering 2 FTE commitment and Fabric capacity provisioning are specific and time-bound.', gaps: ['Data dictionary and schema documentation quality is assumed adequate — for 6 legacy tools, this is a material discovery risk'], recommendation: 'Add a data documentation quality threshold: if documentation is insufficient, a Phase 1 documentation sprint is added via Change Order before migration begins.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 8.0, strength: 'Per-tool migration go/no-go gate is an excellent data quality control that prevents cascading migration failures.', gaps: ['No milestone for data estate assessment acceptance — Phase 1 produces this but it is not a formal payment milestone'], recommendation: 'Add a Month 1 data estate assessment acceptance as an informal go/no-go gate before the full Phase 1 architecture blueprint.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 7.5, strength: 'Fabric capacity costs are cleanly separated from engagement fee — no ambiguity on what client pays for infrastructure vs. services.', gaps: ['F64 capacity estimate ($85K/month) may not reflect actual data volumes until Phase 1 assessment is complete'], recommendation: 'Add a capacity sizing review as a Phase 1 deliverable with a client decision gate on the correct Fabric SKU before provisioning.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 8.0, strength: 'Per-tool data quality validation gate before each migration cutover is a strong technical governance control.', gaps: ['Business stakeholder representation in the data migration working group is not specified — CDO may not have operational authority across all 6 tool teams'], recommendation: 'Require each legacy tool team to designate a business data owner as the migration decision-maker for their system.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 7.5, strength: 'Data quality discovery risk and report prioritization conflict risk are both specific with CDO escalation path.', gaps: ['No risk for Power BI Premium license migration (client may face license change costs when Fabric replaces Power BI Premium)', 'No risk for Informatica/Hive migration complexity — these are likely the most technically complex migrations'], recommendation: 'Add a licensing transition risk (Power BI Premium to Fabric) and a Hive/Informatica migration complexity risk with a Phase 1 technical assessment trigger.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'Report Refresh Baseline → Outcomes', status: 'warning', detail: 'Report refresh time improvement target has no verified baseline — current average is "client to provide."' },
+      { label: 'Scope → Top 50 Report List', status: 'warning', detail: 'Top 50 report prioritization list is referenced as a Phase 1 exit deliverable but is not yet started or agreed.' },
+      { label: 'Fabric Capacity → Commercial Terms', status: 'ok' },
+    ],
+  },
+
+  // ─── 13. SOUTHRIDGE VIDEO ───────────────────────────────────────────────
+  'Southridge Video': {
+    compositeScore: 7.0,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will deliver a full Dynamics 365 Finance & Operations implementation for Southridge Video, replacing PeopleSoft ERP across Finance, Supply Chain Management, and Warehouse Management. The 18-month program includes full data migration from PeopleSoft, integration with 3 external systems, and a 180-user training program. No subcontractors are involved.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Southridge Video'], ['Engagement Type', 'ERP Transformation — PeopleSoft to D365 F&O'], ['Engagement Period', '18 months'], ['User Training', '180 users'], ['External Integrations', '3 systems']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['PeopleSoft ERP fully decommissioned by Month 18', 'D365 F&O live across Finance, Supply Chain, and Warehouse by Month 15', 'Period close cycle time reduced from current baseline to ≤5 business days', '180 users trained and proficient in D365 F&O by Month 15', 'All 3 external integrations live and validated at go-live'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Period close cycle time', 'Current (client to provide at kickoff)', '≤5 business days', 'Finance close log'], ['PeopleSoft active users', 'All at program start', '0 at Month 18', 'PeopleSoft audit log'], ['D365 user proficiency', 'N/A', '≥80% pass on role assessment', 'Training completion report']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Design', 'Months 1–5', 'D365 tenant setup, Chart of Accounts design, SCM baseline config, integration architecture, data model sign-off', 'Solution Design Document, CoA Sign-Off, Integration Architecture Blueprint'],
+          ['Phase 2 — Build', 'Months 5–12', 'Finance module build, SCM + WMS build, 3 external system integrations, Power BI dashboard development (2 dashboards)', 'Finance Build Report, SCM/WMS Build Report, Integration Test Reports (×3)'],
+          ['Phase 3 — Migration & Go-Live', 'Months 12–18', 'PeopleSoft data extraction + transformation + load, UAT (180 users), training delivery, go-live cutover, 3-month hypercare', 'Data Migration Report, UAT Sign-Off, Training Completion Report, Go-Live Report'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['PeopleSoft decommissioning execution — advisory guidance and decommission plan only; client IT executes', 'Custom BI/reporting beyond the 2 Power BI dashboards specified in Phase 2', 'Training for more than 180 users — additional users require a Change Order', 'Integrations beyond the 3 named external systems', 'D365 HR and Payroll modules — separate engagement if required'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client PeopleSoft team will provide data migration scope confirmation (field mapping, data volumes, cleansing rules) before Phase 1 ends', '3 integration endpoint APIs are documented and accessible before Phase 2 begins', 'Client designates a D365 implementation lead (1 FTE) and a Finance SME (0.5 FTE) throughout the engagement', '180-user training schedule agreed with business leads before Phase 3 begins', 'PeopleSoft data quality meets the minimum standards defined in the Data Quality Assessment (Phase 1 deliverable)'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Solution Design Document Accepted', 'Month 5', 'Yes', '20% on acceptance'], ['Finance + SCM/WMS Build Complete', 'Month 12', 'Yes', '30% on build reports'], ['PeopleSoft Data Migration Complete', 'Month 14', 'Yes', '20% on migration report'], ['UAT Sign-Off & Go-Live Readiness', 'Month 15', 'Yes', '20% on UAT acceptance'], ['Hypercare Complete & PeopleSoft Decommissioned', 'Month 18', 'Yes', '10% on completion report']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['ERP Steering Committee: CFO + COO (client) + Engagement Director (Microsoft) — bi-weekly', 'Integration change control board: any integration scope change requires board approval', 'Go-live readiness review: formal gate at Month 15 with CFO sign-off required before production cutover', 'Escalation: L1 → D365 PM | L2 → Delivery Lead | L3 → Engagement Executive / CFO'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Payment terms', 'Net 30 from milestone acceptance'], ['Change order', 'Written scope changes → 5-business-day assessment → CFO + MS Director sign-off']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['PeopleSoft data quality issues delay migration — complex legacy customization not disclosed', 'High', 'High', 'Data quality assessment and PeopleSoft customization inventory in Phase 1 before migration planning begins'],
+          ['Integration endpoint incompatibility — API not as documented', 'Medium', 'High', 'Integration pre-qualification in Month 2; each endpoint validated by test connection before Phase 2'],
+          ['180-user training engagement below target — low adoption at go-live', 'Medium', 'Medium', 'Train-the-trainer model in Phase 3; role-based assessments gate go-live readiness per department'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 7.5, strength: 'PeopleSoft decommission date and period close time reduction are specific and enforceable.', gaps: ['Period close baseline is "client to provide at kickoff" — improvement metric is unverifiable until provided', 'No cost efficiency or ROI outcome — the business case for replacing PeopleSoft is absent from outcomes'], recommendation: 'Add a Month 1 gate: client Finance team provides current period close log as baseline before Solution Design begins.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 7.0, strength: 'Three phases are decomposed with module-level activities. Integration count and training user count are explicit.', gaps: ['Integration architecture detail is thin — 3 integrations are referenced by count but not named', 'WMS scope does not specify warehouse count or configuration complexity'], recommendation: 'Add a named integration register in Appendix A listing all 3 external systems, integration type, and direction.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 7.5, strength: 'PeopleSoft decommission advisory-only boundary and 180-user training cap are precisely stated.', gaps: ['HR and Payroll module exclusion is noted but no handling protocol if client requests it mid-engagement'], recommendation: 'Add: "If D365 HR/Payroll is required, a separate SOW will be issued; HR/Payroll requirements discovered during Phase 2 will not delay core F&O delivery."' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 6.5, strength: 'Data migration scope confirmation and client resource commitments (1 FTE + 0.5 FTE) are specific.', gaps: ['PeopleSoft data quality standards are deferred to a Phase 1 deliverable — no pre-agreed thresholds', 'PeopleSoft customization inventory is not listed as an assumption — a common source of migration overruns'], recommendation: 'Add a PeopleSoft customization inventory as a client-owned deliverable before Phase 1 design begins.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.0, strength: 'Five milestones with go/no-go gates and payment triggers cover all phases.', gaps: ['No milestone for data quality assessment sign-off — a Phase 1 critical path item with no formal gate', 'Integration pre-qualification (Month 2) is in assumptions but not on the milestone timeline'], recommendation: 'Add Month 2 integration pre-qualification as a formal milestone — if any integration fails, timeline impact is surfaced early.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 7.5, strength: 'Fixed fee per phase with clear change order triggers — clean commercial structure.', gaps: ['PeopleSoft data quality remediation effort is a material risk with no commercial contingency defined'], recommendation: 'Add a change order trigger: if data quality remediation exceeds 40 person-hours, a Change Order is issued before additional effort is incurred.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 7.0, strength: 'Integration change control board for integration-heavy ERP programs is appropriate. CFO go-live sign-off is a strong control.', gaps: ['No named client PeopleSoft liaison in the governance structure — PeopleSoft team cooperation is critical but ungoverned'], recommendation: 'Add a PeopleSoft migration liaison role to the governance plan: named client owner, weekly touchpoint, scope authority.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 6.5, strength: 'PeopleSoft data quality risk is rated High/High — correctly elevated as the primary delivery risk.', gaps: ['No risk for go-live cutover failure — what happens if the production cutover fails and a rollback to PeopleSoft is required?'], recommendation: 'Add a go-live rollback risk: define rollback criteria (e.g., >10 P1 defects within 24 hours of cutover triggers rollback) and rollback procedure.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'Integration Register → Scope', status: 'warning', detail: 'Section 3 references 3 integrations but no named integration register exists as a deliverable or appendix.' },
+      { label: 'PeopleSoft Data Quality → Risk Register', status: 'ok' },
+      { label: 'Period Close Baseline → Outcomes', status: 'warning', detail: 'Period close improvement metric has no verified baseline — "client to provide at kickoff" is unverified at SOW signing.' },
+    ],
+  },
+
+  // ─── 14. ADATUM CORPORATION ─────────────────────────────────────────────
+  'Adatum Corporation': {
+    compositeScore: 7.5,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will design and implement a production-grade Azure Landing Zone for Adatum Corporation using a hub-spoke architecture with enterprise governance. The 6-month engagement covers Policy-as-Code (Azure Policy + Blueprints), RBAC design, network architecture (hub VNet, Azure Firewall, ExpressRoute readiness), and Microsoft Defender for Cloud baseline. This is a foundation engagement — subsequent workload migrations are out of scope.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Adatum Corporation'], ['Engagement Type', 'Azure Landing Zone — Enterprise Foundation'], ['Engagement Period', '6 months'], ['Architecture', 'Hub-spoke, Policy-as-Code, RBAC, Azure Firewall'], ['Vendor', 'None — pure Microsoft PS delivery']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['Production-grade Azure Landing Zone live and approved by client security team by Month 6', 'Policy-as-Code governance framework covering 100% of RBAC and compliance policies', 'Azure Defender for Cloud Secure Score ≥70 at program close', 'Client platform engineering team independently operating the Landing Zone without Microsoft support by Month 6'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Secure Score', '<40 (estimated)', '≥70', 'Defender for Cloud dashboard'], ['Policy coverage', '0%', '100% of RBAC and compliance policies', 'Azure Policy compliance report'], ['LZ self-sufficiency', '0%', 'Independent operation', 'Client sign-off at Month 6']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Design', 'Months 1–2', 'Architecture design, network segmentation, RBAC model, Policy-as-Code design, naming conventions, tagging strategy', 'LZ Architecture Blueprint, RBAC Design Document, Policy Library Design'],
+          ['Phase 2 — Build', 'Months 2–5', 'Hub-spoke VNet deployment, Azure Firewall, ExpressRoute gateway, Policy-as-Code implementation, Defender for Cloud baseline, management groups', 'Deployed Landing Zone, Policy Library (live), Defender for Cloud Report'],
+          ['Phase 3 — Handover', 'Month 5–6', 'Platform team enablement, runbook development, Defender for Cloud tuning, client sign-off', 'Operations Runbook, Platform Team Handover Certificate'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Workload migration or application landing — this engagement delivers the platform only', 'ExpressRoute circuit provisioning (client network team responsibility)', 'Custom application code development or CI/CD pipeline setup', 'Ongoing Azure cost optimization beyond the Defender for Cloud baseline recommendations', 'Security Operations Center (SOC) or SIEM deployment'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client will provide subscription IDs and tenant admin access within 3 business days of kickoff', 'Client platform engineering team (minimum 1 FTE) is available throughout the engagement for knowledge transfer', 'Network IP address ranges are pre-allocated and conflict-free before Phase 2 begins', 'Client security team will review and sign off on the RBAC model and Policy library within 5 business days of delivery', 'No existing Azure governance configuration conflicts with the new Landing Zone design'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['LZ Architecture Blueprint Accepted', 'Month 2', 'Yes', '30% on acceptance'], ['Landing Zone Live + Policy Library Active', 'Month 5', 'Yes', '50% on Defender for Cloud report'], ['Handover Complete + Client Sign-Off', 'Month 6', 'Yes', '20% on handover certificate']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Technical Steering: VP of Engineering (client) + Engagement Director (Microsoft) — bi-weekly', 'Working team: Weekly technical review with client platform engineering team', 'RBAC and Policy review: All RBAC and Policy-as-Code configurations reviewed and signed by client security team before production activation', 'Change control: Written request → 3-business-day assessment → VP Engineering + MS Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee, milestone-triggered billing'], ['ECIF', 'None committed'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Expense policy', 'Included in fixed fee'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['Existing Azure tenant configuration conflicts with Landing Zone design', 'Medium', 'High', 'Azure tenant assessment in Week 1 before architecture design is finalized'],
+          ['IP address range conflicts discovered during Phase 2 network deployment', 'Medium', 'Medium', 'IP pre-allocation confirmed by client network team before Phase 2 kickoff'],
+          ['Client platform team unavailable for knowledge transfer — self-sufficiency outcome at risk', 'Medium', 'Medium', 'Knowledge transfer scheduled as dedicated sessions in Phase 3, not ad hoc'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 7.5, strength: 'Secure Score target (≥70) and Policy coverage (100%) are measurable with named instruments.', gaps: ['Secure Score baseline "estimated <40" should be verified in Week 1', '"Client self-sufficiency" outcome lacks a measurable definition'], recommendation: 'Define self-sufficiency as a skills assessment: platform team passes a documented operating checklist before Month 6 sign-off.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 7.5, strength: 'Hub-spoke architecture and Policy-as-Code components are named specifically. Three-phase structure separates design, build, and handover.', gaps: ['Policy library scope (number of policies, which compliance frameworks) is not specified'], recommendation: 'Define the Policy library scope: minimum 30 policies covering the CIS Azure Benchmark baseline.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 7.5, strength: 'Workload migration exclusion and ExpressRoute circuit exclusion (client-owned) are precisely stated.', gaps: ['No statement on what happens if the client needs post-engagement Landing Zone changes — is there a hypercare or support window?'], recommendation: 'Add a 30-day post-handover advisory window for questions only; structural changes require a new engagement.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 7.5, strength: 'Tenant admin access SLA (3 business days) and IP pre-allocation requirements are specific and enforceable.', gaps: ['Existing Azure governance assessment is not listed as a formal Phase 1 activity — conflicts may not be discovered until Phase 2'], recommendation: 'Add a Week 1 Azure tenant assessment as a formal Phase 1 kickoff activity with a conflict report before architecture design.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.5, strength: 'Three milestones with clear payment triggers across 6 months. Client security sign-off required for go-live.', gaps: ['No milestone for RBAC model sign-off — a critical design gate that is a prerequisite for Phase 2 build'], recommendation: 'Add a Month 2 RBAC model sign-off milestone before Phase 2 build begins.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 7.5, strength: 'Clean fixed-fee structure with no vendor complexity. All expenses included.', gaps: ['No contingency defined if IP conflict resolution or tenant remediation requires additional effort in Phase 2'], recommendation: 'Add a pre-build tenant assessment Change Order trigger: if conflicts require >16 hours of remediation, a Change Order is issued before work begins.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 7.0, strength: 'RBAC and Policy sign-off requirement before production activation is a strong security governance control.', gaps: ['5-business-day client review SLA is stated but no consequence for delay is defined — a slow review could compress Phase 2'], recommendation: 'Add: "Failure to review within 5 business days triggers a timeline revision notice and commercial impact assessment."' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 7.5, strength: 'Tenant configuration conflict risk is specific and has a detection timing (Week 1 assessment) that prevents late discovery.', gaps: ['No risk for high-privilege Azure Policy affecting production workloads if client has existing subscriptions', 'Policy-as-Code errors in production Policy assignment could lock out users — a high-consequence risk for a governance engagement'], recommendation: 'Add a Policy deployment risk: all Policies deployed in audit mode first for 2 weeks before switching to enforce mode.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'Tenant Assessment → Phase 1', status: 'warning', detail: 'Existing Azure tenant conflict risk is present but no formal tenant assessment is listed as a Phase 1 activity.' },
+      { label: 'RBAC Sign-Off → Milestone', status: 'warning', detail: 'RBAC model sign-off is required for Phase 2 but is not a formal milestone on the timeline.' },
+      { label: 'Commercial Structure → Margin', status: 'ok' },
+    ],
+  },
+
+  // ─── 15. MARGIE'S TRAVEL ────────────────────────────────────────────────
+  "Margie's Travel": {
+    compositeScore: 7.8,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: "Microsoft Professional Services will lead the Microsoft 365 Copilot deployment for Margie's Travel, enabling 3,500 travel consultants with AI-assisted productivity tools. The 6-month engagement covers Copilot governance framework design, prompt engineering workshops, custom travel planning plugin development on Microsoft 365 Copilot extensibility, a train-the-trainer program, and adoption measurement. Microsoft has committed a 10% internal investment aligned to the Copilot customer success priority." },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [["Client", "Margie's Travel"], ['Engagement Type', 'Microsoft 365 Copilot Deployment & Enablement'], ['Engagement Period', '6 months'], ['User Scope', '3,500 travel consultants'], ['IOI', '10% committed']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['3,500 consultants active on M365 Copilot with ≥60% weekly active usage by Month 6', 'Average consultant handle time reduced by ≥15% for standard booking requests within 60 days of rollout', 'Copilot governance framework and acceptable use policy live before first user activation', 'Custom travel planning plugin deployed and in use by Month 5'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Weekly active usage', 'N/A (new)', '≥60% of 3,500', 'M365 Copilot usage dashboard'], ['Handle time', 'Current average (client to provide)', '-15% for standard bookings', 'CRM call log analytics'], ['Plugin adoption', 'N/A', 'In use by Month 5', 'Plugin usage telemetry']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Readiness & Governance', 'Months 1–2', 'M365 Copilot readiness assessment, governance framework design, acceptable use policy, data classification review, prompt engineering standards', 'Governance Framework, Acceptable Use Policy, Readiness Report'],
+          ['Phase 2 — Plugin & Rollout', 'Months 2–5', 'Custom travel planning plugin build (Microsoft 365 extensibility), phased rollout to 3,500 users, train-the-trainer (50 trainers), adoption monitoring setup', 'Travel Planning Plugin, Rollout Completion Report, Train-the-Trainer Guide'],
+          ['Phase 3 — Adoption & Measurement', 'Months 5–6', 'Adoption metrics review, prompt library optimization, consultant feedback synthesis, recommendations report', 'Adoption Metrics Report, Prompt Library v2, Recommendations Report'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Custom plugins beyond the 1 named travel planning plugin — additional plugins require a Change Order', 'End-user training beyond the 50 train-the-trainer sessions (client cascades to 3,500 users)', 'M365 Copilot license procurement (client to procure independently)', 'Data governance or information architecture changes beyond classification review for Copilot readiness', 'Integration with booking systems beyond Microsoft 365 Graph API connectivity'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client holds M365 E3/E5 licensing with Copilot add-on before Phase 2 rollout begins', 'Client designates a Copilot adoption lead (0.5 FTE) to coordinate the train-the-trainer cascade', 'Data classification review will not uncover significant data sensitivity issues requiring architecture redesign', 'Microsoft Graph API access is enabled for the travel planning plugin integration before Phase 2 begins', 'Handle time baseline is provided by client CRM team before Month 2'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Governance Framework + Readiness Report Accepted', 'Month 2', 'Yes', '30% on acceptance'], ['Plugin Live + 3,500 Users Activated', 'Month 5', 'Yes', '45% on rollout report'], ['Adoption Metrics Report + Program Close', 'Month 6', 'Yes', '25% on adoption report']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Steering: Chief Digital Officer (client) + Engagement Director (Microsoft) — bi-weekly', 'Adoption working group: weekly with client Copilot adoption lead and MS delivery consultant', 'Copilot governance: Acceptable Use Policy must be signed by all 3,500 users before activation; automated via M365 compliance portal', 'Change control: Written request → 3-business-day assessment → CDO + MS Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee, milestone-triggered billing'], ['IOI', '10% offset applied to Phase 1 governance and readiness work'], ['Vendor', 'None — pure Microsoft PS delivery'], ['License cost', 'M365 Copilot licenses are client-owned; separate from engagement fee'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['Data sensitivity issues discovered in classification review delay Copilot activation', 'Medium', 'High', 'Classification review completed before Phase 2 rollout; sensitive data access controls configured before user activation'],
+          ['Train-the-trainer cascade reaches fewer than 60% of users by Month 5 rollout date', 'Medium', 'Medium', 'Client adoption lead monitors trainer completion rate weekly; escalation to CDO if cascade falls below 70% by Month 4'],
+          ['Plugin Microsoft Graph API permissions require IT security approval causing delay', 'Low', 'Medium', 'Graph API permission scope submitted to client IT Security in Month 1 for approval before Phase 2 begins'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 7.5, strength: 'Weekly active usage (≥60%) and handle time (-15%) are measurable adoption outcomes with named measurement instruments.', gaps: ['Handle time baseline is "client to provide" — improvement cannot be calculated until provided', 'Plugin adoption target is "in use by Month 5" — no volume or proficiency threshold is defined'], recommendation: 'Add a plugin usage threshold: ≥30% of active consultants using the plugin weekly within 30 days of launch.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 8.0, strength: 'Plugin count (1 named), trainer count (50), and user count (3,500) are all explicitly bounded. Three-phase structure is clean.', gaps: ['Prompt library scope is not defined — how many prompts, which use cases?'], recommendation: 'Define Prompt Library v1 scope in Phase 1: minimum 30 use-case prompts across booking, research, and customer communication workflows.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 8.0, strength: 'Plugin count cap, trainer session cap, and booking system integration boundary are precisely stated.', gaps: ['M365 Copilot license procurement exclusion is stated but the procurement timeline impact on Phase 2 is not addressed'], recommendation: 'Add: "Phase 2 rollout is contingent on all 3,500 licenses being provisioned by Month 1 Week 4; delays trigger a proportional Phase 2 timeline revision."' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 8.0, strength: 'Licensing pre-condition, adoption lead commitment, and Graph API permission request timing are specific and well-ordered.', gaps: ['Data classification "no significant issues" assumption is unverified — this is a common assumption that is frequently wrong'], recommendation: 'Add a data classification risk threshold: if classification review reveals more than 20 sensitivity policy gaps, a remediation plan is created before Phase 2.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.5, strength: 'Three milestones with payment triggers across 6 months. Governance gate before first user activation is correctly sequenced.', gaps: ['No intra-Phase 2 milestone for train-the-trainer completion — if cascade is behind, it is not detected until Month 5 rollout'], recommendation: 'Add a Month 4 trainer completion checkpoint: ≥80% of 50 trainers certified before Phase 2 rollout proceeds.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 8.0, strength: 'IOI offset on Phase 1 and license cost separation are clean. No vendor complexity.', gaps: ['IOI approval memo conditions are not attached — standard risk for IOI-based engagements'], recommendation: 'Attach IOI approval memo as Appendix A before contract execution.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 7.5, strength: 'Acceptable Use Policy sign-off via M365 compliance portal before activation is a strong automated governance control.', gaps: ['3,500-user AUP sign-off enforcement process is not specified — what happens if a user does not sign before their activation date?'], recommendation: 'Define AUP non-compliance protocol: users without AUP sign-off are excluded from Copilot activation until signed.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 8.0, strength: 'Data sensitivity discovery risk and train-the-trainer cascade risk are both specific with escalation mechanisms.', gaps: ['No risk for Copilot model hallucination or inaccurate travel information in a customer-facing context'], recommendation: 'Add a Copilot accuracy risk: travel information from Copilot must be validated against live booking systems; consultant training emphasizes human review.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'IOI → Commercial Terms', status: 'warning', detail: 'IOI approval memo is referenced but not attached as an exhibit to the SOW.' },
+      { label: 'License Procurement → Timeline', status: 'warning', detail: 'Phase 2 rollout depends on 3,500 licenses being provisioned, but no timeline or contingency is defined if licensing is delayed.' },
+      { label: 'Trainer Cascade → Milestone', status: 'ok' },
+    ],
+  },
+
+  // ─── 16. LUCERNE PUBLISHING ─────────────────────────────────────────────
+  'Lucerne Publishing': {
+    compositeScore: 7.5,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will implement a Zero Trust architecture for Lucerne Publishing across identity (Entra ID + PIM), devices (Intune + Defender for Endpoint), and network (Conditional Access + ZTNA). The 9-month engagement covers 2,800 seats and includes Microsoft Sentinel deployment with 25 data connectors. No subcontractors are involved.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Lucerne Publishing'], ['Engagement Type', 'Zero Trust Architecture Implementation'], ['Engagement Period', '9 months'], ['Seat Coverage', '2,800 seats'], ['Sentinel Connectors', '25 data connectors']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['100% MFA enforcement across all 2,800 seats with no legacy authentication protocols active', 'Endpoint compliance rate ≥95% (Intune-managed, Defender enrolled)', 'Zero standing privileged access — all admin actions governed by Entra ID PIM', 'Sentinel SIEM operational with MTTD <20 minutes by Month 9'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['MFA enforcement', '<50% (estimated)', '100%', 'Entra ID MFA report'], ['Endpoint compliance', 'Unknown', '≥95%', 'Defender compliance report'], ['MTTD', 'No SIEM', '<20 minutes', 'Sentinel incident tracker']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Identity Foundation', 'Months 1–3', 'Entra ID PIM, Conditional Access, legacy auth elimination, identity governance', 'Identity Baseline Report, CA Policy Library, PIM Runbook'],
+          ['Phase 2 — Device Management', 'Months 3–6', 'Intune MDM for 2,800 seats, Defender for Endpoint enrollment, device compliance baselines, ZTNA', 'Device Compliance Report, Defender Enrollment Report'],
+          ['Phase 3 — Sentinel & Hardening', 'Months 6–9', 'Sentinel SIEM deployment (25 connectors), SOAR playbooks, final hardening review', 'Sentinel Deployment Report, SOAR Playbook Library, Hardening Assessment'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Physical security controls', 'Penetration testing or red team exercises', 'Security awareness training beyond one train-the-trainer SOC workshop', 'Sentinel connectors beyond the 25 named — additional connectors require a Change Order', 'Any workloads or seats beyond the 2,800-seat inventory confirmed at kickoff'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Existing Microsoft E3 licensing covers Entra ID P1; Defender and Sentinel require client to upgrade to E5 or add-on licenses before Phase 1 ends', 'Client IT will dedicate 1 FTE (identity administrator) to support Phase 1 Entra ID transition', 'Client CISO signs off on all Conditional Access policies before production activation', 'Connector pre-qualification checklist issued to client IT in Week 1 for all 25 Sentinel connectors', '2,800-seat inventory is accurate; additions require a Change Order'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Identity Foundation Live', 'Month 3', 'Yes', '25% on Identity Baseline Report'], ['2,800 Seats on Intune + Defender', 'Month 6', 'Yes', '35% on Device Compliance Report'], ['Sentinel Live + Hardening Assessment', 'Month 9', 'Yes', '40% on Sentinel Deployment Report']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Steering Committee: CISO (client) + Engagement Director (Microsoft) — bi-weekly', 'CA policy sign-off: All Conditional Access policies reviewed and signed by CISO before production activation', 'Escalation: L1 → Security PM | L2 → Delivery Lead | L3 → Engagement Executive / CISO', 'Change control: Written request → 3-business-day assessment → CISO + MS Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None committed'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Expense policy', 'Included in fixed fee'], ['Payment terms', 'Net 30 from invoice date']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['E5 licensing upgrade not complete before Phase 1 ends — Defender and Sentinel deployment delayed', 'Medium', 'High', 'Licensing upgrade timeline confirmed with client IT before engagement starts; delay triggers Phase 2/3 start date revision'],
+          ['Legacy authentication systems incompatible with Conditional Access — require exception or timeline extension', 'Medium', 'Medium', 'Legacy system discovery in Phase 1; CA exceptions documented and CISO-approved before Phase 1 close'],
+          ['Device enrollment rate below 95% due to unmanaged contractor devices', 'Medium', 'Medium', 'Contractor device policy defined in Phase 1; contractors may require separate guest-device onboarding track'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 7.5, strength: 'MFA enforcement (100%), endpoint compliance (≥95%), and MTTD (<20 min) are measurable with named instruments.', gaps: ['MFA baseline "estimated <50%" should be verified in Week 1', 'No business outcome — ZT implementation cost reduction or risk reduction is not quantified'], recommendation: 'Commission an identity audit in Week 1 to replace estimated baselines with verified figures.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 7.5, strength: 'Three-phase structure cleanly separates identity, devices, and Sentinel. Connector count (25) is explicit.', gaps: ['SOAR playbook count is not specified', 'ZTNA implementation details (what applications, what user groups) are not defined'], recommendation: 'Define ZTNA scope: name the 5–10 applications and user groups that move to ZTNA in Phase 2.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 7.5, strength: 'Connector count cap and seat count boundary are precisely stated. Physical security and pen testing are explicitly excluded.', gaps: ['No statement on what constitutes a "seat" — contractors, part-time employees, and shared accounts may be disputed'], recommendation: 'Add a seat definition: each licensed M365 account counts as one seat; shared accounts and service accounts require separate assessment.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 7.5, strength: 'E5 licensing upgrade dependency is correctly identified as a pre-Phase 2 requirement. CA CISO sign-off is specific.', gaps: ['E5 licensing upgrade timeline is client-owned but no deadline or commercial consequence is defined for delay'], recommendation: 'Add a licensing upgrade deadline: if E5 is not confirmed by Month 1 Week 4, Phase 2 and 3 start dates shift proportionally.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 7.5, strength: 'Three milestones with go/no-go gates and payment triggers across 9 months.', gaps: ['No buffer between Phase 2 device enrollment and Phase 3 Sentinel — enrollment delay directly compresses Sentinel timeline'], recommendation: 'Build a 2-week enrollment completion buffer at Month 5.5 before Phase 3 begins.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 8.0, strength: 'Clean fixed fee with no vendor and no ECIF complexity. All expenses included.', gaps: ['No contingency for E5 licensing delay impact on timeline — commercial consequences of delay are undefined'], recommendation: 'Add an E5 delay clause: if licensing is delayed beyond Month 1, a timeline revision notice is issued with no additional cost impact to client.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 7.5, strength: 'CISO CA policy sign-off before activation is a strong security control. Bi-weekly Steering Committee is appropriate.', gaps: ['No defined response time SLA for CISO review of CA policies — slow review can block Phase 1 production activation'], recommendation: 'Define a 5-business-day CISO review SLA for CA policy batches; batches not reviewed within SLA are escalated to Engagement Executive.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 7.0, strength: 'E5 licensing risk and contractor device enrollment risk are specific and actionable.', gaps: ['No risk for Entra ID Conditional Access misconfiguration locking out users — a high-consequence risk for a 2,800-seat deployment'], recommendation: 'Add a CA rollout risk: all CA policies piloted with a 200-seat test group for 2 weeks before organization-wide activation.' },
+    ],
+    alignmentFlags: [
+      { label: 'Outcomes → Deliverables', status: 'ok' },
+      { label: 'E5 Licensing → Assumptions', status: 'warning', detail: 'E5 licensing upgrade is a critical assumption with no deadline or commercial consequence for delay.' },
+      { label: 'CA Policy Review → Governance', status: 'ok' },
+      { label: 'ZTNA Scope → Section 3', status: 'warning', detail: 'ZTNA is listed as a Phase 2 activity but no application scope or user group definition is provided.' },
+    ],
+  },
+
+  // ─── 17. CONTOSO SPORTS NETWORK ─────────────────────────────────────────
+  'Contoso Sports Network': {
+    compositeScore: 6.5,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will implement Dynamics 365 Sales and Marketing for Contoso Sports Network, a sports rights and media company. The 10-month engagement covers Dynamics 365 Sales (deal management, rights tracking), Marketing (campaign automation, fan engagement journeys), and integration with 4 media and rights management systems. The solution must support complex multi-party sports rights deal structures with multi-year contract values and broadcast territory tracking.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Contoso Sports Network'], ['Engagement Type', 'D365 Sales & Marketing — Sports & Media'], ['Engagement Period', '10 months'], ['Integrations', '4 media and rights management systems'], ['Complexity', 'High — sports rights deal structures, territory tracking']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['D365 Sales live with full rights deal tracking across all active deals by Month 9', 'D365 Marketing live with fan engagement journey automation by Month 9', 'All 4 integrations to media and rights management systems live and validated at go-live', 'Sales team opportunity-to-deal cycle time reduced by ≥20% within 90 days of go-live'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Opportunity-to-deal cycle time', 'Current (client to provide)', '-20%', 'D365 Sales analytics'], ['Rights deals in D365', '0', '100% of active portfolio', 'D365 data audit'], ['Fan journey automation', '0 automated journeys', '5+ active journeys', 'D365 Marketing dashboard']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Design', 'Months 1–3', 'Requirements workshops, D365 data model design (sports rights deal structure), integration architecture for 4 systems, custom entity design', 'Solution Design Document, Data Model Sign-Off, Integration Architecture Blueprint'],
+          ['Phase 2 — Build', 'Months 3–8', 'D365 Sales configuration (rights tracking, territory management), D365 Marketing configuration (fan journey automation), 4 system integrations, Power BI dashboards (2)', 'Sales Build Report, Marketing Build Report, Integration Test Reports (×4), Dashboard Library'],
+          ['Phase 3 — UAT & Go-Live', 'Months 8–10', 'UAT with sales and marketing teams, data migration (active deals from current CRM), go-live cutover, 4-week hypercare', 'UAT Sign-Off, Data Migration Report, Go-Live Readiness Report'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['D365 Customer Service module — separate engagement if required', 'Integrations beyond the 4 named media and rights management systems', 'Historical CRM data migration beyond active deal portfolio (active defined as closing within 24 months)', 'Custom sports rights contract generation or legal document management', 'Custom AI or ML model development — standard D365 Copilot features only'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Client provides a complete active deal inventory before Phase 1 requirements workshops begin', '4 integration system APIs are documented and accessible before Phase 2 begins', 'Client designates a Sales lead (1 FTE) and a Marketing lead (0.5 FTE) as D365 implementation owners', 'Existing CRM system exports in a standard format compatible with D365 data migration tooling', 'Sports rights deal entity design requires no more than 4 weeks of custom entity configuration'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['Solution Design Document Accepted', 'Month 3', 'Yes', '20% on acceptance'], ['D365 Sales + Marketing Build Complete', 'Month 8', 'Yes', '40% on build reports'], ['UAT Sign-Off + Go-Live', 'Month 10', 'Yes', '40% on completion report']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Steering Committee: VP of Sales (client) + VP of Marketing (client) + Engagement Director (Microsoft) — bi-weekly', 'Integration change control: Any integration scope change requires written approval from both VP Sales and VP Marketing', 'Custom entity review: All sports rights deal custom entities reviewed by client Legal before build begins', 'Escalation: L1 → D365 PM | L2 → Delivery Lead | L3 → Engagement Executive / VP Sales'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None committed'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Payment terms', 'Net 30 from milestone acceptance'], ['Margin note', '26% sold margin — Finance flagged as tight for high-complexity D365 with custom sports entity work']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['Sports rights deal data model complexity exceeds 4-week custom entity estimate — unique deal structures require more configuration', 'High', 'High', 'Data model complexity assessment in Phase 1 Week 2; if >4 weeks required, Change Order before Phase 2 begins'],
+          ['Integration API documentation inaccurate for media rights management systems', 'Medium', 'High', 'Integration pre-qualification test in Month 1 before Phase 2 commitment'],
+          ['Dual VP sponsorship (Sales + Marketing) leads to conflicting requirements and decision delays', 'Medium', 'Medium', 'Tie-breaker protocol: CEO is the escalation owner for Sales vs. Marketing priority conflicts; documented in RACI at kickoff'],
+          ['Data migration from current CRM reveals non-standard deal structures not captured in data model', 'Medium', 'High', 'Migration dry-run in Phase 2 before final UAT; any non-standard structures trigger data model adjustment via Change Order'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 6.5, strength: 'Opportunity-to-deal cycle time (-20%) and fan journey count (5+) provide measurable business outcomes.', gaps: ['Cycle time baseline is "client to provide" — unverified at SOW signing', 'No outcome for the integration systems — data accuracy and sync latency targets are absent'], recommendation: 'Add integration data accuracy targets: each of the 4 integrations must maintain <2-minute data sync latency and <0.1% error rate at go-live.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 6.5, strength: 'Two D365 modules and 4 named integrations provide clear scope boundaries. Power BI dashboard count (2) is explicit.', gaps: ['Sports rights deal custom entity scope is estimated at 4 weeks but not validated against actual deal structure complexity', '4 integration systems are referenced by count and type but not named'], recommendation: 'Name the 4 integration systems in Appendix A and validate custom entity complexity in Phase 1 before Phase 2 commitment.' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 6.5, strength: 'D365 Customer Service module exclusion and 24-month active deal boundary are precisely stated.', gaps: ['No statement on what happens if deal structures discovered during Phase 1 fall outside the assumed 4-week custom entity scope', '"Custom AI beyond D365 Copilot" is vague — D365 Copilot features are not enumerated'], recommendation: 'Add a change order trigger: custom entity work exceeding 4 weeks triggers a formal scope revision before Phase 2 begins.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 6.0, strength: 'Complete active deal inventory before Phase 1 and API documentation before Phase 2 are specific pre-conditions.', gaps: ['Sports rights deal entity complexity is assumed at 4 weeks but sports rights structures (co-rights, territory splits, broadcast windows) are notoriously complex and variable', 'Current CRM export format compatibility is assumed but not verified'], recommendation: 'Commission a pre-engagement data model complexity assessment using a sample of 10 active deals before SOW execution.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 6.5, strength: 'Three milestones with payment triggers cover the 10-month program.', gaps: ['No milestone for integration pre-qualification — a high-risk item with no early detection gate', 'No milestone for custom entity sign-off by client Legal — this is a prerequisite for Phase 2 build'], recommendation: 'Add Month 1 integration pre-qualification and Month 2 custom entity Legal sign-off as formal milestones.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 6.5, strength: 'Fixed fee per phase with clear change order triggers.', gaps: ['26% margin for high-complexity D365 with sports-domain custom entity work is flagged as tight — Finance concern is noted but unresolved', 'No contingency for custom entity complexity overrun'], recommendation: 'Finance to confirm margin floor. Add a custom entity complexity Change Order trigger before Phase 2 begins.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 6.5, strength: 'Dual VP Steering Committee with CEO escalation protocol is appropriate for a two-module engagement with competing priorities.', gaps: ['Custom entity Legal review cadence is not defined — how many review cycles, what is the SLA?'], recommendation: 'Define Legal review SLA: 5-business-day review of custom entity specifications; Legal feedback incorporated within 3 business days before Phase 2 build begins.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 6.5, strength: 'Custom entity complexity risk and dual VP conflict risk are domain-specific risks not commonly found in standard D365 SOWs.', gaps: ['No risk for D365 Marketing fan journey compliance — GDPR consent requirements for fan data in EU markets are absent', 'No risk for sports rights data confidentiality — rights deal values and territory terms are highly confidential'], recommendation: 'Add a GDPR fan data risk: all fan journey contact lists verified for GDPR consent status before campaign activation.' },
+    ],
+    alignmentFlags: [
+      { label: 'Integration Register → Scope', status: 'warning', detail: 'Section 3 references 4 media and rights management system integrations but no named integration register exists.' },
+      { label: 'Custom Entity Complexity → Risk Register', status: 'ok' },
+      { label: 'Cycle Time Baseline → Outcomes', status: 'warning', detail: 'Opportunity-to-deal cycle time target (-20%) has no verified baseline.' },
+      { label: 'Margin Risk → Commercial Terms', status: 'warning', detail: '26% margin is flagged as tight for high-complexity D365 with sports custom entity work — no contingency plan defined.' },
+    ],
+  },
+
+  // ─── 18. WINGTIP TOYS ───────────────────────────────────────────────────
+  'Wingtip Toys': {
+    compositeScore: 6.2,
+    sections: [
+      { id: 'executive-summary', number: '1.', title: 'Executive Summary', content: [
+        { t: 'p', text: 'Microsoft Professional Services will modernize 35 legacy .NET and Java applications to cloud-native architecture on Azure Kubernetes Service (AKS) for Wingtip Toys. The 14-month engagement covers containerization strategy, CI/CD pipeline build (Azure DevOps), application refactoring to microservices where applicable, Azure API Management, and an 18-month AKS support model. Applications span order management, inventory, product catalog, loyalty, and customer portal systems.' },
+        { t: 'table', headers: ['Field', 'Detail'], rows: [['Client', 'Wingtip Toys'], ['Engagement Type', 'Cloud Native Modernization — AKS'], ['Engagement Period', '14 months'], ['Applications', '35 legacy .NET and Java apps'], ['Architecture Target', 'AKS, Azure DevOps CI/CD, API Management']] },
+      ]},
+      { id: 'outcomes', number: '2.', title: 'Customer Desired Outcomes', dimensionKey: 'outcome_clarity', content: [
+        { t: 'bullets', items: ['35 applications containerized and running on AKS by Month 14', 'CI/CD pipeline operational with automated deployment for all 35 apps by Month 12', 'Application deployment frequency increased from current baseline (estimated quarterly) to ≥bi-weekly for core apps', 'P99 latency for order management and product catalog services maintained or improved vs. legacy baseline'] },
+        { t: 'table', headers: ['Metric', 'Baseline', 'Target', 'Measurement'], rows: [['Apps on AKS', '0 of 35', '35 of 35', 'AKS workload audit'], ['CI/CD deployment frequency', 'Estimated quarterly', '≥bi-weekly for core apps', 'Azure DevOps deployment log'], ['P99 latency (order management)', 'Legacy baseline (client to provide)', '≤ current baseline', 'Azure Monitor APM']] },
+      ]},
+      { id: 'scope', number: '3.', title: 'Scope of Work', dimensionKey: 'scope_completeness', content: [
+        { t: 'table', headers: ['Phase', 'Duration', 'Activities', 'Deliverables'], rows: [
+          ['Phase 1 — Assessment & Architecture', 'Months 1–3', 'Application compatibility assessment (35 apps), containerization strategy per app, AKS cluster design, CI/CD architecture, API Management design', 'App Assessment Report, Containerization Runbook per App, AKS Architecture Blueprint'],
+          ['Phase 2 — Foundation & Core Apps', 'Months 3–8', 'AKS cluster build, CI/CD pipeline build, containerize and deploy 12 core apps (order management, inventory, product catalog, loyalty, customer portal)', 'AKS Cluster Live, CI/CD Pipeline Live, Core App Deployment Reports (×12)'],
+          ['Phase 3 — Remaining Apps & Handover', 'Months 8–14', 'Containerize and deploy remaining 23 apps, API Management configuration, AKS support model documentation, platform team enablement', 'Full App Deployment Reports, API Management Config, AKS Operations Runbook'],
+        ]},
+      ]},
+      { id: 'out-of-scope', number: '4.', title: 'Out of Scope', dimensionKey: 'out_of_scope', content: [
+        { t: 'bullets', items: ['Full application rewrite — containerization and refactoring to microservices where applicable; major rewrites require a Change Order', 'Legacy application decommission execution — advisory guidance and decommission plan only; client IT executes', 'Data migration — all application data remains in existing databases; schema changes are out of scope', 'Applications beyond the 35 named in the assessment — additions require a Change Order', 'Managed AKS support beyond the 18-month support model design (separate managed service engagement required)'] },
+      ]},
+      { id: 'assumptions', number: '5.', title: 'Assumptions & Dependencies', dimensionKey: 'assumption_quality', content: [
+        { t: 'bullets', items: ['Application compatibility assessment assumes all 35 apps can be containerized without major architectural blockers — apps requiring full rewrites are flagged in Phase 1 and handled via Change Order', 'Client application teams (minimum 3 FTE across .NET and Java) are available for knowledge transfer throughout the engagement', 'Azure subscription with adequate AKS quota is provisioned before Phase 2 begins', 'Source code for all 35 apps is accessible in a version-controlled repository before Phase 1 begins', 'CI/CD pipeline assumes Azure DevOps — any apps requiring other CI/CD tools require a Change Order'] },
+      ]},
+      { id: 'timeline', number: '6.', title: 'Project Timeline & Milestones', dimensionKey: 'timeline_enforceability', content: [
+        { t: 'table', headers: ['Milestone', 'Target Month', 'Go/No-Go', 'Payment Trigger'], rows: [['App Assessment Report + Containerization Strategy Accepted', 'Month 3', 'Yes', '20% on acceptance'], ['12 Core Apps Live on AKS + CI/CD Pipeline Operational', 'Month 8', 'Yes', '40% on deployment reports'], ['All 35 Apps on AKS + AKS Runbook Delivered', 'Month 14', 'Yes', '40% on completion']] },
+      ]},
+      { id: 'governance', number: '7.', title: 'Governance & Change Management', dimensionKey: 'governance_readiness', content: [
+        { t: 'bullets', items: ['Technical Steering: VP Engineering (client) + Engagement Director (Microsoft) — bi-weekly', 'Application team weekly sync: MS delivery lead + client .NET and Java leads — each app team has a named owner', 'Containerization gate: each app requires a sign-off from its application team owner before containerization begins', 'Change control: Written request → 5-business-day impact assessment → VP Engineering + MS Director sign-off'] },
+      ]},
+      { id: 'commercial', number: '8.', title: 'Commercial Terms', dimensionKey: 'commercial_integrity', content: [
+        { t: 'table', headers: ['Item', 'Detail'], rows: [['Pricing model', 'Fixed fee by phase, milestone-triggered billing'], ['ECIF', 'None committed'], ['Vendor', 'None — pure Microsoft PS delivery'], ['Margin note', '24% margin — tight for 35-app cloud native modernization; Finance flagged for review'], ['Payment terms', 'Net 30 from milestone acceptance']] },
+      ]},
+      { id: 'risk', number: '9.', title: 'Preliminary Risk Register', dimensionKey: 'risk_visibility', content: [
+        { t: 'table', headers: ['Risk', 'Prob', 'Impact', 'Mitigation'], rows: [
+          ['Application compatibility blockers discovered during Phase 1 — apps require rewrite not containerization', 'High', 'High', 'Phase 1 assessment is the risk detection gate; blockers trigger Change Order before Phase 2 begins'],
+          ['Legacy Java apps using deprecated frameworks incompatible with modern container base images', 'Medium', 'Medium', 'Framework compatibility scan included in Phase 1 assessment; incompatible frameworks flagged with remediation options'],
+          ['Client app team availability below 3 FTE — knowledge transfer and co-development impacted', 'Medium', 'High', 'App team availability confirmed before Phase 2 begins; below 3 FTE triggers PM escalation to VP Engineering'],
+          ['AKS resource contention between core apps and remaining 23 apps during Phase 3 concurrent migration', 'Low', 'Medium', 'AKS cluster sizing validated against full 35-app workload in Phase 1; capacity headroom built into cluster design'],
+        ]},
+      ]},
+    ],
+    dimensions: [
+      { key: 'outcome_clarity', label: 'Outcome Clarity', score: 6.5, strength: 'App count on AKS (35) and CI/CD deployment frequency (≥bi-weekly) are measurable with named instruments.', gaps: ['P99 latency baseline is "client to provide" — performance parity target is unverifiable until provided', 'No business outcome — cost reduction or developer productivity improvement from cloud native modernization is absent'], recommendation: 'Add a developer velocity outcome: average time from commit to production deployment reduced from current baseline to ≤30 minutes.' },
+      { key: 'scope_completeness', label: 'Scope Completeness', score: 6.0, strength: 'Phase structure separates core apps (12) from remaining apps (23). AKS, CI/CD, and API Management are all named.', gaps: ['35 apps are referenced by count and category but not individually named — which apps are in scope is unclear', '"Refactoring to microservices where applicable" is vague — no criteria for what triggers a microservices refactor vs. simple containerization'], recommendation: 'Add a named app inventory in Appendix A and define the microservices trigger criteria (e.g., apps >100K requests/day that are monolithic are refactor candidates).' },
+      { key: 'out_of_scope', label: 'Out-of-Scope Specificity', score: 6.5, strength: 'Full rewrite exclusion and data migration exclusion are clearly stated. App count boundary (35) is explicit.', gaps: ['No statement on what constitutes "major rewrite" vs. "refactoring" — the boundary is ambiguous and likely to be disputed', '"Applicable" refactoring criterion is undefined — dispute-prone in an engagement with 35 apps'], recommendation: 'Define the refactor boundary: any app requiring more than 40 person-hours of code changes is a "rewrite" requiring a Change Order.' },
+      { key: 'assumption_quality', label: 'Assumption Quality', score: 6.0, strength: 'Source code accessibility requirement and Azure DevOps CI/CD assumption are specific pre-conditions.', gaps: ['Application compatibility assumption ("can be containerized without major blockers") is unverified — this is the highest-risk assumption for a 35-app engagement', '3 FTE client app team availability is stated as a minimum but no consequences for falling below this are defined'], recommendation: 'Add a pre-engagement app compatibility scan using Azure Migrate for .NET and Java apps to surface blockers before SOW execution.' },
+      { key: 'timeline_enforceability', label: 'Timeline Enforceability', score: 6.5, strength: 'Three milestones with payment triggers. Phase 1 assessment gate before Phase 2 commitment is well-structured.', gaps: ['No per-app deployment milestone — 35 apps across Phases 2 and 3 with only 2 aggregate milestones provides limited visibility into delivery pace', 'No Phase 3 interim checkpoint for the 23 remaining apps — a mid-Phase 3 check at Month 11 would surface problems earlier'], recommendation: 'Add a Month 11 mid-Phase 3 checkpoint: ≥15 of 23 remaining apps live on AKS; below this triggers PM escalation.' },
+      { key: 'commercial_integrity', label: 'Commercial Integrity', score: 6.5, strength: 'Fixed fee per phase with change order triggers for scope additions.', gaps: ['24% margin for 35-app cloud native modernization is flagged as tight — Finance concern is noted but no contingency is defined', 'App rewrite Change Orders could materially affect the engagement economics — no guidance on expected frequency'], recommendation: 'Finance to confirm margin floor. Add a rewrite Change Order cost guideline so client has visibility into the typical cost of a rewrite-scope addition.' },
+      { key: 'governance_readiness', label: 'Governance Readiness', score: 6.0, strength: 'Per-app containerization sign-off by the named application owner is a strong operational governance control.', gaps: ['No defined escalation if an application team refuses to sign off on containerization approach — blocks Phase 2 progress with no resolution path', 'API Management governance (who approves API policy changes in production) is not defined'], recommendation: 'Add escalation path for app team sign-off impasse: VP Engineering makes binding decision within 5 business days of deadlock.' },
+      { key: 'risk_visibility', label: 'Risk Visibility', score: 6.0, strength: 'Application compatibility blocker risk is the highest-risk item and is correctly identified as a Phase 1 detection gate.', gaps: ['No risk for production outage during Phase 3 cutover of legacy apps to AKS', 'No risk for AKS cluster operational complexity — client team may struggle to self-operate after handover without dedicated Kubernetes expertise'], recommendation: 'Add an AKS operations risk: client platform team must complete AKS Operations certification before the Month 14 handover; uncertified team triggers extended hypercare.' },
+    ],
+    alignmentFlags: [
+      { label: 'App Inventory → Appendix A', status: 'warning', detail: 'Section 3 references 35 apps but no named app inventory exists as a deliverable or appendix.' },
+      { label: 'Rewrite vs. Refactor Boundary → Scope', status: 'warning', detail: '"Refactoring where applicable" is undefined — a dispute-prone boundary for a 35-app engagement.' },
+      { label: 'Margin Risk → Commercial Terms', status: 'warning', detail: '24% margin for 35-app cloud native modernization is flagged as tight — no contingency mechanism defined.' },
+      { label: 'Phase 1 Assessment → Phase 2 Gate', status: 'ok' },
+    ],
+  },
 };

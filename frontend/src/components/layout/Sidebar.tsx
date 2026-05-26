@@ -15,6 +15,7 @@ const nav = [
   { type: 'divider', label: 'DELIVERY' },
   { label: 'Handoff Center', to: '/handoffs', icon: GitBranch },
   { label: 'Delivery Projects', to: '/delivery', icon: Activity },
+  { label: 'AI Quality Assurance', to: '/quality-assurance', icon: Bot },
   { type: 'divider', label: 'PORTFOLIO' },
   { label: 'Portfolio Dashboard', to: '/portfolio', icon: BarChart3 },
   { type: 'divider', label: 'TOOLS & METHODS' },

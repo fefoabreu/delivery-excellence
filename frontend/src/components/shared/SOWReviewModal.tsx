@@ -264,7 +264,7 @@ export default function SOWReviewModal({ dealName, clientName, sowData, onClose 
           </div>
 
           {/* Right — AI Analysis Pane */}
-          <div className="w-80 bg-white border-l border-gray-200 flex flex-col overflow-y-auto flex-shrink-0">
+          <div className="w-80 bg-white border-l border-gray-200 flex flex-col flex-shrink-0">
 
             {/* Score summary */}
             <div className="px-4 pt-4 pb-3 border-b border-gray-100 flex-shrink-0">
@@ -285,7 +285,7 @@ export default function SOWReviewModal({ dealName, clientName, sowData, onClose 
             </div>
 
             {/* Active section analysis */}
-            <div className="px-4 flex-1 min-h-0">
+            <div className="px-4 flex-1 overflow-y-auto min-h-0">
               {activeDim ? (
                 <AnalysisPanel dim={activeDim} />
               ) : (

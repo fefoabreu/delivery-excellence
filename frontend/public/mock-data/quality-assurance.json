@@ -1,0 +1,882 @@
+{
+  "portfolio_monitor": [
+    {
+      "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "name": "Wingtip Toys Cloud Native Modernization",
+      "client_name": "Wingtip Toys",
+      "project_manager": "Aisha Okonkwo",
+      "overall_health": "red",
+      "status": "active",
+      "phase": "execute",
+      "budget": 1900000,
+      "actuals": 980000,
+      "burn_rate": 51.6,
+      "completion_pct": 38,
+      "start_date": "2026-01-05",
+      "end_date": "2027-01-05",
+      "early_warning": {
+        "score": 88,
+        "alert_level": "critical",
+        "components": {
+          "raid_severity": 92,
+          "health_trend_velocity": 85,
+          "burn_completion_gap": 95,
+          "milestone_slip_rate": 88,
+          "satisfaction_trend": 72,
+          "escalation_frequency": 90
+        },
+        "prediction_30d": "red",
+        "prediction_60d": "red",
+        "prediction_90d": "amber",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "worsening",
+        "trend_delta": 12
+      },
+      "health_dimensions": {
+        "schedule": "red",
+        "budget": "amber",
+        "scope": "red",
+        "risk": "red",
+        "satisfaction": "amber"
+      },
+      "ai_assessment": "escalate",
+      "ai_narrative": "Critical: 51.6% budget consumed at only 38% completion creates a 13.6-point burn-completion gap — the worst in the portfolio. The undocumented mainframe dependency on App #17 has triggered a full architecture redesign. This project requires immediate executive intervention and a formal Get-to-Green plan.",
+      "days_in_current_status": 21,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "0008427b-984d-42b7-974c-f589818d2cbc",
+      "name": "Blue Yonder Microsoft Fabric Platform",
+      "client_name": "Blue Yonder Inc",
+      "project_manager": "Sophie Laurent",
+      "overall_health": "amber",
+      "status": "active",
+      "phase": "execute",
+      "budget": 1500000,
+      "actuals": 620000,
+      "burn_rate": 41.3,
+      "completion_pct": 48,
+      "start_date": "2026-02-04",
+      "end_date": "2027-02-04",
+      "early_warning": {
+        "score": 62,
+        "alert_level": "watch",
+        "components": {
+          "raid_severity": 55,
+          "health_trend_velocity": 68,
+          "burn_completion_gap": 45,
+          "milestone_slip_rate": 72,
+          "satisfaction_trend": 65,
+          "escalation_frequency": 48
+        },
+        "prediction_30d": "amber",
+        "prediction_60d": "amber",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "stable",
+        "trend_delta": -2
+      },
+      "health_dimensions": {
+        "schedule": "amber",
+        "budget": "green",
+        "scope": "amber",
+        "risk": "green",
+        "satisfaction": "amber"
+      },
+      "ai_assessment": "watch",
+      "ai_narrative": "3 weeks behind schedule due to legacy ERP data quality issues. Burn-to-completion ratio is within acceptable range. CDO expects a recovery plan — recommend proactive client communication. Predicted to recover to Green within 90 days if data quality remediation stays on track.",
+      "days_in_current_status": 14,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "4c683134-1f74-4ac9-bbfe-b68a756c56fd",
+      "name": "Adatum Cloud Foundation",
+      "client_name": "Adatum Corporation",
+      "project_manager": "Sarah Mitchell",
+      "overall_health": "amber",
+      "status": "active",
+      "phase": "execute",
+      "budget": 540000,
+      "actuals": 198000,
+      "burn_rate": 36.7,
+      "completion_pct": 42,
+      "start_date": "2026-03-06",
+      "end_date": "2026-09-06",
+      "early_warning": {
+        "score": 48,
+        "alert_level": null,
+        "components": {
+          "raid_severity": 42,
+          "health_trend_velocity": 55,
+          "burn_completion_gap": 35,
+          "milestone_slip_rate": 58,
+          "satisfaction_trend": 30,
+          "escalation_frequency": 38
+        },
+        "prediction_30d": "amber",
+        "prediction_60d": "green",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "improving",
+        "trend_delta": -8
+      },
+      "health_dimensions": {
+        "schedule": "amber",
+        "budget": "green",
+        "scope": "green",
+        "risk": "amber",
+        "satisfaction": "green"
+      },
+      "ai_assessment": "watch",
+      "ai_narrative": "Schedule amber due to ExpressRoute delay (6 weeks behind), but governance delivered ahead of schedule. Client satisfaction remains high. ExpressRoute ETA confirmed — project predicted to recover to Green within 60 days. Low intervention priority.",
+      "days_in_current_status": 28,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "949c03d0-042a-419e-9448-5f8faa2abd62",
+      "name": "Proseware SOC Modernization",
+      "client_name": "Proseware Inc",
+      "project_manager": "Marco Rossi",
+      "overall_health": "green",
+      "status": "active",
+      "phase": "execute",
+      "budget": 760000,
+      "actuals": 142000,
+      "burn_rate": 18.7,
+      "completion_pct": 22,
+      "start_date": "2026-03-21",
+      "end_date": "2026-12-21",
+      "early_warning": {
+        "score": 35,
+        "alert_level": null,
+        "components": {
+          "raid_severity": 40,
+          "health_trend_velocity": 25,
+          "burn_completion_gap": 30,
+          "milestone_slip_rate": 20,
+          "satisfaction_trend": 28,
+          "escalation_frequency": 15
+        },
+        "prediction_30d": "green",
+        "prediction_60d": "green",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "stable",
+        "trend_delta": 2
+      },
+      "health_dimensions": {
+        "schedule": "green",
+        "budget": "green",
+        "scope": "amber",
+        "risk": "green",
+        "satisfaction": "green"
+      },
+      "ai_assessment": "continue",
+      "ai_narrative": "Strong delivery with Sentinel baseline exceeding Day 45 milestone target. Scope amber is a known item — AS/400 coverage gap requires architecture decision, not a delivery failure. CISO satisfaction high. Continue monitoring.",
+      "days_in_current_status": 45,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "d5e6b489-7b15-44b7-9b5b-7a5bd1e3d24f",
+      "name": "Datum Corp AI Innovation Platform",
+      "client_name": "Datum Corporation",
+      "project_manager": "James Osei",
+      "overall_health": "green",
+      "status": "active",
+      "phase": "initiate",
+      "budget": 1600000,
+      "actuals": 35000,
+      "burn_rate": 2.2,
+      "completion_pct": 4,
+      "start_date": "2026-04-28",
+      "end_date": "2027-02-28",
+      "early_warning": {
+        "score": 22,
+        "alert_level": null,
+        "components": {
+          "raid_severity": 25,
+          "health_trend_velocity": 15,
+          "burn_completion_gap": 18,
+          "milestone_slip_rate": 10,
+          "satisfaction_trend": 15,
+          "escalation_frequency": 10
+        },
+        "prediction_30d": "green",
+        "prediction_60d": "green",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "stable",
+        "trend_delta": 0
+      },
+      "health_dimensions": {
+        "schedule": "green",
+        "budget": "green",
+        "scope": "green",
+        "risk": "green",
+        "satisfaction": "green"
+      },
+      "ai_assessment": "continue",
+      "ai_narrative": "Program in Initiate phase with high client energy. Discovery and architecture workshops on schedule. Day 30 checkpoint approaching — auto-triggered for top-quartile engagement. No concerns identified.",
+      "days_in_current_status": 27,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "70ecc5ed-dd32-4239-8acd-f3f808e17d8e",
+      "name": "City Power & Light SOC Modernization",
+      "client_name": "City Power & Light",
+      "project_manager": "Fatima Al-Hassan",
+      "overall_health": "green",
+      "status": "active",
+      "phase": "execute",
+      "budget": 1300000,
+      "actuals": 180000,
+      "burn_rate": 13.8,
+      "completion_pct": 20,
+      "start_date": "2026-04-05",
+      "end_date": "2027-01-05",
+      "early_warning": {
+        "score": 28,
+        "alert_level": null,
+        "components": {
+          "raid_severity": 30,
+          "health_trend_velocity": 20,
+          "burn_completion_gap": 25,
+          "milestone_slip_rate": 22,
+          "satisfaction_trend": 20,
+          "escalation_frequency": 18
+        },
+        "prediction_30d": "green",
+        "prediction_60d": "green",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "stable",
+        "trend_delta": -1
+      },
+      "health_dimensions": {
+        "schedule": "green",
+        "budget": "green",
+        "scope": "green",
+        "risk": "green",
+        "satisfaction": "green"
+      },
+      "ai_assessment": "continue",
+      "ai_narrative": "Strong delivery start. IT Sentinel baseline deployed, OT connectivity architecture approved, NERC CIP compliance analytics in design. All milestones on track. Day 30 checkpoint passed — Setup Maturity Score of 88.",
+      "days_in_current_status": 50,
+      "qa_director_override": null
+    },
+    {
+      "project_id": "88fb8b3a-ecd2-469f-bb50-4571a4a78da7",
+      "name": "Southridge D365 F&O Transformation",
+      "client_name": "Southridge Video",
+      "project_manager": "David Chen",
+      "overall_health": "green",
+      "status": "active",
+      "phase": "plan",
+      "budget": 2800000,
+      "actuals": 85000,
+      "burn_rate": 3.0,
+      "completion_pct": 5,
+      "start_date": "2026-04-20",
+      "end_date": "2028-04-20",
+      "early_warning": {
+        "score": 18,
+        "alert_level": null,
+        "components": {
+          "raid_severity": 22,
+          "health_trend_velocity": 10,
+          "burn_completion_gap": 15,
+          "milestone_slip_rate": 8,
+          "satisfaction_trend": 12,
+          "escalation_frequency": 5
+        },
+        "prediction_30d": "green",
+        "prediction_60d": "green",
+        "prediction_90d": "green",
+        "calculated_at": "2026-05-25T08:00:00Z",
+        "trend": "stable",
+        "trend_delta": 0
+      },
+      "health_dimensions": {
+        "schedule": "green",
+        "budget": "green",
+        "scope": "green",
+        "risk": "green",
+        "satisfaction": "green"
+      },
+      "ai_assessment": "continue",
+      "ai_narrative": "Largest active engagement ($2.8M). Plan phase progressing well after successful kickoff. Design workshops underway with finance team. Day 30 checkpoint due May 20 — auto-triggered for top-quartile. No issues to date.",
+      "days_in_current_status": 35,
+      "qa_director_override": null
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "cp-001",
+      "project_id": "70ecc5ed-dd32-4239-8acd-f3f808e17d8e",
+      "project_name": "City Power & Light SOC Modernization",
+      "client_name": "City Power & Light",
+      "phase": "day_30",
+      "due_date": "2026-05-05",
+      "completed_date": "2026-05-04",
+      "maturity_score": 88,
+      "criteria_met": [
+        "RAID log initialized with 2 risks and 2 dependencies",
+        "PM Fatima Al-Hassan assigned and onboarded",
+        "Budget baseline set at $1.3M with milestone-linked payments",
+        "Client kickoff completed April 8 — CISO and CTO attended",
+        "SOW milestones mapped to 8-phase delivery plan",
+        "NERC CIP compliance framework integrated into governance"
+      ],
+      "criteria_gaps": [
+        "OT environment access documentation pending from client IT"
+      ],
+      "ai_assessment": "Strong foundation. All critical governance elements in place. Single gap (OT access docs) is client-dependent and tracked as RAID dependency. Setup Maturity Score of 88 indicates high confidence in execution readiness.",
+      "qa_director_override": null,
+      "status": "passed"
+    },
+    {
+      "id": "cp-002",
+      "project_id": "d5e6b489-7b15-44b7-9b5b-7a5bd1e3d24f",
+      "project_name": "Datum Corp AI Innovation Platform",
+      "client_name": "Datum Corporation",
+      "phase": "day_30",
+      "due_date": "2026-05-28",
+      "completed_date": null,
+      "maturity_score": null,
+      "criteria_met": [],
+      "criteria_gaps": [],
+      "ai_assessment": "Checkpoint approaching. Pre-assessment indicates strong setup — RAID log active (2 items), PM James Osei assigned, high client engagement. Recommend proceeding with formal Day 30 assessment on schedule.",
+      "qa_director_override": null,
+      "status": "pending"
+    },
+    {
+      "id": "cp-003",
+      "project_id": "88fb8b3a-ecd2-469f-bb50-4571a4a78da7",
+      "project_name": "Southridge D365 F&O Transformation",
+      "client_name": "Southridge Video",
+      "phase": "day_30",
+      "due_date": "2026-05-20",
+      "completed_date": "2026-05-19",
+      "maturity_score": 92,
+      "criteria_met": [
+        "RAID log initialized with 3 risks, 2 assumptions, 1 dependency",
+        "PM David Chen assigned — experienced D365 F&O delivery lead",
+        "Budget baseline set at $2.8M across 3 phases over 24 months",
+        "Client kickoff completed April 22 — CFO and CIO attended",
+        "SOW milestones mapped to 9-milestone delivery plan",
+        "Steering committee established with monthly cadence",
+        "D365 F&O playbook and Trey Research lessons applied to plan"
+      ],
+      "criteria_gaps": [],
+      "ai_assessment": "Exemplary setup for a $2.8M engagement. All criteria met with no gaps. David Chen's D365 experience and direct application of Trey Research lessons demonstrate mature delivery planning. Setup Maturity Score of 92 — highest in current portfolio.",
+      "qa_director_override": null,
+      "status": "passed"
+    },
+    {
+      "id": "cp-004",
+      "project_id": "949c03d0-042a-419e-9448-5f8faa2abd62",
+      "project_name": "Proseware SOC Modernization",
+      "client_name": "Proseware Inc",
+      "phase": "day_30",
+      "due_date": "2026-04-20",
+      "completed_date": "2026-04-18",
+      "maturity_score": 82,
+      "criteria_met": [
+        "RAID log initialized with 2 risks and 1 issue",
+        "PM Marco Rossi assigned and onboarded",
+        "Budget baseline set at $760K",
+        "Client kickoff completed March 24 — CISO attended",
+        "SOW milestones mapped to 7-milestone delivery plan"
+      ],
+      "criteria_gaps": [
+        "AS/400 coverage scope not yet resolved — architecture decision pending",
+        "Sentinel data connector inventory incomplete for legacy OT systems"
+      ],
+      "ai_assessment": "Solid foundation with two known scope gaps related to legacy system coverage. These are tracked as RAID items and do not indicate a setup failure — they reflect genuine technical uncertainty that requires architecture decisions. Score of 82 reflects setup readiness with manageable open items.",
+      "qa_director_override": null,
+      "status": "passed"
+    },
+    {
+      "id": "cp-005",
+      "project_id": "949c03d0-042a-419e-9448-5f8faa2abd62",
+      "project_name": "Proseware SOC Modernization",
+      "client_name": "Proseware Inc",
+      "phase": "day_60",
+      "due_date": "2026-05-20",
+      "completed_date": "2026-05-22",
+      "maturity_score": 78,
+      "criteria_met": [
+        "Sentinel baseline milestone exceeded Day 45 target",
+        "Burn rate at 18.7% vs 22% planned — under budget",
+        "Client satisfaction signal positive — CISO gave verbal praise",
+        "2 of 3 Day 30 gaps partially resolved"
+      ],
+      "criteria_gaps": [
+        "AS/400 coverage gap still pending architecture decision — escalated to tech lead",
+        "Milestone #3 (OT integration) at risk due to unresolved AS/400 question"
+      ],
+      "ai_assessment": "Good momentum on core delivery — Sentinel baseline ahead of plan. However, the recurring AS/400 scope question from Day 30 remains unresolved at Day 60. This persistent gap is the primary driver of the scope-amber status. Recommend QA Director follow-up to accelerate architecture decision before Day 90.",
+      "qa_director_override": null,
+      "status": "flagged"
+    },
+    {
+      "id": "cp-006",
+      "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "project_name": "Wingtip Toys Cloud Native Modernization",
+      "client_name": "Wingtip Toys",
+      "phase": "day_30",
+      "due_date": "2026-02-04",
+      "completed_date": "2026-02-06",
+      "maturity_score": 68,
+      "criteria_met": [
+        "PM Aisha Okonkwo assigned",
+        "Budget baseline set at $1.9M",
+        "Client kickoff completed January 8",
+        "SOW milestones mapped to 9-milestone plan"
+      ],
+      "criteria_gaps": [
+        "RAID log incomplete — only 1 risk logged for a high-complexity engagement",
+        "No legacy application inventory completed",
+        "Technical lead capacity concern — Jake Morrison split across 2 projects"
+      ],
+      "ai_assessment": "Below-threshold setup for a $1.9M engagement. RAID log severely underweight — only 1 risk documented for 35-application modernization. No legacy inventory is a critical gap. Split technical lead is a resource risk. Setup Maturity Score of 68 falls below the 75-point threshold for high-complexity engagements. Recommending QA Director intervention.",
+      "qa_director_override": "Acknowledged gaps. PM committed to complete app inventory by Feb 15. Accepted risk on tech lead split — monitoring closely.",
+      "status": "flagged"
+    },
+    {
+      "id": "cp-007",
+      "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "project_name": "Wingtip Toys Cloud Native Modernization",
+      "client_name": "Wingtip Toys",
+      "phase": "day_60",
+      "due_date": "2026-03-06",
+      "completed_date": "2026-03-10",
+      "maturity_score": 55,
+      "criteria_met": [
+        "App inventory completed (35 applications catalogued)",
+        "Budget burn at 28% vs 20% planned"
+      ],
+      "criteria_gaps": [
+        "Milestone #1 (first 5 apps migrated) missed by 2 weeks",
+        "Undocumented mainframe dependency discovered on App #17",
+        "RAID log still has only 2 items despite growing risk surface",
+        "Burn rate 8 points above plan — trending toward overrun",
+        "Client satisfaction dropping — CDO raised concerns in last steering committee"
+      ],
+      "ai_assessment": "Deteriorating trajectory. The undocumented mainframe dependency is a material risk that should have been caught in Day 30 app inventory. RAID log discipline remains poor despite QA Director feedback. Burn-to-completion gap is widening. Recommend escalation to executive level and initiation of a formal Get-to-Green plan.",
+      "qa_director_override": null,
+      "status": "flagged"
+    },
+    {
+      "id": "cp-008",
+      "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "project_name": "Wingtip Toys Cloud Native Modernization",
+      "client_name": "Wingtip Toys",
+      "phase": "day_90",
+      "due_date": "2026-04-05",
+      "completed_date": "2026-04-08",
+      "maturity_score": 42,
+      "criteria_met": [
+        "Get-to-Green plan initiated"
+      ],
+      "criteria_gaps": [
+        "Architecture redesign in progress — 6-week delay confirmed",
+        "Burn rate at 51.6% with only 38% completion",
+        "Team capacity insufficient for 35-app target",
+        "Executive escalation in progress",
+        "Health dimensions: 4 of 5 in Red status"
+      ],
+      "ai_assessment": "Critical failure at Day 90. Setup maturity has declined from 68 (Day 30) to 42 (Day 90) — the only project in portfolio history to show declining maturity scores across all three checkpoints. Root cause analysis points to inadequate discovery in pre-sales handoff and persistent RAID log neglect. Project is now in Rescue Mode with QA Director Elena Marchetti assigned.",
+      "qa_director_override": "Confirmed Rescue Mode. Elena Marchetti assigned as QA specialist. Get-to-Green plan in active execution. Weekly executive updates initiated.",
+      "status": "flagged"
+    }
+  ],
+  "get_to_green": [
+    {
+      "id": "g2g-001",
+      "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "project_name": "Wingtip Toys Cloud Native Modernization",
+      "client_name": "Wingtip Toys",
+      "project_manager": "Aisha Okonkwo",
+      "qa_specialist": "Elena Marchetti",
+      "status": "active",
+      "started_date": "2026-04-10",
+      "target_green_date": "2026-07-15",
+      "current_ew_score": 88,
+      "root_causes": [
+        "Undocumented mainframe dependency on App #17 discovered post-initiation — triggered full architecture redesign",
+        "Inadequate application discovery during pre-sales handoff — 8 of 35 apps had undocumented dependencies",
+        "Technical lead (Jake Morrison) capacity split across 2 projects during critical discovery phase",
+        "RAID log discipline failure — risks not captured systematically despite QA Director feedback at Day 30"
+      ],
+      "immediate_actions": [
+        { "action": "Complete full dependency mapping for all 35 applications", "owner": "Jake Morrison", "due": "2026-04-20", "done": true },
+        { "action": "Engage architecture review board for mainframe integration pattern", "owner": "Felix Wagner", "due": "2026-04-25", "done": true },
+        { "action": "Re-baseline project schedule with revised architecture", "owner": "Aisha Okonkwo", "due": "2026-04-30", "done": true },
+        { "action": "Dedicate Jake Morrison full-time to Wingtip (remove from secondary project)", "owner": "David Chen (DL)", "due": "2026-04-15", "done": true },
+        { "action": "Conduct client expectation reset meeting with CDO", "owner": "Aisha Okonkwo", "due": "2026-04-18", "done": true }
+      ],
+      "recovery_milestones": [
+        { "milestone": "Architecture redesign approved by ARB", "target_date": "2026-05-05", "status": "completed" },
+        { "milestone": "First 5 apps migrated (revised batch — no mainframe deps)", "target_date": "2026-05-25", "status": "completed" },
+        { "milestone": "Mainframe integration pattern validated in staging", "target_date": "2026-06-10", "status": "in_progress" },
+        { "milestone": "15 apps migrated (Wave 2 — includes first mainframe-dependent app)", "target_date": "2026-07-01", "status": "not_started" },
+        { "milestone": "Burn rate stabilized below 1.1x plan", "target_date": "2026-07-15", "status": "not_started" }
+      ],
+      "success_criteria": [
+        "All health dimensions return to Amber or better",
+        "Burn rate stabilizes within 10% of revised plan",
+        "Client CDO confirms satisfaction with revised timeline",
+        "Early warning score drops below 60"
+      ],
+      "weekly_assessments": [
+        { "week": "2026-04-14", "on_track": true, "ew_score": 90, "notes": "Immediate actions underway. Jake Morrison reassigned full-time. Dependency mapping 60% complete." },
+        { "week": "2026-04-21", "on_track": true, "ew_score": 89, "notes": "Dependency mapping complete. ARB engagement scheduled. Client reset meeting went well — CDO appreciates transparency." },
+        { "week": "2026-04-28", "on_track": true, "ew_score": 87, "notes": "All immediate actions completed. Schedule re-baselined. Architecture review in progress." },
+        { "week": "2026-05-05", "on_track": true, "ew_score": 85, "notes": "ARB approved redesign. First recovery milestone hit. Marginal score improvement." },
+        { "week": "2026-05-12", "on_track": true, "ew_score": 82, "notes": "Wave 1 migration proceeding on revised plan. Team morale improving." },
+        { "week": "2026-05-19", "on_track": false, "ew_score": 85, "notes": "Minor setback — staging environment provisioning delayed by 3 days. Score ticked up slightly. Monitoring closely." },
+        { "week": "2026-05-25", "on_track": true, "ew_score": 88, "notes": "Wave 1 (5 apps) completed. Mainframe integration pattern design underway. Score remains elevated due to outstanding architecture risk." }
+      ]
+    },
+    {
+      "id": "g2g-002",
+      "project_id": "0008427b-984d-42b7-974c-f589818d2cbc",
+      "project_name": "Blue Yonder Microsoft Fabric Platform",
+      "client_name": "Blue Yonder Inc",
+      "project_manager": "Sophie Laurent",
+      "qa_specialist": null,
+      "status": "on_track",
+      "started_date": "2026-05-12",
+      "target_green_date": "2026-07-01",
+      "current_ew_score": 62,
+      "root_causes": [
+        "Legacy ERP data quality issues uncovered during profiling sprint — 40% of source tables had schema inconsistencies",
+        "Data profiling timeline underestimated by 3 weeks in original SOW estimate"
+      ],
+      "immediate_actions": [
+        { "action": "Deploy automated data quality assessment framework", "owner": "Raj Patel", "due": "2026-05-18", "done": true },
+        { "action": "Identify and prioritize critical data pipelines for remediation", "owner": "Sophie Laurent", "due": "2026-05-20", "done": true },
+        { "action": "Communicate revised timeline to CDO with confidence assessment", "owner": "Sophie Laurent", "due": "2026-05-15", "done": true }
+      ],
+      "recovery_milestones": [
+        { "milestone": "Data quality assessment framework deployed", "target_date": "2026-05-18", "status": "completed" },
+        { "milestone": "Priority data pipelines remediated (top 10 tables)", "target_date": "2026-06-05", "status": "in_progress" },
+        { "milestone": "Schedule recovery — back on original timeline", "target_date": "2026-06-20", "status": "not_started" },
+        { "milestone": "All health dimensions return to Green", "target_date": "2026-07-01", "status": "not_started" }
+      ],
+      "success_criteria": [
+        "All health dimensions return to Green",
+        "Schedule recovery within 1 week of original plan",
+        "CDO confirms satisfaction with data quality approach",
+        "Early warning score drops below 40"
+      ],
+      "weekly_assessments": [
+        { "week": "2026-05-12", "on_track": true, "ew_score": 65, "notes": "G2G initiated. Data quality framework being deployed. CDO informed of revised approach." },
+        { "week": "2026-05-19", "on_track": true, "ew_score": 62, "notes": "Framework deployed. 4 of 10 priority tables remediated. CDO response positive. On track for recovery." }
+      ]
+    }
+  ],
+  "health_reviews": {
+    "current_period": "2026-05",
+    "region": "Americas",
+    "nominations": [
+      {
+        "id": "nom-001",
+        "project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+        "project_name": "Wingtip Toys Cloud Native Modernization",
+        "client_name": "Wingtip Toys",
+        "nomination_reason": "Critical EW score (88). Active Get-to-Green plan. Highest risk in portfolio.",
+        "early_warning_score": 88,
+        "value_at_risk": 1140000,
+        "ai_talking_points": [
+          "Architecture redesign triggered by undocumented mainframe dependency — 6-week schedule impact",
+          "Get-to-Green plan in Week 7 — immediate actions all completed, recovery milestones partially on track",
+          "Burn-completion gap of 13.6 points is highest in portfolio — requires budget re-forecast discussion",
+          "Positive signal: client CDO acknowledged transparency and revised approach in April reset meeting",
+          "Comparable project (Adatum Cloud Foundation) recovered from similar infrastructure delay in 8 weeks"
+        ],
+        "preparation_notes": "PM Aisha Okonkwo should present the revised architecture plan, updated timeline, and budget re-forecast. Highlight the CDO relationship recovery as a positive signal. Be prepared to discuss resource augmentation options if Wave 2 falls behind.",
+        "status": "confirmed"
+      },
+      {
+        "id": "nom-002",
+        "project_id": "0008427b-984d-42b7-974c-f589818d2cbc",
+        "project_name": "Blue Yonder Microsoft Fabric Platform",
+        "client_name": "Blue Yonder Inc",
+        "nomination_reason": "Watch-level EW score (62). Status crossed Green→Amber this period.",
+        "early_warning_score": 62,
+        "value_at_risk": 480000,
+        "ai_talking_points": [
+          "Data quality issues in legacy ERP — 40% of source tables had schema inconsistencies",
+          "3-week schedule slip, but budget remains Green — efficient resource utilization",
+          "Get-to-Green plan initiated May 12 — on track with positive early results",
+          "CDO expects recovery plan — proactive communication already delivered",
+          "Predicted to recover to Green within 90 days if data remediation stays on schedule"
+        ],
+        "preparation_notes": "PM Sophie Laurent should present the data quality assessment results and remediation roadmap. Emphasize that budget is healthy and the issue is a timeline correction, not a fundamental delivery problem.",
+        "status": "confirmed"
+      },
+      {
+        "id": "nom-003",
+        "project_id": "88fb8b3a-ecd2-469f-bb50-4571a4a78da7",
+        "project_name": "Southridge D365 F&O Transformation",
+        "client_name": "Southridge Video",
+        "nomination_reason": "Top-quartile engagement ($2.8M). Day 30 checkpoint completed with score of 92. Positive showcase.",
+        "early_warning_score": 18,
+        "value_at_risk": 0,
+        "ai_talking_points": [
+          "Highest Setup Maturity Score in portfolio (92) — exemplary kickoff execution",
+          "Largest active engagement at $2.8M over 24 months — strategic account for Dynamics practice",
+          "David Chen leveraging Trey Research D365 lessons directly in planning",
+          "Steering committee established with CFO and CIO participation",
+          "Recommend as reference case for setup assurance value"
+        ],
+        "preparation_notes": "PM David Chen should briefly present the setup approach and how Trey Research lessons were applied. This is a positive showcase to demonstrate QA checkpoint value to leadership.",
+        "status": "confirmed"
+      },
+      {
+        "id": "nom-004",
+        "project_id": "949c03d0-042a-419e-9448-5f8faa2abd62",
+        "project_name": "Proseware SOC Modernization",
+        "client_name": "Proseware Inc",
+        "nomination_reason": "Random Green sample — validate healthy status. Day 60 checkpoint flagged AS/400 scope gap.",
+        "early_warning_score": 35,
+        "value_at_risk": 0,
+        "ai_talking_points": [
+          "Sentinel baseline exceeded Day 45 milestone — strong technical execution",
+          "Persistent AS/400 coverage gap from Day 30 through Day 60 — architecture decision needed",
+          "CISO satisfaction high — verbal praise noted in status update",
+          "Budget under plan (18.7% burn vs 22% planned) — efficient delivery",
+          "Recommend leadership input on AS/400 scope decision to unblock Day 90 checkpoint"
+        ],
+        "preparation_notes": "PM Marco Rossi should present the AS/400 architecture decision options and seek leadership guidance. This validates the Green-sample nomination process — project is healthy but has a latent scope question that benefits from visibility.",
+        "status": "nominated"
+      }
+    ],
+    "post_review_actions": [
+      {
+        "id": "pra-001",
+        "review_period": "2026-04",
+        "project_name": "Wingtip Toys Cloud Native Modernization",
+        "action": "Assign QA specialist Elena Marchetti to lead rescue mode",
+        "owner": "VP Professional Services",
+        "due": "2026-04-12",
+        "done": true
+      },
+      {
+        "id": "pra-002",
+        "review_period": "2026-04",
+        "project_name": "Wingtip Toys Cloud Native Modernization",
+        "action": "Weekly executive progress updates until EW score drops below 70",
+        "owner": "Aisha Okonkwo",
+        "due": "2026-07-15",
+        "done": false
+      },
+      {
+        "id": "pra-003",
+        "review_period": "2026-04",
+        "project_name": "Blue Yonder Microsoft Fabric Platform",
+        "action": "Initiate Get-to-Green plan with data quality focus",
+        "owner": "Sophie Laurent",
+        "due": "2026-05-15",
+        "done": true
+      }
+    ]
+  },
+  "knowledge_network": [
+    {
+      "id": "ll-001",
+      "source_project_id": "351f768e-5a7b-4257-b4eb-87bb489680b8",
+      "source_project_name": "VanArsdel Copilot & AI Platform",
+      "category": "success_pattern",
+      "title": "Weekly AI model acceptance demos accelerate client confidence",
+      "description": "Weekly demos of Copilot and Legal Agent outputs to end-users during UAT resulted in 68% adoption at 90 days — significantly above the 45% industry average. Client sign-off on AI output quality was achieved 3 weeks ahead of schedule because stakeholders had continuous visibility into model behavior.",
+      "tags": { "service_line": "AI & Copilot", "industry": "Professional Services", "project_size": "$1M-2M", "region": "Americas", "phase": "execute" },
+      "applicability_score": 85,
+      "times_consumed": 2,
+      "linked_projects": ["d5e6b489-7b15-44b7-9b5b-7a5bd1e3d24f"],
+      "created_at": "2026-05-10"
+    },
+    {
+      "id": "ll-002",
+      "source_project_id": "56ff1666-d3a2-456c-858b-08d36d4b8d4d",
+      "source_project_name": "Munson's Pickles Fabric & Power BI",
+      "category": "success_pattern",
+      "title": "Early executive sponsor engagement prevents late-stage scope disputes",
+      "description": "Erik Munson (CEO) attended the kickoff and every monthly steering committee. His visible sponsorship prevented two potential scope disputes from escalating — when functional leads pushed for additional dashboards, Erik redirected to the agreed success criteria. Result: on-time, under-budget delivery with 10/10 CSAT.",
+      "tags": { "service_line": "Data & Analytics", "industry": "Manufacturing", "project_size": "$500K-1M", "region": "Americas", "phase": "initiate" },
+      "applicability_score": 92,
+      "times_consumed": 3,
+      "linked_projects": ["88fb8b3a-ecd2-469f-bb50-4571a4a78da7", "d5e6b489-7b15-44b7-9b5b-7a5bd1e3d24f", "70ecc5ed-dd32-4239-8acd-f3f808e17d8e"],
+      "created_at": "2026-05-08"
+    },
+    {
+      "id": "ll-003",
+      "source_project_id": "cf5d8eb4-6c4a-42d4-a953-4fc044155ee3",
+      "source_project_name": "Lamna Healthcare Azure & Security Foundation",
+      "category": "risk_mitigation",
+      "title": "HIPAA compliance pre-assessment reduces regulatory delivery risk by 60%",
+      "description": "Conducting a 2-week HIPAA pre-assessment before project kickoff identified 3 critical gaps in the client's existing infrastructure that would have caused delivery delays of 4-6 weeks if discovered during execution. The pre-assessment cost $28K but saved an estimated $120K in rework and 6 weeks of schedule.",
+      "tags": { "service_line": "Security", "industry": "Healthcare", "project_size": "$1M-2M", "region": "Americas", "phase": "initiate" },
+      "applicability_score": 78,
+      "times_consumed": 1,
+      "linked_projects": [],
+      "created_at": "2026-05-09"
+    },
+    {
+      "id": "ll-004",
+      "source_project_id": "3b2cdf25-5a8b-4a0a-909b-7b217192531f",
+      "source_project_name": "Trey Research D365 Sales & CS",
+      "category": "success_pattern",
+      "title": "Phased D365 rollout with power-user champions drives 92% adoption",
+      "description": "Rolling out D365 Sales first to a 15-person power-user group, then expanding after 30 days of positive feedback, resulted in 92% user adoption at 60 days. The power-users became internal advocates and trained their teams, reducing formal training costs by 40%.",
+      "tags": { "service_line": "Dynamics 365", "industry": "Research & Technology", "project_size": "$1M-2M", "region": "Americas", "phase": "execute" },
+      "applicability_score": 88,
+      "times_consumed": 2,
+      "linked_projects": ["88fb8b3a-ecd2-469f-bb50-4571a4a78da7"],
+      "created_at": "2026-04-15"
+    },
+    {
+      "id": "ll-005",
+      "source_project_id": "43f6742f-f802-467c-ad99-b7fa00076eb2",
+      "source_project_name": "Wingtip Toys Cloud Native Modernization",
+      "category": "failure_mode",
+      "title": "Incomplete application discovery leads to architecture redesign mid-project",
+      "description": "Failing to complete a thorough application dependency mapping before migration planning resulted in an undocumented mainframe dependency on App #17, triggering a 6-week architecture redesign. The root cause was an inadequate pre-sales handoff that relied on client-provided inventory without independent validation. 8 of 35 applications had undocumented dependencies.",
+      "tags": { "service_line": "Cloud Adoption", "industry": "Retail", "project_size": "$1M-2M", "region": "Americas", "phase": "initiate" },
+      "applicability_score": 95,
+      "times_consumed": 0,
+      "linked_projects": [],
+      "created_at": "2026-05-20"
+    },
+    {
+      "id": "ll-006",
+      "source_project_id": "63cbac28-393a-46c9-8820-0477949ae7db",
+      "source_project_name": "Contoso Sports D365 CE",
+      "category": "failure_mode",
+      "title": "M&A risk not captured in RAID log leads to project cancellation",
+      "description": "Client was acquired by a larger media group mid-project. The acquiring company had an existing Salesforce mandate, making the D365 CE implementation obsolete. The M&A risk was publicly discussed in industry press 2 months before project start but was not captured as a RAID item. $340K in actuals was non-recoverable.",
+      "tags": { "service_line": "Dynamics 365", "industry": "Media & Entertainment", "project_size": "$500K-1M", "region": "Americas", "phase": "execute" },
+      "applicability_score": 72,
+      "times_consumed": 1,
+      "linked_projects": ["88fb8b3a-ecd2-469f-bb50-4571a4a78da7"],
+      "created_at": "2026-03-20"
+    },
+    {
+      "id": "ll-007",
+      "source_project_id": "cf5d8eb4-6c4a-42d4-a953-4fc044155ee3",
+      "source_project_name": "Lamna Healthcare Azure & Security Foundation",
+      "category": "process_improvement",
+      "title": "Bi-weekly RAID reviews reduce escalation frequency by 40%",
+      "description": "Switching from monthly to bi-weekly RAID log reviews reduced the number of escalations from 8 to 5 over the project lifecycle. Earlier risk identification allowed mitigations to be implemented before issues reached escalation threshold. Team reported feeling more in control of project trajectory.",
+      "tags": { "service_line": "Security", "industry": "Healthcare", "project_size": "$1M-2M", "region": "Americas", "phase": "execute" },
+      "applicability_score": 90,
+      "times_consumed": 2,
+      "linked_projects": ["70ecc5ed-dd32-4239-8acd-f3f808e17d8e", "949c03d0-042a-419e-9448-5f8faa2abd62"],
+      "created_at": "2026-05-09"
+    }
+  ],
+  "client_portal": [
+    {
+      "project_id": "88fb8b3a-ecd2-469f-bb50-4571a4a78da7",
+      "project_name": "Southridge D365 F&O Transformation",
+      "client_name": "Southridge Video",
+      "disclosure_policy": "transparent",
+      "client_health_status": "green",
+      "client_narrative": "Your D365 Finance & Operations transformation is progressing ahead of plan. The planning phase is well underway with design workshops actively engaging your finance team. All governance structures are in place, including monthly steering committee meetings with your CFO and CIO. We are applying best practices from similar successful D365 implementations to ensure a smooth execution phase.",
+      "milestone_progress": [
+        { "name": "Project Kickoff & Governance Setup", "status": "completed", "due": "2026-05-01", "completion_pct": 100 },
+        { "name": "Finance Design Workshops", "status": "in_progress", "due": "2026-06-15", "completion_pct": 45 },
+        { "name": "Supply Chain Design Workshops", "status": "not_started", "due": "2026-07-15", "completion_pct": 0 },
+        { "name": "Phase 1 Build — Finance Module", "status": "not_started", "due": "2026-10-01", "completion_pct": 0 }
+      ],
+      "disclosed_risks": [
+        { "risk": "Data migration complexity from legacy ERP", "mitigation": "Dedicated data migration workstream with automated validation tools", "status": "mitigated" }
+      ],
+      "next_update_date": "2026-06-01",
+      "client_sentiment_signals": ["High engagement in workshops", "CFO attending steering committees", "Positive informal feedback from finance director"]
+    },
+    {
+      "project_id": "70ecc5ed-dd32-4239-8acd-f3f808e17d8e",
+      "project_name": "City Power & Light SOC Modernization",
+      "client_name": "City Power & Light",
+      "disclosure_policy": "standard",
+      "client_health_status": "green",
+      "client_narrative": "Your SOC Modernization program is on track with all milestones being met on schedule. The Microsoft Sentinel baseline has been successfully deployed, and OT connectivity architecture has been approved. NERC CIP compliance analytics are currently in the design phase, targeting the January 2027 audit timeline.",
+      "milestone_progress": [
+        { "name": "Sentinel Baseline Deployment", "status": "completed", "due": "2026-05-15", "completion_pct": 100 },
+        { "name": "OT Connectivity Architecture", "status": "completed", "due": "2026-05-20", "completion_pct": 100 },
+        { "name": "NERC CIP Compliance Analytics", "status": "in_progress", "due": "2026-08-01", "completion_pct": 15 },
+        { "name": "SOC Transition & Go-Live", "status": "not_started", "due": "2026-12-01", "completion_pct": 0 }
+      ],
+      "disclosed_risks": [
+        { "risk": "OT environment documentation gaps", "mitigation": "Working with your IT team to complete documentation — expected resolution by June 15", "status": "in_progress" }
+      ],
+      "next_update_date": "2026-06-08",
+      "client_sentiment_signals": ["CISO expressed confidence in approach", "CTO actively participating in architecture reviews"]
+    },
+    {
+      "project_id": "0008427b-984d-42b7-974c-f589818d2cbc",
+      "project_name": "Blue Yonder Microsoft Fabric Platform",
+      "client_name": "Blue Yonder Inc",
+      "disclosure_policy": "standard",
+      "client_health_status": "amber",
+      "client_narrative": "We want to proactively share that we've identified data quality challenges in your legacy ERP source tables that require additional remediation before we can proceed with full Fabric platform deployment. The core Lakehouse is operational and performing well. We've deployed an automated data quality assessment framework and are systematically addressing the highest-priority data pipelines. We've adjusted the timeline by approximately 3 weeks and are confident in the revised schedule.",
+      "milestone_progress": [
+        { "name": "Core Lakehouse Deployment", "status": "completed", "due": "2026-04-15", "completion_pct": 100 },
+        { "name": "Data Quality Remediation", "status": "in_progress", "due": "2026-06-05", "completion_pct": 40 },
+        { "name": "Full Data Pipeline Integration", "status": "not_started", "due": "2026-07-15", "completion_pct": 0 },
+        { "name": "Executive Dashboard & Reporting", "status": "not_started", "due": "2026-09-01", "completion_pct": 0 }
+      ],
+      "disclosed_risks": [
+        { "risk": "Legacy ERP data quality issues affecting migration timeline", "mitigation": "Automated data quality framework deployed. Systematic remediation of priority tables underway with 3-week revised timeline.", "status": "in_progress" }
+      ],
+      "next_update_date": "2026-06-01",
+      "client_sentiment_signals": ["CDO appreciates proactive communication", "Some concern about timeline but overall positive"]
+    }
+  ],
+  "qa_evals": {
+    "prediction_accuracy": {
+      "true_positives": 4,
+      "false_positives": 1,
+      "true_negatives": 18,
+      "false_negatives": 1,
+      "precision": 80.0,
+      "recall": 80.0,
+      "f1_score": 80.0
+    },
+    "recovery_stats": {
+      "total_g2g_plans": 5,
+      "resolved_within_60d": 3,
+      "recovery_rate": 60.0,
+      "avg_recovery_days": 48,
+      "active_plans": 2
+    },
+    "alignment": {
+      "total_assessments": 42,
+      "director_overrides": 6,
+      "override_rate": 14.3,
+      "override_breakdown": {
+        "ai_too_aggressive": 4,
+        "ai_too_lenient": 2
+      }
+    },
+    "checkpoint_correlation": {
+      "high_maturity_green_rate": 88.0,
+      "low_maturity_red_rate": 75.0,
+      "avg_maturity_by_outcome": {
+        "green": 85,
+        "amber": 72,
+        "red": 58
+      }
+    },
+    "monthly_trend": [
+      { "month": "2026-01", "avg_ew_score": 38, "portfolio_green_pct": 78, "predictions_correct": 8, "predictions_total": 10 },
+      { "month": "2026-02", "avg_ew_score": 40, "portfolio_green_pct": 75, "predictions_correct": 9, "predictions_total": 11 },
+      { "month": "2026-03", "avg_ew_score": 44, "portfolio_green_pct": 72, "predictions_correct": 7, "predictions_total": 10 },
+      { "month": "2026-04", "avg_ew_score": 42, "portfolio_green_pct": 70, "predictions_correct": 10, "predictions_total": 12 },
+      { "month": "2026-05", "avg_ew_score": 42, "portfolio_green_pct": 71, "predictions_correct": 8, "predictions_total": 10 }
+    ]
+  }
+}
