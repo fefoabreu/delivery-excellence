@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Shield, Activity, AlertTriangle, CheckCircle, XCircle,
   TrendingUp, TrendingDown, Minus, Search, RefreshCw,
@@ -8,6 +9,7 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { qualityAssuranceApi } from '../api/client';
+import HealthReviewModal from '../components/shared/HealthReviewModal';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 type HealthStatus = 'green' | 'amber' | 'red';
@@ -18,7 +20,7 @@ type G2GStatus = 'active' | 'on_track' | 'stalled' | 'resolved' | 'escalated';
 type NominationStatus = 'nominated' | 'confirmed' | 'presented' | 'deferred';
 type LessonCategory = 'success_pattern' | 'failure_mode' | 'risk_mitigation' | 'process_improvement';
 type DisclosurePolicy = 'minimal' | 'standard' | 'transparent';
-type Tab = 'monitor' | 'checkpoints' | 'reviews' | 'g2g' | 'knowledge' | 'client' | 'evals';
+type Tab = 'monitor' | 'checkpoints' | 'reviews' | 'g2g';
 
 interface EarlyWarning {
   score: number; alert_level: AlertLevel | null;
@@ -731,8 +733,9 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
 }
 
 // ── Health Reviews Tab ─────────────────────────────────────────────────────
-function HealthReviewsTab({ reviews }: { reviews: QAData['health_reviews'] }) {
+function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_reviews']; projects: ProjectMonitor[] }) {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [reviewModal, setReviewModal] = useState<string | null>(null);
   const NOM_STATUS: Record<NominationStatus, { label: string; bg: string }> = {
     nominated: { label: 'Nominated', bg: 'bg-blue-100 text-blue-700' },
     confirmed: { label: 'Confirmed', bg: 'bg-green-100 text-green-700' },
@@ -785,11 +788,17 @@ function HealthReviewsTab({ reviews }: { reviews: QAData['health_reviews'] }) {
                   <p className="text-xs text-gray-700">{nom.nomination_reason}</p>
                 </div>
 
-                <button onClick={() => setExpanded(isExpanded ? null : nom.id)}
-                  className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
-                  {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
-                  {isExpanded ? 'Hide' : 'Show'} preparation materials
-                </button>
+                <div className="flex items-center gap-3">
+                  <button onClick={() => setReviewModal(nom.id)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-ms-blue text-white text-xs font-semibold hover:bg-blue-700 transition-colors">
+                    <FileText className="w-3.5 h-3.5" /> Review Briefing
+                  </button>
+                  <button onClick={() => setExpanded(isExpanded ? null : nom.id)}
+                    className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
+                    {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                    {isExpanded ? 'Hide' : 'Show'} preparation materials
+                  </button>
+                </div>
 
                 {isExpanded && (
                   <div className="mt-3 border-t border-gray-100 pt-3 space-y-3">
@@ -849,6 +858,47 @@ function HealthReviewsTab({ reviews }: { reviews: QAData['health_reviews'] }) {
           </div>
         </>
       )}
+
+      {reviewModal && (() => {
+        const nom = reviews.nominations.find(n => n.id === reviewModal);
+        if (!nom) return null;
+        const proj = projects.find(p => p.project_id === nom.project_id);
+        const reviewData = {
+          project_name: nom.project_name,
+          client_name: nom.client_name,
+          project_manager: proj?.project_manager || 'TBD',
+          overall_health: (proj?.overall_health || 'green') as HealthStatus,
+          phase: proj?.phase || 'execute',
+          budget: proj?.budget || 0,
+          actuals: proj?.actuals || 0,
+          burn_rate: proj?.burn_rate || 0,
+          completion_pct: proj?.completion_pct || 0,
+          start_date: proj?.start_date || '',
+          end_date: proj?.end_date || '',
+          early_warning_score: nom.early_warning_score,
+          ew_trend: proj?.early_warning.trend || 'stable',
+          ew_trend_delta: proj?.early_warning.trend_delta || 0,
+          ew_components: proj?.early_warning.components || {},
+          health_dimensions: proj?.health_dimensions || {},
+          predictions: {
+            d30: (proj?.early_warning.prediction_30d || 'green') as HealthStatus,
+            d60: (proj?.early_warning.prediction_60d || 'green') as HealthStatus,
+            d90: (proj?.early_warning.prediction_90d || 'green') as HealthStatus,
+          },
+          ai_assessment: proj?.ai_assessment || 'continue',
+          ai_narrative: proj?.ai_narrative || nom.nomination_reason,
+          nomination_reason: nom.nomination_reason,
+          value_at_risk: nom.value_at_risk,
+          talking_points: nom.ai_talking_points,
+          preparation_notes: nom.preparation_notes,
+          key_risks: nom.ai_talking_points.filter(tp => tp.toLowerCase().includes('risk') || tp.toLowerCase().includes('concern') || tp.toLowerCase().includes('delay') || tp.toLowerCase().includes('gap')),
+          key_achievements: nom.ai_talking_points.filter(tp => tp.toLowerCase().includes('success') || tp.toLowerCase().includes('ahead') || tp.toLowerCase().includes('exceeded') || tp.toLowerCase().includes('strong') || tp.toLowerCase().includes('positive') || tp.toLowerCase().includes('completed')),
+          recommendation: nom.preparation_notes,
+        };
+        if (reviewData.key_risks.length === 0) reviewData.key_risks = ['No critical risks identified — standard monitoring continues'];
+        if (reviewData.key_achievements.length === 0) reviewData.key_achievements = ['Project progressing per plan'];
+        return <HealthReviewModal data={reviewData} onClose={() => setReviewModal(null)} />;
+      })()}
     </div>
   );
 }
@@ -1181,13 +1231,11 @@ const TABS: { id: Tab; label: string; Icon: typeof Shield }[] = [
   { id: 'checkpoints', label: 'Checkpoints',        Icon: Target },
   { id: 'reviews',     label: 'Health Reviews',     Icon: Users },
   { id: 'g2g',         label: 'Get-to-Green',       Icon: TrendingUp },
-  { id: 'knowledge',   label: 'Knowledge Network',  Icon: BookOpen },
-  { id: 'client',      label: 'Client Portal',      Icon: Globe },
-  { id: 'evals',       label: 'QA Evals',           Icon: BarChart2 },
 ];
 
 // ── Main Page ──────────────────────────────────────────────────────────────
 export default function QualityAssurance() {
+  const navigate = useNavigate();
   const [config, setConfig] = useState<QAConfig | null>(null);
   const [data, setData] = useState<QAData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -1215,29 +1263,61 @@ export default function QualityAssurance() {
               Proactive, always-on portfolio quality monitoring — AI-powered early warning, structured recovery, and institutional knowledge that improves every project.
             </p>
           </div>
-          <button onClick={() => { setLoading(true); Promise.all([qualityAssuranceApi.getConfig(), qualityAssuranceApi.getData()]).then(([c, d]) => { setConfig(c.data); setData(d.data); }).finally(() => setLoading(false)); }}
-            className="btn-ghost flex items-center gap-1 text-gray-400">
-            <RefreshCw className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => navigate('/qa-evals')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 text-xs font-semibold hover:bg-purple-100 transition-colors"
+            >
+              <Target className="w-3.5 h-3.5" />
+              AI-QA Evals
+              <ArrowRight className="w-3 h-3" />
+            </button>
+            <button
+              onClick={() => navigate('/qa-framework')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-ms-blue/30 bg-ms-blue/5 text-ms-blue text-xs font-semibold hover:bg-ms-blue/10 transition-colors"
+            >
+              <Shield className="w-3.5 h-3.5" />
+              AI-QA Framework
+              <ArrowRight className="w-3 h-3" />
+            </button>
+            <button onClick={() => { setLoading(true); Promise.all([qualityAssuranceApi.getConfig(), qualityAssuranceApi.getData()]).then(([c, d]) => { setConfig(c.data); setData(d.data); }).finally(() => setLoading(false)); }}
+              className="btn-ghost flex items-center gap-1 text-gray-400">
+              <RefreshCw className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 
       <OKRPanel config={config} />
 
-      <div className="flex gap-1 mb-6 border-b border-gray-200 overflow-x-auto">
+      <div className="grid grid-cols-4 gap-3 mb-6">
         {TABS.map(t => {
           const TabIcon = t.Icon;
+          const isActive = tab === t.id;
+          const counts: Record<Tab, () => string> = {
+            monitor: () => data ? `${data.portfolio_monitor.length} projects` : '',
+            checkpoints: () => data ? `${data.checkpoints.length} assessments` : '',
+            reviews: () => data ? `${data.health_reviews.nominations.length} nominated` : '',
+            g2g: () => data ? `${data.get_to_green.length} plans` : '',
+          };
           return (
             <button key={t.id} onClick={() => setTab(t.id)}
               className={clsx(
-                'flex items-center gap-1.5 px-4 py-2.5 text-xs font-medium border-b-2 transition-colors whitespace-nowrap',
-                tab === t.id
-                  ? 'border-ms-blue text-ms-blue'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                'relative flex items-center gap-3 p-4 rounded-xl border-2 transition-all text-left',
+                isActive
+                  ? 'border-ms-blue bg-ms-blue/5 shadow-sm'
+                  : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
               )}
             >
-              <TabIcon className="w-3.5 h-3.5" />
-              {t.label}
+              <div className={clsx('w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0',
+                isActive ? 'bg-ms-blue' : 'bg-gray-100')}>
+                <TabIcon className={clsx('w-5 h-5', isActive ? 'text-white' : 'text-gray-500')} />
+              </div>
+              <div>
+                <div className={clsx('text-sm font-semibold', isActive ? 'text-ms-blue' : 'text-gray-700')}>{t.label}</div>
+                <div className="text-[11px] text-gray-400">{counts[t.id]()}</div>
+              </div>
+              {isActive && <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-ms-blue rounded-full" />}
             </button>
           );
         })}
@@ -1246,10 +1326,7 @@ export default function QualityAssurance() {
       {tab === 'monitor' && <PortfolioMonitorTab projects={data.portfolio_monitor} config={config} />}
       {tab === 'checkpoints' && <CheckpointsTab checkpoints={data.checkpoints} />}
       {tab === 'g2g' && <GetToGreenTab plans={data.get_to_green} />}
-      {tab === 'reviews' && <HealthReviewsTab reviews={data.health_reviews} />}
-      {tab === 'knowledge' && <KnowledgeNetworkTab lessons={data.knowledge_network} />}
-      {tab === 'client' && <ClientPortalTab views={data.client_portal} />}
-      {tab === 'evals' && <QAEvalsTab evals={data.qa_evals} />}
+      {tab === 'reviews' && <HealthReviewsTab reviews={data.health_reviews} projects={data.portfolio_monitor} />}
     </div>
   );
 }

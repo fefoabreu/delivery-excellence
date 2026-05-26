@@ -15,6 +15,10 @@ import Agent from './pages/Agent';
 import Backlog from './pages/Backlog';
 import DealApprovals from './pages/DealApprovals';
 import QualityAssurance from './pages/QualityAssurance';
+import QAFramework from './pages/QAFramework';
+import QAEvalsPage from './pages/QAEvalsPage';
+import QAKnowledgeNetwork from './pages/QAKnowledgeNetwork';
+import QAClientPortal from './pages/QAClientPortal';
 import ACLM from './pages/ACLM';
 import ACLMCockpit from './pages/ACLMCockpit';
 import Evals from './pages/Evals';
@@ -43,6 +47,10 @@ export default function App() {
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/deal-approvals" element={<DealApprovals />} />
               <Route path="/quality-assurance" element={<QualityAssurance />} />
+              <Route path="/qa-framework" element={<QAFramework />} />
+              <Route path="/qa-evals" element={<QAEvalsPage />} />
+              <Route path="/qa-knowledge-network" element={<QAKnowledgeNetwork />} />
+              <Route path="/qa-client-portal" element={<QAClientPortal />} />
               <Route path="/aclm" element={<ACLM />} />
               <Route path="/aclm-cockpit" element={<ACLMCockpit />} />
               <Route path="/evals" element={<Evals />} />
