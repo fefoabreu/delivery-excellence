@@ -163,6 +163,7 @@ const ewScoreColor = (s: number) =>
   s >= 80 ? 'text-red-700' : s >= 60 ? 'text-orange-700' : s >= 40 ? 'text-amber-700' : 'text-green-700';
 const ewScoreBg = (s: number) =>
   s >= 80 ? 'bg-red-500' : s >= 60 ? 'bg-orange-500' : s >= 40 ? 'bg-amber-500' : 'bg-green-500';
+const ewBarColor = ewScoreBg;
 const ewScoreRing = (s: number) =>
   s >= 80 ? 'stroke-red-500' : s >= 60 ? 'stroke-orange-500' : s >= 40 ? 'stroke-amber-500' : 'stroke-green-500';
 
@@ -212,6 +213,136 @@ function OKRPanel({ config }: { config: QAConfig }) {
           );
         })}
       </div>
+    </div>
+  );
+}
+
+// ── Power BI Style Components ──────────────────────────────────────────────
+function PowerBIFrame({ title, subtitle, slicers, children }: { title: string; subtitle: string; slicers?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <div className="bg-gray-50 rounded-xl border border-gray-300 overflow-hidden shadow-sm">
+      {/* Title bar — Power BI signature */}
+      <div className="bg-slate-900 px-4 py-2.5 flex items-center gap-3">
+        <div className="w-6 h-6 rounded-sm flex items-center justify-center" style={{ background: '#F2C811' }}>
+          <span className="text-[9px] font-black text-slate-900 leading-none">Pbi</span>
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="text-white text-[13px] font-semibold leading-tight">{title}</div>
+          <div className="text-slate-400 text-[10px] leading-tight">{subtitle}</div>
+        </div>
+        <div className="flex items-center gap-3 text-[10px] text-slate-400">
+          <span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" /> Live</span>
+          <span>Last refresh: just now</span>
+        </div>
+      </div>
+      {/* Slicer ribbon */}
+      {slicers && (
+        <div className="bg-white px-4 py-2 border-b border-gray-200 flex items-center gap-2 flex-wrap">
+          <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wide mr-1">Filters</span>
+          {slicers}
+        </div>
+      )}
+      <div className="p-4 bg-[#faf9f8]">{children}</div>
+    </div>
+  );
+}
+
+function PBITile({ label, value, sublabel, accent, trend }: { label: string; value: React.ReactNode; sublabel?: string; accent?: string; trend?: { icon: typeof ArrowUp; text: string; color: string } }) {
+  return (
+    <div className="bg-white rounded-md border border-gray-200 p-3.5 relative overflow-hidden">
+      {accent && <div className={clsx('absolute top-0 left-0 right-0 h-1', accent)} />}
+      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">{label}</div>
+      <div className="text-3xl font-bold text-gray-900 leading-none tracking-tight">{value}</div>
+      {sublabel && <div className="text-[11px] text-gray-500 mt-1.5">{sublabel}</div>}
+      {trend && (
+        <div className={clsx('flex items-center gap-1 mt-1.5 text-[10px] font-semibold', trend.color)}>
+          <trend.icon className="w-3 h-3" />
+          <span>{trend.text}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PBIVisual({ title, subtitle, children, className }: { title: string; subtitle?: string; children: React.ReactNode; className?: string }) {
+  return (
+    <div className={clsx('bg-white rounded-md border border-gray-200 p-4 flex flex-col', className)}>
+      <div className="flex items-start justify-between mb-3 flex-shrink-0">
+        <div>
+          <div className="text-[12px] font-bold text-gray-800">{title}</div>
+          {subtitle && <div className="text-[10px] text-gray-400">{subtitle}</div>}
+        </div>
+      </div>
+      <div className="flex-1 min-h-0">{children}</div>
+    </div>
+  );
+}
+
+function PBIDonut({ segments, centerLabel, centerValue }: { segments: { label: string; value: number; color: string }[]; centerLabel?: string; centerValue?: string }) {
+  const total = segments.reduce((s, x) => s + x.value, 0);
+  let offset = 0;
+  return (
+    <div className="flex items-center gap-4">
+      <div className="relative flex-shrink-0">
+        <svg viewBox="0 0 36 36" className="w-28 h-28 -rotate-90">
+          <circle cx="18" cy="18" r="15.5" fill="none" stroke="#f3f4f6" strokeWidth="5" />
+          {segments.map((s, i) => {
+            const pct = total > 0 ? (s.value / total) * 100 : 0;
+            const dasharray = `${pct} 100`;
+            const dashoffset = -offset;
+            offset += pct;
+            return <circle key={i} cx="18" cy="18" r="15.5" fill="none" stroke={s.color} strokeWidth="5" strokeDasharray={dasharray} strokeDashoffset={dashoffset} strokeLinecap="butt" />;
+          })}
+        </svg>
+        {(centerValue || centerLabel) && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            {centerValue && <div className="text-2xl font-bold text-gray-900 leading-none">{centerValue}</div>}
+            {centerLabel && <div className="text-[9px] text-gray-400 uppercase tracking-wide mt-0.5">{centerLabel}</div>}
+          </div>
+        )}
+      </div>
+      <div className="flex-1 space-y-1.5">
+        {segments.map(s => (
+          <div key={s.label} className="flex items-center gap-2 text-[11px]">
+            <div className="w-2.5 h-2.5 rounded-sm flex-shrink-0" style={{ background: s.color }} />
+            <span className="text-gray-600 flex-1 truncate">{s.label}</span>
+            <span className="font-bold text-gray-900">{s.value}</span>
+            <span className="text-gray-400 w-9 text-right">{total > 0 ? ((s.value / total) * 100).toFixed(0) : 0}%</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function PBIBarChart({ items, valueColor, maxValue }: { items: { label: string; value: number; sub?: string }[]; valueColor: (v: number) => string; maxValue?: number }) {
+  const max = maxValue ?? Math.max(...items.map(i => i.value), 1);
+  return (
+    <div className="space-y-1.5">
+      {items.map(item => (
+        <div key={item.label} className="flex items-center gap-2 text-[11px]">
+          <div className="w-36 flex-shrink-0 min-w-0">
+            <div className="text-gray-700 truncate font-medium">{item.label}</div>
+            {item.sub && <div className="text-[9px] text-gray-400 truncate">{item.sub}</div>}
+          </div>
+          <div className="flex-1 h-6 bg-gray-50 rounded-sm relative overflow-hidden">
+            <div className={clsx('h-full', valueColor(item.value))} style={{ width: `${(item.value / max) * 100}%` }} />
+            <span className="absolute inset-0 flex items-center px-2 text-[10px] font-bold text-gray-700">{item.value}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PBISlicer({ label, value, onChange, options }: { label: string; value: string; onChange: (v: string) => void; options: { value: string; label: string }[] }) {
+  return (
+    <div className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded px-2 py-1">
+      <span className="text-[10px] font-semibold text-gray-500">{label}:</span>
+      <select value={value} onChange={e => onChange(e.target.value)}
+        className="text-[11px] bg-transparent border-0 outline-none cursor-pointer text-gray-800 font-medium">
+        {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+      </select>
     </div>
   );
 }
@@ -290,55 +421,76 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
   const alertCount = projects.filter(p => p.early_warning.alert_level).length;
   const totalBudget = projects.reduce((s, p) => s + p.budget, 0);
 
+  const healthSegments = [
+    { label: 'Green', value: projects.filter(p => p.overall_health === 'green').length, color: '#10b981' },
+    { label: 'Amber', value: projects.filter(p => p.overall_health === 'amber').length, color: '#f59e0b' },
+    { label: 'Red',   value: projects.filter(p => p.overall_health === 'red').length,   color: '#ef4444' },
+  ];
+  const assessmentSegments = [
+    { label: 'Continue',  value: projects.filter(p => p.ai_assessment === 'continue').length,  color: '#10b981' },
+    { label: 'Watch',     value: projects.filter(p => p.ai_assessment === 'watch').length,     color: '#f59e0b' },
+    { label: 'Intervene', value: projects.filter(p => p.ai_assessment === 'intervene').length, color: '#f97316' },
+    { label: 'Escalate',  value: projects.filter(p => p.ai_assessment === 'escalate').length,  color: '#ef4444' },
+  ];
+  const ewByProject = [...projects].sort((a, b) => b.early_warning.score - a.early_warning.score).slice(0, 7).map(p => ({
+    label: p.name.length > 28 ? p.name.slice(0, 26) + '…' : p.name,
+    value: p.early_warning.score,
+    sub: p.client_name,
+  }));
+
   return (
-    <div>
+    <div className="space-y-4">
       <AlertTiersPanel tiers={config.alert_tiers} projects={projects} />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-        <div className="card p-4 border-l-4 border-l-ms-blue">
-          <div className="text-sm text-gray-500">Portfolio Budget</div>
-          <div className="text-2xl font-bold mt-0.5">{fmt(totalBudget)}</div>
-          <div className="text-xs text-gray-400">{projects.length} active projects monitored</div>
+      <PowerBIFrame
+        title="Portfolio Health Monitor"
+        subtitle="Delivery Excellence · Real-time portfolio quality assurance"
+        slicers={<>
+          <PBISlicer label="Health" value={filterHealth} onChange={setFilterHealth} options={[
+            { value: '', label: 'All' },
+            { value: 'green', label: 'Green' },
+            { value: 'amber', label: 'Amber' },
+            { value: 'red', label: 'Red' },
+          ]} />
+          <PBISlicer label="Assessment" value={filterAssessment} onChange={setFilterAssessment} options={[
+            { value: '', label: 'All' },
+            { value: 'continue', label: 'Continue' },
+            { value: 'watch', label: 'Watch' },
+            { value: 'intervene', label: 'Intervene' },
+            { value: 'escalate', label: 'Escalate' },
+          ]} />
+          <div className="relative flex-1 max-w-xs ml-auto">
+            <Search className="absolute left-2.5 top-1.5 w-3.5 h-3.5 text-gray-400" />
+            <input className="text-[11px] bg-gray-50 border border-gray-200 rounded pl-7 pr-2 py-1 w-full outline-none focus:border-ms-blue"
+              placeholder="Search projects..." value={search} onChange={e => setSearch(e.target.value)} />
+          </div>
+          <span className="text-[10px] text-gray-400">{filtered.length} of {projects.length}</span>
+        </>}
+      >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          <PBITile label="Portfolio Budget" value={fmt(totalBudget)} sublabel={`${projects.length} active projects`} accent="bg-ms-blue" />
+          <PBITile label="Portfolio Health" value={<>{greenPct}<span className="text-lg text-gray-400 font-normal">%</span></>} sublabel="Green projects · Target ≥75%"
+            accent={greenPct >= 75 ? 'bg-emerald-500' : 'bg-amber-500'} />
+          <PBITile label="Avg Early Warning" value={<span className={ewScoreColor(avgEW)}>{avgEW}</span>} sublabel="Target &lt; 40"
+            accent={ewBarColor(avgEW)} />
+          <PBITile label="Active Alerts" value={alertCount} sublabel={`${projects.filter(p => p.early_warning.alert_level === 'critical').length} critical · ${projects.filter(p => p.early_warning.alert_level === 'caution').length} caution`}
+            accent={alertCount > 0 ? 'bg-red-500' : 'bg-gray-300'} />
         </div>
-        <div className="card p-4 border-l-4 border-l-emerald-500">
-          <div className="text-sm text-gray-500">Portfolio Health</div>
-          <div className="text-2xl font-bold mt-0.5">{greenPct}%<span className="text-sm font-normal text-gray-400"> Green</span></div>
-          <div className="text-xs text-gray-400">Target: ≥75%</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-amber-500">
-          <div className="text-sm text-gray-500">Avg Early Warning</div>
-          <div className={clsx('text-2xl font-bold mt-0.5', ewScoreColor(avgEW))}>{avgEW}<span className="text-sm font-normal text-gray-400">/100</span></div>
-          <div className="text-xs text-gray-400">Target: &lt; 40</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-red-500">
-          <div className="text-sm text-gray-500">Active Alerts</div>
-          <div className="text-2xl font-bold mt-0.5">{alertCount}</div>
-          <div className="text-xs text-gray-400">{projects.filter(p => p.early_warning.alert_level === 'critical').length} critical</div>
-        </div>
-      </div>
 
-      <div className="flex items-center gap-3 mb-5 flex-wrap">
-        <div className="relative flex-1 max-w-xs">
-          <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
-          <input className="input pl-9 text-sm" placeholder="Search projects..." value={search} onChange={e => setSearch(e.target.value)} />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+          <PBIVisual title="Health Distribution" subtitle="Project count by RAG status">
+            <PBIDonut segments={healthSegments} centerValue={`${projects.length}`} centerLabel="Projects" />
+          </PBIVisual>
+          <PBIVisual title="AI Assessment Mix" subtitle="Recommended action by project">
+            <PBIDonut segments={assessmentSegments} centerValue={`${projects.length}`} centerLabel="Total" />
+          </PBIVisual>
+          <PBIVisual title="Top 7 by EW Score" subtitle="Highest-risk projects">
+            <PBIBarChart items={ewByProject} valueColor={ewBarColor} maxValue={100} />
+          </PBIVisual>
         </div>
-        <select className="input w-auto text-sm py-2" value={filterHealth} onChange={e => setFilterHealth(e.target.value)}>
-          <option value="">All Health</option>
-          <option value="green">Green</option>
-          <option value="amber">Amber</option>
-          <option value="red">Red</option>
-        </select>
-        <select className="input w-auto text-sm py-2" value={filterAssessment} onChange={e => setFilterAssessment(e.target.value)}>
-          <option value="">All Assessments</option>
-          <option value="continue">Continue</option>
-          <option value="watch">Watch</option>
-          <option value="intervene">Intervene</option>
-          <option value="escalate">Escalate</option>
-        </select>
-        <span className="text-sm text-gray-400 ml-auto">{filtered.length} projects</span>
-      </div>
 
-      <div className="space-y-4">
+        <PBIVisual title="Project Detail" subtitle={`${filtered.length} project${filtered.length !== 1 ? 's' : ''} · sorted by Early Warning score (desc)`}>
+        <div className="space-y-3 mt-1">
         {filtered.map(p => {
           const ew = p.early_warning;
           const ac = ASSESSMENT_CFG[p.ai_assessment];
@@ -449,7 +601,9 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
             </div>
           );
         })}
-      </div>
+        </div>
+        </PBIVisual>
+      </PowerBIFrame>
     </div>
   );
 }
@@ -472,44 +626,69 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
   const avgScore = checkpoints.filter(c => c.maturity_score !== null);
   const avg = avgScore.length ? Math.round(avgScore.reduce((s, c) => s + (c.maturity_score || 0), 0) / avgScore.length) : 0;
 
+  const statusSegments = [
+    { label: 'Passed',  value: passed,  color: '#10b981' },
+    { label: 'Flagged', value: flagged, color: '#f59e0b' },
+    { label: 'Pending', value: pending, color: '#3b82f6' },
+    { label: 'Waived',  value: checkpoints.filter(c => c.status === 'waived').length, color: '#9ca3af' },
+  ];
+  const phaseSegments = [
+    { label: 'Day 30', value: checkpoints.filter(c => c.phase === 'day_30').length, color: '#0078d4' },
+    { label: 'Day 60', value: checkpoints.filter(c => c.phase === 'day_60').length, color: '#5c2d91' },
+    { label: 'Day 90', value: checkpoints.filter(c => c.phase === 'day_90').length, color: '#e3008c' },
+  ];
+  const maturityBars = checkpoints.filter(c => c.maturity_score !== null)
+    .sort((a, b) => (b.maturity_score || 0) - (a.maturity_score || 0))
+    .slice(0, 7)
+    .map(c => ({
+      label: c.project_name.length > 26 ? c.project_name.slice(0, 24) + '…' : c.project_name,
+      value: c.maturity_score || 0,
+      sub: `${PHASE_LABEL[c.phase]} · ${c.status}`,
+    }));
+  const maturityColor = (v: number) => v >= 80 ? 'bg-emerald-500' : v >= 65 ? 'bg-blue-500' : v >= 50 ? 'bg-amber-500' : 'bg-red-500';
+
   return (
-    <div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-        <div className="card p-4 border-l-4 border-l-green-500">
-          <div className="text-sm text-gray-500">Passed</div>
-          <div className="text-2xl font-bold text-green-700">{passed}</div>
+    <div className="space-y-4">
+      <PowerBIFrame
+        title="Engagement Setup Assurance"
+        subtitle="30-60-90 day checkpoints · Top-quartile engagement quality gates"
+        slicers={<>
+          <PBISlicer label="Phase" value={filterPhase} onChange={setFilterPhase} options={[
+            { value: '', label: 'All' },
+            { value: 'day_30', label: 'Day 30' },
+            { value: 'day_60', label: 'Day 60' },
+            { value: 'day_90', label: 'Day 90' },
+          ]} />
+          <PBISlicer label="Status" value={filterStatus} onChange={setFilterStatus} options={[
+            { value: '', label: 'All' },
+            { value: 'passed', label: 'Passed' },
+            { value: 'flagged', label: 'Flagged' },
+            { value: 'pending', label: 'Pending' },
+          ]} />
+          <span className="text-[10px] text-gray-400 ml-auto">{filtered.length} of {checkpoints.length}</span>
+        </>}
+      >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          <PBITile label="Passed" value={<span className="text-green-700">{passed}</span>} sublabel={`${checkpoints.length ? Math.round((passed / checkpoints.length) * 100) : 0}% of all checkpoints`} accent="bg-emerald-500" />
+          <PBITile label="Flagged" value={<span className="text-amber-700">{flagged}</span>} sublabel="Require QA Director attention" accent="bg-amber-500" />
+          <PBITile label="Pending" value={<span className="text-blue-700">{pending}</span>} sublabel="Upcoming assessments" accent="bg-blue-500" />
+          <PBITile label="Avg Maturity" value={<>{avg}<span className="text-lg text-gray-400 font-normal">/100</span></>} sublabel="Setup readiness baseline" accent={maturityColor(avg)} />
         </div>
-        <div className="card p-4 border-l-4 border-l-amber-500">
-          <div className="text-sm text-gray-500">Flagged</div>
-          <div className="text-2xl font-bold text-amber-700">{flagged}</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-blue-500">
-          <div className="text-sm text-gray-500">Pending</div>
-          <div className="text-2xl font-bold text-blue-700">{pending}</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-purple-500">
-          <div className="text-sm text-gray-500">Avg Maturity Score</div>
-          <div className="text-2xl font-bold">{avg}<span className="text-sm font-normal text-gray-400">/100</span></div>
-        </div>
-      </div>
 
-      <div className="flex items-center gap-3 mb-5">
-        <select className="input w-auto text-sm py-2" value={filterPhase} onChange={e => setFilterPhase(e.target.value)}>
-          <option value="">All Phases</option>
-          <option value="day_30">Day 30</option>
-          <option value="day_60">Day 60</option>
-          <option value="day_90">Day 90</option>
-        </select>
-        <select className="input w-auto text-sm py-2" value={filterStatus} onChange={e => setFilterStatus(e.target.value)}>
-          <option value="">All Statuses</option>
-          <option value="passed">Passed</option>
-          <option value="flagged">Flagged</option>
-          <option value="pending">Pending</option>
-        </select>
-        <span className="text-sm text-gray-400 ml-auto">{filtered.length} checkpoints</span>
-      </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+          <PBIVisual title="Checkpoint Status" subtitle="Outcomes across all phases">
+            <PBIDonut segments={statusSegments} centerValue={`${checkpoints.length}`} centerLabel="Total" />
+          </PBIVisual>
+          <PBIVisual title="By Phase" subtitle="Distribution across 30/60/90 day">
+            <PBIDonut segments={phaseSegments} centerValue={`${checkpoints.length}`} centerLabel="Checkpoints" />
+          </PBIVisual>
+          <PBIVisual title="Maturity Scores" subtitle="Top 7 by Setup Maturity Score">
+            <PBIBarChart items={maturityBars} valueColor={maturityColor} maxValue={100} />
+          </PBIVisual>
+        </div>
 
-      <div className="space-y-3">
+        <PBIVisual title="Checkpoint Detail" subtitle={`${filtered.length} checkpoint${filtered.length !== 1 ? 's' : ''} · click to expand criteria`}>
+        <div className="space-y-3 mt-1">
         {filtered.map(cp => {
           const isExpanded = expanded === cp.id;
           const stCfg = CP_STATUS_CFG[cp.status];
@@ -582,7 +761,9 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
             </div>
           );
         })}
-      </div>
+        </div>
+        </PBIVisual>
+      </PowerBIFrame>
     </div>
   );
 }
@@ -591,28 +772,55 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
 function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
   const [expanded, setExpanded] = useState<string | null>(plans[0]?.id || null);
 
-  return (
-    <div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-        <div className="card p-4 border-l-4 border-l-blue-500">
-          <div className="text-sm text-gray-500">Active Plans</div>
-          <div className="text-2xl font-bold">{plans.filter(p => p.status === 'active' || p.status === 'on_track').length}</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-green-500">
-          <div className="text-sm text-gray-500">Resolved</div>
-          <div className="text-2xl font-bold text-green-700">{plans.filter(p => p.status === 'resolved').length}</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-red-500">
-          <div className="text-sm text-gray-500">Stalled</div>
-          <div className="text-2xl font-bold text-red-700">{plans.filter(p => p.status === 'stalled').length}</div>
-        </div>
-        <div className="card p-4 border-l-4 border-l-purple-500">
-          <div className="text-sm text-gray-500">Avg Recovery Time</div>
-          <div className="text-2xl font-bold">48<span className="text-sm font-normal text-gray-400"> days</span></div>
-        </div>
-      </div>
+  const active = plans.filter(p => p.status === 'active' || p.status === 'on_track').length;
+  const resolved = plans.filter(p => p.status === 'resolved').length;
+  const stalled = plans.filter(p => p.status === 'stalled').length;
 
-      <div className="space-y-4">
+  const statusSegments = [
+    { label: 'Active',    value: plans.filter(p => p.status === 'active').length,    color: '#3b82f6' },
+    { label: 'On Track',  value: plans.filter(p => p.status === 'on_track').length,  color: '#10b981' },
+    { label: 'Stalled',   value: plans.filter(p => p.status === 'stalled').length,   color: '#ef4444' },
+    { label: 'Resolved',  value: resolved,                                            color: '#059669' },
+    { label: 'Escalated', value: plans.filter(p => p.status === 'escalated').length, color: '#9333ea' },
+  ];
+  const ewProgress = plans.map(p => ({
+    label: p.project_name.length > 26 ? p.project_name.slice(0, 24) + '…' : p.project_name,
+    value: p.current_ew_score,
+    sub: `${p.weekly_assessments.length} weeks · target ${new Date(p.target_green_date).toLocaleDateString()}`,
+  }));
+  const milestoneCompletion = plans.map(p => ({
+    label: p.project_name.length > 26 ? p.project_name.slice(0, 24) + '…' : p.project_name,
+    value: p.recovery_milestones.length > 0 ? Math.round((p.recovery_milestones.filter(m => m.status === 'completed').length / p.recovery_milestones.length) * 100) : 0,
+    sub: `${p.recovery_milestones.filter(m => m.status === 'completed').length} of ${p.recovery_milestones.length} milestones`,
+  }));
+
+  return (
+    <div className="space-y-4">
+      <PowerBIFrame
+        title="Get-to-Green Recovery Tracking"
+        subtitle="Active recovery plans · Root cause-driven · Weekly progress assessments"
+      >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          <PBITile label="Active Plans" value={active} sublabel={`${plans.length} total recovery plans`} accent="bg-blue-500" />
+          <PBITile label="Resolved" value={<span className="text-green-700">{resolved}</span>} sublabel={`${plans.length ? Math.round((resolved / plans.length) * 100) : 0}% recovery success rate`} accent="bg-emerald-500" />
+          <PBITile label="Stalled" value={<span className="text-red-700">{stalled}</span>} sublabel={stalled > 0 ? 'Requires escalation' : 'No stalled plans'} accent={stalled > 0 ? 'bg-red-500' : 'bg-gray-300'} />
+          <PBITile label="Avg Recovery Time" value={<>48<span className="text-lg text-gray-400 font-normal"> days</span></>} sublabel="Target ≤ 60 days" accent="bg-purple-500" />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+          <PBIVisual title="Plan Status" subtitle="Distribution across recovery phases">
+            <PBIDonut segments={statusSegments} centerValue={`${plans.length}`} centerLabel="Plans" />
+          </PBIVisual>
+          <PBIVisual title="Current EW Scores" subtitle="Real-time risk per active plan">
+            <PBIBarChart items={ewProgress} valueColor={ewBarColor} maxValue={100} />
+          </PBIVisual>
+          <PBIVisual title="Milestone Progress" subtitle="% recovery milestones completed">
+            <PBIBarChart items={milestoneCompletion} valueColor={v => v >= 80 ? 'bg-emerald-500' : v >= 50 ? 'bg-blue-500' : v >= 25 ? 'bg-amber-500' : 'bg-red-500'} maxValue={100} />
+          </PBIVisual>
+        </div>
+
+        <PBIVisual title="Recovery Plan Detail" subtitle={`${plans.length} plan${plans.length !== 1 ? 's' : ''} · click to view weekly progress`}>
+        <div className="space-y-3 mt-1">
         {plans.map(plan => {
           const isExpanded = expanded === plan.id;
           const stCfg = G2G_STATUS_CFG[plan.status];
@@ -727,7 +935,9 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
             </div>
           );
         })}
-      </div>
+        </div>
+        </PBIVisual>
+      </PowerBIFrame>
     </div>
   );
 }
@@ -743,29 +953,63 @@ function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_revie
     deferred:  { label: 'Deferred',  bg: 'bg-gray-100 text-gray-600' },
   };
 
-  return (
-    <div>
-      <div className="card p-5 mb-6">
-        <div className="flex items-center justify-between mb-2">
-          <div>
-            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Monthly Regional Health Review</div>
-            <h2 className="text-base font-bold text-gray-900">{reviews.region} — {reviews.current_period}</h2>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="text-center bg-gray-50 rounded-lg px-3 py-2 min-w-[80px]">
-              <div className="text-xs font-bold text-gray-900">{reviews.nominations.length}</div>
-              <div className="text-[10px] text-gray-500">Nominated</div>
-            </div>
-            <div className="text-center bg-green-50 rounded-lg px-3 py-2 min-w-[80px]">
-              <div className="text-xs font-bold text-green-700">{reviews.nominations.filter(n => n.status === 'confirmed').length}</div>
-              <div className="text-[10px] text-gray-500">Confirmed</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  const totalNom = reviews.nominations.length;
+  const totalVAR = reviews.nominations.reduce((s, n) => s + n.value_at_risk, 0);
+  const avgEW = totalNom ? Math.round(reviews.nominations.reduce((s, n) => s + n.early_warning_score, 0) / totalNom) : 0;
+  const openActions = reviews.post_review_actions.filter(a => !a.done).length;
 
-      <div className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Nominated Projects</div>
-      <div className="space-y-3 mb-8">
+  const statusSegments: { label: string; value: number; color: string }[] = [
+    { label: 'Nominated', value: reviews.nominations.filter(n => n.status === 'nominated').length, color: '#3b82f6' },
+    { label: 'Confirmed', value: reviews.nominations.filter(n => n.status === 'confirmed').length, color: '#10b981' },
+    { label: 'Presented', value: reviews.nominations.filter(n => n.status === 'presented').length, color: '#9333ea' },
+    { label: 'Deferred',  value: reviews.nominations.filter(n => n.status === 'deferred').length,  color: '#9ca3af' },
+  ];
+  const ewByNomination = reviews.nominations
+    .slice()
+    .sort((a, b) => b.early_warning_score - a.early_warning_score)
+    .map(n => ({
+      label: n.project_name.length > 26 ? n.project_name.slice(0, 24) + '…' : n.project_name,
+      value: n.early_warning_score,
+      sub: n.client_name,
+    }));
+  const varBars = reviews.nominations
+    .filter(n => n.value_at_risk > 0)
+    .sort((a, b) => b.value_at_risk - a.value_at_risk)
+    .map(n => ({
+      label: n.project_name.length > 26 ? n.project_name.slice(0, 24) + '…' : n.project_name,
+      value: Math.round(n.value_at_risk / 1000),
+      sub: `${fmt(n.value_at_risk)} at risk`,
+    }));
+
+  return (
+    <div className="space-y-4">
+      <PowerBIFrame
+        title={`Monthly Regional Health Review — ${reviews.region} ${reviews.current_period}`}
+        subtitle="Executive briefing pack · AI-nominated · QA Director validated"
+      >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          <PBITile label="Nominated Projects" value={totalNom} sublabel={`${reviews.nominations.filter(n => n.status === 'confirmed').length} confirmed for review`} accent="bg-ms-blue" />
+          <PBITile label="Total Value at Risk" value={fmt(totalVAR)} sublabel="Sum across nominated projects" accent={totalVAR > 0 ? 'bg-red-500' : 'bg-emerald-500'} />
+          <PBITile label="Avg EW Score" value={<span className={ewScoreColor(avgEW)}>{avgEW}</span>} sublabel="Across nominations" accent={ewBarColor(avgEW)} />
+          <PBITile label="Open Actions" value={openActions} sublabel={`${reviews.post_review_actions.length - openActions} of ${reviews.post_review_actions.length} completed`} accent={openActions > 0 ? 'bg-amber-500' : 'bg-emerald-500'} />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 mb-4">
+          <PBIVisual title="Nomination Status" subtitle="Review pipeline state">
+            <PBIDonut segments={statusSegments} centerValue={`${totalNom}`} centerLabel="Total" />
+          </PBIVisual>
+          <PBIVisual title="EW Scores" subtitle="Risk ranking across nominations">
+            <PBIBarChart items={ewByNomination} valueColor={ewBarColor} maxValue={100} />
+          </PBIVisual>
+          <PBIVisual title="Value at Risk" subtitle="In $K, highest exposure first">
+            {varBars.length > 0
+              ? <PBIBarChart items={varBars} valueColor={v => v >= 1000 ? 'bg-red-500' : v >= 500 ? 'bg-orange-500' : 'bg-amber-500'} />
+              : <div className="text-center text-gray-400 text-xs py-6">No value-at-risk this period</div>}
+          </PBIVisual>
+        </div>
+
+        <PBIVisual title="Nominated Projects" subtitle={`${totalNom} project${totalNom !== 1 ? 's' : ''} · click Review Briefing for executive slide`}>
+        <div className="space-y-3 mt-1">
         {reviews.nominations.map(nom => {
           const isExpanded = expanded === nom.id;
           return (
@@ -822,42 +1066,43 @@ function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_revie
             </div>
           );
         })}
-      </div>
+        </div>
+        </PBIVisual>
 
-      {reviews.post_review_actions.length > 0 && (
-        <>
-          <div className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">Post-Review Action Tracker</div>
-          <div className="card overflow-hidden">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left px-4 py-2 font-semibold text-gray-600">Action</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-600">Project</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-600">Owner</th>
-                  <th className="text-left px-4 py-2 font-semibold text-gray-600">Due</th>
-                  <th className="text-center px-4 py-2 font-semibold text-gray-600">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {reviews.post_review_actions.map(a => (
-                  <tr key={a.id} className="border-b border-gray-100">
-                    <td className="px-4 py-2.5 text-gray-700">{a.action}</td>
-                    <td className="px-4 py-2.5 text-gray-500">{a.project_name}</td>
-                    <td className="px-4 py-2.5 text-gray-500">{a.owner}</td>
-                    <td className="px-4 py-2.5 text-gray-500">{new Date(a.due).toLocaleDateString()}</td>
-                    <td className="px-4 py-2.5 text-center">
-                      {a.done
-                        ? <span className="inline-flex items-center gap-1 text-green-700"><CheckCircle className="w-3 h-3" /> Done</span>
-                        : <span className="inline-flex items-center gap-1 text-amber-600"><Clock className="w-3 h-3" /> Open</span>
-                      }
-                    </td>
+        {reviews.post_review_actions.length > 0 && (
+          <div className="mt-3">
+            <PBIVisual title="Post-Review Action Tracker" subtitle={`${reviews.post_review_actions.filter(a => !a.done).length} open · ${reviews.post_review_actions.filter(a => a.done).length} done`}>
+              <table className="w-full text-xs mt-1">
+                <thead>
+                  <tr className="bg-gray-50 border-b-2 border-gray-200">
+                    <th className="text-left px-3 py-2 font-bold text-gray-500 uppercase tracking-wide text-[10px]">Action</th>
+                    <th className="text-left px-3 py-2 font-bold text-gray-500 uppercase tracking-wide text-[10px]">Project</th>
+                    <th className="text-left px-3 py-2 font-bold text-gray-500 uppercase tracking-wide text-[10px]">Owner</th>
+                    <th className="text-left px-3 py-2 font-bold text-gray-500 uppercase tracking-wide text-[10px]">Due</th>
+                    <th className="text-center px-3 py-2 font-bold text-gray-500 uppercase tracking-wide text-[10px]">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {reviews.post_review_actions.map(a => (
+                    <tr key={a.id} className="border-b border-gray-100 hover:bg-gray-50">
+                      <td className="px-3 py-2.5 text-gray-700">{a.action}</td>
+                      <td className="px-3 py-2.5 text-gray-500">{a.project_name}</td>
+                      <td className="px-3 py-2.5 text-gray-500">{a.owner}</td>
+                      <td className="px-3 py-2.5 text-gray-500">{new Date(a.due).toLocaleDateString()}</td>
+                      <td className="px-3 py-2.5 text-center">
+                        {a.done
+                          ? <span className="inline-flex items-center gap-1 text-green-700 font-semibold"><CheckCircle className="w-3 h-3" /> Done</span>
+                          : <span className="inline-flex items-center gap-1 text-amber-600 font-semibold"><Clock className="w-3 h-3" /> Open</span>
+                        }
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </PBIVisual>
           </div>
-        </>
-      )}
+        )}
+      </PowerBIFrame>
 
       {reviewModal && (() => {
         const nom = reviews.nominations.find(n => n.id === reviewModal);

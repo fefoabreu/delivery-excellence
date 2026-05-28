@@ -1,0 +1,124 @@
+{
+  "id": "bc9beb79-a269-4a99-a760-ad981590eacc",
+  "contract_number": "CON-2026-0028",
+  "name": "School of Fine Art \u2014 LMS Expansion",
+  "client_name": "School of Fine Art Expansion",
+  "total_value": 420000,
+  "status": "pending_approval",
+  "start_date": "2026-09-01",
+  "end_date": "2027-03-01",
+  "scope_summary": "Expansion of LMS modernization to 4 additional campuses. Faculty enablement program scaling. Phase 1 currently active and Green.",
+  "service_lines": [
+    {
+      "service_name": "LMS Integration & Configuration",
+      "category": "cloud_adoption",
+      "quantity": 90,
+      "unit": "day",
+      "unit_price": 2800,
+      "discount_pct": 0,
+      "total": 252000
+    },
+    {
+      "service_name": "Faculty Enablement Program",
+      "category": "cloud_adoption",
+      "quantity": 50,
+      "unit": "day",
+      "unit_price": 2200,
+      "discount_pct": 0,
+      "total": 110000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "cloud_adoption"
+    ],
+    "internal_investment_pct": 0,
+    "sold_margin_pct": 33,
+    "solution_complexity": "low",
+    "vendor_name": null,
+    "vendor_participation_pct": 0,
+    "similar_projects_count": 3,
+    "delivery_success_rate": 90,
+    "reference_projects": [
+      "School of Fine Art Phase 1"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 8.5,
+    "regulatory_requirements": [],
+    "compliance_risk": "low",
+    "azure_consumption_monthly": 5500,
+    "azure_acr_percentage": 11,
+    "expansion_type": "expansion",
+    "is_delivery_led": true,
+    "score_breakdown": {
+      "on_strategy": 7.5,
+      "risk_profile": 8.5,
+      "sow_quality": 8.5,
+      "delivery_success": 9.0,
+      "estimation_accuracy": 8.5,
+      "compliance": 9.5,
+      "ip_leverage": 8.5,
+      "vendor_participation": 8.0,
+      "azure_consumption": 6.0,
+      "sold_margin": 9.0
+    },
+    "deal_score": 80.5,
+    "approval_tier": 1,
+    "ai_recommendation_status": "APPROVE",
+    "ai_recommendation_text": "Standard expansion to 4 campuses. Phase 1 reference. Diego Hernandez available. Auto-approve.",
+    "ai_conditions": [],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "id": "ee1a264b-ff14-4a15-a2b7-d46945315ccb",
+  "contract_number": "CON-2026-0035",
+  "name": "Tailwind Traders \u2014 D365 F&O Multi-Country Phase 2",
+  "client_name": "Tailwind Traders D365",
+  "total_value": 3200000,
+  "status": "pending_approval",
+  "start_date": "2027-01-15",
+  "end_date": "2028-12-15",
+  "scope_summary": "D365 F&O rollout across 8 countries following Tailwind Copilot Phase 1. 22-month program. Local payroll integration per country. Regional SI partner (25%).",
+  "service_lines": [
+    {
+      "service_name": "Dynamics 365 F&O",
+      "category": "dynamics",
+      "quantity": 420,
+      "unit": "day",
+      "unit_price": 3400,
+      "discount_pct": 0,
+      "total": 1428000
+    },
+    {
+      "service_name": "Dynamics Data Migration",
+      "category": "dynamics",
+      "quantity": 180,
+      "unit": "day",
+      "unit_price": 2800,
+      "discount_pct": 0,
+      "total": 504000
+    },
+    {
+      "service_name": "Multi-Country Localization",
+      "category": "dynamics",
+      "quantity": 240,
+      "unit": "day",
+      "unit_price": 3000,
+      "discount_pct": 0,
+      "total": 720000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "dynamics"
+    ],
+    "internal_investment_pct": 0,
+    "sold_margin_pct": 24,
+    "solution_complexity": "high",
+    "vendor_name": "Regional SI Partner",
+    "vendor_participation_pct": 25,
+    "similar_projects_count": 2,
+    "delivery_success_rate": 75,
+    "reference_projects": [
+      "Northwind Traders D365 F&O",
+      "Consolidated Messenger D365 F&O (in approval)"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 7.0,
+    "regulatory_requirements": [
+      "GDPR",
+      "Local Payroll (8 jurisdictions)"
+    ],
+    "compliance_risk": "high",
+    "azure_consumption_monthly": 22000,
+    "azure_acr_percentage": 7,
+    "expansion_type": "expansion",
+    "is_delivery_led": false,
+    "score_breakdown": {
+      "on_strategy": 7.0,
+      "risk_profile": 4.5,
+      "sow_quality": 7.0,
+      "delivery_success": 7.5,
+      "estimation_accuracy": 5.5,
+      "compliance": 5.5,
+      "ip_leverage": 7.0,
+      "vendor_participation": 7.0,
+      "azure_consumption": 5.5,
+      "sold_margin": 8.0
+    },
+    "deal_score": 62.4,
+    "approval_tier": 3,
+    "ai_recommendation_status": "RECOMMEND_REVIEW",
+    "ai_recommendation_text": "Multi-country D365 F&O at this scale carries elevated risk. Apply Northwind Traders + Consolidated Messenger lessons. Country-level phase plans required. Margin at 24% is tight.",
+    "ai_conditions": [
+      "Revised SOW with country-level phase plans and out-of-scope per jurisdiction",
+      "Regional SI partner SLA and indemnity terms",
+      "Architecture Review Board assessment",
+      "Finance review: margin floor and overrun contingency"
+    ],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

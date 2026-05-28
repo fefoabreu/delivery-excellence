@@ -724,5 +724,59 @@ Following the Deal Approvals pattern, the top of the QA page features an OKR pan
 
 ---
 
-*Document version: 1.0 — May 2026*
+## 10. Design & Experience Principles
+
+The module is built for two distinct audiences. Each audience has a deliberately different visual experience that signals the boundary between internal governance and client engagement.
+
+### 10.1 Internal Audience — Microsoft Executives (Power BI Look & Feel)
+
+The four operational tabs of the QA module (Portfolio Monitor, Checkpoints, Health Reviews, Get-to-Green) are styled as **Power BI executive reports**. This is intentional and load-bearing:
+
+| Principle | Why It Matters |
+|-----------|---------------|
+| **Power BI title bar** | Slate-900 header with the Microsoft yellow Power BI badge, report name, "Live" indicator, and "Last refresh" timestamp. Executives recognize this immediately as a Microsoft-native business intelligence surface. |
+| **Slicer ribbon** | Power BI-style filter pills sit directly below the title bar. Filters feel like report slicers, not form inputs. |
+| **KPI tiles** | Large bold numbers (text-3xl), small uppercase labels, colored accent bars at the top of each tile. The numbers are the hero, not the chrome. |
+| **Visual grid** | Each tab shows a 3-column row of visuals — typically two donut charts and one horizontal bar chart — before the detail list below. Charts use SVG with simple, Power BI-style palettes. |
+| **Detail visual** | The bottom of each tab is a "Detail" visual containing the full list of items (projects, checkpoints, plans). Treated as a Power BI matrix visual with consistent card styling. |
+| **Microsoft yellow accent** | The Power BI logo color (#F2C811) is the signature accent — used sparingly to anchor the visual identity. |
+
+**Rule:** Anything in the four operational tabs should look like it could live in a Microsoft executive's Power BI workspace. Anything outside the tabs (OKR panel, header, framework page, evals page) uses the standard Delivery Excellence styling.
+
+### 10.2 External Audience — Client (Distinct Client Portal Environment)
+
+The Client-Facing QA Agent is a **secure, client-centric environment that lives outside the Contoso environment**. Two design moves make this credible:
+
+1. **Browser chrome simulation** — The portal renders inside a fake browser chrome showing a distinct URL (`{client}.partner-portal.contoso.com`) with a green TLS lock and "Secure · TLS 1.3 · Client SSO" indicator. This signals the client is on their own secure subdomain, not inside Contoso's internal tooling.
+
+2. **Different visual identity** — The portal uses a **sky/teal gradient palette** (sky-500 → teal-500) instead of the Contoso navy/blue. The client logo placeholder, "Partner Project Portal" branding, and welcome message ("Welcome, Client Executive") all reinforce that this is the client's portal, served by Contoso.
+
+### 10.3 The Client Portal Has Two Modes
+
+A toggle at the top of `/qa-client-portal` switches between:
+
+| Mode | Audience | Purpose |
+|------|---------|---------|
+| **Client Portal Preview** (default) | Contoso staff reviewing the client experience | Renders the full external portal exactly as the client would see it — browser chrome, client branding, dashboard cockpit, AI assistant |
+| **Internal Audit View** | Contoso QA Directors, account leads | Auditable log of what has been disclosed to the client — narratives, milestones shared, risks disclosed — plus the internal-only sentiment signals captured from client interactions |
+
+### 10.4 The Client AI Assistant — Suggested-First, Not Blank-Slate
+
+The AI Assistant on the client portal is the most innovative element. It must **lead with suggestions, not wait for prompts**. Design rules:
+
+- **Welcome message** introduces the assistant and the project by name, then immediately offers categories to explore — not an empty text box
+- **Four suggestion categories** are always visible: *Project Goals & Vision*, *Progress & Milestones*, *Risks & Mitigations*, *Strategic Decisions*. The client never has to figure out what to ask
+- **Project-aware suggested questions** — each category surfaces 3 concrete questions that reference the actual project (e.g., "What are the key business outcomes {Client} is aiming for with this engagement?")
+- **Discussion seed panel** — a "Discuss with Your Team" card suggests topics for the client's next steering committee. The AI is proactively helping the client lead their own internal conversations about the project
+- **Chat input is secondary** — the input bar sits at the bottom; suggestions are the primary interface. Clicking any suggested question pre-fills the input so the client can edit before sending
+- **Confidentiality footprint** — "Confidential to {Client}" tagline reinforces that the AI is scoped to their project only
+
+### 10.5 Why This Matters Strategically
+
+For Microsoft executives reviewing the platform, the Power BI aesthetic immediately positions QA Excellence as a Microsoft-native operating system for delivery — not yet another consulting tool. For Contoso clients, the distinct external portal positions Contoso as the only firm that gives them their own AI-powered project companion. Both audiences see a polished, intentional experience designed for their decision-making.
+
+---
+
+*Document version: 1.1 — May 2026*
 *Module: Delivery Excellence Platform — AI-Driven Quality Assurance*
+*Key updates in 1.1: Power BI styling for executive-facing operational tabs; Client Portal redesigned as a distinct external environment with toggle between Internal Audit and Client Portal Preview modes; AI Assistant designed with suggested-first interaction model*

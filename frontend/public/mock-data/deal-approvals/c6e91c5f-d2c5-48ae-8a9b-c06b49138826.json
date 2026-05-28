@@ -1,0 +1,125 @@
+{
+  "id": "c6e91c5f-d2c5-48ae-8a9b-c06b49138826",
+  "contract_number": "CON-2026-0027",
+  "name": "Liberty's Bakery \u2014 Cloud Foundation Phase 2",
+  "client_name": "Liberty's Bakery Phase 2",
+  "total_value": 310000,
+  "status": "pending_approval",
+  "start_date": "2027-01-15",
+  "end_date": "2027-07-15",
+  "scope_summary": "Phase 2 expanding cloud foundation to backup, DR, and monitoring. Phase 1 delivered Green and on schedule. SMB retailer with strong owner engagement.",
+  "service_lines": [
+    {
+      "service_name": "Cloud Adoption Foundation",
+      "category": "cloud_adoption",
+      "quantity": 60,
+      "unit": "day",
+      "unit_price": 2800,
+      "discount_pct": 0,
+      "total": 168000
+    },
+    {
+      "service_name": "Azure Backup & DR",
+      "category": "cloud_adoption",
+      "quantity": 30,
+      "unit": "day",
+      "unit_price": 2800,
+      "discount_pct": 0,
+      "total": 84000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "cloud_adoption"
+    ],
+    "internal_investment_pct": 5,
+    "sold_margin_pct": 35,
+    "solution_complexity": "low",
+    "vendor_name": null,
+    "vendor_participation_pct": 0,
+    "similar_projects_count": 6,
+    "delivery_success_rate": 89,
+    "reference_projects": [
+      "Liberty's Bakery Phase 1",
+      "Adatum Cloud Foundation"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 9.0,
+    "regulatory_requirements": [],
+    "compliance_risk": "low",
+    "azure_consumption_monthly": 8000,
+    "azure_acr_percentage": 14,
+    "expansion_type": "expansion",
+    "is_delivery_led": true,
+    "score_breakdown": {
+      "on_strategy": 8.5,
+      "risk_profile": 9.0,
+      "sow_quality": 8.5,
+      "delivery_success": 8.9,
+      "estimation_accuracy": 9.0,
+      "compliance": 10.0,
+      "ip_leverage": 9.0,
+      "vendor_participation": 8.0,
+      "azure_consumption": 6.5,
+      "sold_margin": 9.5
+    },
+    "deal_score": 83.0,
+    "approval_tier": 1,
+    "ai_recommendation_status": "APPROVE",
+    "ai_recommendation_text": "Clean Phase 2 follow-on. Owner-engaged client. Standard cloud foundation pattern with proven team. Auto-approve.",
+    "ai_conditions": [],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

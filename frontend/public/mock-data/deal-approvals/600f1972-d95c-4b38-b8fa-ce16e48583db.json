@@ -1,0 +1,124 @@
+{
+  "id": "600f1972-d95c-4b38-b8fa-ce16e48583db",
+  "contract_number": "CON-2026-0024",
+  "name": "The Volcano Coffee \u2014 Power Platform Phase 2",
+  "client_name": "The Volcano Coffee Company Phase 2",
+  "total_value": 290000,
+  "status": "pending_approval",
+  "start_date": "2026-08-01",
+  "end_date": "2027-03-01",
+  "scope_summary": "Phase 2 of citizen developer Center of Excellence. Expansion to 4 additional business units. Build 8 mission-critical Power Apps.",
+  "service_lines": [
+    {
+      "service_name": "Power Platform Center of Excellence",
+      "category": "data_analytics",
+      "quantity": 80,
+      "unit": "day",
+      "unit_price": 2800,
+      "discount_pct": 0,
+      "total": 224000
+    },
+    {
+      "service_name": "Power Apps Development",
+      "category": "data_analytics",
+      "quantity": 30,
+      "unit": "day",
+      "unit_price": 2200,
+      "discount_pct": 0,
+      "total": 66000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "data_analytics"
+    ],
+    "internal_investment_pct": 0,
+    "sold_margin_pct": 38,
+    "solution_complexity": "low",
+    "vendor_name": null,
+    "vendor_participation_pct": 0,
+    "similar_projects_count": 4,
+    "delivery_success_rate": 92,
+    "reference_projects": [
+      "The Volcano Coffee Phase 1"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 9.0,
+    "regulatory_requirements": [],
+    "compliance_risk": "low",
+    "azure_consumption_monthly": 6000,
+    "azure_acr_percentage": 12,
+    "expansion_type": "expansion",
+    "is_delivery_led": true,
+    "score_breakdown": {
+      "on_strategy": 8.5,
+      "risk_profile": 9.5,
+      "sow_quality": 9.0,
+      "delivery_success": 9.2,
+      "estimation_accuracy": 9.5,
+      "compliance": 9.5,
+      "ip_leverage": 9.0,
+      "vendor_participation": 8.0,
+      "azure_consumption": 6.5,
+      "sold_margin": 10.0
+    },
+    "deal_score": 88.7,
+    "approval_tier": 1,
+    "ai_recommendation_status": "APPROVE",
+    "ai_recommendation_text": "Clean Phase 2 expansion. Phase 1 delivered ahead of plan with strong citizen-developer adoption. Marco Rossi delivery continuity. 38% margin. Auto-approve.",
+    "ai_conditions": [],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

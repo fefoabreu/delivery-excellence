@@ -2030,4 +2030,691 @@ export const SOW_DATA: Record<string, SOWData> = {
       { label: 'Phase 1 Assessment → Phase 2 Gate', status: 'ok' },
     ],
   },
+  "Contoso Energy Phase 2": {
+    compositeScore: 9.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Expansion of existing Sentinel pilot to 3 additional plants. NERC CIP analytics ruleset reuse from Phase 1. 6-month engagement with established delivery team continuity." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Contoso Energy Phase 2"], ["Engagement", "Contoso Energy — Sentinel Pilot Expansion"], ["Total Value", "$385K"], ["Margin", "36%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Proseware SOC Modernization engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "36%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: NERC CIP." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 9.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 9.0,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 9.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 10.0, strength: "36% margin provides strong buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 9.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 36% provides healthy buffer." },
+    ],
+  },
+  "The Volcano Coffee Company Phase 2": {
+    compositeScore: 9.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Phase 2 of citizen developer Center of Excellence. Expansion to 4 additional business units. Build 8 mission-critical Power Apps." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "The Volcano Coffee Company Phase 2"], ["Engagement", "The Volcano Coffee — Power Platform Phase 2"], ["Total Value", "$290K"], ["Margin", "38%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable The Volcano Coffee Phase 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "38%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 9.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 9.0,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 9.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 10.5, strength: "38% margin provides strong buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 9.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 38% provides healthy buffer." },
+    ],
+  },
+  "Wide World Importers Power BI": {
+    compositeScore: 9.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Power BI dashboard modernization for finance and logistics reporting. Reusing Trey Research dashboard templates. 3-month engagement." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Wide World Importers Power BI"], ["Engagement", "Wide World Importers — Power BI Refresh"], ["Total Value", "$185K"], ["Margin", "40%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Trey Research D365 Sales & CS engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "40%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 9.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 9.0,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 9.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 11.0, strength: "40% margin provides strong buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 9.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 40% provides healthy buffer." },
+    ],
+  },
+  "Tailspin Toys D365": {
+    compositeScore: 8.8,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "D365 Sales module add-on to existing Tailspin retail analytics platform. Sales pipeline + opportunity management for 80 sales reps." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Tailspin Toys D365"], ["Engagement", "Tailspin Toys — D365 Sales Module Add-on"], ["Total Value", "$225K"], ["Margin", "34%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Trey Research D365 Sales & CS engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "34%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 9.1, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.8,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.6, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.8,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.7, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 9.5, strength: "34% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 9.0, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.5, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 34% provides healthy buffer." },
+    ],
+  },
+  "Liberty's Bakery Phase 2": {
+    compositeScore: 8.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Phase 2 expanding cloud foundation to backup, DR, and monitoring. Phase 1 delivered Green and on schedule. SMB retailer with strong owner engagement." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Liberty's Bakery Phase 2"], ["Engagement", "Liberty's Bakery — Cloud Foundation Phase 2"], ["Total Value", "$310K"], ["Margin", "35%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Liberty's Bakery Phase 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "35%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.5,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 9.8, strength: "35% margin provides strong buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 35% provides healthy buffer." },
+    ],
+  },
+  "School of Fine Art Expansion": {
+    compositeScore: 8.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Expansion of LMS modernization to 4 additional campuses. Faculty enablement program scaling. Phase 1 currently active and Green." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "School of Fine Art Expansion"], ["Engagement", "School of Fine Art — LMS Expansion"], ["Total Value", "$420K"], ["Margin", "33%"], ["Complexity", "low"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable School of Fine Art Phase 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "33%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to low-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.5,     strength: "Phased scope structure follows established playbook for low-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 9.2, strength: "33% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 33% provides healthy buffer." },
+    ],
+  },
+  "Margie's Travel Phase 2": {
+    compositeScore: 8.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Phase 2 Azure migration covering remaining 90 workloads. Refactor tier for booking engine. Phase 1 currently Green and on plan." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Margie's Travel Phase 2"], ["Engagement", "Margie's Travel — Phase 2 Modernization"], ["Total Value", "$750K"], ["Margin", "34%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Margie's Travel Phase 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "34%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.5,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 9.5, strength: "34% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 34% provides healthy buffer." },
+    ],
+  },
+  "VanArsdel Manufacturing Wave 2": {
+    compositeScore: 9.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Copilot for Manufacturing expansion to remaining 4,500 seats. Building on Wave 1's 71% adoption. Includes persona-pilot pre-launch (per knowledge network pattern)." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "VanArsdel Manufacturing Wave 2"], ["Engagement", "VanArsdel Manufacturing — Copilot Wave 2"], ["Total Value", "$1400K"], ["Margin", "36%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable VanArsdel Wave 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "36%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 9.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 9.0,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 9.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 10.0, strength: "36% margin provides strong buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 9.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 36% provides healthy buffer." },
+    ],
+  },
+  "Trey Research Pharma Expansion": {
+    compositeScore: 8.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Expansion of clinical trial analytics platform to 8 additional trials. Includes Real-World Evidence (RWE) data integration and FDA-ready reporting." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Trey Research Pharma Expansion"], ["Engagement", "Trey Research Pharma — Clinical Analytics Expansion"], ["Total Value", "$2100K"], ["Margin", "33%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Trey Research Pharma Phase 1 engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "33%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: 21 CFR Part 11, GDPR." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.5,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 9.2, strength: "33% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 33% provides healthy buffer." },
+    ],
+  },
+  "Lucerne Publishing AI": {
+    compositeScore: 8.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "AI-powered editorial assistant platform built on Azure AI Studio. Custom agents for fact-checking, headline generation, and content recommendation. Builds on Lucerne Data Lakehouse foundation." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Lucerne Publishing AI"], ["Engagement", "Lucerne Publishing — Editorial AI Platform"], ["Total Value", "$1500K"], ["Margin", "31%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable VanArsdel Copilot engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "31%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.0,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 7.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 7.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 8.8, strength: "31% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 7.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 31% provides healthy buffer." },
+    ],
+  },
+  "The Phone Company Contact Center AI": {
+    compositeScore: 8.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Phase 2 building on existing CX Platform. AI-powered contact center automation with Copilot for Agents, agent assist for 800 reps, and call analytics. Includes Responsible AI governance." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "The Phone Company Contact Center AI"], ["Engagement", "The Phone Company — Contact Center AI"], ["Total Value", "$1800K"], ["Margin", "30%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable The Phone Company CX Platform engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "30%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: GDPR." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 8.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 8.5,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 8.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 8.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 8.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 8.5, strength: "30% margin provides adequate buffer.", gaps: [], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 8.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 8.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "ok", detail: "Margin at 30% provides healthy buffer." },
+    ],
+  },
+  "Litware Manufacturing SCM": {
+    compositeScore: 7.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "D365 Supply Chain Management for 4 plants. Builds on existing Litware Power BI relationship. Integration with legacy MES required." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Litware Manufacturing SCM"], ["Engagement", "Litware Manufacturing — D365 SCM"], ["Total Value", "$980K"], ["Margin", "28%"], ["Complexity", "medium"], ["Vendor", "Microsoft PS only"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Litware Power BI engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "28%"], ["Vendor share", "0%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to medium-complexity engagements. Regulatory dimensions: None." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 7.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 7.5,     strength: "Phased scope structure follows established playbook for medium-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 7.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 7.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 7.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 8.0, strength: "28% margin provides adequate buffer.", gaps: ["Margin below 30% reduces tolerance for scope variance"], recommendation: "Standard commercial terms." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 7.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 7.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "warning", detail: "Margin at 28% is below preferred 30% threshold." },
+    ],
+  },
+  "Tailwind Traders D365": {
+    compositeScore: 7.0,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "D365 F&O rollout across 8 countries following Tailwind Copilot Phase 1. 22-month program. Local payroll integration per country. Regional SI partner (25%)." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Tailwind Traders D365"], ["Engagement", "Tailwind Traders — D365 F&O Multi-Country Phase 2"], ["Total Value", "$3200K"], ["Margin", "24%"], ["Complexity", "high"], ["Vendor", "Regional SI Partner (25%)"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Northwind Traders D365 F&O engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "24%"], ["Vendor share", "25%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to high-complexity engagements. Regulatory dimensions: GDPR, Local Payroll (8 jurisdictions)." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 7.3, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 7.0,     strength: "Phased scope structure follows established playbook for high-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 6.8, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 7.0,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 6.9, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 7.0, strength: "24% margin provides tight buffer.", gaps: ["Margin below 30% reduces tolerance for scope variance"], recommendation: "Margin floor review with Finance before signing." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 7.2, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 6.7, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "warning", detail: "Margin at 24% is below preferred 30% threshold." },
+    ],
+  },
+  "Coho Vineyard ERP": {
+    compositeScore: 5.5,
+    sections: [
+      { id: "executive-summary", number: "1.", title: "Executive Summary", content: [
+        { t: "p", text: "Full ERP replacement of legacy SAP B1 with D365 F&O. 27-month program with 6 entities. Phase 1 vendor (Avanade 30%) shows performance concerns. Existing Coho Vineyard ERP Modernization (Phase 0.5) currently Amber with scope re-baseline underway." },
+        { t: "table", headers: ["Field", "Detail"], rows: [["Client", "Coho Vineyard ERP"], ["Engagement", "Coho Vineyard — Full ERP Replacement"], ["Total Value", "$4500K"], ["Margin", "21%"], ["Complexity", "high"], ["Vendor", "Avanade (30%)"]] },
+      ]},
+      { id: "outcomes", number: "2.", title: "Customer Desired Outcomes", dimensionKey: "outcome_clarity", content: [
+        { t: "p", text: "Outcomes aligned with engagement objectives and proven measurement patterns from comparable Coho Vineyard ERP Modernization (current Amber, scope re-baseline) engagements." },
+      ]},
+      { id: "scope", number: "3.", title: "Scope of Work", dimensionKey: "scope_completeness", content: [
+        { t: "p", text: "Scope is structured into phased delivery aligned to the established playbook. Service line composition matches comparable engagements." },
+      ]},
+      { id: "out-of-scope", number: "4.", title: "Out of Scope", dimensionKey: "out_of_scope", content: [
+        { t: "bullets", items: ["Activities outside the named service lines", "Change Order required for scope extensions beyond the baseline"] },
+      ]},
+      { id: "assumptions", number: "5.", title: "Assumptions & Dependencies", dimensionKey: "assumption_quality", content: [
+        { t: "bullets", items: ["Client provides required environment access at kickoff", "Steering cadence operational within first 2 weeks"] },
+      ]},
+      { id: "timeline", number: "6.", title: "Project Timeline & Milestones", dimensionKey: "timeline_enforceability", content: [
+        { t: "p", text: "Milestone-triggered billing aligned to phase delivery. Standard checkpoint cadence at Day 30/60/90 applies." },
+      ]},
+      { id: "governance", number: "7.", title: "Governance & Change Management", dimensionKey: "governance_readiness", content: [
+        { t: "bullets", items: ["Steering committee at client C-level — monthly cadence", "Bi-weekly RAID review applying QA Network process improvement", "Standard escalation: PM → Delivery Lead → Engagement Director"] },
+      ]},
+      { id: "commercial", number: "8.", title: "Commercial Terms", dimensionKey: "commercial_integrity", content: [
+        { t: "table", headers: ["Item", "Detail"], rows: [["Pricing", "Fixed fee by phase, milestone-triggered"], ["Margin", "21%"], ["Vendor share", "30%"], ["Payment terms", "Net 30 from milestone acceptance"]] },
+      ]},
+      { id: "risk", number: "9.", title: "Preliminary Risk Register", dimensionKey: "risk_visibility", content: [
+        { t: "p", text: "Risk register seeded from QA Knowledge Network lessons applicable to high-complexity engagements. Regulatory dimensions: GDPR." },
+      ]},
+    ],
+    dimensions: [
+      { key: "outcome_clarity",         label: "Outcome Clarity",          score: 5.8, strength: "Outcomes measurable and aligned to client business value.", gaps: [], recommendation: "Confirm baseline metrics during Day 30 checkpoint." },
+      { key: "scope_completeness",      label: "Scope Completeness",       score: 5.5,     strength: "Phased scope structure follows established playbook for high-complexity work.", gaps: [], recommendation: "No major gaps identified." },
+      { key: "out_of_scope",            label: "Out-of-Scope Specificity", score: 5.3, strength: "Exclusions are documented with change order mechanism.", gaps: [], recommendation: "Standard exclusion clauses apply." },
+      { key: "assumption_quality",      label: "Assumption Quality",       score: 5.5,     strength: "Standard assumptions are client-validated.", gaps: [], recommendation: "Validate environment readiness in Week 1." },
+      { key: "timeline_enforceability", label: "Timeline Enforceability",  score: 5.4, strength: "Milestone-triggered billing aligned to phase delivery.", gaps: [], recommendation: "Apply standard checkpoint cadence." },
+      { key: "commercial_integrity",    label: "Commercial Integrity",     score: 6.2, strength: "21% margin provides tight buffer.", gaps: ["Margin below 30% reduces tolerance for scope variance"], recommendation: "Margin floor review with Finance before signing." },
+      { key: "governance_readiness",    label: "Governance Readiness",     score: 5.7, strength: "Steering committee + bi-weekly RAID cadence applies QA Network process improvement.", gaps: [], recommendation: "Establish cadence from Day 1." },
+      { key: "risk_visibility",         label: "Risk Visibility",          score: 5.2, strength: "Risk register seeded from comparable engagement lessons.", gaps: [], recommendation: "Update RAID after Day 30 checkpoint." },
+    ],
+    alignmentFlags: [
+      { label: "Outcomes → Deliverables",       status: "ok" },
+      { label: "Scope → Timeline",              status: "ok" },
+      { label: "Governance → QA Network",       status: "ok",      detail: "Bi-weekly RAID cadence pattern applied from Lamna Healthcare." },
+      { label: "Margin → Commercial Health",    status: "warning", detail: "Margin at 21% is below preferred 30% threshold." },
+    ],
+  },
+
 };

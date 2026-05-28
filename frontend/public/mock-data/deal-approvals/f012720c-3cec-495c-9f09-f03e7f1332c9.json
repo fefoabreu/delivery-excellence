@@ -1,0 +1,137 @@
+{
+  "id": "f012720c-3cec-495c-9f09-f03e7f1332c9",
+  "contract_number": "CON-2026-0031",
+  "name": "Trey Research Pharma \u2014 Clinical Analytics Expansion",
+  "client_name": "Trey Research Pharma Expansion",
+  "total_value": 2100000,
+  "status": "pending_approval",
+  "start_date": "2026-12-01",
+  "end_date": "2027-12-01",
+  "scope_summary": "Expansion of clinical trial analytics platform to 8 additional trials. Includes Real-World Evidence (RWE) data integration and FDA-ready reporting.",
+  "service_lines": [
+    {
+      "service_name": "Clinical Analytics Platform",
+      "category": "data_analytics",
+      "quantity": 220,
+      "unit": "day",
+      "unit_price": 3200,
+      "discount_pct": 0,
+      "total": 704000
+    },
+    {
+      "service_name": "Real-World Evidence Integration",
+      "category": "data_analytics",
+      "quantity": 180,
+      "unit": "day",
+      "unit_price": 3000,
+      "discount_pct": 0,
+      "total": 540000
+    },
+    {
+      "service_name": "FDA-Compliant Reporting",
+      "category": "compliance",
+      "quantity": 100,
+      "unit": "day",
+      "unit_price": 3400,
+      "discount_pct": 0,
+      "total": 340000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "data_analytics"
+    ],
+    "internal_investment_pct": 5,
+    "sold_margin_pct": 33,
+    "solution_complexity": "medium",
+    "vendor_name": null,
+    "vendor_participation_pct": 0,
+    "similar_projects_count": 3,
+    "delivery_success_rate": 88,
+    "reference_projects": [
+      "Trey Research Pharma Phase 1",
+      "Northwind Pharma Compliance Platform"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 8.5,
+    "regulatory_requirements": [
+      "21 CFR Part 11",
+      "GDPR"
+    ],
+    "compliance_risk": "medium",
+    "azure_consumption_monthly": 38000,
+    "azure_acr_percentage": 18,
+    "expansion_type": "expansion",
+    "is_delivery_led": true,
+    "score_breakdown": {
+      "on_strategy": 8.5,
+      "risk_profile": 7.5,
+      "sow_quality": 8.5,
+      "delivery_success": 8.8,
+      "estimation_accuracy": 8.0,
+      "compliance": 7.0,
+      "ip_leverage": 8.5,
+      "vendor_participation": 8.0,
+      "azure_consumption": 7.5,
+      "sold_margin": 9.5
+    },
+    "deal_score": 81.0,
+    "approval_tier": 2,
+    "ai_recommendation_status": "APPROVE",
+    "ai_recommendation_text": "Expansion of successful Trey Pharma engagement. Apply Northwind Pharma regulatory volatility lesson. Anika Sharma delivery continuity. Approve at Tier 2.",
+    "ai_conditions": [],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

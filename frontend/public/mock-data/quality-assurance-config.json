@@ -5,7 +5,7 @@
       "id": "kr1",
       "label": "Early Detection Rate",
       "unit": "%",
-      "current": 64.0,
+      "current": 75.0,
       "target": 70.0,
       "direction": "higher",
       "description": "Red projects predicted >30 days before status change"
@@ -14,7 +14,7 @@
       "id": "kr2",
       "label": "G2G Recovery Rate",
       "unit": "%",
-      "current": 50.0,
+      "current": 58.0,
       "target": 60.0,
       "direction": "higher",
       "description": "Get-to-Green plans returning to Green within 60 days"
@@ -23,10 +23,10 @@
       "id": "kr3",
       "label": "Portfolio Health",
       "unit": "%",
-      "current": 71.0,
+      "current": 73.0,
       "target": 75.0,
       "direction": "higher",
-      "description": "Active projects maintaining Green status"
+      "description": "Active projects maintaining Green status (22 of 30 projects)"
     },
     {
       "id": "kr4",
@@ -57,10 +57,10 @@
     }
   ],
   "kpis": [
-    { "label": "Avg EW Score", "value": "42", "target": "< 40" },
+    { "label": "Avg EW Score", "value": "39", "target": "< 40" },
     { "label": "MTTR", "value": "3.2 days", "target": "< 2 days" },
-    { "label": "RAID Coverage", "value": "86%", "target": "> 95%" },
-    { "label": "Checkpoint Rate", "value": "78%", "target": "> 90%" }
+    { "label": "RAID Coverage", "value": "89%", "target": "> 95%" },
+    { "label": "Checkpoint Rate", "value": "82%", "target": "> 90%" }
   ],
   "alert_tiers": [
     {

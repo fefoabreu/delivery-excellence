@@ -1,0 +1,134 @@
+{
+  "id": "b3a6e60e-29d0-49d9-a408-1834c3815250",
+  "contract_number": "CON-2026-0030",
+  "name": "VanArsdel Manufacturing \u2014 Copilot Wave 2",
+  "client_name": "VanArsdel Manufacturing Wave 2",
+  "total_value": 1400000,
+  "status": "pending_approval",
+  "start_date": "2026-09-15",
+  "end_date": "2027-07-15",
+  "scope_summary": "Copilot for Manufacturing expansion to remaining 4,500 seats. Building on Wave 1's 71% adoption. Includes persona-pilot pre-launch (per knowledge network pattern).",
+  "service_lines": [
+    {
+      "service_name": "Microsoft Copilot Deployment",
+      "category": "ai_agentic",
+      "quantity": 4500,
+      "unit": "user_month",
+      "unit_price": 45,
+      "discount_pct": 0,
+      "total": 202500
+    },
+    {
+      "service_name": "Azure AI Studio - Custom Agent",
+      "category": "ai_agentic",
+      "quantity": 180,
+      "unit": "day",
+      "unit_price": 3800,
+      "discount_pct": 0,
+      "total": 684000
+    },
+    {
+      "service_name": "Agentic Workflow Automation",
+      "category": "ai_agentic",
+      "quantity": 100,
+      "unit": "day",
+      "unit_price": 4200,
+      "discount_pct": 0,
+      "total": 420000
+    }
+  ],
+  "created_at": "2026-05-22T10:00:00.000000",
+  "profile": {
+    "strategy_pillars": [
+      "ai_agentic"
+    ],
+    "internal_investment_pct": 10,
+    "sold_margin_pct": 36,
+    "solution_complexity": "medium",
+    "vendor_name": null,
+    "vendor_participation_pct": 0,
+    "similar_projects_count": 4,
+    "delivery_success_rate": 92,
+    "reference_projects": [
+      "VanArsdel Wave 1",
+      "VanArsdel Copilot & AI Platform"
+    ],
+    "playbook_available": true,
+    "sow_template_used": true,
+    "ip_leverage_score": 9.5,
+    "regulatory_requirements": [],
+    "compliance_risk": "low",
+    "azure_consumption_monthly": 56000,
+    "azure_acr_percentage": 28,
+    "expansion_type": "expansion",
+    "is_delivery_led": true,
+    "score_breakdown": {
+      "on_strategy": 10.0,
+      "risk_profile": 8.5,
+      "sow_quality": 9.0,
+      "delivery_success": 9.2,
+      "estimation_accuracy": 8.5,
+      "compliance": 9.5,
+      "ip_leverage": 9.5,
+      "vendor_participation": 8.0,
+      "azure_consumption": 9.0,
+      "sold_margin": 9.5
+    },
+    "deal_score": 84.3,
+    "approval_tier": 2,
+    "ai_recommendation_status": "APPROVE",
+    "ai_recommendation_text": "Strong AI expansion with Wave 1 lessons directly applicable. 71% Wave 1 adoption + persona-pilot pattern drives confidence. Approve at Tier 2.",
+    "ai_conditions": [],
+    "action_taken": null,
+    "action_by": null,
+    "action_notes": null,
+    "action_date": null
+  },
+  "score_dimensions": [
+    [
+      "on_strategy",
+      "On Strategy",
+      "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+    ],
+    [
+      "risk_profile",
+      "Risk Profile",
+      "Inverse risk: solution complexity, deal size, vendor dependency"
+    ],
+    [
+      "sow_quality",
+      "SOW Quality",
+      "Scope completeness, exclusions, assumptions, acceptance criteria"
+    ],
+    [
+      "delivery_success",
+      "Delivery Success Rate",
+      "Historical success rate on comparable engagements"
+    ],
+    [
+      "estimation_accuracy",
+      "Estimation Accuracy",
+      "Confidence in effort estimates based on complexity and comparables"
+    ],
+    [
+      "compliance",
+      "Compliance Burden",
+      "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+    ],
+    [
+      "ip_leverage",
+      "IP & Asset Leverage",
+      "Reuse of playbooks, SOW templates, and delivery accelerators"
+    ],
+    [
+      "vendor_participation",
+      "Vendor Participation",
+      "Partner/subcontractor % \u2014 impact on margin and delivery control"
+    ],
+    [
+      "azure_consumption",
+      "Azure Consumption",
+      "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+    ]
+  ]
+}

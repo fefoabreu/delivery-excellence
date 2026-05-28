@@ -1,1 +1,3033 @@
-[{"id":"cb4c12e5-c3d3-439e-af15-85bf8bd7d56f","contract_number":"CON-2026-0016","name":"A. Datum Corporation — Enterprise Zero Trust & SOC Transformation","client_name":"A. Datum Corporation","total_value":992000.0,"status":"pending_approval","start_date":"2026-05-28","end_date":"2027-03-24","scope_summary":"Board-mandated enterprise security transformation covering Zero Trust architecture (Entra ID, Conditional Access, ZTNA), Microsoft Sentinel SIEM with 45+ data connectors and SOAR automation, and Defender XDR across 6,500 seats. Includes Responsible AI guardrails for AI-assisted SOC playbooks.","service_lines":[{"service_name":"Zero Trust Assessment","category":"security","quantity":1.0,"unit":"fixed","unit_price":40000.0,"total":40000.0},{"service_name":"Microsoft Sentinel SIEM Deployment","category":"security","quantity":140.0,"unit":"day","unit_price":3200.0,"total":448000.0},{"service_name":"Microsoft Defender XDR","category":"security","quantity":100.0,"unit":"day","unit_price":2800.0,"total":280000.0},{"service_name":"Identity & Access Management","category":"security","quantity":80.0,"unit":"day","unit_price":2800.0,"total":224000.0}],"created_at":"2026-05-07T13:18:12.467617","profile":{"strategy_pillars":["security","zero_trust","ai"],"internal_investment_pct":10.0,"sold_margin_pct":35.0,"solution_complexity":"medium","vendor_name":null,"vendor_participation_pct":0.0,"similar_projects_count":5,"delivery_success_rate":92.0,"reference_projects":["Proseware SOC Modernization","City Power & Light SOC Modernization"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":9.5,"regulatory_requirements":[],"compliance_risk":"low","azure_consumption_monthly":28000.0,"azure_acr_percentage":18.0,"expansion_type":"new_logo","is_delivery_led":false,"score_breakdown":{"on_strategy":9.5,"risk_profile":7.5,"sow_quality":9.0,"delivery_success":9.2,"estimation_accuracy":8.5,"compliance":9.0,"ip_leverage":9.5,"vendor_participation":8.0,"azure_consumption":8.0,"sold_margin":10.0},"deal_score":88.0,"approval_tier":2,"ai_recommendation_status":"APPROVE","ai_recommendation_text":"Highest recommendation. Board-mandated security transformation with clear scope, zero vendor dilution, and the strongest IP leverage in our security portfolio — Sentinel and Zero Trust playbooks both apply directly. Delivery success rate of 92% across five comparable engagements (Proseware, City Power) provides strong confidence. 35% margin is excellent. New logo with strategic account potential across A. Datum's parent group (12 subsidiaries). Approved without conditions.","ai_conditions":[],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"7b65fae9-6f3e-468f-9555-a4a3288504fc","contract_number":"CON-2026-0018","name":"Alpine Insurance Group — Zero Trust Architecture & Identity Modernization","client_name":"Alpine Insurance Group","total_value":716000.0,"status":"pending_approval","start_date":"2026-05-14","end_date":"2027-02-08","scope_summary":"Zero Trust implementation for a 3,200-seat insurance firm. Covers Entra ID modernization with PIM and identity governance, Intune device management, Defender for Endpoint, and Microsoft Sentinel with Solvency II compliance analytics pack. All delivered by Microsoft Professional Services — no vendor.","service_lines":[{"service_name":"Zero Trust Assessment","category":"security","quantity":1.0,"unit":"fixed","unit_price":40000.0,"total":40000.0},{"service_name":"Identity & Access Management","category":"security","quantity":90.0,"unit":"day","unit_price":2800.0,"total":252000.0},{"service_name":"Microsoft Defender XDR","category":"security","quantity":60.0,"unit":"day","unit_price":2800.0,"total":168000.0},{"service_name":"Microsoft Sentinel SIEM Deployment","category":"security","quantity":80.0,"unit":"day","unit_price":3200.0,"total":256000.0}],"created_at":"2026-05-07T13:18:12.469382","profile":{"strategy_pillars":["security","zero_trust"],"internal_investment_pct":0.0,"sold_margin_pct":38.0,"solution_complexity":"medium","vendor_name":null,"vendor_participation_pct":0.0,"similar_projects_count":6,"delivery_success_rate":91.0,"reference_projects":["Proseware SOC Modernization","City Power & Light SOC Modernization","Lamna Healthcare Azure & Security Foundation"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":9.0,"regulatory_requirements":["Solvency II","GDPR"],"compliance_risk":"medium","azure_consumption_monthly":9500.0,"azure_acr_percentage":12.0,"expansion_type":"whitespace","is_delivery_led":false,"score_breakdown":{"on_strategy":9.0,"risk_profile":7.5,"sow_quality":8.8,"delivery_success":9.1,"estimation_accuracy":8.5,"compliance":6.0,"ip_leverage":9.0,"vendor_participation":8.0,"azure_consumption":6.5,"sold_margin":10.0},"deal_score":83.1,"approval_tier":2,"ai_recommendation_status":"APPROVE","ai_recommendation_text":"Clean, well-scoped deal. 38% margin is among the best in the current pending portfolio. Six comparable security engagements with 91% delivery success rate provide strong execution confidence. Zero Trust and Solvency II compliance analytics pack are proven IP assets. The Solvency II and GDPR regulatory overlay is manageable — Lamna Healthcare HIPAA reference demonstrates our regulated-industry delivery capability. No vendor dilution. Recommended for Tier 2 Manager approval — does not require Executive Committee.","ai_conditions":["Solvency II analytics compliance scope to be confirmed with client's Risk & Compliance team pre-kickoff"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"8fb40196-2593-4499-95ee-b20b368572d9","contract_number":"CON-2026-0015","name":"Fourth Coffee Corp — Azure Data Center Exit Program","client_name":"Fourth Coffee Corporation","total_value":1064000.0,"status":"pending_approval","start_date":"2026-05-21","end_date":"2027-11-12","scope_summary":"Full data-center exit to Azure for 210 workloads across Americas and EMEA. Program includes Azure Landing Zone design, migration factory (Lift-Shift + refactor tiers), cloud governance, FinOps, and 12-month hypercare. Avanade subcontracts migration factory execution (20% of effort).","service_lines":[{"service_name":"Cloud Adoption Foundation","category":"cloud_adoption","quantity":120.0,"unit":"day","unit_price":2800.0,"total":336000.0},{"service_name":"Azure Migration - Lift & Shift","category":"cloud_adoption","quantity":180.0,"unit":"day","unit_price":2400.0,"total":432000.0},{"service_name":"Cloud Native Modernization","category":"cloud_adoption","quantity":60.0,"unit":"day","unit_price":3200.0,"total":192000.0},{"service_name":"FinOps & Cost Optimization","category":"cloud_adoption","quantity":40.0,"unit":"day","unit_price":2600.0,"total":104000.0}],"created_at":"2026-05-07T13:18:12.466566","profile":{"strategy_pillars":["cloud_adoption","finops"],"internal_investment_pct":15.0,"sold_margin_pct":28.0,"solution_complexity":"high","vendor_name":"Avanade","vendor_participation_pct":20.0,"similar_projects_count":4,"delivery_success_rate":88.0,"reference_projects":["Adatum Cloud Foundation","Proseware SOC Modernization"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":9.0,"regulatory_requirements":[],"compliance_risk":"low","azure_consumption_monthly":185000.0,"azure_acr_percentage":42.0,"expansion_type":"new_logo","is_delivery_led":false,"score_breakdown":{"on_strategy":9.0,"risk_profile":5.5,"sow_quality":8.5,"delivery_success":8.8,"estimation_accuracy":7.5,"compliance":9.0,"ip_leverage":9.0,"vendor_participation":7.5,"azure_consumption":10.0,"sold_margin":9.3},"deal_score":82.3,"approval_tier":3,"ai_recommendation_status":"APPROVE","ai_recommendation_text":"Strong strategic alignment with cloud-first mandate. New logo with substantial ACR upside ($185K/month). SOW is comprehensive with tiered workload inventory across Lift-Shift, Refactor, and Greenfield tracks. Avanade partnership (20%) provides migration factory scale without diluting our governance lead. Margin at 28% is acceptable given deal volume—confirm commercial desk has applied correct volume tier discounting. Approved for Tier 3 Executive signature.","ai_conditions":["Confirm volume-tier discount approval from Finance","Attach Avanade subcontract SOW before countersigning","Executive Sponsor EBR scheduled within 30 days of kickoff"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"94899e2f-d1de-4d4f-97dc-e617616edbe5","contract_number":"CON-2026-0017","name":"Contoso Hotels & Resorts — AI Guest Experience Platform","client_name":"Contoso Hotels & Resorts","total_value":1389500.0,"status":"pending_approval","start_date":"2026-06-06","end_date":"2027-06-01","scope_summary":"Design and build a multi-property AI guest experience platform on Azure AI Studio. Custom agents: personalized booking recommendation agent, in-stay concierge agent, and loyalty prediction model. Deployed across 240 properties in 18 countries. Includes Responsible AI governance framework and Azure OpenAI private endpoint architecture. 20% company investment (IOI) committed.","service_lines":[{"service_name":"Azure AI Studio - Custom Agent","category":"ai_agentic","quantity":220.0,"unit":"day","unit_price":3800.0,"total":836000.0},{"service_name":"Agentic Workflow Automation","category":"ai_agentic","quantity":80.0,"unit":"day","unit_price":4200.0,"total":336000.0},{"service_name":"AI Governance & Responsible AI","category":"ai_agentic","quantity":50.0,"unit":"day","unit_price":3000.0,"total":150000.0},{"service_name":"Microsoft Copilot Deployment","category":"ai_agentic","quantity":1500.0,"unit":"user_month","unit_price":45.0,"total":67500.0}],"created_at":"2026-05-07T13:18:12.468864","profile":{"strategy_pillars":["ai_agentic","cloud_adoption"],"internal_investment_pct":20.0,"sold_margin_pct":34.0,"solution_complexity":"high","vendor_name":null,"vendor_participation_pct":0.0,"similar_projects_count":2,"delivery_success_rate":85.0,"reference_projects":["VanArsdel Copilot & AI Platform","Datum Corp AI Innovation Platform"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":8.5,"regulatory_requirements":["GDPR"],"compliance_risk":"medium","azure_consumption_monthly":78000.0,"azure_acr_percentage":35.0,"expansion_type":"new_logo","is_delivery_led":false,"score_breakdown":{"on_strategy":10.0,"risk_profile":5.5,"sow_quality":8.5,"delivery_success":8.5,"estimation_accuracy":6.5,"compliance":7.5,"ip_leverage":8.5,"vendor_participation":8.0,"azure_consumption":9.5,"sold_margin":10.0},"deal_score":81.5,"approval_tier":3,"ai_recommendation_status":"APPROVE","ai_recommendation_text":"Flagship AI deal — highest strategic priority in the FY pipeline. 20% company investment signals internal commitment and materially de-risks the commercial proposition. Azure OpenAI ACR of $78K/month is a landmark ACR anchor. AI delivery playbook and Responsible AI framework are directly applicable (VanArsdel reference). Primary caution: AI estimate accuracy is inherently lower than traditional services — phased milestones with AI performance acceptance criteria are essential. GDPR data residency architecture must be confirmed per EU property footprint. Approved — recommend 90-day project health check cadence given scale.","ai_conditions":["Phase milestones must include AI model acceptance criteria with measurable thresholds","GDPR data residency review by Privacy Counsel before kickoff","90-day AI performance health check cadence established in governance plan"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"f6195048-546a-4b63-a666-4f82bb0ed6a5","contract_number":"CON-2026-0020","name":"Northwind Traders — Dynamics 365 Finance & Operations (SAP ECC Replacement)","client_name":"Northwind Traders","total_value":1624000.0,"status":"pending_approval","start_date":"2026-06-11","end_date":"2027-12-03","scope_summary":"Full D365 Finance & Operations implementation replacing SAP ECC across Finance, Supply Chain, and Warehouse Management. 18-month program in 3 phases. Includes full data migration from SAP, integration with 4 external systems, and 250-user training program. All delivered by Microsoft Professional Services.","service_lines":[{"service_name":"Dynamics 365 Finance & Operations","category":"dynamics","quantity":300.0,"unit":"day","unit_price":3400.0,"total":1020000.0},{"service_name":"Dynamics Integration Architecture","category":"dynamics","quantity":80.0,"unit":"day","unit_price":3000.0,"total":240000.0},{"service_name":"Dynamics Data Migration","category":"dynamics","quantity":100.0,"unit":"day","unit_price":2800.0,"total":280000.0},{"service_name":"Power Platform Center of Excellence","category":"dynamics","quantity":30.0,"unit":"day","unit_price":2800.0,"total":84000.0}],"created_at":"2026-05-07T13:18:12.470356","profile":{"strategy_pillars":["dynamics"],"internal_investment_pct":0.0,"sold_margin_pct":32.0,"solution_complexity":"high","vendor_name":null,"vendor_participation_pct":0.0,"similar_projects_count":5,"delivery_success_rate":86.0,"reference_projects":["Trey Research D365 Sales & CS","Southridge D365 F&O Transformation"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":8.5,"regulatory_requirements":[],"compliance_risk":"low","azure_consumption_monthly":14000.0,"azure_acr_percentage":6.0,"expansion_type":"expansion","is_delivery_led":false,"score_breakdown":{"on_strategy":7.5,"risk_profile":5.5,"sow_quality":8.0,"delivery_success":8.6,"estimation_accuracy":8.5,"compliance":9.0,"ip_leverage":8.5,"vendor_participation":8.0,"azure_consumption":5.5,"sold_margin":10.0},"deal_score":77.6,"approval_tier":3,"ai_recommendation_status":"APPROVE_WITH_CONDITIONS","ai_recommendation_text":"The Northwind Traders D365 F&O engagement presents strong financial merit — a 32% margin on a $1.6M deal is best-in-class and the SOW quality, estimation accuracy, and compliance scores collectively signal sound pre-sales diligence. Strategic alignment to the Dynamics pillar is solid, and the 86% delivery success rate on comparable programs provides reasonable execution confidence for a Tier 3 approval. However, the risk profile score of 5.5 is a material concern for a high-complexity SAP ECC replacement, where data migration fidelity, cutover planning, and organizational change management are historically the primary failure modes. The Azure ACR of $14K/month (6% of deal) is below expected consumption attachment for a workload of this scale and should be structurally addressed before contract execution.","ai_conditions":["A formal Risk Mitigation Plan must be approved by the assigned Delivery Principal before contract signature, explicitly covering data migration strategy, cutover sequencing, and change management governance for the SAP ECC transition.","An Azure consumption attachment roadmap is required — identify and scope qualifying workloads (e.g., Azure Integration Services, Azure Monitor, Power BI Premium) to bring ACR toward a 10%+ deal-value threshold over the engagement lifecycle.","Confirm Microsoft vendor co-investment or FastTrack for Dynamics 365 participation; absence of any vendor contribution on a high-complexity, Tier 3 deal increases delivery risk and reduces Microsoft alignment support.","Validate executive sponsorship and a formal steering committee structure at Northwind Traders prior to execution — C-level commitment is a leading indicator of success on ERP replacement programs of this scope."],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"4981a018-3140-481f-82ec-89ec290afba5","contract_number":"CON-2026-0021","name":"Northwind Healthcare System — HIPAA Compliance & Security Platform","client_name":"Northwind Healthcare System","total_value":924000.0,"status":"pending_approval","start_date":"2026-06-18","end_date":"2027-05-14","scope_summary":"Comprehensive HIPAA/HITECH compliance program for an 8-hospital system across APAC. Microsoft Purview for PHI classification and data governance, Microsoft Sentinel SIEM with HIPAA analytics ruleset, and Entra ID modernization with clinical workforce identity governance. Business Associate Agreement (BAA) in place. 8% company co-investment committed (healthcare vertical priority).","service_lines":[{"service_name":"Compliance & Purview Implementation","category":"security","quantity":100.0,"unit":"day","unit_price":2600.0,"total":260000.0},{"service_name":"Microsoft Sentinel SIEM Deployment","category":"security","quantity":120.0,"unit":"day","unit_price":3200.0,"total":384000.0},{"service_name":"Identity & Access Management","category":"security","quantity":60.0,"unit":"day","unit_price":2800.0,"total":168000.0},{"service_name":"Data Governance with Purview","category":"data_analytics","quantity":40.0,"unit":"day","unit_price":2800.0,"total":112000.0}],"created_at":"2026-05-07T13:18:12.470837","profile":{"strategy_pillars":["security","compliance","data_analytics"],"internal_investment_pct":8.0,"sold_margin_pct":31.0,"solution_complexity":"high","vendor_name":null,"vendor_participation_pct":0.0,"similar_projects_count":3,"delivery_success_rate":89.0,"reference_projects":["Lamna Healthcare Azure & Security Foundation","Proseware SOC Modernization"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":8.0,"regulatory_requirements":["HIPAA","HITECH"],"compliance_risk":"high","azure_consumption_monthly":31000.0,"azure_acr_percentage":21.0,"expansion_type":"new_logo","is_delivery_led":false,"score_breakdown":{"on_strategy":8.5,"risk_profile":5.0,"sow_quality":8.0,"delivery_success":8.9,"estimation_accuracy":8.0,"compliance":5.0,"ip_leverage":8.0,"vendor_participation":8.0,"azure_consumption":7.5,"sold_margin":10.0},"deal_score":76.0,"approval_tier":3,"ai_recommendation_status":"APPROVE_WITH_CONDITIONS","ai_recommendation_text":"Strategic healthcare deal with strong delivery confidence — Lamna Healthcare (9.2/10 CSAT) is a directly comparable engagement. 8% company co-investment signals vertical priority alignment. New logo with good ACR ($31K/month). HIPAA and HITECH regulatory requirements are the primary complexity driver. Two non-negotiable conditions: (1) a Business Associate Agreement (BAA) must be countersigned before project kickoff — not before contract signature, but before any PHI is accessed; (2) Purview PHI classification scope must be reviewed by Northwind's Privacy Counsel. 31% margin is solid. Recommend Lamna Healthcare PM (Sarah Mitchell) as delivery lead.","ai_conditions":["Business Associate Agreement (BAA) countersigned before Day 1 data access","PHI classification scope reviewed and signed by client Privacy Counsel","Recommend Sarah Mitchell (Lamna Healthcare PM) as delivery lead"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"43bb0436-3b90-47cf-8361-59ba4907da57","contract_number":"CON-2026-0019","name":"Contoso Financial Group — Azure Cloud Migration (Phase 1: Core Banking)","client_name":"Contoso Financial Group","total_value":708000.0,"status":"pending_approval","start_date":"2026-06-04","end_date":"2027-05-30","scope_summary":"Azure migration of 120 on-premises workloads for a mid-tier commercial bank. Phase 1 covers core banking (40 workloads: Lift-Shift), landing zone with FFIEC-compliant security baseline, and network architecture (ExpressRoute + hybrid DNS). Eviden subcontracts migration execution (15% of effort). Zero Trust overlay included. Phase 2 (80 workloads) separate SOW.","service_lines":[{"service_name":"Cloud Adoption Foundation","category":"cloud_adoption","quantity":80.0,"unit":"day","unit_price":2800.0,"total":224000.0},{"service_name":"Azure Migration - Lift & Shift","category":"cloud_adoption","quantity":120.0,"unit":"day","unit_price":2400.0,"total":288000.0},{"service_name":"Azure Networking & Connectivity","category":"cloud_adoption","quantity":40.0,"unit":"day","unit_price":2800.0,"total":112000.0},{"service_name":"Identity & Access Management","category":"security","quantity":30.0,"unit":"day","unit_price":2800.0,"total":84000.0}],"created_at":"2026-05-07T13:18:12.469874","profile":{"strategy_pillars":["cloud_adoption","security"],"internal_investment_pct":5.0,"sold_margin_pct":26.0,"solution_complexity":"high","vendor_name":"Eviden","vendor_participation_pct":15.0,"similar_projects_count":4,"delivery_success_rate":83.0,"reference_projects":["Adatum Cloud Foundation","Wingtip Toys Cloud Native Modernization"],"playbook_available":true,"sow_template_used":true,"ip_leverage_score":8.0,"regulatory_requirements":["FFIEC","OCC"],"compliance_risk":"high","azure_consumption_monthly":96000.0,"azure_acr_percentage":52.0,"expansion_type":"expansion","is_delivery_led":false,"score_breakdown":{"on_strategy":9.0,"risk_profile":5.0,"sow_quality":7.5,"delivery_success":8.3,"estimation_accuracy":7.0,"compliance":5.0,"ip_leverage":8.0,"vendor_participation":7.5,"azure_consumption":9.5,"sold_margin":8.7},"deal_score":74.6,"approval_tier":3,"ai_recommendation_status":"APPROVE_WITH_CONDITIONS","ai_recommendation_text":"Strategically sound cloud migration with excellent ACR outcome ($96K/month). Delivery success rate on comparable migrations is acceptable at 83%. Primary concern is the regulatory overlay — FFIEC and OCC requirements add compliance delivery risk that is not fully reflected in the current estimate. Margin at 26% is tight for a high-complexity, regulated engagement with vendor participation. Two conditions must be met before countersigning: (1) confirm FFIEC compliance review is complete, and (2) validate that Eviden's SOW explicitly covers regulatory-aware configuration standards. Phase 2 SOW should apply lessons learned from Phase 1 delivery to improve margin.","ai_conditions":["Attach FFIEC compliance review sign-off to contract file","Eviden subcontract must include regulatory compliance obligations","Margin improvement target of +2 pts set for Phase 2 SOW"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]},{"id":"9353d164-bd3e-4e52-9f9d-bf0261febc67","contract_number":"CON-2026-0022","name":"Consolidated Messenger — D365 F&O Multi-Country ERP Transformation","client_name":"Consolidated Messenger","total_value":2280000.0,"status":"pending_approval","start_date":"2026-07-02","end_date":"2028-10-19","scope_summary":"D365 Finance & Operations rollout across 14 countries replacing a fragmented SAP landscape. Program covers Finance (GL, AP/AR, Fixed Assets), Logistics (Warehouse, Transportation), and HR (14 local payroll integrations). Regional SI partner (30% of effort) covers local regulatory configuration per country. 28-month program across 4 geographic waves.","service_lines":[{"service_name":"Dynamics 365 Finance & Operations","category":"dynamics","quantity":400.0,"unit":"day","unit_price":3400.0,"total":1360000.0},{"service_name":"Dynamics Integration Architecture","category":"dynamics","quantity":120.0,"unit":"day","unit_price":3000.0,"total":360000.0},{"service_name":"Dynamics Data Migration","category":"dynamics","quantity":150.0,"unit":"day","unit_price":2800.0,"total":420000.0},{"service_name":"Power Platform Center of Excellence","category":"dynamics","quantity":50.0,"unit":"day","unit_price":2800.0,"total":140000.0}],"created_at":"2026-05-07T13:18:12.471313","profile":{"strategy_pillars":["dynamics"],"internal_investment_pct":0.0,"sold_margin_pct":22.0,"solution_complexity":"high","vendor_name":"Regional SI Partner","vendor_participation_pct":30.0,"similar_projects_count":2,"delivery_success_rate":70.0,"reference_projects":["Northwind Traders D365 F&O (in progress)"],"playbook_available":true,"sow_template_used":false,"ip_leverage_score":6.0,"regulatory_requirements":["GDPR","Local Payroll (14 jurisdictions)"],"compliance_risk":"high","azure_consumption_monthly":19000.0,"azure_acr_percentage":5.0,"expansion_type":"new_logo","is_delivery_led":false,"score_breakdown":{"on_strategy":7.0,"risk_profile":3.5,"sow_quality":6.5,"delivery_success":7.0,"estimation_accuracy":5.0,"compliance":4.5,"ip_leverage":6.0,"vendor_participation":6.0,"azure_consumption":5.5,"sold_margin":7.3},"deal_score":57.8,"approval_tier":3,"ai_recommendation_status":"RECOMMEND_REVIEW","ai_recommendation_text":"This deal requires Architecture Review Board sign-off before approval. Multi-country D365 F&O at this scale (14 entities, 4 waves, 28 months) carries the highest execution risk in the current pending portfolio. Estimate accuracy is low — 14-country local payroll integration variance alone could materially shift effort. At 22% margin with 30% vendor participation, there is limited buffer for overruns. Our comparable delivery success rate at this complexity level is 70% — below the 80% threshold for standard approval. The SOW does not include country-level scope phasing or penalty/remediation terms. Not recommended for approval in current state. Required actions before resubmission: (1) revised SOW with country-level phase plans and explicit out-of-scope definition per jurisdiction, (2) Architecture Review Board assessment, (3) vendor SLA confirmation, (4) margin floor review with Finance.","ai_conditions":["Revised SOW required: country-level phase plans and out-of-scope per jurisdiction","Architecture Review Board (ARB) assessment required before resubmission","Vendor SLA and indemnity terms must be included in subcontract","Finance review: margin floor analysis and overrun contingency plan","Delivery leader approval required confirming resource availability for 28-month program"],"action_taken":null,"action_by":null,"action_notes":null,"action_date":null},"score_dimensions":[["on_strategy","On Strategy","Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"],["risk_profile","Risk Profile","Inverse risk: solution complexity, deal size, vendor dependency"],["sow_quality","SOW Quality","Scope completeness, exclusions, assumptions, acceptance criteria"],["delivery_success","Delivery Success Rate","Historical success rate on comparable engagements"],["estimation_accuracy","Estimation Accuracy","Confidence in effort estimates based on complexity and comparables"],["compliance","Compliance Burden","Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"],["ip_leverage","IP & Asset Leverage","Reuse of playbooks, SOW templates, and delivery accelerators"],["vendor_participation","Vendor Participation","Partner/subcontractor % — impact on margin and delivery control"],["azure_consumption","Azure Consumption","Monthly ACR generated — strategic value to Microsoft ecosystem"]]}]
+[
+  {
+    "id": "cb4c12e5-c3d3-439e-af15-85bf8bd7d56f",
+    "contract_number": "CON-2026-0016",
+    "name": "A. Datum Corporation \u2014 Enterprise Zero Trust & SOC Transformation",
+    "client_name": "A. Datum Corporation",
+    "total_value": 992000.0,
+    "status": "pending_approval",
+    "start_date": "2026-05-28",
+    "end_date": "2027-03-24",
+    "scope_summary": "Board-mandated enterprise security transformation covering Zero Trust architecture (Entra ID, Conditional Access, ZTNA), Microsoft Sentinel SIEM with 45+ data connectors and SOAR automation, and Defender XDR across 6,500 seats. Includes Responsible AI guardrails for AI-assisted SOC playbooks.",
+    "service_lines": [
+      {
+        "service_name": "Zero Trust Assessment",
+        "category": "security",
+        "quantity": 1.0,
+        "unit": "fixed",
+        "unit_price": 40000.0,
+        "total": 40000.0
+      },
+      {
+        "service_name": "Microsoft Sentinel SIEM Deployment",
+        "category": "security",
+        "quantity": 140.0,
+        "unit": "day",
+        "unit_price": 3200.0,
+        "total": 448000.0
+      },
+      {
+        "service_name": "Microsoft Defender XDR",
+        "category": "security",
+        "quantity": 100.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 280000.0
+      },
+      {
+        "service_name": "Identity & Access Management",
+        "category": "security",
+        "quantity": 80.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 224000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.467617",
+    "profile": {
+      "strategy_pillars": [
+        "security",
+        "zero_trust",
+        "ai"
+      ],
+      "internal_investment_pct": 10.0,
+      "sold_margin_pct": 35.0,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0.0,
+      "similar_projects_count": 5,
+      "delivery_success_rate": 92.0,
+      "reference_projects": [
+        "Proseware SOC Modernization",
+        "City Power & Light SOC Modernization"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 28000.0,
+      "azure_acr_percentage": 18.0,
+      "expansion_type": "new_logo",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 9.5,
+        "risk_profile": 7.5,
+        "sow_quality": 9.0,
+        "delivery_success": 9.2,
+        "estimation_accuracy": 8.5,
+        "compliance": 9.0,
+        "ip_leverage": 9.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 8.0,
+        "sold_margin": 10.0
+      },
+      "deal_score": 88.0,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Highest recommendation. Board-mandated security transformation with clear scope, zero vendor dilution, and the strongest IP leverage in our security portfolio \u2014 Sentinel and Zero Trust playbooks both apply directly. Delivery success rate of 92% across five comparable engagements (Proseware, City Power) provides strong confidence. 35% margin is excellent. New logo with strategic account potential across A. Datum's parent group (12 subsidiaries). Approved without conditions.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "7b65fae9-6f3e-468f-9555-a4a3288504fc",
+    "contract_number": "CON-2026-0018",
+    "name": "Alpine Insurance Group \u2014 Zero Trust Architecture & Identity Modernization",
+    "client_name": "Alpine Insurance Group",
+    "total_value": 716000.0,
+    "status": "pending_approval",
+    "start_date": "2026-05-14",
+    "end_date": "2027-02-08",
+    "scope_summary": "Zero Trust implementation for a 3,200-seat insurance firm. Covers Entra ID modernization with PIM and identity governance, Intune device management, Defender for Endpoint, and Microsoft Sentinel with Solvency II compliance analytics pack. All delivered by Microsoft Professional Services \u2014 no vendor.",
+    "service_lines": [
+      {
+        "service_name": "Zero Trust Assessment",
+        "category": "security",
+        "quantity": 1.0,
+        "unit": "fixed",
+        "unit_price": 40000.0,
+        "total": 40000.0
+      },
+      {
+        "service_name": "Identity & Access Management",
+        "category": "security",
+        "quantity": 90.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 252000.0
+      },
+      {
+        "service_name": "Microsoft Defender XDR",
+        "category": "security",
+        "quantity": 60.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 168000.0
+      },
+      {
+        "service_name": "Microsoft Sentinel SIEM Deployment",
+        "category": "security",
+        "quantity": 80.0,
+        "unit": "day",
+        "unit_price": 3200.0,
+        "total": 256000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.469382",
+    "profile": {
+      "strategy_pillars": [
+        "security",
+        "zero_trust"
+      ],
+      "internal_investment_pct": 0.0,
+      "sold_margin_pct": 38.0,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0.0,
+      "similar_projects_count": 6,
+      "delivery_success_rate": 91.0,
+      "reference_projects": [
+        "Proseware SOC Modernization",
+        "City Power & Light SOC Modernization",
+        "Lamna Healthcare Azure & Security Foundation"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [
+        "Solvency II",
+        "GDPR"
+      ],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 9500.0,
+      "azure_acr_percentage": 12.0,
+      "expansion_type": "whitespace",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 9.0,
+        "risk_profile": 7.5,
+        "sow_quality": 8.8,
+        "delivery_success": 9.1,
+        "estimation_accuracy": 8.5,
+        "compliance": 6.0,
+        "ip_leverage": 9.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 6.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 83.1,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Clean, well-scoped deal. 38% margin is among the best in the current pending portfolio. Six comparable security engagements with 91% delivery success rate provide strong execution confidence. Zero Trust and Solvency II compliance analytics pack are proven IP assets. The Solvency II and GDPR regulatory overlay is manageable \u2014 Lamna Healthcare HIPAA reference demonstrates our regulated-industry delivery capability. No vendor dilution. Recommended for Tier 2 Manager approval \u2014 does not require Executive Committee.",
+      "ai_conditions": [
+        "Solvency II analytics compliance scope to be confirmed with client's Risk & Compliance team pre-kickoff"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "8fb40196-2593-4499-95ee-b20b368572d9",
+    "contract_number": "CON-2026-0015",
+    "name": "Fourth Coffee Corp \u2014 Azure Data Center Exit Program",
+    "client_name": "Fourth Coffee Corporation",
+    "total_value": 1064000.0,
+    "status": "pending_approval",
+    "start_date": "2026-05-21",
+    "end_date": "2027-11-12",
+    "scope_summary": "Full data-center exit to Azure for 210 workloads across Americas and EMEA. Program includes Azure Landing Zone design, migration factory (Lift-Shift + refactor tiers), cloud governance, FinOps, and 12-month hypercare. Avanade subcontracts migration factory execution (20% of effort).",
+    "service_lines": [
+      {
+        "service_name": "Cloud Adoption Foundation",
+        "category": "cloud_adoption",
+        "quantity": 120.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 336000.0
+      },
+      {
+        "service_name": "Azure Migration - Lift & Shift",
+        "category": "cloud_adoption",
+        "quantity": 180.0,
+        "unit": "day",
+        "unit_price": 2400.0,
+        "total": 432000.0
+      },
+      {
+        "service_name": "Cloud Native Modernization",
+        "category": "cloud_adoption",
+        "quantity": 60.0,
+        "unit": "day",
+        "unit_price": 3200.0,
+        "total": 192000.0
+      },
+      {
+        "service_name": "FinOps & Cost Optimization",
+        "category": "cloud_adoption",
+        "quantity": 40.0,
+        "unit": "day",
+        "unit_price": 2600.0,
+        "total": 104000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.466566",
+    "profile": {
+      "strategy_pillars": [
+        "cloud_adoption",
+        "finops"
+      ],
+      "internal_investment_pct": 15.0,
+      "sold_margin_pct": 28.0,
+      "solution_complexity": "high",
+      "vendor_name": "Avanade",
+      "vendor_participation_pct": 20.0,
+      "similar_projects_count": 4,
+      "delivery_success_rate": 88.0,
+      "reference_projects": [
+        "Adatum Cloud Foundation",
+        "Proseware SOC Modernization"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 185000.0,
+      "azure_acr_percentage": 42.0,
+      "expansion_type": "new_logo",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 9.0,
+        "risk_profile": 5.5,
+        "sow_quality": 8.5,
+        "delivery_success": 8.8,
+        "estimation_accuracy": 7.5,
+        "compliance": 9.0,
+        "ip_leverage": 9.0,
+        "vendor_participation": 7.5,
+        "azure_consumption": 10.0,
+        "sold_margin": 9.3
+      },
+      "deal_score": 82.3,
+      "approval_tier": 3,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Strong strategic alignment with cloud-first mandate. New logo with substantial ACR upside ($185K/month). SOW is comprehensive with tiered workload inventory across Lift-Shift, Refactor, and Greenfield tracks. Avanade partnership (20%) provides migration factory scale without diluting our governance lead. Margin at 28% is acceptable given deal volume\u2014confirm commercial desk has applied correct volume tier discounting. Approved for Tier 3 Executive signature.",
+      "ai_conditions": [
+        "Confirm volume-tier discount approval from Finance",
+        "Attach Avanade subcontract SOW before countersigning",
+        "Executive Sponsor EBR scheduled within 30 days of kickoff"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "94899e2f-d1de-4d4f-97dc-e617616edbe5",
+    "contract_number": "CON-2026-0017",
+    "name": "Contoso Hotels & Resorts \u2014 AI Guest Experience Platform",
+    "client_name": "Contoso Hotels & Resorts",
+    "total_value": 1389500.0,
+    "status": "pending_approval",
+    "start_date": "2026-06-06",
+    "end_date": "2027-06-01",
+    "scope_summary": "Design and build a multi-property AI guest experience platform on Azure AI Studio. Custom agents: personalized booking recommendation agent, in-stay concierge agent, and loyalty prediction model. Deployed across 240 properties in 18 countries. Includes Responsible AI governance framework and Azure OpenAI private endpoint architecture. 20% company investment (IOI) committed.",
+    "service_lines": [
+      {
+        "service_name": "Azure AI Studio - Custom Agent",
+        "category": "ai_agentic",
+        "quantity": 220.0,
+        "unit": "day",
+        "unit_price": 3800.0,
+        "total": 836000.0
+      },
+      {
+        "service_name": "Agentic Workflow Automation",
+        "category": "ai_agentic",
+        "quantity": 80.0,
+        "unit": "day",
+        "unit_price": 4200.0,
+        "total": 336000.0
+      },
+      {
+        "service_name": "AI Governance & Responsible AI",
+        "category": "ai_agentic",
+        "quantity": 50.0,
+        "unit": "day",
+        "unit_price": 3000.0,
+        "total": 150000.0
+      },
+      {
+        "service_name": "Microsoft Copilot Deployment",
+        "category": "ai_agentic",
+        "quantity": 1500.0,
+        "unit": "user_month",
+        "unit_price": 45.0,
+        "total": 67500.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.468864",
+    "profile": {
+      "strategy_pillars": [
+        "ai_agentic",
+        "cloud_adoption"
+      ],
+      "internal_investment_pct": 20.0,
+      "sold_margin_pct": 34.0,
+      "solution_complexity": "high",
+      "vendor_name": null,
+      "vendor_participation_pct": 0.0,
+      "similar_projects_count": 2,
+      "delivery_success_rate": 85.0,
+      "reference_projects": [
+        "VanArsdel Copilot & AI Platform",
+        "Datum Corp AI Innovation Platform"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [
+        "GDPR"
+      ],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 78000.0,
+      "azure_acr_percentage": 35.0,
+      "expansion_type": "new_logo",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 10.0,
+        "risk_profile": 5.5,
+        "sow_quality": 8.5,
+        "delivery_success": 8.5,
+        "estimation_accuracy": 6.5,
+        "compliance": 7.5,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 9.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 81.5,
+      "approval_tier": 3,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Flagship AI deal \u2014 highest strategic priority in the FY pipeline. 20% company investment signals internal commitment and materially de-risks the commercial proposition. Azure OpenAI ACR of $78K/month is a landmark ACR anchor. AI delivery playbook and Responsible AI framework are directly applicable (VanArsdel reference). Primary caution: AI estimate accuracy is inherently lower than traditional services \u2014 phased milestones with AI performance acceptance criteria are essential. GDPR data residency architecture must be confirmed per EU property footprint. Approved \u2014 recommend 90-day project health check cadence given scale.",
+      "ai_conditions": [
+        "Phase milestones must include AI model acceptance criteria with measurable thresholds",
+        "GDPR data residency review by Privacy Counsel before kickoff",
+        "90-day AI performance health check cadence established in governance plan"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "f6195048-546a-4b63-a666-4f82bb0ed6a5",
+    "contract_number": "CON-2026-0020",
+    "name": "Northwind Traders \u2014 Dynamics 365 Finance & Operations (SAP ECC Replacement)",
+    "client_name": "Northwind Traders",
+    "total_value": 1624000.0,
+    "status": "pending_approval",
+    "start_date": "2026-06-11",
+    "end_date": "2027-12-03",
+    "scope_summary": "Full D365 Finance & Operations implementation replacing SAP ECC across Finance, Supply Chain, and Warehouse Management. 18-month program in 3 phases. Includes full data migration from SAP, integration with 4 external systems, and 250-user training program. All delivered by Microsoft Professional Services.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 Finance & Operations",
+        "category": "dynamics",
+        "quantity": 300.0,
+        "unit": "day",
+        "unit_price": 3400.0,
+        "total": 1020000.0
+      },
+      {
+        "service_name": "Dynamics Integration Architecture",
+        "category": "dynamics",
+        "quantity": 80.0,
+        "unit": "day",
+        "unit_price": 3000.0,
+        "total": 240000.0
+      },
+      {
+        "service_name": "Dynamics Data Migration",
+        "category": "dynamics",
+        "quantity": 100.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 280000.0
+      },
+      {
+        "service_name": "Power Platform Center of Excellence",
+        "category": "dynamics",
+        "quantity": 30.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 84000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.470356",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0.0,
+      "sold_margin_pct": 32.0,
+      "solution_complexity": "high",
+      "vendor_name": null,
+      "vendor_participation_pct": 0.0,
+      "similar_projects_count": 5,
+      "delivery_success_rate": 86.0,
+      "reference_projects": [
+        "Trey Research D365 Sales & CS",
+        "Southridge D365 F&O Transformation"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 14000.0,
+      "azure_acr_percentage": 6.0,
+      "expansion_type": "expansion",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 7.5,
+        "risk_profile": 5.5,
+        "sow_quality": 8.0,
+        "delivery_success": 8.6,
+        "estimation_accuracy": 8.5,
+        "compliance": 9.0,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 5.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 77.6,
+      "approval_tier": 3,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "The Northwind Traders D365 F&O engagement presents strong financial merit \u2014 a 32% margin on a $1.6M deal is best-in-class and the SOW quality, estimation accuracy, and compliance scores collectively signal sound pre-sales diligence. Strategic alignment to the Dynamics pillar is solid, and the 86% delivery success rate on comparable programs provides reasonable execution confidence for a Tier 3 approval. However, the risk profile score of 5.5 is a material concern for a high-complexity SAP ECC replacement, where data migration fidelity, cutover planning, and organizational change management are historically the primary failure modes. The Azure ACR of $14K/month (6% of deal) is below expected consumption attachment for a workload of this scale and should be structurally addressed before contract execution.",
+      "ai_conditions": [
+        "A formal Risk Mitigation Plan must be approved by the assigned Delivery Principal before contract signature, explicitly covering data migration strategy, cutover sequencing, and change management governance for the SAP ECC transition.",
+        "An Azure consumption attachment roadmap is required \u2014 identify and scope qualifying workloads (e.g., Azure Integration Services, Azure Monitor, Power BI Premium) to bring ACR toward a 10%+ deal-value threshold over the engagement lifecycle.",
+        "Confirm Microsoft vendor co-investment or FastTrack for Dynamics 365 participation; absence of any vendor contribution on a high-complexity, Tier 3 deal increases delivery risk and reduces Microsoft alignment support.",
+        "Validate executive sponsorship and a formal steering committee structure at Northwind Traders prior to execution \u2014 C-level commitment is a leading indicator of success on ERP replacement programs of this scope."
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "4981a018-3140-481f-82ec-89ec290afba5",
+    "contract_number": "CON-2026-0021",
+    "name": "Northwind Healthcare System \u2014 HIPAA Compliance & Security Platform",
+    "client_name": "Northwind Healthcare System",
+    "total_value": 924000.0,
+    "status": "pending_approval",
+    "start_date": "2026-06-18",
+    "end_date": "2027-05-14",
+    "scope_summary": "Comprehensive HIPAA/HITECH compliance program for an 8-hospital system across APAC. Microsoft Purview for PHI classification and data governance, Microsoft Sentinel SIEM with HIPAA analytics ruleset, and Entra ID modernization with clinical workforce identity governance. Business Associate Agreement (BAA) in place. 8% company co-investment committed (healthcare vertical priority).",
+    "service_lines": [
+      {
+        "service_name": "Compliance & Purview Implementation",
+        "category": "security",
+        "quantity": 100.0,
+        "unit": "day",
+        "unit_price": 2600.0,
+        "total": 260000.0
+      },
+      {
+        "service_name": "Microsoft Sentinel SIEM Deployment",
+        "category": "security",
+        "quantity": 120.0,
+        "unit": "day",
+        "unit_price": 3200.0,
+        "total": 384000.0
+      },
+      {
+        "service_name": "Identity & Access Management",
+        "category": "security",
+        "quantity": 60.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 168000.0
+      },
+      {
+        "service_name": "Data Governance with Purview",
+        "category": "data_analytics",
+        "quantity": 40.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 112000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.470837",
+    "profile": {
+      "strategy_pillars": [
+        "security",
+        "compliance",
+        "data_analytics"
+      ],
+      "internal_investment_pct": 8.0,
+      "sold_margin_pct": 31.0,
+      "solution_complexity": "high",
+      "vendor_name": null,
+      "vendor_participation_pct": 0.0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 89.0,
+      "reference_projects": [
+        "Lamna Healthcare Azure & Security Foundation",
+        "Proseware SOC Modernization"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.0,
+      "regulatory_requirements": [
+        "HIPAA",
+        "HITECH"
+      ],
+      "compliance_risk": "high",
+      "azure_consumption_monthly": 31000.0,
+      "azure_acr_percentage": 21.0,
+      "expansion_type": "new_logo",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 8.5,
+        "risk_profile": 5.0,
+        "sow_quality": 8.0,
+        "delivery_success": 8.9,
+        "estimation_accuracy": 8.0,
+        "compliance": 5.0,
+        "ip_leverage": 8.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 7.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 76.0,
+      "approval_tier": 3,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "Strategic healthcare deal with strong delivery confidence \u2014 Lamna Healthcare (9.2/10 CSAT) is a directly comparable engagement. 8% company co-investment signals vertical priority alignment. New logo with good ACR ($31K/month). HIPAA and HITECH regulatory requirements are the primary complexity driver. Two non-negotiable conditions: (1) a Business Associate Agreement (BAA) must be countersigned before project kickoff \u2014 not before contract signature, but before any PHI is accessed; (2) Purview PHI classification scope must be reviewed by Northwind's Privacy Counsel. 31% margin is solid. Recommend Lamna Healthcare PM (Sarah Mitchell) as delivery lead.",
+      "ai_conditions": [
+        "Business Associate Agreement (BAA) countersigned before Day 1 data access",
+        "PHI classification scope reviewed and signed by client Privacy Counsel",
+        "Recommend Sarah Mitchell (Lamna Healthcare PM) as delivery lead"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "43bb0436-3b90-47cf-8361-59ba4907da57",
+    "contract_number": "CON-2026-0019",
+    "name": "Contoso Financial Group \u2014 Azure Cloud Migration (Phase 1: Core Banking)",
+    "client_name": "Contoso Financial Group",
+    "total_value": 708000.0,
+    "status": "pending_approval",
+    "start_date": "2026-06-04",
+    "end_date": "2027-05-30",
+    "scope_summary": "Azure migration of 120 on-premises workloads for a mid-tier commercial bank. Phase 1 covers core banking (40 workloads: Lift-Shift), landing zone with FFIEC-compliant security baseline, and network architecture (ExpressRoute + hybrid DNS). Eviden subcontracts migration execution (15% of effort). Zero Trust overlay included. Phase 2 (80 workloads) separate SOW.",
+    "service_lines": [
+      {
+        "service_name": "Cloud Adoption Foundation",
+        "category": "cloud_adoption",
+        "quantity": 80.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 224000.0
+      },
+      {
+        "service_name": "Azure Migration - Lift & Shift",
+        "category": "cloud_adoption",
+        "quantity": 120.0,
+        "unit": "day",
+        "unit_price": 2400.0,
+        "total": 288000.0
+      },
+      {
+        "service_name": "Azure Networking & Connectivity",
+        "category": "cloud_adoption",
+        "quantity": 40.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 112000.0
+      },
+      {
+        "service_name": "Identity & Access Management",
+        "category": "security",
+        "quantity": 30.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 84000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.469874",
+    "profile": {
+      "strategy_pillars": [
+        "cloud_adoption",
+        "security"
+      ],
+      "internal_investment_pct": 5.0,
+      "sold_margin_pct": 26.0,
+      "solution_complexity": "high",
+      "vendor_name": "Eviden",
+      "vendor_participation_pct": 15.0,
+      "similar_projects_count": 4,
+      "delivery_success_rate": 83.0,
+      "reference_projects": [
+        "Adatum Cloud Foundation",
+        "Wingtip Toys Cloud Native Modernization"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.0,
+      "regulatory_requirements": [
+        "FFIEC",
+        "OCC"
+      ],
+      "compliance_risk": "high",
+      "azure_consumption_monthly": 96000.0,
+      "azure_acr_percentage": 52.0,
+      "expansion_type": "expansion",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 9.0,
+        "risk_profile": 5.0,
+        "sow_quality": 7.5,
+        "delivery_success": 8.3,
+        "estimation_accuracy": 7.0,
+        "compliance": 5.0,
+        "ip_leverage": 8.0,
+        "vendor_participation": 7.5,
+        "azure_consumption": 9.5,
+        "sold_margin": 8.7
+      },
+      "deal_score": 74.6,
+      "approval_tier": 3,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "Strategically sound cloud migration with excellent ACR outcome ($96K/month). Delivery success rate on comparable migrations is acceptable at 83%. Primary concern is the regulatory overlay \u2014 FFIEC and OCC requirements add compliance delivery risk that is not fully reflected in the current estimate. Margin at 26% is tight for a high-complexity, regulated engagement with vendor participation. Two conditions must be met before countersigning: (1) confirm FFIEC compliance review is complete, and (2) validate that Eviden's SOW explicitly covers regulatory-aware configuration standards. Phase 2 SOW should apply lessons learned from Phase 1 delivery to improve margin.",
+      "ai_conditions": [
+        "Attach FFIEC compliance review sign-off to contract file",
+        "Eviden subcontract must include regulatory compliance obligations",
+        "Margin improvement target of +2 pts set for Phase 2 SOW"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "9353d164-bd3e-4e52-9f9d-bf0261febc67",
+    "contract_number": "CON-2026-0022",
+    "name": "Consolidated Messenger \u2014 D365 F&O Multi-Country ERP Transformation",
+    "client_name": "Consolidated Messenger",
+    "total_value": 2280000.0,
+    "status": "pending_approval",
+    "start_date": "2026-07-02",
+    "end_date": "2028-10-19",
+    "scope_summary": "D365 Finance & Operations rollout across 14 countries replacing a fragmented SAP landscape. Program covers Finance (GL, AP/AR, Fixed Assets), Logistics (Warehouse, Transportation), and HR (14 local payroll integrations). Regional SI partner (30% of effort) covers local regulatory configuration per country. 28-month program across 4 geographic waves.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 Finance & Operations",
+        "category": "dynamics",
+        "quantity": 400.0,
+        "unit": "day",
+        "unit_price": 3400.0,
+        "total": 1360000.0
+      },
+      {
+        "service_name": "Dynamics Integration Architecture",
+        "category": "dynamics",
+        "quantity": 120.0,
+        "unit": "day",
+        "unit_price": 3000.0,
+        "total": 360000.0
+      },
+      {
+        "service_name": "Dynamics Data Migration",
+        "category": "dynamics",
+        "quantity": 150.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 420000.0
+      },
+      {
+        "service_name": "Power Platform Center of Excellence",
+        "category": "dynamics",
+        "quantity": 50.0,
+        "unit": "day",
+        "unit_price": 2800.0,
+        "total": 140000.0
+      }
+    ],
+    "created_at": "2026-05-07T13:18:12.471313",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0.0,
+      "sold_margin_pct": 22.0,
+      "solution_complexity": "high",
+      "vendor_name": "Regional SI Partner",
+      "vendor_participation_pct": 30.0,
+      "similar_projects_count": 2,
+      "delivery_success_rate": 70.0,
+      "reference_projects": [
+        "Northwind Traders D365 F&O (in progress)"
+      ],
+      "playbook_available": true,
+      "sow_template_used": false,
+      "ip_leverage_score": 6.0,
+      "regulatory_requirements": [
+        "GDPR",
+        "Local Payroll (14 jurisdictions)"
+      ],
+      "compliance_risk": "high",
+      "azure_consumption_monthly": 19000.0,
+      "azure_acr_percentage": 5.0,
+      "expansion_type": "new_logo",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 7.0,
+        "risk_profile": 3.5,
+        "sow_quality": 6.5,
+        "delivery_success": 7.0,
+        "estimation_accuracy": 5.0,
+        "compliance": 4.5,
+        "ip_leverage": 6.0,
+        "vendor_participation": 6.0,
+        "azure_consumption": 5.5,
+        "sold_margin": 7.3
+      },
+      "deal_score": 57.8,
+      "approval_tier": 3,
+      "ai_recommendation_status": "RECOMMEND_REVIEW",
+      "ai_recommendation_text": "This deal requires Architecture Review Board sign-off before approval. Multi-country D365 F&O at this scale (14 entities, 4 waves, 28 months) carries the highest execution risk in the current pending portfolio. Estimate accuracy is low \u2014 14-country local payroll integration variance alone could materially shift effort. At 22% margin with 30% vendor participation, there is limited buffer for overruns. Our comparable delivery success rate at this complexity level is 70% \u2014 below the 80% threshold for standard approval. The SOW does not include country-level scope phasing or penalty/remediation terms. Not recommended for approval in current state. Required actions before resubmission: (1) revised SOW with country-level phase plans and explicit out-of-scope definition per jurisdiction, (2) Architecture Review Board assessment, (3) vendor SLA confirmation, (4) margin floor review with Finance.",
+      "ai_conditions": [
+        "Revised SOW required: country-level phase plans and out-of-scope per jurisdiction",
+        "Architecture Review Board (ARB) assessment required before resubmission",
+        "Vendor SLA and indemnity terms must be included in subcontract",
+        "Finance review: margin floor analysis and overrun contingency plan",
+        "Delivery leader approval required confirming resource availability for 28-month program"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "a5f1d21a-9883-468b-96b3-d12b6f7ee7bb",
+    "contract_number": "CON-2026-0023",
+    "name": "Contoso Energy \u2014 Sentinel Pilot Expansion",
+    "client_name": "Contoso Energy Phase 2",
+    "total_value": 385000,
+    "status": "pending_approval",
+    "start_date": "2026-06-15",
+    "end_date": "2026-12-15",
+    "scope_summary": "Expansion of existing Sentinel pilot to 3 additional plants. NERC CIP analytics ruleset reuse from Phase 1. 6-month engagement with established delivery team continuity.",
+    "service_lines": [
+      {
+        "service_name": "Microsoft Sentinel SIEM Deployment",
+        "category": "security",
+        "quantity": 80,
+        "unit": "day",
+        "unit_price": 3200,
+        "discount_pct": 0,
+        "total": 256000
+      },
+      {
+        "service_name": "NERC CIP Compliance Analytics",
+        "category": "security",
+        "quantity": 40,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 120000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "security"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 36,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 8,
+      "delivery_success_rate": 94,
+      "reference_projects": [
+        "Proseware SOC Modernization",
+        "City Power & Light SOC Modernization",
+        "Contoso Energy NERC CIP Phase 1"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.5,
+      "regulatory_requirements": [
+        "NERC CIP"
+      ],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 12000,
+      "azure_acr_percentage": 15,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 9.0,
+        "risk_profile": 9.0,
+        "sow_quality": 9.0,
+        "delivery_success": 9.4,
+        "estimation_accuracy": 9.0,
+        "compliance": 8.5,
+        "ip_leverage": 9.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 7.0,
+        "sold_margin": 10.0
+      },
+      "deal_score": 88.5,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Streamlined Tier 1 expansion. Phase 1 delivered successfully, same team available, NERC CIP analytics directly reusable. 36% margin and 94% delivery success on comparable engagements. Auto-approve with audit trail.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "600f1972-d95c-4b38-b8fa-ce16e48583db",
+    "contract_number": "CON-2026-0024",
+    "name": "The Volcano Coffee \u2014 Power Platform Phase 2",
+    "client_name": "The Volcano Coffee Company Phase 2",
+    "total_value": 290000,
+    "status": "pending_approval",
+    "start_date": "2026-08-01",
+    "end_date": "2027-03-01",
+    "scope_summary": "Phase 2 of citizen developer Center of Excellence. Expansion to 4 additional business units. Build 8 mission-critical Power Apps.",
+    "service_lines": [
+      {
+        "service_name": "Power Platform Center of Excellence",
+        "category": "data_analytics",
+        "quantity": 80,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 224000
+      },
+      {
+        "service_name": "Power Apps Development",
+        "category": "data_analytics",
+        "quantity": 30,
+        "unit": "day",
+        "unit_price": 2200,
+        "discount_pct": 0,
+        "total": 66000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "data_analytics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 38,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 4,
+      "delivery_success_rate": 92,
+      "reference_projects": [
+        "The Volcano Coffee Phase 1"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 6000,
+      "azure_acr_percentage": 12,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 8.5,
+        "risk_profile": 9.5,
+        "sow_quality": 9.0,
+        "delivery_success": 9.2,
+        "estimation_accuracy": 9.5,
+        "compliance": 9.5,
+        "ip_leverage": 9.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 6.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 88.7,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Clean Phase 2 expansion. Phase 1 delivered ahead of plan with strong citizen-developer adoption. Marco Rossi delivery continuity. 38% margin. Auto-approve.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "6d7b7a30-6cdc-499e-8b09-ac147255353a",
+    "contract_number": "CON-2026-0025",
+    "name": "Wide World Importers \u2014 Power BI Refresh",
+    "client_name": "Wide World Importers Power BI",
+    "total_value": 185000,
+    "status": "pending_approval",
+    "start_date": "2026-07-01",
+    "end_date": "2026-10-01",
+    "scope_summary": "Power BI dashboard modernization for finance and logistics reporting. Reusing Trey Research dashboard templates. 3-month engagement.",
+    "service_lines": [
+      {
+        "service_name": "Power BI Dashboard Development",
+        "category": "data_analytics",
+        "quantity": 50,
+        "unit": "day",
+        "unit_price": 2400,
+        "discount_pct": 0,
+        "total": 120000
+      },
+      {
+        "service_name": "Data Modeling & ETL",
+        "category": "data_analytics",
+        "quantity": 25,
+        "unit": "day",
+        "unit_price": 2600,
+        "discount_pct": 0,
+        "total": 65000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "data_analytics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 40,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 6,
+      "delivery_success_rate": 95,
+      "reference_projects": [
+        "Trey Research D365 Sales & CS",
+        "Munson's Pickles Fabric & Power BI"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 3500,
+      "azure_acr_percentage": 8,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 8.0,
+        "risk_profile": 9.5,
+        "sow_quality": 9.0,
+        "delivery_success": 9.5,
+        "estimation_accuracy": 9.5,
+        "compliance": 10.0,
+        "ip_leverage": 9.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 5.5,
+        "sold_margin": 10.0
+      },
+      "deal_score": 88.5,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Lowest-risk deal in current pipeline. Standard Power BI engagement with strong IP reuse from Trey and Munson's. 40% margin. Auto-approve.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "da5a16a8-5cf9-4c1a-b361-2c07fc4a2c99",
+    "contract_number": "CON-2026-0026",
+    "name": "Tailspin Toys \u2014 D365 Sales Module Add-on",
+    "client_name": "Tailspin Toys D365",
+    "total_value": 225000,
+    "status": "pending_approval",
+    "start_date": "2026-07-15",
+    "end_date": "2026-12-15",
+    "scope_summary": "D365 Sales module add-on to existing Tailspin retail analytics platform. Sales pipeline + opportunity management for 80 sales reps.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 Sales",
+        "category": "dynamics",
+        "quantity": 60,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 168000
+      },
+      {
+        "service_name": "Dynamics Integration",
+        "category": "dynamics",
+        "quantity": 20,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 56000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 34,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 5,
+      "delivery_success_rate": 91,
+      "reference_projects": [
+        "Trey Research D365 Sales & CS",
+        "World Wide Importers D365 CE"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 4000,
+      "azure_acr_percentage": 10,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 7.5,
+        "risk_profile": 9.0,
+        "sow_quality": 8.8,
+        "delivery_success": 9.0,
+        "estimation_accuracy": 9.0,
+        "compliance": 10.0,
+        "ip_leverage": 9.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 5.5,
+        "sold_margin": 9.5
+      },
+      "deal_score": 84.8,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Standard D365 Sales add-on. Existing Tailspin engagement provides delivery continuity. Apply Trey Research power-user champion pattern. Auto-approve.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "c6e91c5f-d2c5-48ae-8a9b-c06b49138826",
+    "contract_number": "CON-2026-0027",
+    "name": "Liberty's Bakery \u2014 Cloud Foundation Phase 2",
+    "client_name": "Liberty's Bakery Phase 2",
+    "total_value": 310000,
+    "status": "pending_approval",
+    "start_date": "2027-01-15",
+    "end_date": "2027-07-15",
+    "scope_summary": "Phase 2 expanding cloud foundation to backup, DR, and monitoring. Phase 1 delivered Green and on schedule. SMB retailer with strong owner engagement.",
+    "service_lines": [
+      {
+        "service_name": "Cloud Adoption Foundation",
+        "category": "cloud_adoption",
+        "quantity": 60,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 168000
+      },
+      {
+        "service_name": "Azure Backup & DR",
+        "category": "cloud_adoption",
+        "quantity": 30,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 84000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "cloud_adoption"
+      ],
+      "internal_investment_pct": 5,
+      "sold_margin_pct": 35,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 6,
+      "delivery_success_rate": 89,
+      "reference_projects": [
+        "Liberty's Bakery Phase 1",
+        "Adatum Cloud Foundation"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 8000,
+      "azure_acr_percentage": 14,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 8.5,
+        "risk_profile": 9.0,
+        "sow_quality": 8.5,
+        "delivery_success": 8.9,
+        "estimation_accuracy": 9.0,
+        "compliance": 10.0,
+        "ip_leverage": 9.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 6.5,
+        "sold_margin": 9.5
+      },
+      "deal_score": 83.0,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Clean Phase 2 follow-on. Owner-engaged client. Standard cloud foundation pattern with proven team. Auto-approve.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "bc9beb79-a269-4a99-a760-ad981590eacc",
+    "contract_number": "CON-2026-0028",
+    "name": "School of Fine Art \u2014 LMS Expansion",
+    "client_name": "School of Fine Art Expansion",
+    "total_value": 420000,
+    "status": "pending_approval",
+    "start_date": "2026-09-01",
+    "end_date": "2027-03-01",
+    "scope_summary": "Expansion of LMS modernization to 4 additional campuses. Faculty enablement program scaling. Phase 1 currently active and Green.",
+    "service_lines": [
+      {
+        "service_name": "LMS Integration & Configuration",
+        "category": "cloud_adoption",
+        "quantity": 90,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 252000
+      },
+      {
+        "service_name": "Faculty Enablement Program",
+        "category": "cloud_adoption",
+        "quantity": 50,
+        "unit": "day",
+        "unit_price": 2200,
+        "discount_pct": 0,
+        "total": 110000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "cloud_adoption"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 33,
+      "solution_complexity": "low",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 90,
+      "reference_projects": [
+        "School of Fine Art Phase 1"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 5500,
+      "azure_acr_percentage": 11,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 7.5,
+        "risk_profile": 8.5,
+        "sow_quality": 8.5,
+        "delivery_success": 9.0,
+        "estimation_accuracy": 8.5,
+        "compliance": 9.5,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 6.0,
+        "sold_margin": 9.0
+      },
+      "deal_score": 80.5,
+      "approval_tier": 1,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Standard expansion to 4 campuses. Phase 1 reference. Diego Hernandez available. Auto-approve.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "223d37fe-d971-40a3-9586-5b137327bdbc",
+    "contract_number": "CON-2026-0029",
+    "name": "Margie's Travel \u2014 Phase 2 Modernization",
+    "client_name": "Margie's Travel Phase 2",
+    "total_value": 750000,
+    "status": "pending_approval",
+    "start_date": "2026-11-01",
+    "end_date": "2027-08-01",
+    "scope_summary": "Phase 2 Azure migration covering remaining 90 workloads. Refactor tier for booking engine. Phase 1 currently Green and on plan.",
+    "service_lines": [
+      {
+        "service_name": "Cloud Adoption Foundation",
+        "category": "cloud_adoption",
+        "quantity": 80,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 224000
+      },
+      {
+        "service_name": "Azure Migration - Refactor",
+        "category": "cloud_adoption",
+        "quantity": 120,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 360000
+      },
+      {
+        "service_name": "FinOps & Cost Optimization",
+        "category": "cloud_adoption",
+        "quantity": 50,
+        "unit": "day",
+        "unit_price": 2600,
+        "discount_pct": 0,
+        "total": 130000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "cloud_adoption",
+        "finops"
+      ],
+      "internal_investment_pct": 8,
+      "sold_margin_pct": 34,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 5,
+      "delivery_success_rate": 89,
+      "reference_projects": [
+        "Margie's Travel Phase 1",
+        "Wide World Importers Azure Migration"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 42000,
+      "azure_acr_percentage": 25,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 9.0,
+        "risk_profile": 8.0,
+        "sow_quality": 8.5,
+        "delivery_success": 8.9,
+        "estimation_accuracy": 8.5,
+        "compliance": 9.5,
+        "ip_leverage": 9.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 8.5,
+        "sold_margin": 9.5
+      },
+      "deal_score": 82.4,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Strong Phase 2 expansion. Diego Hernandez delivery continuity. ACR growth opportunity. Approve at Tier 2.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "b3a6e60e-29d0-49d9-a408-1834c3815250",
+    "contract_number": "CON-2026-0030",
+    "name": "VanArsdel Manufacturing \u2014 Copilot Wave 2",
+    "client_name": "VanArsdel Manufacturing Wave 2",
+    "total_value": 1400000,
+    "status": "pending_approval",
+    "start_date": "2026-09-15",
+    "end_date": "2027-07-15",
+    "scope_summary": "Copilot for Manufacturing expansion to remaining 4,500 seats. Building on Wave 1's 71% adoption. Includes persona-pilot pre-launch (per knowledge network pattern).",
+    "service_lines": [
+      {
+        "service_name": "Microsoft Copilot Deployment",
+        "category": "ai_agentic",
+        "quantity": 4500,
+        "unit": "user_month",
+        "unit_price": 45,
+        "discount_pct": 0,
+        "total": 202500
+      },
+      {
+        "service_name": "Azure AI Studio - Custom Agent",
+        "category": "ai_agentic",
+        "quantity": 180,
+        "unit": "day",
+        "unit_price": 3800,
+        "discount_pct": 0,
+        "total": 684000
+      },
+      {
+        "service_name": "Agentic Workflow Automation",
+        "category": "ai_agentic",
+        "quantity": 100,
+        "unit": "day",
+        "unit_price": 4200,
+        "discount_pct": 0,
+        "total": 420000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "ai_agentic"
+      ],
+      "internal_investment_pct": 10,
+      "sold_margin_pct": 36,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 4,
+      "delivery_success_rate": 92,
+      "reference_projects": [
+        "VanArsdel Wave 1",
+        "VanArsdel Copilot & AI Platform"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 9.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 56000,
+      "azure_acr_percentage": 28,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 10.0,
+        "risk_profile": 8.5,
+        "sow_quality": 9.0,
+        "delivery_success": 9.2,
+        "estimation_accuracy": 8.5,
+        "compliance": 9.5,
+        "ip_leverage": 9.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 9.0,
+        "sold_margin": 9.5
+      },
+      "deal_score": 84.3,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Strong AI expansion with Wave 1 lessons directly applicable. 71% Wave 1 adoption + persona-pilot pattern drives confidence. Approve at Tier 2.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "f012720c-3cec-495c-9f09-f03e7f1332c9",
+    "contract_number": "CON-2026-0031",
+    "name": "Trey Research Pharma \u2014 Clinical Analytics Expansion",
+    "client_name": "Trey Research Pharma Expansion",
+    "total_value": 2100000,
+    "status": "pending_approval",
+    "start_date": "2026-12-01",
+    "end_date": "2027-12-01",
+    "scope_summary": "Expansion of clinical trial analytics platform to 8 additional trials. Includes Real-World Evidence (RWE) data integration and FDA-ready reporting.",
+    "service_lines": [
+      {
+        "service_name": "Clinical Analytics Platform",
+        "category": "data_analytics",
+        "quantity": 220,
+        "unit": "day",
+        "unit_price": 3200,
+        "discount_pct": 0,
+        "total": 704000
+      },
+      {
+        "service_name": "Real-World Evidence Integration",
+        "category": "data_analytics",
+        "quantity": 180,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 540000
+      },
+      {
+        "service_name": "FDA-Compliant Reporting",
+        "category": "compliance",
+        "quantity": 100,
+        "unit": "day",
+        "unit_price": 3400,
+        "discount_pct": 0,
+        "total": 340000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "data_analytics"
+      ],
+      "internal_investment_pct": 5,
+      "sold_margin_pct": 33,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 88,
+      "reference_projects": [
+        "Trey Research Pharma Phase 1",
+        "Northwind Pharma Compliance Platform"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [
+        "21 CFR Part 11",
+        "GDPR"
+      ],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 38000,
+      "azure_acr_percentage": 18,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 8.5,
+        "risk_profile": 7.5,
+        "sow_quality": 8.5,
+        "delivery_success": 8.8,
+        "estimation_accuracy": 8.0,
+        "compliance": 7.0,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 7.5,
+        "sold_margin": 9.5
+      },
+      "deal_score": 81.0,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE",
+      "ai_recommendation_text": "Expansion of successful Trey Pharma engagement. Apply Northwind Pharma regulatory volatility lesson. Anika Sharma delivery continuity. Approve at Tier 2.",
+      "ai_conditions": [],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "2adc1591-4b56-42f0-aa81-af4a47d334a1",
+    "contract_number": "CON-2026-0032",
+    "name": "Lucerne Publishing \u2014 Editorial AI Platform",
+    "client_name": "Lucerne Publishing AI",
+    "total_value": 1500000,
+    "status": "pending_approval",
+    "start_date": "2026-10-15",
+    "end_date": "2027-10-15",
+    "scope_summary": "AI-powered editorial assistant platform built on Azure AI Studio. Custom agents for fact-checking, headline generation, and content recommendation. Builds on Lucerne Data Lakehouse foundation.",
+    "service_lines": [
+      {
+        "service_name": "Azure AI Studio - Custom Agent",
+        "category": "ai_agentic",
+        "quantity": 200,
+        "unit": "day",
+        "unit_price": 3800,
+        "discount_pct": 0,
+        "total": 760000
+      },
+      {
+        "service_name": "AI Governance & Responsible AI",
+        "category": "ai_agentic",
+        "quantity": 60,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 180000
+      },
+      {
+        "service_name": "Editorial Workflow Integration",
+        "category": "data_analytics",
+        "quantity": 80,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 224000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "ai_agentic"
+      ],
+      "internal_investment_pct": 15,
+      "sold_margin_pct": 31,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 87,
+      "reference_projects": [
+        "VanArsdel Copilot",
+        "Datum Corp AI Innovation Platform",
+        "Lucerne Publishing Data Lakehouse"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 32000,
+      "azure_acr_percentage": 22,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 10.0,
+        "risk_profile": 7.0,
+        "sow_quality": 8.0,
+        "delivery_success": 8.7,
+        "estimation_accuracy": 6.5,
+        "compliance": 8.0,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 8.0,
+        "sold_margin": 9.0
+      },
+      "deal_score": 78.4,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "Strong AI deal building on Lakehouse foundation. Apply VanArsdel weekly demos lesson and AI acceptance criteria. AI estimate accuracy lower than traditional services \u2014 phased milestones required.",
+      "ai_conditions": [
+        "AI model acceptance criteria with measurable thresholds defined by Day 45",
+        "Weekly demo cadence built into governance plan from Day 21"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "2435df6f-6f57-4d04-a751-eab079216e59",
+    "contract_number": "CON-2026-0033",
+    "name": "The Phone Company \u2014 Contact Center AI",
+    "client_name": "The Phone Company Contact Center AI",
+    "total_value": 1800000,
+    "status": "pending_approval",
+    "start_date": "2026-11-15",
+    "end_date": "2027-09-15",
+    "scope_summary": "Phase 2 building on existing CX Platform. AI-powered contact center automation with Copilot for Agents, agent assist for 800 reps, and call analytics. Includes Responsible AI governance.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 Contact Center",
+        "category": "dynamics",
+        "quantity": 200,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 600000
+      },
+      {
+        "service_name": "Copilot for Agents",
+        "category": "ai_agentic",
+        "quantity": 9600,
+        "unit": "user_month",
+        "unit_price": 55,
+        "discount_pct": 0,
+        "total": 528000
+      },
+      {
+        "service_name": "Call Analytics & AI Insights",
+        "category": "ai_agentic",
+        "quantity": 160,
+        "unit": "day",
+        "unit_price": 3800,
+        "discount_pct": 0,
+        "total": 608000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "ai_agentic",
+        "dynamics"
+      ],
+      "internal_investment_pct": 8,
+      "sold_margin_pct": 30,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 85,
+      "reference_projects": [
+        "The Phone Company CX Platform",
+        "VanArsdel Copilot"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.5,
+      "regulatory_requirements": [
+        "GDPR"
+      ],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 48000,
+      "azure_acr_percentage": 26,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 9.5,
+        "risk_profile": 7.5,
+        "sow_quality": 8.5,
+        "delivery_success": 8.5,
+        "estimation_accuracy": 7.0,
+        "compliance": 7.5,
+        "ip_leverage": 8.5,
+        "vendor_participation": 8.0,
+        "azure_consumption": 8.5,
+        "sold_margin": 9.0
+      },
+      "deal_score": 76.0,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "Phase 2 expansion combining D365 Contact Center with AI. Strong client relationship. AI estimate accuracy condition applies. Some satisfaction risk on Phase 1 (change management) \u2014 preventive actions required.",
+      "ai_conditions": [
+        "Change management plan with contact center managers as champions",
+        "AI model acceptance criteria with measurable agent productivity thresholds",
+        "Apply VanArsdel weekly demos pattern for agent assist"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "ee63d296-cb04-4aea-aaef-8b43fb2f8c50",
+    "contract_number": "CON-2026-0034",
+    "name": "Litware Manufacturing \u2014 D365 SCM",
+    "client_name": "Litware Manufacturing SCM",
+    "total_value": 980000,
+    "status": "pending_approval",
+    "start_date": "2026-09-01",
+    "end_date": "2027-09-01",
+    "scope_summary": "D365 Supply Chain Management for 4 plants. Builds on existing Litware Power BI relationship. Integration with legacy MES required.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 SCM",
+        "category": "dynamics",
+        "quantity": 180,
+        "unit": "day",
+        "unit_price": 3200,
+        "discount_pct": 0,
+        "total": 576000
+      },
+      {
+        "service_name": "Dynamics Integration Architecture",
+        "category": "dynamics",
+        "quantity": 80,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 240000
+      },
+      {
+        "service_name": "MES Integration",
+        "category": "dynamics",
+        "quantity": 60,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 168000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 28,
+      "solution_complexity": "medium",
+      "vendor_name": null,
+      "vendor_participation_pct": 0,
+      "similar_projects_count": 3,
+      "delivery_success_rate": 82,
+      "reference_projects": [
+        "Litware Power BI",
+        "Southridge D365 F&O"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 8.0,
+      "regulatory_requirements": [],
+      "compliance_risk": "low",
+      "azure_consumption_monthly": 14000,
+      "azure_acr_percentage": 12,
+      "expansion_type": "expansion",
+      "is_delivery_led": true,
+      "score_breakdown": {
+        "on_strategy": 7.5,
+        "risk_profile": 6.5,
+        "sow_quality": 7.5,
+        "delivery_success": 8.2,
+        "estimation_accuracy": 7.0,
+        "compliance": 9.5,
+        "ip_leverage": 8.0,
+        "vendor_participation": 8.0,
+        "azure_consumption": 6.0,
+        "sold_margin": 8.5
+      },
+      "deal_score": 71.4,
+      "approval_tier": 2,
+      "ai_recommendation_status": "APPROVE_WITH_CONDITIONS",
+      "ai_recommendation_text": "Standard D365 SCM expansion but margin is tight (28%) and Litware Power BI is currently Amber. Recommend resolving Power BI engagement issues before kickoff.",
+      "ai_conditions": [
+        "Litware Power BI Get-to-Green completion before SCM kickoff",
+        "MES integration scope validated by client IT pre-execution",
+        "Margin floor review with Finance for 28% margin"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "ee1a264b-ff14-4a15-a2b7-d46945315ccb",
+    "contract_number": "CON-2026-0035",
+    "name": "Tailwind Traders \u2014 D365 F&O Multi-Country Phase 2",
+    "client_name": "Tailwind Traders D365",
+    "total_value": 3200000,
+    "status": "pending_approval",
+    "start_date": "2027-01-15",
+    "end_date": "2028-12-15",
+    "scope_summary": "D365 F&O rollout across 8 countries following Tailwind Copilot Phase 1. 22-month program. Local payroll integration per country. Regional SI partner (25%).",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 F&O",
+        "category": "dynamics",
+        "quantity": 420,
+        "unit": "day",
+        "unit_price": 3400,
+        "discount_pct": 0,
+        "total": 1428000
+      },
+      {
+        "service_name": "Dynamics Data Migration",
+        "category": "dynamics",
+        "quantity": 180,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 504000
+      },
+      {
+        "service_name": "Multi-Country Localization",
+        "category": "dynamics",
+        "quantity": 240,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 720000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 24,
+      "solution_complexity": "high",
+      "vendor_name": "Regional SI Partner",
+      "vendor_participation_pct": 25,
+      "similar_projects_count": 2,
+      "delivery_success_rate": 75,
+      "reference_projects": [
+        "Northwind Traders D365 F&O",
+        "Consolidated Messenger D365 F&O (in approval)"
+      ],
+      "playbook_available": true,
+      "sow_template_used": true,
+      "ip_leverage_score": 7.0,
+      "regulatory_requirements": [
+        "GDPR",
+        "Local Payroll (8 jurisdictions)"
+      ],
+      "compliance_risk": "high",
+      "azure_consumption_monthly": 22000,
+      "azure_acr_percentage": 7,
+      "expansion_type": "expansion",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 7.0,
+        "risk_profile": 4.5,
+        "sow_quality": 7.0,
+        "delivery_success": 7.5,
+        "estimation_accuracy": 5.5,
+        "compliance": 5.5,
+        "ip_leverage": 7.0,
+        "vendor_participation": 7.0,
+        "azure_consumption": 5.5,
+        "sold_margin": 8.0
+      },
+      "deal_score": 62.4,
+      "approval_tier": 3,
+      "ai_recommendation_status": "RECOMMEND_REVIEW",
+      "ai_recommendation_text": "Multi-country D365 F&O at this scale carries elevated risk. Apply Northwind Traders + Consolidated Messenger lessons. Country-level phase plans required. Margin at 24% is tight.",
+      "ai_conditions": [
+        "Revised SOW with country-level phase plans and out-of-scope per jurisdiction",
+        "Regional SI partner SLA and indemnity terms",
+        "Architecture Review Board assessment",
+        "Finance review: margin floor and overrun contingency"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  },
+  {
+    "id": "a9644f35-c0ba-4105-835b-f7e1261cc159",
+    "contract_number": "CON-2026-0036",
+    "name": "Coho Vineyard \u2014 Full ERP Replacement",
+    "client_name": "Coho Vineyard ERP",
+    "total_value": 4500000,
+    "status": "pending_approval",
+    "start_date": "2027-01-01",
+    "end_date": "2029-04-01",
+    "scope_summary": "Full ERP replacement of legacy SAP B1 with D365 F&O. 27-month program with 6 entities. Phase 1 vendor (Avanade 30%) shows performance concerns. Existing Coho Vineyard ERP Modernization (Phase 0.5) currently Amber with scope re-baseline underway.",
+    "service_lines": [
+      {
+        "service_name": "Dynamics 365 F&O",
+        "category": "dynamics",
+        "quantity": 600,
+        "unit": "day",
+        "unit_price": 3400,
+        "discount_pct": 0,
+        "total": 2040000
+      },
+      {
+        "service_name": "Dynamics Data Migration",
+        "category": "dynamics",
+        "quantity": 220,
+        "unit": "day",
+        "unit_price": 2800,
+        "discount_pct": 0,
+        "total": 616000
+      },
+      {
+        "service_name": "Dynamics Integration Architecture",
+        "category": "dynamics",
+        "quantity": 180,
+        "unit": "day",
+        "unit_price": 3000,
+        "discount_pct": 0,
+        "total": 540000
+      },
+      {
+        "service_name": "Change Management & Training",
+        "category": "dynamics",
+        "quantity": 200,
+        "unit": "day",
+        "unit_price": 2400,
+        "discount_pct": 0,
+        "total": 480000
+      }
+    ],
+    "created_at": "2026-05-22T10:00:00.000000",
+    "profile": {
+      "strategy_pillars": [
+        "dynamics"
+      ],
+      "internal_investment_pct": 0,
+      "sold_margin_pct": 21,
+      "solution_complexity": "high",
+      "vendor_name": "Avanade",
+      "vendor_participation_pct": 30,
+      "similar_projects_count": 2,
+      "delivery_success_rate": 65,
+      "reference_projects": [
+        "Coho Vineyard ERP Modernization (current Amber, scope re-baseline)",
+        "Northwind Traders D365 F&O"
+      ],
+      "playbook_available": true,
+      "sow_template_used": false,
+      "ip_leverage_score": 6.0,
+      "regulatory_requirements": [
+        "GDPR"
+      ],
+      "compliance_risk": "medium",
+      "azure_consumption_monthly": 18000,
+      "azure_acr_percentage": 5,
+      "expansion_type": "expansion",
+      "is_delivery_led": false,
+      "score_breakdown": {
+        "on_strategy": 7.0,
+        "risk_profile": 3.0,
+        "sow_quality": 5.5,
+        "delivery_success": 6.5,
+        "estimation_accuracy": 4.5,
+        "compliance": 8.0,
+        "ip_leverage": 6.0,
+        "vendor_participation": 6.0,
+        "azure_consumption": 4.5,
+        "sold_margin": 7.0
+      },
+      "deal_score": 48.0,
+      "approval_tier": 3,
+      "ai_recommendation_status": "FLAG_REJECTION",
+      "ai_recommendation_text": "FLAG FOR REJECTION in current state. Coho Vineyard Phase 0.5 is currently Amber with scope re-baseline in progress. Until Phase 0.5 stabilizes, signing a $4.5M follow-on is materially risky. 21% margin floor concerning. Required actions: (1) wait for Phase 0.5 to return to Green or complete revised SOW, (2) ARB assessment, (3) Avanade subcontract with explicit performance terms, (4) standard SOW template usage.",
+      "ai_conditions": [
+        "Coho Phase 0.5 must return to Green before kickoff",
+        "Revised SOW using standard template",
+        "Architecture Review Board approval required",
+        "Avanade subcontract with explicit SLA and indemnity",
+        "Margin floor review with Finance \u2014 21% is below threshold",
+        "Risk Mitigation Plan signed by Delivery Principal"
+      ],
+      "action_taken": null,
+      "action_by": null,
+      "action_notes": null,
+      "action_date": null
+    },
+    "score_dimensions": [
+      [
+        "on_strategy",
+        "On Strategy",
+        "Alignment to company priority pillars (Cloud, AI, Security, Dynamics, Data)"
+      ],
+      [
+        "risk_profile",
+        "Risk Profile",
+        "Inverse risk: solution complexity, deal size, vendor dependency"
+      ],
+      [
+        "sow_quality",
+        "SOW Quality",
+        "Scope completeness, exclusions, assumptions, acceptance criteria"
+      ],
+      [
+        "delivery_success",
+        "Delivery Success Rate",
+        "Historical success rate on comparable engagements"
+      ],
+      [
+        "estimation_accuracy",
+        "Estimation Accuracy",
+        "Confidence in effort estimates based on complexity and comparables"
+      ],
+      [
+        "compliance",
+        "Compliance Burden",
+        "Regulatory and compliance overhead (HIPAA, GDPR, SOX, FFIEC)"
+      ],
+      [
+        "ip_leverage",
+        "IP & Asset Leverage",
+        "Reuse of playbooks, SOW templates, and delivery accelerators"
+      ],
+      [
+        "vendor_participation",
+        "Vendor Participation",
+        "Partner/subcontractor % \u2014 impact on margin and delivery control"
+      ],
+      [
+        "azure_consumption",
+        "Azure Consumption",
+        "Monthly ACR generated \u2014 strategic value to Microsoft ecosystem"
+      ]
+    ]
+  }
+]
