@@ -449,7 +449,7 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
 
   const launchRescue = (p: ProjectMonitor) => {
     const q = new URLSearchParams({
-      project: p.name, client: p.client_name, lead: 'Priya Nadkarni · QA Director',
+      pid: p.project_id, project: p.name, client: p.client_name, lead: 'Priya Nadkarni · QA Director',
       ew: String(p.early_warning.score), var: String(rescueValueAtRisk(p)),
     });
     navigate(`/rescue-command?${q.toString()}`);
@@ -876,7 +876,7 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
 
   const launchRescue = (plan: G2GPlan) => {
     const q = new URLSearchParams({
-      project: plan.project_name, client: plan.client_name,
+      pid: plan.project_id, project: plan.project_name, client: plan.client_name,
       lead: plan.qa_specialist || 'Priya Nadkarni · QA Director',
       ew: String(plan.current_ew_score),
     });
