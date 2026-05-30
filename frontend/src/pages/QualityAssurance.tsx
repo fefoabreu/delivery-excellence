@@ -5,7 +5,7 @@ import {
   TrendingUp, TrendingDown, Minus, Search, RefreshCw,
   Bot, Target, Clock, BarChart2, ArrowRight, ArrowUp, ArrowDown,
   BookOpen, Users, Eye, ChevronDown, ChevronUp, Lightbulb,
-  FileText, Layers, Zap, Heart, Globe,
+  FileText, Layers, Zap, Heart, Globe, Siren, Gauge, Rocket,
 } from 'lucide-react';
 import clsx from 'clsx';
 import { qualityAssuranceApi } from '../api/client';
@@ -402,12 +402,58 @@ function AlertTiersPanel({ tiers, projects }: { tiers: AlertTier[]; projects: Pr
   );
 }
 
+// ── Engagement Intensity: Oversight & Rescue (Framework Section 11) ─────────
+// Oversight = offense: a QA Director is overlaid on a healthy flagship engagement
+// to lift it to top-quartile performance. Selected deterministically as the
+// highest-value Green engagements (no backend change required).
+interface OversightPlan {
+  partner: string; target_percentile: number; current_percentile: number; plays: string[];
+}
+function oversightIdSet(projects: ProjectMonitor[]): Set<string> {
+  return new Set(
+    projects.filter(p => p.overall_health === 'green')
+      .sort((a, b) => b.budget - a.budget)
+      .slice(0, 2)
+      .map(p => p.project_id)
+  );
+}
+function buildOversightPlan(p: ProjectMonitor): OversightPlan {
+  const current = Math.max(55, Math.min(82, 100 - p.early_warning.score - 8));
+  return {
+    partner: 'Priya Nadkarni · QA Director',
+    target_percentile: 90,
+    current_percentile: current,
+    plays: [
+      `Introduce weekly client demos at the ${p.phase} phase — a success pattern that lifted satisfaction +12 NPS on similar engagements`,
+      `Drive burn-efficiency toward top-quartile (currently ${p.burn_rate}% burned at ${p.completion_pct}% complete)`,
+      `Surface the expansion signal to the Pipeline Agent — strong health on a ${fmt(p.budget)} flagship account`,
+    ],
+  };
+}
+// Rescue = defense: a Critical/escalate engagement enters war-room command.
+function isRescueCandidate(p: ProjectMonitor): boolean {
+  return p.early_warning.alert_level === 'critical' || p.ai_assessment === 'escalate';
+}
+function rescueValueAtRisk(p: ProjectMonitor): number {
+  return Math.round(p.budget * (p.early_warning.score / 100));
+}
+
 // ── Portfolio Monitor Tab ──────────────────────────────────────────────────
 function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[]; config: QAConfig }) {
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [filterHealth, setFilterHealth] = useState('');
   const [filterAssessment, setFilterAssessment] = useState('');
   const [expanded, setExpanded] = useState<string | null>(null);
+  const oversightIds = oversightIdSet(projects);
+
+  const launchRescue = (p: ProjectMonitor) => {
+    const q = new URLSearchParams({
+      project: p.name, client: p.client_name, lead: 'Priya Nadkarni · QA Director',
+      ew: String(p.early_warning.score), var: String(rescueValueAtRisk(p)),
+    });
+    navigate(`/rescue-command?${q.toString()}`);
+  };
 
   const filtered = projects.filter(p => {
     if (filterHealth && p.overall_health !== filterHealth) return false;
@@ -516,6 +562,16 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
                           {ALERT_CFG[ew.alert_level].label}
                         </span>
                       )}
+                      {oversightIds.has(p.project_id) && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
+                          <Eye className="w-3 h-3" /> Oversight
+                        </span>
+                      )}
+                      {isRescueCandidate(p) && (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full bg-red-600 text-white">
+                          <Siren className="w-3 h-3" /> Rescue
+                        </span>
+                      )}
                     </div>
                     <h3 className="font-bold text-gray-900 text-sm leading-snug">{p.name}</h3>
                     <div className="text-xs text-gray-500 mt-0.5">{p.client_name} · PM: {p.project_manager} · Phase: {p.phase}</div>
@@ -572,6 +628,51 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
                     </div>
                   )}
                 </div>
+
+                {oversightIds.has(p.project_id) && (() => {
+                  const plan = buildOversightPlan(p);
+                  return (
+                    <div className="rounded-lg border border-sky-200 bg-gradient-to-br from-sky-50 to-teal-50 p-3 mb-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2 text-xs font-bold text-sky-800">
+                          <Rocket className="w-3.5 h-3.5" /> Executive Oversight — Performance Plan
+                        </div>
+                        <span className="text-[10px] text-sky-700/80">Assurance Partner: {plan.partner}</span>
+                      </div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wide w-28 flex-shrink-0">Performance percentile</span>
+                        <div className="flex-1 h-2 bg-white/70 rounded-full overflow-hidden relative">
+                          <div className="h-full bg-sky-400 rounded-full" style={{ width: `${plan.current_percentile}%` }} />
+                          <div className="absolute top-1/2 -translate-y-1/2 w-0.5 h-3.5 bg-teal-600" style={{ left: `${plan.target_percentile}%` }} />
+                        </div>
+                        <span className="text-[10px] text-sky-800 font-semibold flex-shrink-0">P{plan.current_percentile} → P{plan.target_percentile}</span>
+                      </div>
+                      <div className="space-y-1">
+                        {plan.plays.map((play, i) => (
+                          <div key={i} className="flex items-start gap-1.5 text-xs text-sky-900/90">
+                            <Gauge className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" /> {play}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {isRescueCandidate(p) && (
+                  <div className="rounded-lg border border-red-300 bg-red-50 p-3 mb-3 flex items-center justify-between gap-3">
+                    <div className="flex items-start gap-2">
+                      <Siren className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold text-red-800">Engagement qualifies for Rescue Mode</div>
+                        <div className="text-[11px] text-red-700/80">Critical alert · EW {ew.score} · {fmt(rescueValueAtRisk(p))} value-at-risk · executive oversight recommended</div>
+                      </div>
+                    </div>
+                    <button onClick={() => launchRescue(p)}
+                      className="flex-shrink-0 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded-md transition-colors">
+                      <Siren className="w-3.5 h-3.5" /> Enter Rescue Command <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                )}
 
                 <button onClick={() => setExpanded(isExpanded ? null : p.project_id)}
                   className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
@@ -770,7 +871,17 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
 
 // ── Get-to-Green Tab ───────────────────────────────────────────────────────
 function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState<string | null>(plans[0]?.id || null);
+
+  const launchRescue = (plan: G2GPlan) => {
+    const q = new URLSearchParams({
+      project: plan.project_name, client: plan.client_name,
+      lead: plan.qa_specialist || 'Priya Nadkarni · QA Director',
+      ew: String(plan.current_ew_score),
+    });
+    navigate(`/rescue-command?${q.toString()}`);
+  };
 
   const active = plans.filter(p => p.status === 'active' || p.status === 'on_track').length;
   const resolved = plans.filter(p => p.status === 'resolved').length;
@@ -850,6 +961,12 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
                     <div className="text-xs text-gray-400">
                       Actions: {completedActions}/{plan.immediate_actions.length} · Milestones: {completedMilestones}/{plan.recovery_milestones.length}
                     </div>
+                    {(plan.status === 'stalled' || plan.status === 'escalated') && (
+                      <button onClick={() => launchRescue(plan)}
+                        className="mt-2 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors">
+                        <Siren className="w-3.5 h-3.5" /> Rescue Command <ArrowRight className="w-3 h-3" />
+                      </button>
+                    )}
                   </div>
                 </div>
 

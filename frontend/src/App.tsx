@@ -19,6 +19,7 @@ import QAFramework from './pages/QAFramework';
 import QAEvalsPage from './pages/QAEvalsPage';
 import QAKnowledgeNetwork from './pages/QAKnowledgeNetwork';
 import QAClientPortal from './pages/QAClientPortal';
+import RescueCommand from './pages/RescueCommand';
 import ACLM from './pages/ACLM';
 import ACLMCockpit from './pages/ACLMCockpit';
 import Evals from './pages/Evals';
@@ -51,6 +52,7 @@ export default function App() {
               <Route path="/qa-evals" element={<QAEvalsPage />} />
               <Route path="/qa-knowledge-network" element={<QAKnowledgeNetwork />} />
               <Route path="/qa-client-portal" element={<QAClientPortal />} />
+              <Route path="/rescue-command" element={<RescueCommand />} />
               <Route path="/aclm" element={<ACLM />} />
               <Route path="/aclm-cockpit" element={<ACLMCockpit />} />
               <Route path="/evals" element={<Evals />} />

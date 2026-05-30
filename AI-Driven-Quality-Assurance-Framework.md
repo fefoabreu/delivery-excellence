@@ -362,6 +362,8 @@ When a project enters rescue status (critical Get-to-Green or executive-escalate
 | **Pattern Matching** | Surface past successful rescues from the knowledge network with similar profiles |
 | **Exit Criteria** | Clear, measurable criteria for exiting rescue mode back to normal monitoring |
 
+> **Deep-dive:** The QA Director's executive-oversight engagement and Rescue Mode are expanded into a full operating model in **Section 11 — Executive Oversight & Rescue Engagement Model**. That section defines the Engagement Intensity Ladder, the rescue lifecycle, the Executive Recovery Board, and how this is showcased in the environment.
+
 ---
 
 ## 4. The Client-Facing QA Agent — The Differentiator
@@ -675,6 +677,7 @@ Following the Deal Approvals pattern, the top of the QA page features an OKR pan
 | Get-to-Green plan generation + tracking | All firms do this manually | **AI-generated plans with weekly tracking** |
 | Lessons learned knowledge network | Aspirational industry-wide, KPMG leading | **Connected to Agent Ecosystem (Pipeline + Delivery)** |
 | QA Director partnership model | Aligned with EY/PwC governance | **Override tracking feeding into Evals** |
+| Executive oversight / project rescue | Mature human discipline; agentic versions only oversee *AI agents* | **AI as chief-of-staff for a human-led rescue — Intensity Ladder + war-room cockpit (Section 11)** |
 | Eval model (QA predictions vs. outcomes) | Novel for QA domain | **Pioneered in Deal Approvals, extended here** |
 | **Client-facing QA companion agent** | **No firm has productized this** | **Industry-first differentiator** |
 
@@ -721,6 +724,12 @@ Following the Deal Approvals pattern, the top of the QA page features an OKR pan
 - [Agentic AI Strategy — Deloitte Insights](https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html)
 - [RAG Status Meanings & Best Practice — Eleco](https://eleco.com/pm3/knowledge-centre/how-many-rags/)
 - [RAID Log Guide — Asana](https://asana.com/resources/raid-log)
+- [Five Critical First Steps in Recovering Troubled Projects — PMI](https://www.pmi.org/learning/library/critical-steps-recovering-troubled-projects-7352)
+- [Rescuing Troubled Projects: Tools, Tactics, and the Courage to Course-Correct — UW InterPro](https://interpro.wisc.edu/rescuing-troubled-projects-tools-tactics-and-the-courage-to-course-correct/)
+- [Troubled Projects: Key Strategies for Quick Turnarounds — PM Solutions](https://www.pmsolutions.com/white_papers/Troubled_Projects.pdf)
+- [Defining a CIO Playbook on Agentic AI — EY](https://www.ey.com/en_us/ey-center-for-executive-leadership/defining-a-cio-playbook-on-agentic-ai)
+- [Kyndryl Launches Agentic Service Management (maturity model + structured assessments) — PR Newswire](https://www.prnewswire.com/news-releases/kyndryl-launches-agentic-service-management-to-power-ai-native-infrastructure-services-and-intelligent-workflows-302731945.html)
+- [2026 Hype Cycle for Agentic AI (governance, FinOps, oversight) — Gartner](https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai)
 
 ---
 
@@ -777,6 +786,200 @@ For Microsoft executives reviewing the platform, the Power BI aesthetic immediat
 
 ---
 
-*Document version: 1.1 — May 2026*
+## 11. Executive Oversight & Rescue Engagement Model (Pillar 7 Deep-Dive)
+
+This section turns Pillar 7 (Human-AI Collaboration / QA Director Partnership) from a principle into an **operating model**. It answers a specific question: *when an engagement needs more than monitoring — when a QA Director must personally step in either to maximize performance or to recover a failing project — how does that engagement work, and what does the agent do alongside the human?*
+
+### 11.1 Where the Industry Is (2026) — and the Open Lane
+
+**Turnaround / recovery practice is mature and consistent.** Across the project-recovery literature (PMI, PM Solutions, university PM programs), troubled-project recovery follows a stable spine, regardless of vendor:
+
+1. **Establish true status** — a rapid, independent audit, because *reported* status is almost never *actual* status in a troubled project.
+2. **Recovery charter agreed with the sponsor and steering committee** — recovery is re-chartered, not "continued."
+3. **Stabilize, then re-plan** — stop the bleeding (freeze scope, secure resources), then revise scope / schedule / team.
+4. **Tighter governance during recovery** — elevated cadence, an empowered recovery board, sometimes a leadership change.
+5. **Measurable exit** — explicit criteria for returning to normal delivery.
+
+Two findings are load-bearing for our design:
+- **Active executive sponsor support is the single strongest predictor of recovery success.** Its absence is the most common cause of failed recoveries. → Our model makes the *sponsor and an Executive Recovery Board first-class objects*, not an afterthought.
+- **The earliest red flags are detectable from data we already have** — scope creep with no budget/timeline change, sponsor disengagement, and earned-value divergence (CPI/SPI). → These map directly to our existing Early Warning signals (burn-completion gap, satisfaction drift, milestone slip), so the *trigger* for oversight/rescue is already instrumented.
+
+**Agentic executive oversight is being defined right now — and the rescue use case is open.** The 2026 enterprise signal (EY's CIO agentic playbook, Kyndryl's Agentic Service Management, Deloitte, Thomson Reuters' *AI in Professional Services 2026*) is consistent: as agents execute the work, **human roles shift to supervision, exception-handling, and keeping agents inside strategic and regulatory guardrails**; vendors package this as *maturity model + structured assessment + phased roadmap*. But every productized example is about overseeing *AI agents*. **No firm has productized an agent that acts as the chief-of-staff for a human-led project rescue.** That is our lane — and it is the natural extension of the framework's existing "human keeps judgment, agent handles volume" stance.
+
+> **Positioning:** The QA Director runs the rescue. The agent is the war-room operator — it establishes ground truth, drafts the recovery charter, assembles the board pack, runs the daily checks, drafts stakeholder comms, and surfaces analogous past rescues from the Knowledge Network. This is the rescue-mode embodiment of EY's "human retains professional judgment and approval authority."
+
+### 11.2 The Engagement Intensity Ladder
+
+Not every at-risk engagement needs a rescue. The model defines four intensities of QA Director involvement, each with a different leader, cadence, and agent role. An engagement moves *up* the ladder as risk concentrates and *down* as it stabilizes. This ladder sits directly on top of the existing tiered alerts (Pillar 5) and health assessments (Pillar 3).
+
+| Intensity | Trigger (auto-suggested by agent) | Who Leads | Cadence | Agent Role | Goal |
+|-----------|-----------------------------------|-----------|---------|------------|------|
+| **Standard Monitoring** | EW score < 60, all dimensions Green/Amber | PM + Delivery Lead | Weekly/biweekly (auto) | **Surveillance** — early warnings, health briefs | Maintain Green |
+| **Oversight** *(performance maximization)* | Strategic/flagship account, top-quartile contract value, or EW 60–80 with no Red — **and not yet failing** | QA Director as **Assurance Partner** (overlay) | Weekly exec touchpoint | **Performance Copilot** — uplift plays, peer benchmarks, opportunity surfacing | Lift to **top-quartile** performance; protect strategic value |
+| **Rescue** *(turnaround command)* | EW > 85, 2+ dimensions Red, executive-escalated, or a Get-to-Green plan **stalled 2+ consecutive weeks** | QA Director / **Rescue Lead** in command | **Daily war room** | **Rescue Copilot** — ground-truth audit, charter, board pack, comms, pattern-match | **Stabilize** and return to Green |
+| **De-escalation / Handback** | Exit criteria met, EW trending down and held | QA Director → back to PM | Step-down to weekly, then standard | **Transition Copilot** — verifies exit criteria, captures lessons | Sustain recovery; bank the lessons |
+
+The agent **proposes** ladder transitions ("Recommend declaring Rescue on Adatum — G2G stalled 2 weeks, EW 88, sponsor disengaging"); the **QA Director declares** them. Every declaration and de-escalation is logged for the Evals alignment loop (Pillar 7 / Section 5).
+
+Two distinct engagement types deserve emphasis because they are *opposite in posture*:
+
+- **Oversight = offense.** The engagement is healthy or merely soft; a senior QA Director is deliberately overlaid to *maximize* performance — protect a flagship logo, de-risk a strategic renewal, push a good project to a great one. This is the "executive oversight to maximize performance" the platform should showcase as the proactive, premium tier.
+- **Rescue = defense.** The engagement is failing; the QA Director takes *command* to stabilize and recover. This is the war-room turnaround.
+
+### 11.3 Oversight Mode — Performance Maximization
+
+**When declared:** flagship/strategic accounts, the largest contracts, politically sensitive engagements, or any project the firm cannot afford to let slip even by a little. It is a *deliberate investment*, not a reaction to trouble.
+
+**The Assurance Partner overlay.** A QA Director is named to the engagement as a standing executive partner — present in governance, but not running delivery. They own an *uplift agenda*, not a recovery plan.
+
+**The agent as Performance Copilot:**
+| Copilot Capability | What It Surfaces |
+|--------------------|------------------|
+| **Top-quartile gap** | "This project is Green, but its burn efficiency and milestone velocity sit in the 3rd quartile for its service line — here's the gap to top-quartile." |
+| **Uplift plays** | Concrete, benchmarked moves drawn from the Knowledge Network's *success patterns* ("teams that added weekly client demos at this phase lifted satisfaction +12 NPS"). |
+| **Opportunity radar** | Health strength + client sentiment that signals expansion/renewal upside — fed to the Pipeline Agent. |
+| **Pre-empt the slide** | Watches the same EW signals but at a *tighter* threshold, so an Oversight engagement never silently drifts toward Rescue. |
+
+**Output:** a lightweight **Performance Plan** (not a charter) — a short list of uplift plays with owners and a target performance percentile, reviewed at the weekly exec touchpoint.
+
+### 11.4 Rescue Mode — The Turnaround Lifecycle
+
+Rescue Mode is a **5-phase lifecycle** grounded in the recovery literature, with the agent operating each phase as chief of staff. A Get-to-Green plan (Pillar 5) is the *artifact produced inside Phase 3* — Rescue Mode is the governance and command wrapper around it.
+
+```
+  DECLARE &        STABILIZE        RE-CHARTER       EXECUTE          STABILIZED
+  TRIAGE       →   (stop the    →   (recovery    →   (war room)   →   EXIT
+  (72h audit)      bleeding)        charter)                           (handback)
+     │                │                │               │                  │
+  ground truth     freeze /        agreed WITH       daily stand-up    exit criteria
+  vs reported      secure          sponsor +         + burn-down       met & held
+  red-flag scan    sponsor +       recovery board    weekly board      lessons →
+  stakeholder      war room        go / reset / stop  EW trending ↓     Knowledge Net
+  temperature      stood up                                            de-escalate
+```
+
+| Phase | Purpose | Agent (Rescue Copilot) Does | Human (QA Director / Rescue Lead) Does | Gate to Next Phase |
+|-------|---------|------------------------------|----------------------------------------|--------------------|
+| **1. Declare & Triage** | Establish *true* status within ~72h — reported status is not trusted | Auto-assembles a triage pack: ground-truth vs reported delta, red-flag scan (scope-creep-without-budget, sponsor disengagement, CPI/SPI divergence), full RAID re-read, stakeholder sentiment temperature, value-at-risk | Validates ground truth, interviews key people, confirms or overrides the agent's diagnosis | Triage accepted; root causes named |
+| **2. Stabilize** | Stop the bleeding in the first 5 business days | Drafts immediate "stop-the-bleeding" actions, scope-freeze notice, war-room setup, and the sponsor re-engagement brief | Secures the executive sponsor, freezes scope, stands up the war room, sets comms cadence | Sponsor committed; bleeding stopped |
+| **3. Re-Charter** | Re-charter the engagement — recovery is a new plan, agreed *with* the sponsor & board | Generates the **Recovery Charter** (revised scope/schedule/team, resource asks, success criteria) and the **go / reset / stop** options with data behind each | Owns the **go / reset / stop** decision with the Executive Recovery Board; commits resources | Charter approved by board |
+| **4. Execute (War Room)** | Drive recovery under tighter governance | Runs daily health checks at rescue thresholds, burns down recovery milestones, drafts daily stand-up + weekly board pack, drafts client/stakeholder comms, pattern-matches past successful rescues | Leads the daily war room, makes interventions, owns the struggling team relationship and sponsor/exec messaging | EW trending down for 2+ weeks; milestones recovering |
+| **5. Stabilized Exit** | Hand back to normal delivery and bank the lessons | Verifies every exit criterion, drafts the closure brief, extracts lessons → Knowledge Network, proposes de-escalation | Confirms exit criteria are *held* (not a one-week blip), signs off handback, validates lesson quality | Exit criteria held; project returns to Standard Monitoring |
+
+**The go / reset / stop decision (Phase 3)** is the model's most important governance moment and a deliberate honesty mechanism — the literature is blunt that *cancellation is sometimes the courageous, correct choice*. The agent presents all three options with evidence; the human and board decide:
+- **Go** — recover on a revised charter.
+- **Reset** — major re-baseline (scope, commercial terms, or leadership change).
+- **Stop** — orderly wind-down; protect the relationship and harvest lessons.
+
+### 11.5 The Executive Recovery Board
+
+Because sponsor support is the decisive recovery factor, the model formalizes an **Executive Recovery Board** as a first-class object for any Rescue engagement.
+
+| Element | Definition |
+|---------|------------|
+| **Composition** | Executive sponsor (chair), account executive, QA Director / Rescue Lead, Delivery PM, and — where the disclosure policy allows — the client executive sponsor |
+| **Cadence** | Weekly during Rescue (daily war room rolls up into it); convened within 1 week of a Critical alert |
+| **Decision rights** | Approves the Recovery Charter and the go/reset/stop call; authorizes resources/budget; owns escalation beyond the engagement |
+| **Agent support** | Auto-prepares the board pack (status, EW trend, charter, options, asks), records decisions and owners, tracks actions to closure — the same nomination/prep/post-review machinery as Pillar 4, re-pointed at a single engagement |
+
+### 11.6 Responsibility Split — Extending the Pillar 7 Matrix
+
+Rescue intensifies, but does not change, the Pillar 7 principle: the agent handles volume and preparation; the human holds judgment and authority. The split sharpens in Rescue Mode:
+
+| The Rescue Copilot Does | The QA Director / Rescue Lead Does |
+|-------------------------|-------------------------------------|
+| Establishes ground truth vs reported status; scans for red flags | Owns the diagnosis and names the true root causes |
+| Drafts the Recovery Charter and the go/reset/stop options | **Decides** go / reset / stop with the board |
+| Runs daily checks, burns down milestones, prepares the board pack | Leads the war room and the human relationships |
+| Drafts stakeholder and client communications | Approves, personalizes, and sends them |
+| Surfaces analogous past rescues and what worked | Adapts the playbook to *this* context and politics |
+| Verifies exit criteria objectively | Confirms the recovery is real and signs the handback |
+
+Every override (agent recommends Rescue, director holds at Oversight; agent says "exit," director says "not yet") flows into the **same Evals alignment loop** used in Deal Approvals — and rescue outcomes become high-value training data for the early-warning weights.
+
+### 11.7 How It Shows Up in the Environment — Recommended Showcase
+
+The framework should make this the platform's most cinematic moment. Recommendation, in priority order:
+
+**1. A dedicated "Rescue Command" cockpit (the hero showcase).** Just as the Client Portal earned its own *distinct environment* (Section 10.2), Rescue Mode should look and feel unmistakably different from the calm Power BI operational tabs — a **dark "mission-control / war-room" identity** (slate-950 canvas, amber/red status, live-clock urgency, "DEFCON-style" intensity badges). It is launched from any **Critical** project in the Portfolio Monitor or any **stalled** Get-to-Green plan, and presents the 5-phase lifecycle as a command timeline: triage pack → stabilization actions → Recovery Charter → war-room daily log → exit criteria, with the Executive Recovery Board pack one click away. The visual whiplash between the serene Power BI tabs and the war-room cockpit *is the story*: "this is what it looks like when the QA function shifts from monitoring to command."
+
+**2. An "Oversight" overlay (the premium, proactive tier).** Lighter-weight — a banner/badge on Oversight-engaged projects plus a Performance Plan panel, framed as the opposite of rescue: deliberately investing senior attention to push a good engagement to top-quartile. This showcases the "executive oversight to maximize performance" half of the request.
+
+**3. Placement.** Add a **Rescue Command** entry that is *contextual* (it lights up only when an engagement is in Oversight/Rescue) rather than a permanent cold tab — reinforcing that command mode is an exceptional, declared state. The existing **Get-to-Green** tab remains the operational recovery-plan tracker; Rescue Command is the *governance and command wrapper* that sits above it.
+
+> **Demo narrative (for the executive walkthrough):** *Portfolio Monitor is calm and green → one project trips a Critical alert → the agent recommends declaring Rescue → the QA Director declares it → the screen shifts into the dark war-room cockpit → the agent has already built the triage pack and drafted the Recovery Charter and the board pack → the director makes the go/reset/stop call → daily war room burns the project back to Green → de-escalation banks the lessons into the Knowledge Network, which makes the next deal's risk profile smarter.* This closes the loop across all seven pillars in a single story.
+
+### 11.8 Conceptual Data Model (for the build phase — not yet implemented)
+
+```typescript
+type EngagementIntensity = 'standard' | 'oversight' | 'rescue' | 'de_escalation';
+type RescuePhase = 'triage' | 'stabilize' | 'recharter' | 'war_room' | 'exit';
+type ChargterDecision = 'go' | 'reset' | 'stop';
+
+interface OversightEngagement {            // Intensity = oversight
+  project_id: string;
+  assurance_partner: string;               // QA Director name
+  declared_at: string;
+  rationale: string;                       // why this is under oversight
+  target_percentile: number;               // top-quartile goal
+  uplift_plays: { play: string; owner: string; source_lesson_id?: string; done: boolean }[];
+  opportunity_signals: string[];           // fed to Pipeline Agent
+}
+
+interface RescueEngagement {               // Intensity = rescue
+  id: string;
+  project_id: string;
+  rescue_lead: string;
+  declared_at: string;
+  phase: RescuePhase;
+  triage: {
+    reported_status: HealthStatus;
+    true_status: HealthStatus;             // agent's ground-truth assessment
+    red_flags: string[];                   // scope-creep, sponsor disengagement, CPI/SPI divergence
+    value_at_risk: number;
+    root_causes: string[];
+  };
+  recovery_charter?: {
+    decision: ChargterDecision;            // go / reset / stop
+    revised_scope: string;
+    resource_asks: string[];
+    success_criteria: string[];
+    board_approved_at?: string;
+  };
+  get_to_green_plan_id?: string;           // links to the Pillar 5 G2G artifact
+  war_room_log: { date: string; ew_score: number; note: string; on_track: boolean }[];
+  exit_criteria: { criterion: string; met: boolean }[];
+}
+
+interface RecoveryBoard {
+  rescue_id: string;
+  sponsor: string;
+  members: string[];
+  client_sponsor_included: boolean;
+  sessions: {
+    date: string;
+    decisions: string[];
+    actions: { action: string; owner: string; due: string; done: boolean }[];
+  }[];
+}
+```
+
+### 11.9 Metrics — Extending the Eval Model
+
+New Key Results that plug into the Section 5 OKR panel:
+
+| Key Result | Metric | Target Direction |
+|-----------|--------|------------------|
+| **Rescue success rate** | % of declared Rescues returned to Green within their charter window | Higher |
+| **Time-to-stabilize** | Days from Rescue declared to bleeding-stopped (Phase 2 gate) | Lower |
+| **Sponsor engagement** | % of Rescues with an active Executive Recovery Board within 1 week | Higher (→100%) |
+| **Oversight uplift** | Avg performance-percentile gain for Oversight engagements | Higher |
+| **Honest-stop rate** | % of Rescues correctly ending in *reset/stop* vs futile "go" (proving the decision is real, not vanity) | Healthy non-zero |
+| **Knowledge return** | % of closed Rescues whose lessons were consumed by a later project | Higher |
+
+---
+
+*Document version: 1.2 — May 2026*
 *Module: Delivery Excellence Platform — AI-Driven Quality Assurance*
+*Key updates in 1.2: Added Section 11 — Executive Oversight & Rescue Engagement Model (Pillar 7 deep-dive): the Engagement Intensity Ladder (Standard → Oversight → Rescue → De-escalation), the 5-phase rescue lifecycle, the Executive Recovery Board, the go/reset/stop decision, the QA-Director-as-commander / agent-as-Rescue-Copilot split, conceptual data model, extended OKRs, and the recommended "Rescue Command" war-room cockpit showcase.*
 *Key updates in 1.1: Power BI styling for executive-facing operational tabs; Client Portal redesigned as a distinct external environment with toggle between Internal Audit and Client Portal Preview modes; AI Assistant designed with suggested-first interaction model*
