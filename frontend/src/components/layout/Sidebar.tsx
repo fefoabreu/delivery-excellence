@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, TrendingUp, FileText, GitBranch,
-  Activity, BarChart3, Bot, Package, ChevronRight, Kanban, Siren,
+  Activity, BarChart3, Bot, Package, ChevronRight, Kanban, Siren, Rocket,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -15,7 +15,8 @@ const nav = [
   { label: 'Handoff Center', to: '/handoffs', icon: GitBranch },
   { label: 'Delivery Projects', to: '/delivery', icon: Activity },
   { label: 'AI Quality Assurance', to: '/quality-assurance', icon: Bot },
-  { label: 'Rescue Command', to: '/rescue-command', icon: Siren, alert: true },
+  { label: 'Rescue Command', to: '/rescue-command', icon: Siren, indicator: { color: 'red', count: 2 } },
+  { label: 'Oversight Studio', to: '/oversight', icon: Rocket, indicator: { color: 'sky', count: 2 } },
   { type: 'divider', label: 'PORTFOLIO' },
   { label: 'Portfolio Dashboard', to: '/portfolio', icon: BarChart3 },
   { label: 'Service Catalog', to: '/catalog', icon: Package },
@@ -64,17 +65,23 @@ export default function Sidebar() {
                 )
               }
             >
-              <Icon className={clsx('w-4 h-4 flex-shrink-0', 'alert' in item && item.alert && 'text-red-400')} />
-              <span>{item.label}</span>
-              {'alert' in item && item.alert && (
-                <span className="ml-auto flex items-center gap-1">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-                  </span>
-                  <span className="text-[10px] font-bold text-red-400">1</span>
-                </span>
-              )}
+              {(() => {
+                const ind = 'indicator' in item ? item.indicator : undefined;
+                const isRed = ind?.color === 'red';
+                return <>
+                  <Icon className={clsx('w-4 h-4 flex-shrink-0', ind && (isRed ? 'text-red-400' : 'text-sky-400'))} />
+                  <span>{item.label}</span>
+                  {ind && (
+                    <span className="ml-auto flex items-center gap-1">
+                      <span className="relative flex h-2 w-2">
+                        <span className={clsx('absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping', isRed ? 'bg-red-500' : 'bg-sky-500')} />
+                        <span className={clsx('relative inline-flex rounded-full h-2 w-2', isRed ? 'bg-red-500' : 'bg-sky-500')} />
+                      </span>
+                      <span className={clsx('text-[10px] font-bold', isRed ? 'text-red-400' : 'text-sky-400')}>{ind.count}</span>
+                    </span>
+                  )}
+                </>;
+              })()}
             </NavLink>
           );
         })}

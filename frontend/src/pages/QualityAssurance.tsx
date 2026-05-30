@@ -454,6 +454,13 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
     });
     navigate(`/rescue-command?${q.toString()}`);
   };
+  const launchOversight = (p: ProjectMonitor) => {
+    const q = new URLSearchParams({
+      pid: p.project_id, project: p.name, client: p.client_name,
+      lead: 'Priya Nadkarni · QA Director', val: String(p.budget),
+    });
+    navigate(`/oversight?${q.toString()}`);
+  };
 
   const filtered = projects.filter(p => {
     if (filterHealth && p.overall_health !== filterHealth) return false;
@@ -653,6 +660,12 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
                             <Gauge className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" /> {play}
                           </div>
                         ))}
+                      </div>
+                      <div className="mt-2.5 flex justify-end">
+                        <button onClick={() => launchOversight(p)}
+                          className="inline-flex items-center gap-1.5 bg-gradient-to-r from-sky-600 to-teal-500 hover:from-sky-700 hover:to-teal-600 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors">
+                          <Rocket className="w-3.5 h-3.5" /> Open Oversight Studio <ArrowRight className="w-3 h-3" />
+                        </button>
                       </div>
                     </div>
                   );
