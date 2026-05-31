@@ -480,6 +480,28 @@ function OversightLaunchBtn({ onClick, compact }: { onClick: () => void; compact
     </button>
   );
 }
+// Renders the right launcher for a project ONLY if it is one of the canonical
+// rescue / oversight engagements (identical criteria to the Portfolio Monitor).
+// `p` is the full ProjectMonitor looked up by project_id; null/non-member → nothing.
+function ProjectLaunchBtn({ p, rescueIds, oversightIds }: { p?: ProjectMonitor; rescueIds: Set<string>; oversightIds: Set<string> }) {
+  const navigate = useNavigate();
+  if (!p) return null;
+  if (rescueIds.has(p.project_id)) {
+    return <RescueLaunchBtn compact onClick={() => navigate(rescueUrl({ pid: p.project_id, name: p.name, client: p.client_name, ew: p.early_warning.score, valueAtRisk: rescueValueAtRisk(p) }))} />;
+  }
+  if (oversightIds.has(p.project_id)) {
+    return <OversightLaunchBtn compact onClick={() => navigate(oversightUrl({ pid: p.project_id, name: p.name, client: p.client_name, budget: p.budget }))} />;
+  }
+  return null;
+}
+// Build the canonical sets + lookup shared by every tab.
+function launchSets(projects: ProjectMonitor[]) {
+  return {
+    byId: new Map(projects.map(p => [p.project_id, p])),
+    rescueIds: new Set(projects.filter(isRescueCandidate).map(p => p.project_id)),
+    oversightIds: oversightIdSet(projects),
+  };
+}
 
 // ── Portfolio Monitor Tab ──────────────────────────────────────────────────
 function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[]; config: QAConfig }) {
@@ -766,8 +788,8 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
 }
 
 // ── Checkpoints Tab ────────────────────────────────────────────────────────
-function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
-  const navigate = useNavigate();
+function CheckpointsTab({ checkpoints, projects }: { checkpoints: Checkpoint[]; projects: ProjectMonitor[] }) {
+  const { byId, rescueIds, oversightIds } = launchSets(projects);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [filterPhase, setFilterPhase] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
@@ -870,12 +892,7 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
                     <div className="text-xs text-gray-500">{cp.client_name} · Due: {new Date(cp.due_date).toLocaleDateString()}{cp.completed_date && ` · Completed: ${new Date(cp.completed_date).toLocaleDateString()}`}</div>
                   </div>
                   <div className="flex-shrink-0">
-                    {cp.status === 'flagged' && (
-                      <RescueLaunchBtn compact onClick={() => navigate(rescueUrl({ pid: cp.project_id, name: cp.project_name, client: cp.client_name }))} />
-                    )}
-                    {cp.status === 'passed' && (
-                      <OversightLaunchBtn compact onClick={() => navigate(oversightUrl({ pid: cp.project_id, name: cp.project_name, client: cp.client_name }))} />
-                    )}
+                    <ProjectLaunchBtn p={byId.get(cp.project_id)} rescueIds={rescueIds} oversightIds={oversightIds} />
                   </div>
                 </div>
 
@@ -935,14 +952,9 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
 }
 
 // ── Get-to-Green Tab ───────────────────────────────────────────────────────
-function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
-  const navigate = useNavigate();
+function GetToGreenTab({ plans, projects }: { plans: G2GPlan[]; projects: ProjectMonitor[] }) {
+  const { byId, rescueIds, oversightIds } = launchSets(projects);
   const [expanded, setExpanded] = useState<string | null>(plans[0]?.id || null);
-
-  const launchRescue = (plan: G2GPlan) => navigate(rescueUrl({
-    pid: plan.project_id, name: plan.project_name, client: plan.client_name,
-    lead: plan.qa_specialist || undefined, ew: plan.current_ew_score,
-  }));
 
   const active = plans.filter(p => p.status === 'active' || p.status === 'on_track').length;
   const resolved = plans.filter(p => p.status === 'resolved').length;
@@ -1023,7 +1035,7 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
                       Actions: {completedActions}/{plan.immediate_actions.length} · Milestones: {completedMilestones}/{plan.recovery_milestones.length}
                     </div>
                     <div className="mt-2 flex justify-end">
-                      <RescueLaunchBtn compact onClick={() => launchRescue(plan)} />
+                      <ProjectLaunchBtn p={byId.get(plan.project_id)} rescueIds={rescueIds} oversightIds={oversightIds} />
                     </div>
                   </div>
                 </div>
@@ -1119,7 +1131,7 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
 
 // ── Health Reviews Tab ─────────────────────────────────────────────────────
 function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_reviews']; projects: ProjectMonitor[] }) {
-  const navigate = useNavigate();
+  const { byId, rescueIds, oversightIds } = launchSets(projects);
   const [expanded, setExpanded] = useState<string | null>(null);
   const [reviewModal, setReviewModal] = useState<string | null>(null);
   const NOM_STATUS: Record<NominationStatus, { label: string; bg: string }> = {
@@ -1202,11 +1214,7 @@ function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_revie
                     <div className="text-xs text-gray-500">{nom.client_name}</div>
                   </div>
                   <div className="flex-shrink-0">
-                    {nom.early_warning_score >= 65 ? (
-                      <RescueLaunchBtn compact onClick={() => navigate(rescueUrl({ pid: nom.project_id, name: nom.project_name, client: nom.client_name, ew: nom.early_warning_score, valueAtRisk: nom.value_at_risk > 0 ? nom.value_at_risk : undefined }))} />
-                    ) : (
-                      <OversightLaunchBtn compact onClick={() => navigate(oversightUrl({ pid: nom.project_id, name: nom.project_name, client: nom.client_name }))} />
-                    )}
+                    <ProjectLaunchBtn p={byId.get(nom.project_id)} rescueIds={rescueIds} oversightIds={oversightIds} />
                   </div>
                 </div>
 
@@ -1752,8 +1760,8 @@ export default function QualityAssurance() {
       </div>
 
       {tab === 'monitor' && <PortfolioMonitorTab projects={data.portfolio_monitor} config={config} />}
-      {tab === 'checkpoints' && <CheckpointsTab checkpoints={data.checkpoints} />}
-      {tab === 'g2g' && <GetToGreenTab plans={data.get_to_green} />}
+      {tab === 'checkpoints' && <CheckpointsTab checkpoints={data.checkpoints} projects={data.portfolio_monitor} />}
+      {tab === 'g2g' && <GetToGreenTab plans={data.get_to_green} projects={data.portfolio_monitor} />}
       {tab === 'reviews' && <HealthReviewsTab reviews={data.health_reviews} projects={data.portfolio_monitor} />}
     </div>
   );
