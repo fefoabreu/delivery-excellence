@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, TrendingUp, FileText, GitBranch,
-  Activity, BarChart3, Bot, Package, ChevronRight, Kanban, Siren, Rocket,
+  Activity, BarChart3, Bot, Package, ChevronRight, Kanban,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -15,8 +15,6 @@ const nav = [
   { label: 'Handoff Center', to: '/handoffs', icon: GitBranch },
   { label: 'Delivery Projects', to: '/delivery', icon: Activity },
   { label: 'AI Quality Assurance', to: '/quality-assurance', icon: Bot },
-  { label: 'Rescue Command', to: '/rescue-command', icon: Siren, indicator: { color: 'red', count: 2 } },
-  { label: 'Oversight Studio', to: '/oversight', icon: Rocket, indicator: { color: 'sky', count: 2 } },
   { type: 'divider', label: 'PORTFOLIO' },
   { label: 'Portfolio Dashboard', to: '/portfolio', icon: BarChart3 },
   { label: 'Service Catalog', to: '/catalog', icon: Package },
@@ -65,23 +63,8 @@ export default function Sidebar() {
                 )
               }
             >
-              {(() => {
-                const ind = 'indicator' in item ? item.indicator : undefined;
-                const isRed = ind?.color === 'red';
-                return <>
-                  <Icon className={clsx('w-4 h-4 flex-shrink-0', ind && (isRed ? 'text-red-400' : 'text-sky-400'))} />
-                  <span>{item.label}</span>
-                  {ind && (
-                    <span className="ml-auto flex items-center gap-1">
-                      <span className="relative flex h-2 w-2">
-                        <span className={clsx('absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping', isRed ? 'bg-red-500' : 'bg-sky-500')} />
-                        <span className={clsx('relative inline-flex rounded-full h-2 w-2', isRed ? 'bg-red-500' : 'bg-sky-500')} />
-                      </span>
-                      <span className={clsx('text-[10px] font-bold', isRed ? 'text-red-400' : 'text-sky-400')}>{ind.count}</span>
-                    </span>
-                  )}
-                </>;
-              })()}
+              <Icon className="w-4 h-4 flex-shrink-0" />
+              <span>{item.label}</span>
             </NavLink>
           );
         })}

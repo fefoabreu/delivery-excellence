@@ -438,6 +438,49 @@ function rescueValueAtRisk(p: ProjectMonitor): number {
   return Math.round(p.budget * (p.early_warning.score / 100));
 }
 
+// ── Shared launch helpers (used across all QA tabs) ────────────────────────
+interface LaunchTarget {
+  pid?: string; name: string; client?: string;
+  ew?: number; valueAtRisk?: number; budget?: number; lead?: string;
+}
+function rescueUrl(t: LaunchTarget): string {
+  const q = new URLSearchParams();
+  if (t.pid) q.set('pid', t.pid);
+  q.set('project', t.name);
+  if (t.client) q.set('client', t.client);
+  q.set('lead', t.lead || 'Priya Nadkarni · QA Director');
+  if (t.ew != null) q.set('ew', String(t.ew));
+  if (t.valueAtRisk != null) q.set('var', String(t.valueAtRisk));
+  return `/rescue-command?${q.toString()}`;
+}
+function oversightUrl(t: LaunchTarget): string {
+  const q = new URLSearchParams();
+  if (t.pid) q.set('pid', t.pid);
+  q.set('project', t.name);
+  if (t.client) q.set('client', t.client);
+  q.set('lead', t.lead || 'Priya Nadkarni · QA Director');
+  if (t.budget != null) q.set('val', String(t.budget));
+  return `/oversight?${q.toString()}`;
+}
+function RescueLaunchBtn({ onClick, compact }: { onClick: () => void; compact?: boolean }) {
+  return (
+    <button onClick={onClick}
+      className={clsx('inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md transition-colors',
+        compact ? 'text-xs px-2.5 py-1.5' : 'text-xs px-3 py-2')}>
+      <Siren className="w-3.5 h-3.5" /> {compact ? 'Rescue Command' : 'Enter Rescue Command'} <ArrowRight className="w-3 h-3" />
+    </button>
+  );
+}
+function OversightLaunchBtn({ onClick, compact }: { onClick: () => void; compact?: boolean }) {
+  return (
+    <button onClick={onClick}
+      className={clsx('inline-flex items-center gap-1.5 bg-gradient-to-r from-sky-600 to-teal-500 hover:from-sky-700 hover:to-teal-600 text-white font-semibold rounded-md transition-colors',
+        compact ? 'text-xs px-2.5 py-1.5' : 'text-xs px-3 py-2')}>
+      <Rocket className="w-3.5 h-3.5" /> {compact ? 'Oversight Studio' : 'Open Oversight Studio'} <ArrowRight className="w-3 h-3" />
+    </button>
+  );
+}
+
 // ── Portfolio Monitor Tab ──────────────────────────────────────────────────
 function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[]; config: QAConfig }) {
   const navigate = useNavigate();
@@ -724,6 +767,7 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
 
 // ── Checkpoints Tab ────────────────────────────────────────────────────────
 function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState<string | null>(null);
   const [filterPhase, setFilterPhase] = useState('');
   const [filterStatus, setFilterStatus] = useState('');
@@ -825,6 +869,14 @@ function CheckpointsTab({ checkpoints }: { checkpoints: Checkpoint[] }) {
                     <h3 className="font-semibold text-gray-900 text-sm">{cp.project_name}</h3>
                     <div className="text-xs text-gray-500">{cp.client_name} · Due: {new Date(cp.due_date).toLocaleDateString()}{cp.completed_date && ` · Completed: ${new Date(cp.completed_date).toLocaleDateString()}`}</div>
                   </div>
+                  <div className="flex-shrink-0">
+                    {cp.status === 'flagged' && (
+                      <RescueLaunchBtn compact onClick={() => navigate(rescueUrl({ pid: cp.project_id, name: cp.project_name, client: cp.client_name }))} />
+                    )}
+                    {cp.status === 'passed' && (
+                      <OversightLaunchBtn compact onClick={() => navigate(oversightUrl({ pid: cp.project_id, name: cp.project_name, client: cp.client_name }))} />
+                    )}
+                  </div>
                 </div>
 
                 <div className="rounded-lg bg-gray-50 border border-gray-100 p-3 mb-2">
@@ -887,14 +939,10 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState<string | null>(plans[0]?.id || null);
 
-  const launchRescue = (plan: G2GPlan) => {
-    const q = new URLSearchParams({
-      pid: plan.project_id, project: plan.project_name, client: plan.client_name,
-      lead: plan.qa_specialist || 'Priya Nadkarni · QA Director',
-      ew: String(plan.current_ew_score),
-    });
-    navigate(`/rescue-command?${q.toString()}`);
-  };
+  const launchRescue = (plan: G2GPlan) => navigate(rescueUrl({
+    pid: plan.project_id, name: plan.project_name, client: plan.client_name,
+    lead: plan.qa_specialist || undefined, ew: plan.current_ew_score,
+  }));
 
   const active = plans.filter(p => p.status === 'active' || p.status === 'on_track').length;
   const resolved = plans.filter(p => p.status === 'resolved').length;
@@ -974,12 +1022,9 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
                     <div className="text-xs text-gray-400">
                       Actions: {completedActions}/{plan.immediate_actions.length} · Milestones: {completedMilestones}/{plan.recovery_milestones.length}
                     </div>
-                    {(plan.status === 'stalled' || plan.status === 'escalated') && (
-                      <button onClick={() => launchRescue(plan)}
-                        className="mt-2 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-md transition-colors">
-                        <Siren className="w-3.5 h-3.5" /> Rescue Command <ArrowRight className="w-3 h-3" />
-                      </button>
-                    )}
+                    <div className="mt-2 flex justify-end">
+                      <RescueLaunchBtn compact onClick={() => launchRescue(plan)} />
+                    </div>
                   </div>
                 </div>
 
@@ -1074,6 +1119,7 @@ function GetToGreenTab({ plans }: { plans: G2GPlan[] }) {
 
 // ── Health Reviews Tab ─────────────────────────────────────────────────────
 function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_reviews']; projects: ProjectMonitor[] }) {
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState<string | null>(null);
   const [reviewModal, setReviewModal] = useState<string | null>(null);
   const NOM_STATUS: Record<NominationStatus, { label: string; bg: string }> = {
@@ -1154,6 +1200,13 @@ function HealthReviewsTab({ reviews, projects }: { reviews: QAData['health_revie
                     </div>
                     <h3 className="font-semibold text-gray-900 text-sm">{nom.project_name}</h3>
                     <div className="text-xs text-gray-500">{nom.client_name}</div>
+                  </div>
+                  <div className="flex-shrink-0">
+                    {nom.early_warning_score >= 65 ? (
+                      <RescueLaunchBtn compact onClick={() => navigate(rescueUrl({ pid: nom.project_id, name: nom.project_name, client: nom.client_name, ew: nom.early_warning_score, valueAtRisk: nom.value_at_risk > 0 ? nom.value_at_risk : undefined }))} />
+                    ) : (
+                      <OversightLaunchBtn compact onClick={() => navigate(oversightUrl({ pid: nom.project_id, name: nom.project_name, client: nom.client_name }))} />
+                    )}
                   </div>
                 </div>
 
