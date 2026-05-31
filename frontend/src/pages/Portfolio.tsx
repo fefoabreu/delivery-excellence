@@ -1,68 +1,206 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart3, TrendingUp, Activity, DollarSign, AlertTriangle } from 'lucide-react';
+import { BarChart3, TrendingUp, Activity, DollarSign, AlertTriangle, Gauge, Siren, Rocket } from 'lucide-react';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
   PieChart, Pie, Legend, RadarChart, PolarGrid, PolarAngleAxis, Radar,
 } from 'recharts';
 import { portfolioApi } from '../api/client';
+import { loadPortfolio, rescueHref, oversightHref, fmtMoney, type PortfolioIntel, type UnifiedProject } from '../api/portfolioData';
 import Header from '../components/layout/Header';
 import StatCard from '../components/shared/StatCard';
 import HealthBadge from '../components/shared/HealthBadge';
-import type { PipelineMetrics, DeliveryMetrics, HealthStatus } from '../types';
+import type { PipelineMetrics, HealthStatus } from '../types';
 
 const STAGE_LABELS: Record<string, string> = {
   prospect: 'Prospect', qualify: 'Qualify', develop: 'Develop', propose: 'Propose', negotiate: 'Negotiate',
 };
 const HEALTH_COLORS = { green: '#107C10', amber: '#D67B00', red: '#A4262C' };
-const fmt = (v: number) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(1)}M` : v >= 1_000 ? `$${(v / 1_000).toFixed(0)}K` : `$${v}`;
+const fmt = fmtMoney;
+const ewColor = (v: number) => v >= 75 ? 'text-red-600' : v >= 50 ? 'text-amber-600' : v >= 30 ? 'text-yellow-600' : 'text-green-600';
+const ewHex = (v: number) => v >= 75 ? '#dc2626' : v >= 50 ? '#d97706' : v >= 30 ? '#ca8a04' : '#16a34a';
 
 export default function Portfolio() {
   const [pipeline, setPipeline] = useState<PipelineMetrics | null>(null);
-  const [delivery, setDelivery] = useState<DeliveryMetrics | null>(null);
-  const [tab, setTab] = useState<'pipeline' | 'delivery'>('pipeline');
+  const [intel, setIntel] = useState<PortfolioIntel | null>(null);
+  const [projects, setProjects] = useState<UnifiedProject[]>([]);
+  const [tab, setTab] = useState<'pipeline' | 'delivery'>('delivery');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([portfolioApi.pipelineMetrics(), portfolioApi.deliveryMetrics()])
-      .then(([p, d]) => { setPipeline(p.data); setDelivery(d.data); })
+    Promise.all([portfolioApi.pipelineMetrics(), loadPortfolio()])
+      .then(([p, bundle]) => { setPipeline(p.data); setIntel(bundle.intel); setProjects(bundle.projects); })
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="p-8 text-gray-400">Loading portfolio...</div>;
+  if (loading || !intel) return <div className="p-8 text-gray-400">Loading portfolio...</div>;
 
   const funnelData = Object.entries(pipeline?.by_stage || {}).map(([k, v]) => ({
-    stage: STAGE_LABELS[k] || k,
-    value: Math.round(v.value / 1000),
-    count: v.count,
-    weighted: Math.round(v.weighted / 1000),
+    stage: STAGE_LABELS[k] || k, value: Math.round(v.value / 1000), weighted: Math.round(v.weighted / 1000),
   }));
-
-  const regionData = Object.entries(pipeline?.by_region || {}).map(([k, v]) => ({ name: k, value: v.count, amount: v.value }));
+  const regionData = Object.entries(pipeline?.by_region || {}).map(([k, v]) => ({ name: k, value: v.count }));
   const ownerData = Object.entries(pipeline?.by_owner || {}).map(([k, v]) => ({ name: k.split(' ')[0], value: Math.round(v.value / 1000) })).sort((a, b) => b.value - a.value);
 
-  const healthPie = Object.entries(delivery?.health_summary || {}).map(([k, v]) => ({
-    name: k === 'green' ? 'On Track' : k === 'amber' ? 'At Risk' : 'Critical',
-    value: v, color: HEALTH_COLORS[k as HealthStatus] || '#888',
-  })).filter(d => d.value > 0);
-
-  const radarData = Object.entries(delivery?.dimension_health || {}).map(([dim, counts]) => {
-    const total = (counts.green || 0) + (counts.amber || 0) + (counts.red || 0);
-    return { dim: dim.charAt(0).toUpperCase() + dim.slice(1), score: total ? Math.round((counts.green || 0) / total * 100) : 100 };
+  const healthPie = (['green', 'amber', 'red'] as const)
+    .map(k => ({ name: k === 'green' ? 'On Track' : k === 'amber' ? 'At Risk' : 'Critical', value: intel.health[k], color: HEALTH_COLORS[k] }))
+    .filter(d => d.value > 0);
+  const radarData = Object.entries(intel.dimensionHealth).map(([dim, c]) => {
+    const total = c.green + c.amber + c.red;
+    return { dim: dim.charAt(0).toUpperCase() + dim.slice(1), score: total ? Math.round((c.green / total) * 100) : 100 };
   });
+
+  const monitored = projects.filter(p => p.hasQA);
+  const ewBuckets = [
+    { name: 'Healthy (0–29)', value: monitored.filter(p => (p.ew || 0) < 30).length, color: '#16a34a' },
+    { name: 'Watch (30–49)', value: monitored.filter(p => (p.ew || 0) >= 30 && (p.ew || 0) < 50).length, color: '#ca8a04' },
+    { name: 'Caution (50–74)', value: monitored.filter(p => (p.ew || 0) >= 50 && (p.ew || 0) < 75).length, color: '#d97706' },
+    { name: 'Critical (75+)', value: monitored.filter(p => (p.ew || 0) >= 75).length, color: '#dc2626' },
+  ];
 
   return (
     <div>
-      <Header title="Portfolio Dashboard" subtitle="Integrated pre-sales and delivery metrics" />
+      <Header title="Portfolio Dashboard" subtitle="Integrated pre-sales pipeline and AI-monitored delivery health" />
 
       <div className="flex gap-1 mb-6 border-b border-gray-200">
-        {(['pipeline', 'delivery'] as const).map(t => (
+        {(['delivery', 'pipeline'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
             className={`px-6 py-2.5 text-sm font-medium border-b-2 capitalize transition-colors ${tab === t ? 'border-ms-blue text-ms-blue' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
             {t === 'pipeline' ? '📊 Sales Pipeline' : '🚀 Delivery Health'}
           </button>
         ))}
       </div>
+
+      {tab === 'delivery' && (
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <StatCard label="Active Engagements" value={intel.activeProjects} sub={`${intel.monitoredCount} AI-monitored`} icon={Activity} color="blue" />
+            <StatCard label="Portfolio Budget" value={fmt(intel.totalBudget)} sub={`${intel.burnRate}% burned · ${intel.avgCompletion}% complete`} icon={DollarSign} color="purple" />
+            <StatCard label="Value at Risk" value={fmt(intel.valueAtRisk)} sub={`${intel.alertCounts.critical} critical · ${intel.alertCounts.caution} caution`} icon={AlertTriangle} color="amber" />
+            <StatCard label="Avg Early Warning" value={`${intel.avgEW}`} sub={`Target <40 · ${intel.health.green}/${intel.activeProjects} green`} icon={Gauge} color="green" />
+          </div>
+
+          {/* Rescue & Oversight callouts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div className="card p-5 border-l-4 border-l-red-500">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="section-title flex items-center gap-2"><Siren className="w-4 h-4 text-red-500" /> In Rescue ({intel.rescue.length})</h3>
+                <span className="text-xs text-gray-400">Executive oversight · war-room command</span>
+              </div>
+              <div className="space-y-2">
+                {intel.rescue.length ? intel.rescue.map(p => (
+                  <div key={p.id} className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-red-50">
+                    <Link to={`/delivery/${p.id}`} className="min-w-0">
+                      <div className="text-sm font-medium text-gray-900 truncate">{p.name}</div>
+                      <div className="text-xs text-gray-500">{p.client_name} · EW {p.ew} · {fmt(p.valueAtRisk)} at risk</div>
+                    </Link>
+                    <Link to={rescueHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded"><Siren className="w-3 h-3" /> Command</Link>
+                  </div>
+                )) : <div className="text-sm text-gray-400 py-2">No engagements in rescue.</div>}
+              </div>
+            </div>
+            <div className="card p-5 border-l-4 border-l-sky-500">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="section-title flex items-center gap-2"><Rocket className="w-4 h-4 text-sky-500" /> Under Oversight ({intel.oversight.length})</h3>
+                <span className="text-xs text-gray-400">Flagship performance maximization</span>
+              </div>
+              <div className="space-y-2">
+                {intel.oversight.length ? intel.oversight.map(p => (
+                  <div key={p.id} className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-sky-50">
+                    <Link to={`/delivery/${p.id}`} className="min-w-0">
+                      <div className="text-sm font-medium text-gray-900 truncate">{p.name}</div>
+                      <div className="text-xs text-gray-500">{p.client_name} · {fmt(p.budget)} flagship · EW {p.ew}</div>
+                    </Link>
+                    <Link to={oversightHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-gradient-to-r from-sky-600 to-teal-500 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded"><Rocket className="w-3 h-3" /> Studio</Link>
+                  </div>
+                )) : <div className="text-sm text-gray-400 py-2">No flagship oversight engagements.</div>}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="card p-6">
+              <h3 className="section-title mb-4">Health Distribution</h3>
+              <ResponsiveContainer width="100%" height={200}>
+                <PieChart>
+                  <Pie data={healthPie} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={4} isAnimationActive={false}>
+                    {healthPie.map((e, i) => <Cell key={i} fill={e.color} />)}
+                  </Pie>
+                  <Legend iconType="circle" iconSize={8} />
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="card p-6">
+              <h3 className="section-title mb-4">Early Warning Distribution</h3>
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart data={ewBuckets} layout="vertical" margin={{ left: 30 }}>
+                  <XAxis type="number" tick={{ fontSize: 11 }} allowDecimals={false} />
+                  <YAxis dataKey="name" type="category" tick={{ fontSize: 10 }} width={92} />
+                  <Tooltip formatter={(v: number) => [v, 'Engagements']} />
+                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
+                    {ewBuckets.map((b, i) => <Cell key={i} fill={b.color} />)}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="card p-6">
+              <h3 className="section-title mb-4">Health by Dimension</h3>
+              <ResponsiveContainer width="100%" height={200}>
+                <RadarChart data={radarData}>
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="dim" tick={{ fontSize: 11 }} />
+                  <Radar name="Green %" dataKey="score" stroke="#0078D4" fill="#0078D4" fillOpacity={0.3} />
+                  <Tooltip formatter={(v: number) => [`${v}%`, 'Green %']} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* 30-day forecast bar */}
+          <div className="card p-6">
+            <h3 className="section-title mb-3">30-Day RAG Forecast (AI-predicted)</h3>
+            <div className="flex h-8 rounded-lg overflow-hidden mb-2">
+              {(['green', 'amber', 'red'] as const).map(h => {
+                const v = intel.predictions30[h];
+                const pct = intel.monitoredCount ? (v / intel.monitoredCount) * 100 : 0;
+                return v ? <div key={h} className="flex items-center justify-center text-white text-sm font-bold" style={{ width: `${pct}%`, background: HEALTH_COLORS[h] }}>{v}</div> : null;
+              })}
+            </div>
+            <div className="flex gap-4 text-xs text-gray-500">
+              <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full" style={{ background: HEALTH_COLORS.green }} /> On Track</span>
+              <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full" style={{ background: HEALTH_COLORS.amber }} /> At Risk</span>
+              <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full" style={{ background: HEALTH_COLORS.red }} /> Critical</span>
+            </div>
+          </div>
+
+          {/* Engagements requiring attention */}
+          {intel.needAttention.length > 0 && (
+            <div className="card p-6">
+              <h3 className="section-title mb-4 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-amber-500" /> Engagements Requiring Attention ({intel.needAttention.length})</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {intel.needAttention.map(p => (
+                  <div key={p.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="relative w-10 h-10 flex-shrink-0">
+                      <svg className="w-10 h-10 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="#e5e7eb" strokeWidth="3.5" />
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke={ewHex(p.ew || 0)} strokeWidth="3.5" strokeDasharray={`${p.ew} 100`} strokeLinecap="round" />
+                      </svg>
+                      <span className={`absolute inset-0 flex items-center justify-center text-[11px] font-bold ${ewColor(p.ew || 0)}`}>{p.ew}</span>
+                    </div>
+                    <Link to={`/delivery/${p.id}`} className="flex-1 min-w-0">
+                      <div className="font-medium text-sm truncate">{p.name}</div>
+                      <div className="text-xs text-gray-500 truncate">{p.client_name} · pred 30d {(p.prediction_30d || '—').toUpperCase()}</div>
+                    </Link>
+                    <HealthBadge status={p.overall_health as HealthStatus} size="sm" />
+                    {p.isRescue && <Link to={rescueHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-red-600 text-white text-[10px] font-semibold px-2 py-1 rounded"><Siren className="w-3 h-3" /></Link>}
+                    {p.isOversight && <Link to={oversightHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-gradient-to-r from-sky-600 to-teal-500 text-white text-[10px] font-semibold px-2 py-1 rounded"><Rocket className="w-3 h-3" /></Link>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {tab === 'pipeline' && (
         <div className="space-y-6">
@@ -90,12 +228,11 @@ export default function Portfolio() {
                 <span className="flex items-center gap-1"><span className="w-3 h-2 bg-ms-blue rounded inline-block" />Weighted</span>
               </div>
             </div>
-
             <div className="card p-6">
               <h3 className="section-title mb-4">Pipeline by Region</h3>
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
-                  <Pie data={regionData} cx="50%" cy="50%" outerRadius={80} dataKey="value" nameKey="name" label={({ name, value }) => `${name} (${value})`}>
+                  <Pie data={regionData} cx="50%" cy="50%" outerRadius={80} dataKey="value" nameKey="name" isAnimationActive={false} label={({ name, value }) => `${name} (${value})`}>
                     {regionData.map((_, i) => <Cell key={i} fill={['#0078D4', '#5C2D91', '#107C10'][i % 3]} />)}
                   </Pie>
                   <Tooltip formatter={(v: number) => [v, 'Opportunities']} />
@@ -115,61 +252,6 @@ export default function Portfolio() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-        </div>
-      )}
-
-      {tab === 'delivery' && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard label="Active Projects" value={delivery?.active_projects || 0} sub={`${delivery?.completed_projects} completed`} icon={Activity} color="blue" />
-            <StatCard label="Portfolio Budget" value={fmt(delivery?.total_budget || 0)} sub={`${delivery?.overall_burn_rate}% burn rate`} icon={DollarSign} color="purple" />
-            <StatCard label="At Risk" value={(delivery?.health_summary?.['amber'] || 0) + (delivery?.health_summary?.['red'] || 0)} sub={`${delivery?.open_raid_items} open RAID items`} icon={AlertTriangle} color="amber" />
-            <StatCard label="Avg Completion" value={`${delivery?.avg_completion || 0}%`} sub={`${delivery?.overdue_milestones} overdue milestones`} icon={BarChart3} color="green" />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="card p-6">
-              <h3 className="section-title mb-4">Portfolio Health Distribution</h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie data={healthPie} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={4}>
-                    {healthPie.map((e, i) => <Cell key={i} fill={e.color} />)}
-                  </Pie>
-                  <Legend iconType="circle" iconSize={8} />
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className="card p-6">
-              <h3 className="section-title mb-4">Health by Dimension</h3>
-              <ResponsiveContainer width="100%" height={200}>
-                <RadarChart data={radarData}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="dim" tick={{ fontSize: 11 }} />
-                  <Radar name="Health Score" dataKey="score" stroke="#0078D4" fill="#0078D4" fillOpacity={0.3} />
-                  <Tooltip formatter={(v: number) => [`${v}%`, 'Green %']} />
-                </RadarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          {(delivery?.projects_at_risk?.length || 0) > 0 && (
-            <div className="card p-6">
-              <h3 className="section-title mb-4 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-amber-500" /> Projects Requiring Attention</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {delivery?.projects_at_risk.map(p => (
-                  <Link key={p.id} to={`/delivery/${p.id}`} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                    <div>
-                      <div className="font-medium text-sm">{p.name}</div>
-                      <div className="text-xs text-gray-500">{p.client_name}</div>
-                    </div>
-                    <HealthBadge status={p.overall_health as HealthStatus} size="sm" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       )}
     </div>

@@ -1,69 +1,55 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Bot, Plus, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
+import { ArrowLeft, Bot, CheckCircle, AlertTriangle, Clock, Siren, Rocket, Gauge, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { deliveryApi } from '../api/client';
+import { loadPortfolio, rescueHref, oversightHref, fmtMoney, type UnifiedProject } from '../api/portfolioData';
 import Header from '../components/layout/Header';
 import HealthBadge from '../components/shared/HealthBadge';
-import type { DeliveryProject, Milestone, RAIDItem, StatusUpdate, HealthStatus } from '../types';
+import type { Milestone, RAIDItem, StatusUpdate, HealthStatus } from '../types';
 
-const DIMS: Array<[keyof DeliveryProject, string]> = [
-  ['health_schedule', 'Schedule'], ['health_budget', 'Budget'], ['health_scope', 'Scope'],
-  ['health_risk', 'Risk'], ['health_satisfaction', 'Client Satisfaction'],
+const DIMS: Array<[string, string]> = [
+  ['schedule', 'Schedule'], ['budget', 'Budget'], ['scope', 'Scope'], ['risk', 'Risk'], ['satisfaction', 'Client Satisfaction'],
 ];
-const fmt = (v: number) => v >= 1_000_000 ? `$${(v / 1_000_000).toFixed(2)}M` : `$${(v / 1_000).toFixed(0)}K`;
+const ewColor = (v: number) => v >= 75 ? 'text-red-600' : v >= 50 ? 'text-amber-600' : v >= 30 ? 'text-yellow-600' : 'text-green-600';
+const ewHex = (v: number) => v >= 75 ? '#dc2626' : v >= 50 ? '#d97706' : v >= 30 ? '#ca8a04' : '#16a34a';
+const ewBg = (v: number) => v >= 75 ? 'bg-red-500' : v >= 50 ? 'bg-amber-500' : v >= 30 ? 'bg-yellow-400' : 'bg-green-500';
+const predCls = (h?: string) => h === 'green' ? 'text-green-700' : h === 'amber' ? 'text-amber-700' : 'text-red-700';
+const ALERT_CFG: Record<string, { label: string; cls: string }> = {
+  critical: { label: 'Critical Alert', cls: 'bg-red-100 text-red-700' },
+  caution: { label: 'Caution Alert', cls: 'bg-amber-100 text-amber-700' },
+  watch: { label: 'Watch', cls: 'bg-yellow-100 text-yellow-700' },
+};
+const TrendIcon = ({ t }: { t?: string }) => t === 'worsening' ? <TrendingUp className="w-3.5 h-3.5 text-red-500" /> : t === 'improving' ? <TrendingDown className="w-3.5 h-3.5 text-green-500" /> : <Minus className="w-3.5 h-3.5 text-gray-400" />;
 
 export default function DeliveryDetail() {
   const { id } = useParams<{ id: string }>();
-  const [project, setProject] = useState<DeliveryProject | null>(null);
+  const [project, setProject] = useState<UnifiedProject | null>(null);
+  const [notFound, setNotFound] = useState(false);
   const [milestones, setMilestones] = useState<Milestone[]>([]);
   const [raid, setRaid] = useState<RAIDItem[]>([]);
   const [updates, setUpdates] = useState<StatusUpdate[]>([]);
   const [tab, setTab] = useState<'overview' | 'milestones' | 'raid' | 'updates'>('overview');
-  const [editing, setEditing] = useState(false);
-  const [healthForm, setHealthForm] = useState<Record<string, string>>({});
-  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (!id || id === 'new') return;
-    Promise.all([
-      deliveryApi.getProject(id),
-      deliveryApi.getMilestones(id),
-      deliveryApi.getRaid(id),
-      deliveryApi.getStatusUpdates(id),
-    ]).then(([p, m, r, u]) => {
-      setProject(p.data);
-      setMilestones(m.data);
-      setRaid(r.data);
-      setUpdates(u.data);
-      setHealthForm({
-        overall_health: p.data.overall_health,
-        health_schedule: p.data.health_schedule,
-        health_budget: p.data.health_budget,
-        health_scope: p.data.health_scope,
-        health_risk: p.data.health_risk,
-        health_satisfaction: p.data.health_satisfaction,
-        completion_pct: String(p.data.completion_pct),
-        actuals: String(p.data.actuals),
-        phase: p.data.phase || '',
-        executive_summary: p.data.executive_summary || '',
-      });
+    if (!id) return;
+    loadPortfolio().then(b => {
+      const p = b.projects.find(x => x.id === id);
+      if (!p) { setNotFound(true); return; }
+      setProject(p);
     });
+    // optional detailed artifacts (only some engagements have these sub-files)
+    deliveryApi.getMilestones(id).then(r => setMilestones(r.data)).catch(() => setMilestones([]));
+    deliveryApi.getRaid(id).then(r => setRaid(r.data)).catch(() => setRaid([]));
+    deliveryApi.getStatusUpdates(id).then(r => setUpdates(r.data)).catch(() => setUpdates([]));
   }, [id]);
-
-  const saveHealth = async () => {
-    if (!project) return;
-    setSaving(true);
-    const r = await deliveryApi.updateProject(project.id, { ...healthForm, completion_pct: parseInt(healthForm.completion_pct), actuals: parseFloat(healthForm.actuals) });
-    setProject(r.data);
-    setEditing(false);
-    setSaving(false);
-  };
 
   const milestoneStatus = { completed: '✓', in_progress: '●', not_started: '○', overdue: '!', at_risk: '▲' };
   const msCls = { completed: 'text-green-600', in_progress: 'text-ms-blue', not_started: 'text-gray-400', overdue: 'text-red-600', at_risk: 'text-amber-600' };
   const raidCls: Record<string, string> = { risk: 'bg-red-50 text-red-700', assumption: 'bg-blue-50 text-blue-700', issue: 'bg-amber-50 text-amber-700', dependency: 'bg-purple-50 text-purple-700' };
 
+  if (notFound) return <div className="p-8 text-gray-400">Engagement not found. <Link to="/delivery" className="text-ms-blue">Back to Delivery</Link></div>;
   if (!project) return <div className="p-8 text-gray-400">Loading...</div>;
+  const p = project;
 
   return (
     <div>
@@ -72,82 +58,43 @@ export default function DeliveryDetail() {
       </div>
 
       <Header
-        title={project.name}
-        subtitle={`${project.client_name} · PM: ${project.project_manager || '—'} · ${project.phase || ''}`}
+        title={p.name}
+        subtitle={`${p.client_name} · PM: ${p.project_manager || '—'} · ${p.phase || ''}`}
         actions={
           <div className="flex gap-2">
             <Link to={`/agent?context=delivery&id=${id}`} className="btn-secondary flex items-center gap-2"><Bot className="w-4 h-4" /> AI Analysis</Link>
-            {!editing && <button onClick={() => setEditing(true)} className="btn-secondary">Update Health</button>}
-            {editing && (
-              <>
-                <button onClick={() => setEditing(false)} className="btn-secondary">Cancel</button>
-                <button onClick={saveHealth} disabled={saving} className="btn-primary">{saving ? 'Saving...' : 'Save Health'}</button>
-              </>
-            )}
+            {p.isRescue && <Link to={rescueHref(p)} className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium"><Siren className="w-4 h-4" /> Rescue Command</Link>}
+            {p.isOversight && <Link to={oversightHref(p)} className="flex items-center gap-2 bg-gradient-to-r from-sky-600 to-teal-500 hover:from-sky-700 hover:to-teal-600 text-white px-4 py-2 rounded-md text-sm font-medium"><Rocket className="w-4 h-4" /> Oversight Studio</Link>}
           </div>
         }
       />
 
       {/* Health Banner */}
-      <div className={`mb-6 rounded-xl p-5 border-2 ${project.overall_health === 'green' ? 'bg-green-50 border-green-200' : project.overall_health === 'amber' ? 'bg-amber-50 border-amber-200' : 'bg-red-50 border-red-200'}`}>
+      <div className={`mb-6 rounded-xl p-5 border-2 ${p.overall_health === 'green' ? 'bg-green-50 border-green-200' : p.overall_health === 'amber' ? 'bg-amber-50 border-amber-200' : 'bg-red-50 border-red-200'}`}>
         <div className="flex items-start justify-between flex-wrap gap-4">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <HealthBadge status={project.overall_health as HealthStatus} label={`Overall: ${project.overall_health.toUpperCase()}`} />
-              <span className="text-sm text-gray-600">{project.phase?.toUpperCase()} Phase · {project.completion_pct}% complete</span>
+          <div className="min-w-0">
+            <div className="flex items-center gap-3 mb-2 flex-wrap">
+              <HealthBadge status={p.overall_health as HealthStatus} label={`Overall: ${p.overall_health.toUpperCase()}`} />
+              <span className="text-sm text-gray-600">{p.phase?.toUpperCase()} Phase · {p.completion_pct}% complete</span>
+              {p.alert_level && <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${ALERT_CFG[p.alert_level].cls}`}>{ALERT_CFG[p.alert_level].label}</span>}
             </div>
-            {project.executive_summary && <p className="text-sm text-gray-700 max-w-2xl leading-relaxed">{project.executive_summary}</p>}
+            {p.ai_narrative && <p className="text-sm text-gray-700 max-w-2xl leading-relaxed">{p.ai_narrative}</p>}
+            {p.qa_director_override && <p className="text-xs text-purple-700 italic mt-2">QA Director: {p.qa_director_override}</p>}
           </div>
-          <div className="text-right">
+          <div className="text-right flex-shrink-0">
             <div className="text-sm text-gray-500">Budget vs. Actuals</div>
-            <div className="text-lg font-bold">{fmt(project.actuals)} <span className="text-sm text-gray-400">of {fmt(project.budget)}</span></div>
-            <div className="text-xs text-gray-500">{project.burn_rate}% burn rate</div>
+            <div className="text-lg font-bold">{fmtMoney(p.actuals)} <span className="text-sm text-gray-400">of {fmtMoney(p.budget)}</span></div>
+            <div className="text-xs text-gray-500">{p.burn_rate}% burn rate</div>
           </div>
         </div>
       </div>
 
-      {editing ? (
-        <div className="card p-6 mb-6 max-w-2xl">
-          <h3 className="section-title mb-4">Update Health Status</h3>
-          <div className="grid grid-cols-2 gap-4">
-            {[['overall_health', 'Overall Health'], ...DIMS.map(([k, l]) => [k, l])].map(([key, label]) => (
-              <div key={key as string}>
-                <label className="label">{label as string}</label>
-                <select className="input" value={healthForm[key as string] || 'green'} onChange={e => setHealthForm(f => ({ ...f, [key as string]: e.target.value }))}>
-                  <option value="green">Green — On Track</option>
-                  <option value="amber">Amber — At Risk</option>
-                  <option value="red">Red — Critical</option>
-                </select>
-              </div>
-            ))}
-            <div>
-              <label className="label">Phase</label>
-              <select className="input" value={healthForm.phase || ''} onChange={e => setHealthForm(f => ({ ...f, phase: e.target.value }))}>
-                {['initiate', 'plan', 'execute', 'monitor', 'close'].map(p => <option key={p} value={p}>{p}</option>)}
-              </select>
-            </div>
-            <div>
-              <label className="label">Completion %</label>
-              <input type="number" min={0} max={100} className="input" value={healthForm.completion_pct} onChange={e => setHealthForm(f => ({ ...f, completion_pct: e.target.value }))} />
-            </div>
-            <div>
-              <label className="label">Actuals ($)</label>
-              <input type="number" className="input" value={healthForm.actuals} onChange={e => setHealthForm(f => ({ ...f, actuals: e.target.value }))} />
-            </div>
-            <div className="col-span-2">
-              <label className="label">Executive Summary</label>
-              <textarea className="input" rows={4} value={healthForm.executive_summary} onChange={e => setHealthForm(f => ({ ...f, executive_summary: e.target.value }))} />
-            </div>
-          </div>
-        </div>
-      ) : null}
-
       {/* Health Dimensions Grid */}
-      <div className="grid grid-cols-5 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
         {DIMS.map(([key, label]) => {
-          const val = project[key] as HealthStatus;
+          const val = (p.dims[key] || 'green') as HealthStatus;
           return (
-            <div key={key as string} className={`card p-3 text-center border-t-4 ${val === 'green' ? 'border-t-green-500' : val === 'amber' ? 'border-t-amber-500' : 'border-t-red-500'}`}>
+            <div key={key} className={`card p-3 text-center border-t-4 ${val === 'green' ? 'border-t-green-500' : val === 'amber' ? 'border-t-amber-500' : 'border-t-red-500'}`}>
               <div className="text-xs text-gray-500 mb-1">{label}</div>
               <HealthBadge status={val} size="sm" />
             </div>
@@ -161,31 +108,83 @@ export default function DeliveryDetail() {
           <button key={t} onClick={() => setTab(t)}
             className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors capitalize ${tab === t ? 'border-ms-blue text-ms-blue' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
             {t === 'raid' ? 'RAID Log' : t === 'updates' ? 'Status Updates' : t}
-            {t === 'milestones' && <span className="ml-1 badge-gray">{milestones.length}</span>}
+            {t === 'milestones' && milestones.length > 0 && <span className="ml-1 badge-gray">{milestones.length}</span>}
             {t === 'raid' && raid.filter(r => r.status === 'open').length > 0 && <span className="ml-1 badge-amber">{raid.filter(r => r.status === 'open').length}</span>}
           </button>
         ))}
       </div>
 
       {tab === 'overview' && (
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div className="card p-5">
-            <h3 className="section-title mb-3">Project Info</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between"><span className="text-gray-500">Project Manager</span><span className="font-medium">{project.project_manager || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Technical Lead</span><span className="font-medium">{project.technical_lead || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Start Date</span><span>{project.start_date || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">End Date</span><span>{project.end_date || '—'}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Status</span><span className="capitalize">{project.status}</span></div>
+        <div className="space-y-4">
+          {p.hasQA && (
+            <div className="card p-5 border-l-4 border-l-ms-blue">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="section-title flex items-center gap-2"><Gauge className="w-4 h-4 text-ms-blue" /> AI Quality Assurance Intelligence</h3>
+                <Link to="/quality-assurance" className="text-xs text-ms-blue hover:underline">Portfolio Monitor →</Link>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                {/* EW score + predictions */}
+                <div>
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-16 h-16 flex-shrink-0">
+                      <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="#e5e7eb" strokeWidth="3" />
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke={ewHex(p.ew || 0)} strokeWidth="3" strokeDasharray={`${p.ew} 100`} strokeLinecap="round" />
+                      </svg>
+                      <span className={`absolute inset-0 flex items-center justify-center text-lg font-bold ${ewColor(p.ew || 0)}`}>{p.ew}</span>
+                    </div>
+                    <div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wide">Early Warning</div>
+                      <div className="flex items-center gap-1 text-sm font-medium text-gray-700"><TrendIcon t={p.trend} /> {p.trend || 'stable'} {p.trend_delta != null && <span className="text-gray-400">({p.trend_delta > 0 ? '+' : ''}{p.trend_delta})</span>}</div>
+                      <div className="text-xs text-gray-400 capitalize">Assessment: {p.ai_assessment}</div>
+                    </div>
+                  </div>
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                    {(['prediction_30d', 'prediction_60d', 'prediction_90d'] as const).map((k, i) => (
+                      <div key={k} className="rounded-lg bg-gray-50 py-1.5">
+                        <div className="text-[10px] text-gray-400">{[30, 60, 90][i]}d</div>
+                        <div className={`text-xs font-bold ${predCls(p[k])}`}>{(p[k] || '—').toUpperCase()}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* component breakdown */}
+                <div className="lg:col-span-2">
+                  <div className="text-xs text-gray-500 uppercase tracking-wide mb-2">Early-Warning Signal Components</div>
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-1.5">
+                    {Object.entries(p.components || {}).map(([k, v]) => (
+                      <div key={k} className="flex items-center gap-2">
+                        <span className="text-xs text-gray-600 capitalize w-32 flex-shrink-0">{k.replace(/_/g, ' ')}</span>
+                        <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div className={`h-full rounded-full ${ewBg(v)}`} style={{ width: `${v}%` }} /></div>
+                        <span className={`text-xs font-bold w-7 text-right ${ewColor(v)}`}>{v}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="card p-5">
-            <h3 className="section-title mb-3">Financial</h3>
-            <div className="space-y-2">
-              <div className="flex justify-between"><span className="text-gray-500">Budget</span><span className="font-medium">{fmt(project.budget)}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Actuals</span><span className="font-medium">{fmt(project.actuals)}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Remaining</span><span className="font-medium">{fmt(project.budget - project.actuals)}</span></div>
-              <div className="flex justify-between"><span className="text-gray-500">Burn Rate</span><span className={`font-semibold ${project.burn_rate > 90 ? 'text-red-600' : project.burn_rate > 70 ? 'text-amber-600' : 'text-green-700'}`}>{project.burn_rate}%</span></div>
+          )}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div className="card p-5">
+              <h3 className="section-title mb-3">Project Info</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between"><span className="text-gray-500">Project Manager</span><span className="font-medium">{p.project_manager || '—'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Technical Lead</span><span className="font-medium">{p.technical_lead || '—'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Start Date</span><span>{p.start_date || '—'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">End Date</span><span>{p.end_date || '—'}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Status</span><span className="capitalize">{p.status.replace('_', ' ')}</span></div>
+              </div>
+            </div>
+            <div className="card p-5">
+              <h3 className="section-title mb-3">Financial</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between"><span className="text-gray-500">Budget</span><span className="font-medium">{fmtMoney(p.budget)}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Actuals</span><span className="font-medium">{fmtMoney(p.actuals)}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Remaining</span><span className="font-medium">{fmtMoney(p.budget - p.actuals)}</span></div>
+                <div className="flex justify-between"><span className="text-gray-500">Burn Rate</span><span className={`font-semibold ${p.burn_rate > 90 ? 'text-red-600' : p.burn_rate > 70 ? 'text-amber-600' : 'text-green-700'}`}>{p.burn_rate}%</span></div>
+                {p.hasQA && <div className="flex justify-between"><span className="text-gray-500">Value at Risk</span><span className="font-semibold text-amber-700">{fmtMoney(p.valueAtRisk)}</span></div>}
+              </div>
             </div>
           </div>
         </div>
@@ -193,7 +192,7 @@ export default function DeliveryDetail() {
 
       {tab === 'milestones' && (
         <div className="card divide-y divide-gray-100">
-          {milestones.length === 0 && <div className="p-6 text-center text-gray-400">No milestones defined.</div>}
+          {milestones.length === 0 && <div className="p-6 text-center text-gray-400">No milestone detail available for this engagement.</div>}
           {milestones.map(m => (
             <div key={m.id} className="flex items-start gap-4 p-4">
               <span className={`text-lg flex-shrink-0 mt-0.5 ${msCls[m.status as keyof typeof msCls] || 'text-gray-400'}`}>{milestoneStatus[m.status as keyof typeof milestoneStatus] || '○'}</span>
@@ -242,7 +241,7 @@ export default function DeliveryDetail() {
               </div>
             );
           })}
-          {raid.length === 0 && <div className="card p-6 text-center text-gray-400">No RAID items logged.</div>}
+          {raid.length === 0 && <div className="card p-6 text-center text-gray-400">No RAID detail available for this engagement.</div>}
         </div>
       )}
 
@@ -275,7 +274,7 @@ export default function DeliveryDetail() {
               )}
             </div>
           ))}
-          {updates.length === 0 && <div className="card p-6 text-center text-gray-400">No status updates yet.</div>}
+          {updates.length === 0 && <div className="card p-6 text-center text-gray-400">No status updates available for this engagement.</div>}
         </div>
       )}
     </div>
