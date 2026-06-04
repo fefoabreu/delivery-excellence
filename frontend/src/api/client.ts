@@ -107,6 +107,11 @@ export const evalsApi = {
   getSummary: () => IS_STATIC ? staticGet('/evals-summary') : api.get('/evals/summary'),
 };
 
+export const aclmApi = {
+  // Live multi-agent signals for the A-CLM cockpit (Pipeline Agent + Delivery Agent).
+  getAgentSignals: () => IS_STATIC ? staticGet('/aclm-agent-signals') : api.get('/aclm/agent-signals'),
+};
+
 export const backlogApi = {
   getTree: (params?: { epic_area?: string; assigned_to?: string }) => IS_STATIC
     ? staticGet('/backlog-tree').then(r => {

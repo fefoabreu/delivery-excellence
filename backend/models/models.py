@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, Date, Text, ForeignKey
+from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, Date, Text, ForeignKey, JSON
 from sqlalchemy.orm import relationship, backref
 from database import Base
 
@@ -279,3 +279,104 @@ class WorkItem(Base):
     updated_at = Column(DateTime, default=datetime.utcnow)
 
     children = relationship("WorkItem", backref=backref("parent", remote_side="WorkItem.id"))
+
+
+# ── Quality Assurance (AI-QA) ──────────────────────────────────────────────
+# These tables back the QA command surfaces (Portfolio Monitor, Rescue Command,
+# Oversight Studio, Get-to-Green, Health Reviews, Knowledge Network, Client
+# Portal, Evals). Nested structures are stored as JSON columns so the API can
+# return the exact shape the frontend consumes.
+
+class QAPortfolioMonitor(Base):
+    __tablename__ = "qa_portfolio_monitor"
+    project_id = Column(String, primary_key=True)
+    name = Column(String)
+    client_name = Column(String)
+    project_manager = Column(String)
+    overall_health = Column(String)              # green | amber | red
+    status = Column(String)
+    phase = Column(String)
+    budget = Column(Integer)
+    actuals = Column(Integer)
+    burn_rate = Column(Float)
+    completion_pct = Column(Integer)
+    start_date = Column(String)
+    end_date = Column(String)
+    early_warning = Column(JSON)                  # {score, trend, components, ...}
+    health_dimensions = Column(JSON)             # per-dimension RAG breakdown
+    ai_assessment = Column(String)               # continue | watch | intervene | escalate
+    ai_narrative = Column(Text)
+    days_in_current_status = Column(Integer)
+    qa_director_override = Column(String, nullable=True)
+
+
+class QACheckpoint(Base):
+    __tablename__ = "qa_checkpoints"
+    id = Column(String, primary_key=True)
+    project_id = Column(String)
+    project_name = Column(String)
+    client_name = Column(String)
+    phase = Column(String)
+    due_date = Column(String)
+    completed_date = Column(String, nullable=True)
+    maturity_score = Column(Integer, nullable=True)
+    criteria_met = Column(JSON)
+    criteria_gaps = Column(JSON)
+    ai_assessment = Column(Text)
+    qa_director_override = Column(String, nullable=True)
+    status = Column(String)
+
+
+class QAGetToGreen(Base):
+    __tablename__ = "qa_get_to_green"
+    id = Column(String, primary_key=True)
+    project_id = Column(String)
+    project_name = Column(String)
+    client_name = Column(String)
+    project_manager = Column(String)
+    qa_specialist = Column(String, nullable=True)
+    status = Column(String)
+    started_date = Column(String)
+    target_green_date = Column(String)
+    current_ew_score = Column(Integer)
+    root_causes = Column(JSON)
+    immediate_actions = Column(JSON)
+    recovery_milestones = Column(JSON)
+    success_criteria = Column(JSON)
+    weekly_assessments = Column(JSON)
+
+
+class QAKnowledgeNetwork(Base):
+    __tablename__ = "qa_knowledge_network"
+    id = Column(String, primary_key=True)
+    source_project_id = Column(String)
+    source_project_name = Column(String)
+    category = Column(String)
+    title = Column(String)
+    description = Column(Text)
+    tags = Column(JSON)
+    applicability_score = Column(Integer)
+    times_consumed = Column(Integer)
+    linked_projects = Column(JSON)
+    created_at = Column(String)
+
+
+class QAClientPortal(Base):
+    __tablename__ = "qa_client_portal"
+    project_id = Column(String, primary_key=True)
+    project_name = Column(String)
+    client_name = Column(String)
+    disclosure_policy = Column(String)
+    client_health_status = Column(String)
+    client_narrative = Column(Text)
+    milestone_progress = Column(JSON)
+    disclosed_risks = Column(JSON)
+    next_update_date = Column(String)
+    client_sentiment_signals = Column(JSON)
+
+
+class QASingleton(Base):
+    """Single-object QA datasets keyed by name (health_reviews, qa_evals)."""
+    __tablename__ = "qa_singletons"
+    key = Column(String, primary_key=True)
+    data = Column(JSON)

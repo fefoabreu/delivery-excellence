@@ -11,4 +11,10 @@ from .models import (
     StatusUpdate,
     WorkItem,
     DealProfile,
+    QAPortfolioMonitor,
+    QACheckpoint,
+    QAGetToGreen,
+    QAKnowledgeNetwork,
+    QAClientPortal,
+    QASingleton,
 )

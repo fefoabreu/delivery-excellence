@@ -1,0 +1,22 @@
+{
+    "pipeline_agent": [
+        "14 deals approaching the approval funnel",
+        "6 deals flagged as Tier 3 complexity",
+        "$15.6M aggregate deal value entering Deal Shaping"
+    ],
+    "delivery_agent": [
+        "30 active engagements feeding live delivery metrics",
+        "2 RED \u00b7 6 AMBER \u2014 approval conditions need review",
+        "Avg delivery health: 61/100 across active deals"
+    ],
+    "generated_at": "2026-06-04T02:32:18.356600Z",
+    "meta": {
+        "approaching_count": 14,
+        "tier3_pending": 6,
+        "shaping_value": 15550000.0,
+        "active_engagements": 30,
+        "amber": 6,
+        "red": 2,
+        "avg_delivery_health": 61
+    }
+}

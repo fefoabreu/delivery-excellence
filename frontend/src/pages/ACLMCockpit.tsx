@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Bot, TrendingUp, Zap, Activity, BarChart2,
   Clock, DollarSign, CheckCircle, AlertTriangle, Target,
 } from 'lucide-react';
 import clsx from 'clsx';
+import { aclmApi } from '../api/client';
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const BASELINE_TX         = 70_000;
@@ -57,6 +58,22 @@ const fmtN = (v: number) =>
 export default function ACLMCockpit() {
   const navigate    = useNavigate();
   const [costPerTx, setCostPerTx] = useState(180);
+
+  // Live multi-agent signals from the A-CLM backend (closed loop over pipeline +
+  // delivery). The hardcoded arrays remain as fallback copy until the fetch lands.
+  const [pipelineSignals, setPipelineSignals] = useState<string[]>(PIPELINE_SIGNALS);
+  const [deliverySignals, setDeliverySignals] = useState<string[]>(DELIVERY_SIGNALS);
+  const [signalsLive, setSignalsLive] = useState(false);
+
+  useEffect(() => {
+    aclmApi.getAgentSignals()
+      .then(({ data }) => {
+        if (Array.isArray(data?.pipeline_agent)) setPipelineSignals(data.pipeline_agent);
+        if (Array.isArray(data?.delivery_agent)) setDeliverySignals(data.delivery_agent);
+        setSignalsLive(true);
+      })
+      .catch(() => { /* keep fallback copy */ });
+  }, []);
 
   const baselineCost  = BASELINE_TX * costPerTx;
   const baselineHours = BASELINE_TX * BASELINE_HRS_PER_TX;
@@ -318,13 +335,18 @@ export default function ACLMCockpit() {
               <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
                 <TrendingUp className="w-3.5 h-3.5 text-amber-700" />
               </div>
-              <div>
+              <div className="flex-1">
                 <div className="text-xs font-bold text-amber-900">Pipeline Agent</div>
                 <div className="text-[10px] text-amber-600 font-semibold uppercase tracking-wide">Signals ahead</div>
               </div>
+              {signalsLive && (
+                <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-700 uppercase tracking-wide">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
+                </span>
+              )}
             </div>
             <div className="space-y-2">
-              {PIPELINE_SIGNALS.map(s => (
+              {pipelineSignals.map(s => (
                 <div key={s} className="flex items-start gap-1.5">
                   <div className="w-1 h-1 rounded-full bg-amber-400 mt-1.5 flex-shrink-0" />
                   <span className="text-[11px] text-amber-800 leading-relaxed">{s}</span>
@@ -338,13 +360,18 @@ export default function ACLMCockpit() {
               <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
                 <Activity className="w-3.5 h-3.5 text-emerald-700" />
               </div>
-              <div>
+              <div className="flex-1">
                 <div className="text-xs font-bold text-emerald-900">Delivery Agent</div>
                 <div className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wide">Feeds back</div>
               </div>
+              {signalsLive && (
+                <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-700 uppercase tracking-wide">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
+                </span>
+              )}
             </div>
             <div className="space-y-2">
-              {DELIVERY_SIGNALS.map(s => (
+              {deliverySignals.map(s => (
                 <div key={s} className="flex items-start gap-1.5">
                   <div className="w-1 h-1 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
                   <span className="text-[11px] text-emerald-800 leading-relaxed">{s}</span>
