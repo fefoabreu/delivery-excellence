@@ -87,76 +87,68 @@ export default function ACLMCockpit() {
       <div className="mb-8">
         <button
           onClick={() => navigate('/aclm')}
-          className="btn-ghost flex items-center gap-1.5 text-gray-400 text-sm mb-4 -ml-1"
+          className="btn-ghost text-ink-faint text-sm mb-4 -ml-1"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to A-CLM
         </button>
 
-        <div className="flex items-start justify-between">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-[10px] font-bold tracking-widest text-ms-blue uppercase">A-CLM · Central Hub</span>
+            <div className="mb-2 flex items-center gap-2">
+              <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+              <span className="eyebrow">A-CLM · Central Hub</span>
+              <span className="live-chip ml-1"><span className="signal-dot !h-1.5 !w-1.5" />Closed-loop</span>
             </div>
-            <h1 className="page-title flex items-center gap-2.5">
-              <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-ms-blue">
-                <Bot className="w-5 h-5 text-white" />
-              </span>
-              Business Value Cockpit
-            </h1>
-            <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            <h1 className="page-title">Business Value Cockpit</h1>
+            <p className="text-sm text-ink-faint mt-1.5 max-w-2xl">
               AI-driven improvement gains against the baseline of 70,000 annual approval transactions.
               Adjust cost per transaction to size the business value for your audience.
             </p>
           </div>
 
           {/* Cost-per-transaction input */}
-          <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 mt-1">
-            <DollarSign className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-            <span className="text-xs text-gray-500 whitespace-nowrap">Cost / transaction</span>
+          <div className="flex items-center gap-2 bg-paper border border-line rounded-xl px-3 py-2 mt-1 shadow-paper">
+            <DollarSign className="w-3.5 h-3.5 text-flux flex-shrink-0" />
+            <span className="font-mono text-[10px] uppercase tracking-wide text-ink-faint whitespace-nowrap">Cost / tx</span>
             <input
               type="number"
               min={50} max={2000} step={10}
               value={costPerTx}
               onChange={e => setCostPerTx(Math.max(50, Number(e.target.value)))}
-              className="w-20 text-sm font-bold text-gray-900 bg-transparent border-none outline-none text-right"
+              className="w-20 kpi-number text-sm text-ink bg-transparent border-none outline-none text-right"
             />
           </div>
         </div>
 
-        <div className="mt-5 h-px bg-gradient-to-r from-ms-blue via-blue-300 to-transparent" />
+        <div className="mt-5 h-px bg-gradient-to-r from-flux via-cyan-signal/40 to-transparent" />
       </div>
 
       {/* ── Baseline Anchor ── */}
-      <div className="rounded-xl bg-gray-900 text-white p-5 mb-4">
-        <div className="flex items-start justify-between flex-wrap gap-4">
+      <div className="relative overflow-hidden rounded-2xl bg-ink-rail text-white p-5 mb-4 shadow-lift">
+        <div className="pointer-events-none absolute -top-20 -right-10 h-56 w-56 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(16,183,196,0.16), transparent 70%)' }} />
+        <div className="relative flex items-start justify-between flex-wrap gap-4">
           <div>
-            <div className="text-[10px] font-bold tracking-widest text-gray-400 uppercase mb-1">Hard Baseline — As-Is Today</div>
+            <div className="font-mono text-[10px] font-semibold tracking-[0.2em] text-white/40 uppercase mb-1">Hard Baseline — As-Is Today</div>
             <div className="flex items-end gap-3">
-              <span className="text-5xl font-black tracking-tight">70,000</span>
-              <span className="text-gray-400 text-sm mb-1.5">approval transactions / year</span>
+              <span className="kpi-number text-5xl text-white">70,000</span>
+              <span className="text-white/45 text-sm mb-1.5">approval transactions / year</span>
             </div>
-            <div className="text-xs text-gray-500 mt-1">Manual process · Application workflow routing · Email-based handoffs · Multi-week deal cycles</div>
+            <div className="text-xs text-white/40 mt-1">Manual process · Application workflow routing · Email-based handoffs · Multi-week deal cycles</div>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
-            <div className="bg-white/5 rounded-lg px-4 py-3">
-              <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-1 flex items-center justify-center gap-1">
-                <Clock className="w-3 h-3" /> Avg Cycle
+            {[
+              { Icon: Clock, label: 'Avg Cycle', value: <>{BASELINE_CYCLE_DAYS}<span className="text-sm font-sans font-normal text-white/40"> days</span></> },
+              { Icon: Activity, label: 'Man-Hours', value: <>{fmtN(baselineHours)}<span className="text-sm font-sans font-normal text-white/40"> /yr</span></> },
+              { Icon: DollarSign, label: 'Annual Cost', value: fmt(baselineCost) },
+            ].map(({ Icon, label, value }) => (
+              <div key={label} className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3">
+                <div className="font-mono text-[9.5px] text-white/45 uppercase tracking-wide mb-1.5 flex items-center justify-center gap-1">
+                  <Icon className="w-3 h-3" /> {label}
+                </div>
+                <div className="kpi-number text-2xl text-white">{value}</div>
               </div>
-              <div className="text-2xl font-bold">{BASELINE_CYCLE_DAYS}<span className="text-sm font-normal text-gray-400"> days</span></div>
-            </div>
-            <div className="bg-white/5 rounded-lg px-4 py-3">
-              <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-1 flex items-center justify-center gap-1">
-                <Activity className="w-3 h-3" /> Man-Hours
-              </div>
-              <div className="text-2xl font-bold">{fmtN(baselineHours)}<span className="text-sm font-normal text-gray-400"> /yr</span></div>
-            </div>
-            <div className="bg-white/5 rounded-lg px-4 py-3">
-              <div className="text-[10px] text-gray-400 uppercase tracking-wide mb-1 flex items-center justify-center gap-1">
-                <DollarSign className="w-3 h-3" /> Annual Cost
-              </div>
-              <div className="text-2xl font-bold">{fmt(baselineCost)}</div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -328,57 +320,42 @@ export default function ACLMCockpit() {
           </div>
         </div>
 
-        {/* Agent Signals */}
+        {/* Agent Signals — Liquid Glass (live multi-agent closed loop) */}
         <div className="space-y-4">
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
-                <TrendingUp className="w-3.5 h-3.5 text-amber-700" />
-              </div>
-              <div className="flex-1">
-                <div className="text-xs font-bold text-amber-900">Pipeline Agent</div>
-                <div className="text-[10px] text-amber-600 font-semibold uppercase tracking-wide">Signals ahead</div>
-              </div>
-              {signalsLive && (
-                <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-700 uppercase tracking-wide">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              {pipelineSignals.map(s => (
-                <div key={s} className="flex items-start gap-1.5">
-                  <div className="w-1 h-1 rounded-full bg-amber-400 mt-1.5 flex-shrink-0" />
-                  <span className="text-[11px] text-amber-800 leading-relaxed">{s}</span>
+          {[
+            { Icon: TrendingUp, name: 'Pipeline Agent', role: 'Signals ahead', tint: '#be7415',
+              substrate: 'rgba(255,251,235,0.72)', dot: '#be7415', signals: pipelineSignals },
+            { Icon: Activity, name: 'Delivery Agent', role: 'Feeds back', tint: '#1c7c54',
+              substrate: 'rgba(236,253,245,0.72)', dot: '#1c7c54', signals: deliverySignals },
+          ].map(({ Icon, name, role, tint, substrate, dot, signals }) => (
+            <div key={name} className="relative overflow-hidden rounded-[1.5rem]">
+              <div className="glass-substrate rounded-[1.5rem]" style={{ background: substrate }} />
+              <div className="glass glass-interactive p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="grid h-7 w-7 place-items-center rounded-lg flex-shrink-0" style={{ background: `${tint}24`, color: tint }}>
+                    <Icon className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs font-bold text-ink">{name}</div>
+                    <div className="font-mono text-[9.5px] font-semibold uppercase tracking-wide" style={{ color: tint }}>{role}</div>
+                  </div>
+                  {signalsLive && (
+                    <span className="flex items-center gap-1 font-mono text-[9px] font-bold text-cyan-deep uppercase tracking-wide">
+                      <span className="signal-dot !h-1.5 !w-1.5" /> Live
+                    </span>
+                  )}
                 </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                <Activity className="w-3.5 h-3.5 text-emerald-700" />
-              </div>
-              <div className="flex-1">
-                <div className="text-xs font-bold text-emerald-900">Delivery Agent</div>
-                <div className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wide">Feeds back</div>
-              </div>
-              {signalsLive && (
-                <span className="flex items-center gap-1 text-[9px] font-bold text-emerald-700 uppercase tracking-wide">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Live
-                </span>
-              )}
-            </div>
-            <div className="space-y-2">
-              {deliverySignals.map(s => (
-                <div key={s} className="flex items-start gap-1.5">
-                  <div className="w-1 h-1 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
-                  <span className="text-[11px] text-emerald-800 leading-relaxed">{s}</span>
+                <div className="space-y-2">
+                  {signals.map(s => (
+                    <div key={s} className="flex items-start gap-1.5">
+                      <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: dot }} />
+                      <span className="text-[11px] text-ink-soft leading-relaxed">{s}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 

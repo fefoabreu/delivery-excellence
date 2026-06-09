@@ -10,12 +10,13 @@ import { loadPortfolio, rescueHref, oversightHref, fmtMoney, type PortfolioIntel
 import Header from '../components/layout/Header';
 import StatCard from '../components/shared/StatCard';
 import HealthBadge from '../components/shared/HealthBadge';
+import GlassPanel from '../components/shared/GlassPanel';
 import type { PipelineMetrics, HealthStatus } from '../types';
 
 const STAGE_LABELS: Record<string, string> = {
   prospect: 'Prospect', qualify: 'Qualify', develop: 'Develop', propose: 'Propose', negotiate: 'Negotiate',
 };
-const HEALTH_COLORS = { green: '#107C10', amber: '#D67B00', red: '#A4262C' };
+const HEALTH_COLORS = { green: '#1c7c54', amber: '#be7415', red: '#b23a3a' };
 const fmt = fmtMoney;
 const ewColor = (v: number) => v >= 75 ? 'text-red-600' : v >= 50 ? 'text-amber-600' : v >= 30 ? 'text-yellow-600' : 'text-green-600';
 const ewHex = (v: number) => v >= 75 ? '#dc2626' : v >= 50 ? '#d97706' : v >= 30 ? '#ca8a04' : '#16a34a';
@@ -33,7 +34,7 @@ export default function Portfolio() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading || !intel) return <div className="p-8 text-gray-400">Loading portfolio...</div>;
+  if (loading || !intel) return <div className="p-8 text-ink-faint">Loading portfolio…</div>;
 
   const funnelData = Object.entries(pipeline?.by_stage || {}).map(([k, v]) => ({
     stage: STAGE_LABELS[k] || k, value: Math.round(v.value / 1000), weighted: Math.round(v.weighted / 1000),
@@ -59,13 +60,13 @@ export default function Portfolio() {
 
   return (
     <div>
-      <Header title="Portfolio Dashboard" subtitle="Integrated pre-sales pipeline and AI-monitored delivery health" />
+      <Header eyebrow="Portfolio · Pipeline-to-Delivery" title="Portfolio Dashboard" subtitle="Integrated pre-sales pipeline and AI-monitored delivery health" />
 
-      <div className="flex gap-1 mb-6 border-b border-gray-200">
+      <div className="flex gap-1 mb-6 border-b border-line">
         {(['delivery', 'pipeline'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
-            className={`px-6 py-2.5 text-sm font-medium border-b-2 capitalize transition-colors ${tab === t ? 'border-ms-blue text-ms-blue' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
-            {t === 'pipeline' ? '📊 Sales Pipeline' : '🚀 Delivery Health'}
+            className={`px-5 py-2.5 text-xs font-mono font-semibold uppercase tracking-wider border-b-2 transition-colors ${tab === t ? 'border-flux text-flux' : 'border-transparent text-ink-faint hover:text-ink'}`}>
+            {t === 'pipeline' ? 'Sales Pipeline' : 'Delivery Health'}
           </button>
         ))}
       </div>
@@ -81,40 +82,40 @@ export default function Portfolio() {
 
           {/* Rescue & Oversight callouts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="card p-5 border-l-4 border-l-red-500">
+            <GlassPanel tint="red" deep className="p-5">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="section-title flex items-center gap-2"><Siren className="w-4 h-4 text-red-500" /> In Rescue ({intel.rescue.length})</h3>
-                <span className="text-xs text-gray-400">Executive oversight · war-room command</span>
+                <span className="text-xs text-ink-faint">Executive oversight · war-room command</span>
               </div>
               <div className="space-y-2">
                 {intel.rescue.length ? intel.rescue.map(p => (
                   <div key={p.id} className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-red-50">
                     <Link to={`/delivery/${p.id}`} className="min-w-0">
-                      <div className="text-sm font-medium text-gray-900 truncate">{p.name}</div>
-                      <div className="text-xs text-gray-500">{p.client_name} · EW {p.ew} · {fmt(p.valueAtRisk)} at risk</div>
+                      <div className="text-sm font-medium text-ink truncate">{p.name}</div>
+                      <div className="text-xs text-ink-soft">{p.client_name} · EW {p.ew} · {fmt(p.valueAtRisk)} at risk</div>
                     </Link>
                     <Link to={rescueHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded"><Siren className="w-3 h-3" /> Command</Link>
                   </div>
-                )) : <div className="text-sm text-gray-400 py-2">No engagements in rescue.</div>}
+                )) : <div className="text-sm text-ink-faint py-2">No engagements in rescue.</div>}
               </div>
-            </div>
-            <div className="card p-5 border-l-4 border-l-sky-500">
+            </GlassPanel>
+            <GlassPanel tint="cyan" deep className="p-5">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="section-title flex items-center gap-2"><Rocket className="w-4 h-4 text-sky-500" /> Under Oversight ({intel.oversight.length})</h3>
-                <span className="text-xs text-gray-400">Flagship performance maximization</span>
+                <span className="text-xs text-ink-faint">Flagship performance maximization</span>
               </div>
               <div className="space-y-2">
                 {intel.oversight.length ? intel.oversight.map(p => (
                   <div key={p.id} className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-sky-50">
                     <Link to={`/delivery/${p.id}`} className="min-w-0">
-                      <div className="text-sm font-medium text-gray-900 truncate">{p.name}</div>
-                      <div className="text-xs text-gray-500">{p.client_name} · {fmt(p.budget)} flagship · EW {p.ew}</div>
+                      <div className="text-sm font-medium text-ink truncate">{p.name}</div>
+                      <div className="text-xs text-ink-soft">{p.client_name} · {fmt(p.budget)} flagship · EW {p.ew}</div>
                     </Link>
                     <Link to={oversightHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-gradient-to-r from-sky-600 to-teal-500 text-white text-[11px] font-semibold px-2.5 py-1.5 rounded"><Rocket className="w-3 h-3" /> Studio</Link>
                   </div>
-                )) : <div className="text-sm text-gray-400 py-2">No flagship oversight engagements.</div>}
+                )) : <div className="text-sm text-ink-faint py-2">No flagship oversight engagements.</div>}
               </div>
-            </div>
+            </GlassPanel>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -149,7 +150,7 @@ export default function Portfolio() {
                 <RadarChart data={radarData}>
                   <PolarGrid />
                   <PolarAngleAxis dataKey="dim" tick={{ fontSize: 11 }} />
-                  <Radar name="Green %" dataKey="score" stroke="#0078D4" fill="#0078D4" fillOpacity={0.3} />
+                  <Radar name="Green %" dataKey="score" stroke="#2540d9" fill="#2540d9" fillOpacity={0.28} />
                   <Tooltip formatter={(v: number) => [`${v}%`, 'Green %']} />
                 </RadarChart>
               </ResponsiveContainer>
@@ -219,13 +220,13 @@ export default function Portfolio() {
                   <XAxis dataKey="stage" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip formatter={(v: number, name: string) => [`$${v}K`, name === 'value' ? 'Total' : 'Weighted']} />
-                  <Bar dataKey="value" name="value" fill="#C7E0F4" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="weighted" name="weighted" fill="#0078D4" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="value" name="value" fill="#DCE1FA" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="weighted" name="weighted" fill="#2540d9" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
-              <div className="flex gap-4 mt-2 text-xs text-gray-500 justify-center">
-                <span className="flex items-center gap-1"><span className="w-3 h-2 bg-blue-200 rounded inline-block" />Total</span>
-                <span className="flex items-center gap-1"><span className="w-3 h-2 bg-ms-blue rounded inline-block" />Weighted</span>
+              <div className="flex gap-4 mt-2 text-xs text-ink-faint justify-center">
+                <span className="flex items-center gap-1"><span className="w-3 h-2 rounded inline-block" style={{ background: '#DCE1FA' }} />Total</span>
+                <span className="flex items-center gap-1"><span className="w-3 h-2 rounded inline-block bg-flux" />Weighted</span>
               </div>
             </div>
             <div className="card p-6">
@@ -233,7 +234,7 @@ export default function Portfolio() {
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
                   <Pie data={regionData} cx="50%" cy="50%" outerRadius={80} dataKey="value" nameKey="name" isAnimationActive={false} label={({ name, value }) => `${name} (${value})`}>
-                    {regionData.map((_, i) => <Cell key={i} fill={['#0078D4', '#5C2D91', '#107C10'][i % 3]} />)}
+                    {regionData.map((_, i) => <Cell key={i} fill={['#2540d9', '#5b45c9', '#10b7c4'][i % 3]} />)}
                   </Pie>
                   <Tooltip formatter={(v: number) => [v, 'Opportunities']} />
                 </PieChart>
@@ -248,7 +249,7 @@ export default function Portfolio() {
                 <XAxis type="number" tick={{ fontSize: 11 }} />
                 <YAxis dataKey="name" type="category" tick={{ fontSize: 11 }} width={80} />
                 <Tooltip formatter={(v: number) => [`$${v}K`, 'Pipeline']} />
-                <Bar dataKey="value" fill="#0078D4" radius={[0, 4, 4, 0]} />
+                <Bar dataKey="value" fill="#2540d9" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>

@@ -1,17 +1,22 @@
 interface HeaderProps {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   actions?: React.ReactNode;
 }
 
-export default function Header({ title, subtitle, actions }: HeaderProps) {
+export default function Header({ title, subtitle, eyebrow, actions }: HeaderProps) {
   return (
-    <div className="flex items-center justify-between mb-6">
-      <div>
+    <div className="mb-7 flex items-end justify-between gap-4">
+      <div className="min-w-0">
+        <div className="mb-2 flex items-center gap-2">
+          <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+          <span className="eyebrow">{eyebrow || 'Delivery Excellence'}</span>
+        </div>
         <h1 className="page-title">{title}</h1>
-        {subtitle && <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}
+        {subtitle && <p className="mt-1.5 max-w-2xl text-sm text-ink-faint">{subtitle}</p>}
       </div>
-      {actions && <div className="flex items-center gap-2">{actions}</div>}
+      {actions && <div className="flex flex-shrink-0 items-center gap-2">{actions}</div>}
     </div>
   );
 }

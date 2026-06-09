@@ -46,38 +46,31 @@ export default function ACLM() {
       <div className="mb-8">
         <button
           onClick={() => navigate('/deal-approvals')}
-          className="btn-ghost flex items-center gap-1.5 text-gray-400 text-sm mb-4 -ml-1"
+          className="btn-ghost text-ink-faint text-sm mb-4 -ml-1"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to AI Deal Approvals
         </button>
 
-        <div className="flex items-start justify-between">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-[10px] font-bold tracking-widest text-ms-blue uppercase">Strategy Framework</span>
+            <div className="mb-2 flex items-center gap-2">
+              <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+              <span className="eyebrow">Strategy Framework</span>
             </div>
-            <h1 className="page-title flex items-center gap-2.5">
-              <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-ms-blue">
-                <Bot className="w-5 h-5 text-white" />
-              </span>
-              A-CLM
-            </h1>
-            <p className="text-base font-medium text-gray-500 mt-0.5">Agentic Contract Lifecycle Management</p>
-            <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            <h1 className="page-title">A-CLM</h1>
+            <p className="font-display text-base font-medium italic text-ink-soft mt-0.5">Agentic Contract Lifecycle Management</p>
+            <p className="text-sm text-ink-faint mt-1.5 max-w-2xl">
               The operating model for AI-governed deal approvals — from opportunity qualification to pricing sign-off,
               grounded in policy, driven by agents, and closed-loop with delivery performance.
             </p>
           </div>
           <div className="flex items-center gap-2 mt-1">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200 bg-gray-50 text-xs text-gray-400">
-              <Bot className="w-3 h-3" />
-              Powered by Claude
-            </div>
+            <div className="live-chip"><span className="signal-dot !h-1.5 !w-1.5" />Powered by Claude</div>
           </div>
         </div>
 
-        <div className="mt-5 h-px bg-gradient-to-r from-ms-blue via-blue-300 to-transparent" />
+        <div className="mt-5 h-px bg-gradient-to-r from-flux via-cyan-signal/40 to-transparent" />
       </div>
 
       {/* ── Strategic Foundation ── */}

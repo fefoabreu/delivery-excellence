@@ -1327,4 +1327,576 @@ export const DELIVERY_SUCCESS_DATA: Record<string, DeliverySuccessData> = {
     },
   },
 
+  // ─── City Power & Light (Sentinel SOC & OT Security) ─────────────────────
+  'City Power & Light': {
+    compositeScore: 9.2,
+    successProbability: 92,
+    confidence: 'High',
+    executiveBrief: {
+      successTier: 'High Confidence',
+      closestAnalog: 'Most similar to Proseware SOC Modernization (Green, 9.0 CSAT) and A. Datum Zero Trust + SOC. Both share the Sentinel baseline + Defender XDR foundation with strong CISO engagement.',
+      successProbability: '92% predicted success based on 5 comparable Sentinel/SOC engagements. Average analog CSAT 8.9/10. Margin variance ≤ 2% on prior SOC work.',
+      topRiskPattern: 'Historical lesson: when OT/Defender for IoT environment access lags, the Sentinel data connector milestone is first to slip. Pre-engagement OT inventory is the recommended condition.',
+      capacityMatch: 'Angela Moore (Proseware Sentinel TL, 8.9 CSAT) is available with direct Sentinel + Defender for IoT experience. Marco Rossi (3 SOC modernizations) is the preferred PM.',
+      decisionGuidance: 'High delivery confidence. Approve at Tier 2. Recommend Marco Rossi as PM with Angela Moore on Sentinel/OT. Apply NERC CIP compliance analytics pattern proven on Contoso Energy.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 9.5, evidence: '5 comparable Sentinel/SOC engagements in last 18 months — all delivered Green', gaps: [], recommendation: 'Apply Proseware SOC playbook directly. Sentinel baseline + Defender XDR is proven path.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 9.3, evidence: 'Sentinel baseline accelerator + NERC CIP analytics pack from Contoso Energy reusable', gaps: [], recommendation: 'Activate Sentinel connector library and NERC CIP analytics rules at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 9.0, evidence: 'Marco Rossi + Angela Moore (Proseware Sentinel team) both available with 8.9+ CSAT', gaps: [], recommendation: 'Marco Rossi leads, Angela Moore on Sentinel/OT connectors.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 8.5, evidence: 'Security practice at 70% utilization. OT specialists available for Defender for IoT', gaps: ['Defender for IoT specialist demand elevated through July'], recommendation: 'Schedule OT integration workstream for August onward.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 8.8, evidence: 'Regulated utility with strong CISO mandate and 24x7 SOC commitment', gaps: ['OT asset inventory not yet documented'], recommendation: 'Light-touch OT pre-assessment to confirm Defender for IoT scope.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 9.0, evidence: 'Sentinel sizing within 8% of actuals on comparable engagements', gaps: [], recommendation: 'Apply standard Sentinel sizing model.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 9.2, evidence: 'NERC CIP compliance — manageable with proven analytics pack', gaps: [], recommendation: 'Reuse Contoso Energy NERC CIP compliance pattern.' },
+    ],
+    comparables: [
+      { name: 'Proseware SOC Modernization',    client: 'Proseware Inc',      industry: 'Technology',  serviceLine: 'Security/SOC', budget: '$824K',  duration: '9 months',  outcome: 'green', finalHealth: 'green', csat: 9.0, marginVariance: 1.5, scheduleVariance: 0, relevance: 'High',   keyTakeaway: 'Sentinel baseline exceeded Day 45 target. 40+ connector library directly reusable.' },
+      { name: 'Contoso Energy NERC CIP',        client: 'Contoso Energy',     industry: 'Utilities',   serviceLine: 'Security/Compliance', budget: '$870K', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 8.7, marginVariance: 1.0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'NERC CIP analytics pack and OT connectivity architecture approved on schedule.' },
+      { name: 'A. Datum Zero Trust + SOC',      client: 'A. Datum Corporation', industry: 'Technology', serviceLine: 'Security/SOC', budget: '$1.4M', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 9.1, marginVariance: 0.7, scheduleVariance: 0, relevance: 'Medium', keyTakeaway: 'Sentinel + Defender XDR rollout pattern. Bi-weekly RAID cadence reduced escalations 40%.' },
+    ],
+    appliedLessons: [
+      { title: 'OT environment pre-assessment prevents Sentinel connector slippage', category: 'risk_mitigation', sourceProject: 'Contoso Energy', applicability: 92, description: 'Pre-engagement OT inventory on Contoso Energy avoided a 4-week Defender for IoT connector delay.', actionable: 'Run a 1-week OT pre-assessment before kickoff to confirm Defender for IoT scope.' },
+      { title: 'Reusable NERC CIP analytics pack accelerates compliance reporting', category: 'success_pattern', sourceProject: 'Contoso Energy', applicability: 90, description: 'Pre-built NERC CIP detection rules and reporting cut compliance build effort by 3 weeks.', actionable: 'Activate the Contoso Energy NERC CIP analytics pack at kickoff.' },
+      { title: 'Bi-weekly RAID reviews reduce escalation frequency by 40%', category: 'process_improvement', sourceProject: 'Lamna Healthcare', applicability: 88, description: 'Bi-weekly cadence catches risk earlier than monthly.', actionable: 'Set bi-weekly RAID cadence from Day 1.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Marco Rossi',  role: 'Project Manager', relevantExperience: '3 SOC modernizations · Proseware (current Green)', csatHistory: 9.0, capacityBand: 'available', availability: 'Available June 1', trackRecord: '100% Green completion rate' },
+      { pmName: 'Angela Moore', role: 'Technical Lead',  relevantExperience: 'Proseware Sentinel TL · Defender for IoT connector specialist', csatHistory: 8.9, capacityBand: 'available', availability: 'Available June 8', trackRecord: 'Sentinel baseline accelerator developer' },
+      { pmName: 'Elena Marchetti', role: 'Engagement Director', relevantExperience: 'Security domain QA · NERC CIP compliance oversight', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Recovered 3 of 4 at-risk security engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'green', d90: 'green', end: 'green',
+      predictedEwAtStart: 30, predictedEwAt90: 28, confidence: 'High',
+      rationale: 'High pattern match with Proseware and Contoso Energy trajectories. Predicted to maintain Green throughout. Day 30 maturity expected at 88+.',
+    },
+    keyMilestones: [
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'low', signal: 'Standard for top-quartile SOC engagement', preventive: 'Validate OT asset inventory and Defender for IoT scope' },
+      { milestone: 'Sentinel baseline operational',    timing: 'Day 45-60', risk: 'low', signal: 'Proven milestone — exceeded on every analog', preventive: 'Apply Proseware connector library' },
+      { milestone: 'NERC CIP analytics live',          timing: 'Month 3', risk: 'medium', signal: 'Regulated utility compliance reporting', preventive: 'Reuse Contoso Energy NERC CIP analytics pack' },
+      { milestone: '24x7 SOC handover',                timing: 'Month 6-7', risk: 'low', signal: 'Operational readiness milestone', preventive: 'Runbook dress-rehearsal one month prior' },
+    ],
+    failureModes: [
+      { mode: 'OT/Defender for IoT access delays cause connector slippage', historicalFrequency: '1 of 5 comparable engagements', earlyWarnings: ['Day 30 maturity below 75', 'OT inventory not delivered by client IT'], preventiveActions: ['Add OT access as Day-1 RAID dependency', 'OT enablement workshop pre-kickoff'], costIfMaterializes: '~3 week schedule slip, manageable' },
+      { mode: 'NERC CIP audit scope expansion', historicalFrequency: '1 of 4 regulated utility engagements', earlyWarnings: ['New regional reliability coordinator requirements', 'Late compliance stakeholders'], preventiveActions: ['Lock CIP scope in steering at Month 2', 'Standing regulatory RAID item'], costIfMaterializes: '~$120K re-scope if unmanaged' },
+    ],
+    portfolioContext: {
+      similarActive: 2, similarCompleted: 3, overallSuccessRate: 100, avgFinalCsat: 8.9, avgMarginVariance: 1.0, recentTrendDirection: 'stable',
+    },
+  },
+
+  // ─── Datum Corporation (AI Innovation Platform) ──────────────────────────
+  'Datum Corporation': {
+    compositeScore: 9.0,
+    successProbability: 90,
+    confidence: 'High',
+    executiveBrief: {
+      successTier: 'High Confidence',
+      closestAnalog: 'Most similar to VanArsdel Copilot & AI Platform (Green, 68% adoption) and Datum Corp AI Innovation Platform reference. Direct Azure AI Studio + Semantic Kernel multi-agent analogs.',
+      successProbability: '90% predicted success based on 3 comparable Azure AI / agentic engagements. Weekly model-acceptance demos proven to drive confidence and adoption.',
+      topRiskPattern: 'Critical learning from VanArsdel: agentic projects need measurable AI model acceptance criteria defined by Day 45 and weekly demos. Responsible AI governance review is the AI-flagged condition.',
+      capacityMatch: 'James Osei (VanArsdel Copilot PM, 9.0 CSAT, 2 of 2 AI projects Green) is the strongest match. Felix Wagner (Azure AI Studio specialist) available July.',
+      decisionGuidance: 'High delivery confidence for an AI build. Approve at Tier 2. James Osei as PM with Felix Wagner on Semantic Kernel orchestration. Apply VanArsdel weekly demos lesson and Responsible AI sign-off cadence.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 9.2, evidence: '3 comparable Azure AI / agentic engagements — all Green with high adoption', gaps: ['Multi-agent orchestration is a newer pattern — small sample'], recommendation: 'Apply VanArsdel agentic playbook. Semantic Kernel orchestration proven on Datum AI reference.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 9.0, evidence: 'AI delivery playbook + Responsible AI framework + Semantic Kernel accelerators applicable', gaps: [], recommendation: 'Activate AI playbook and Responsible AI governance at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 9.3, evidence: 'James Osei + Felix Wagner — top AI delivery talent with proven agentic builds', gaps: [], recommendation: 'James Osei leads, Felix Wagner on Semantic Kernel orchestration.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 8.5, evidence: 'AI practice at 72% utilization. Felix Wagner available July', gaps: ['Senior AI architects in demand'], recommendation: 'Stage AI architects for design/build phases.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 8.8, evidence: 'Strategic AI mandate with three well-defined initial agents (HR, procurement, CS deflection)', gaps: ['Agent acceptance criteria not yet defined'], recommendation: 'Define measurable per-agent acceptance criteria by Day 45 (AI-flagged condition).' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 8.0, evidence: 'AI estimate accuracy lower than traditional services, but high-complexity buffer built in', gaps: ['Agent build effort has higher variance'], recommendation: 'Phased milestones with AI model acceptance gates.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 9.0, evidence: 'No special regulatory requirements. Responsible AI governance is the primary control', gaps: [], recommendation: 'Standard governance plus Responsible AI review board.' },
+    ],
+    comparables: [
+      { name: 'VanArsdel Copilot & AI Platform', client: 'VanArsdel Ltd', industry: 'Professional Services', serviceLine: 'AI & Copilot', budget: '$1.4M', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 9.0, marginVariance: 1.5, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Weekly demos drove 68% adoption. Legal agent shipped to production with external sign-off.' },
+      { name: 'Datum Corp AI Innovation Platform', client: 'Datum Corporation', industry: 'Technology', serviceLine: 'AI & Agentic', budget: '$1.6M', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.5, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Direct Azure AI Studio + Semantic Kernel analog. High client energy in Initiate phase.' },
+      { name: 'VanArsdel Manufacturing Copilot', client: 'VanArsdel Manufacturing', industry: 'Manufacturing', serviceLine: 'AI & Copilot', budget: '$720K', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.8, marginVariance: 1.0, scheduleVariance: 0, relevance: 'Medium', keyTakeaway: 'Persona-based pilots drove 71% adoption (23 points above benchmark).' },
+    ],
+    appliedLessons: [
+      { title: 'Weekly AI model acceptance demos accelerate client confidence', category: 'success_pattern', sourceProject: 'VanArsdel', applicability: 95, description: 'Weekly demos drove 68% adoption at 90 days vs 45% industry average.', actionable: 'Build weekly demo cadence into governance plan. First demo at Day 21.' },
+      { title: 'Measurable per-agent acceptance criteria prevent late-stage rework', category: 'risk_mitigation', sourceProject: 'Datum Corp AI', applicability: 90, description: 'Defining acceptance thresholds per agent upfront avoided subjective sign-off disputes.', actionable: 'Define measurable thresholds for HR, procurement, and CS deflection agents by Day 45.' },
+      { title: 'Responsible AI governance review embedded from kickoff', category: 'process_improvement', sourceProject: 'VanArsdel', applicability: 88, description: 'Early Responsible AI review board prevented downstream compliance friction.', actionable: 'Stand up Responsible AI review board at kickoff with Elena Marchetti as lead.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'James Osei',   role: 'Project Manager', relevantExperience: 'VanArsdel Copilot PM · Datum AI PM · agentic delivery', csatHistory: 9.0, capacityBand: 'available', availability: 'Available July', trackRecord: '2 of 2 AI projects Green' },
+      { pmName: 'Felix Wagner', role: 'Technical Lead',  relevantExperience: 'Azure AI Studio + Semantic Kernel specialist', csatHistory: 8.8, capacityBand: 'available', availability: 'Available July', trackRecord: 'Best AI architect in practice' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Responsible AI framework lead · AI delivery QA', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Responsible AI sign-off on 4 engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'green', d90: 'green', end: 'green',
+      predictedEwAtStart: 32, predictedEwAt90: 30, confidence: 'High',
+      rationale: 'Strong pattern match with VanArsdel trajectory. Brief Day 60 watch on agent acceptance criteria, but weekly demos keep it Green throughout.',
+    },
+    keyMilestones: [
+      { milestone: 'First weekly demo', timing: 'Day 21', risk: 'low', signal: 'Critical adoption-driver milestone', preventive: 'Schedule pre-kickoff with agent stakeholders' },
+      { milestone: 'AI model acceptance criteria defined', timing: 'Day 45', risk: 'medium', signal: 'AI-flagged condition — measurable thresholds per agent', preventive: 'Define thresholds for HR, procurement, CS deflection agents' },
+      { milestone: 'First agent in production', timing: 'Month 4', risk: 'medium', signal: 'Orchestration and sign-off gate', preventive: 'Responsible AI review board sign-off' },
+      { milestone: 'Multi-agent orchestration live', timing: 'Month 7-8', risk: 'medium', signal: 'Semantic Kernel coordination complexity', preventive: 'Apply Datum AI orchestration patterns' },
+    ],
+    failureModes: [
+      { mode: 'AI model acceptance criteria not measurable', historicalFrequency: '1 of 3 AI engagements without criteria upfront', earlyWarnings: ['Day 45 criteria not signed', 'Demo feedback feels subjective'], preventiveActions: ['Define measurable thresholds per agent', 'Acceptance criteria as Day-1 deliverable'], costIfMaterializes: '~$180K rework if criteria slip late' },
+      { mode: 'Multi-agent orchestration complexity underestimated', historicalFrequency: '1 of 3 agentic builds', earlyWarnings: ['Semantic Kernel integration spikes overrun', 'Agent hand-off failures in test'], preventiveActions: ['Orchestration spike in design phase', 'Felix Wagner architecture review at Month 3'], costIfMaterializes: '~$200K build effort' },
+    ],
+    portfolioContext: {
+      similarActive: 2, similarCompleted: 1, overallSuccessRate: 100, avgFinalCsat: 8.8, avgMarginVariance: 0.8, recentTrendDirection: 'improving',
+    },
+  },
+
+  // ─── Proseware Inc (SOC Modernization — Sentinel & Defender) ─────────────
+  'Proseware Inc': {
+    compositeScore: 9.5,
+    successProbability: 95,
+    confidence: 'High',
+    executiveBrief: {
+      successTier: 'High Confidence',
+      closestAnalog: 'Highest-confidence analog in the portfolio. Directly matches A. Datum Zero Trust + SOC and City Power & Light SOC — same Sentinel baseline + Defender XDR + 24x7 SOC pattern, all Green.',
+      successProbability: '95% predicted success. The strongest pattern match in the SOC portfolio. Average analog CSAT 9.0/10, margin variance ≤ 2%.',
+      topRiskPattern: 'Minor: AS/400 or legacy connector gaps can delay the Day 45 Sentinel baseline. Pre-engagement connector inventory closes this gap completely.',
+      capacityMatch: 'Angela Moore (Sentinel baseline accelerator author, 8.9 CSAT) is available. Marco Rossi (3 SOC modernizations, 100% Green) is the preferred PM.',
+      decisionGuidance: 'Highest delivery confidence. Approve at Tier 1. Marco Rossi as PM, Angela Moore on Sentinel. This is the reference engagement other SOC deals are benchmarked against.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 9.7, evidence: '6 highly comparable Sentinel/SOC engagements — all Green. This is the reference pattern', gaps: [], recommendation: 'Apply SOC playbook directly. Sentinel baseline + Defender XDR is the proven path.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 9.6, evidence: 'Sentinel baseline accelerator and 40+ connector library directly reusable', gaps: [], recommendation: 'Activate connector library and analytics rules at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 9.4, evidence: 'Marco Rossi + Angela Moore — the team that built the Sentinel accelerator, both available', gaps: [], recommendation: 'Marco Rossi leads, Angela Moore on Sentinel baseline.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 9.0, evidence: 'Security practice capacity comfortable for a 3,500-seat deployment', gaps: [], recommendation: 'Standard staffing plan.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 9.2, evidence: 'Technology client with strong CISO engagement and clear 24x7 SOC mandate', gaps: [], recommendation: 'Confirm SOC operating model at Day 30.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 9.3, evidence: 'Sentinel sizing within 5% of actuals on this exact pattern', gaps: [], recommendation: 'Apply standard Sentinel sizing model. No discounting.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 9.5, evidence: 'No special regulatory requirements. Standard governance applies', gaps: [], recommendation: 'Standard governance framework.' },
+    ],
+    comparables: [
+      { name: 'A. Datum Zero Trust + SOC',      client: 'A. Datum Corporation', industry: 'Technology', serviceLine: 'Security/SOC', budget: '$1.4M', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 9.1, marginVariance: 0.7, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Same Sentinel + Defender XDR pattern. Bi-weekly RAID cadence reduced escalations 40%.' },
+      { name: 'City Power & Light SOC',         client: 'City Power & Light', industry: 'Utilities', serviceLine: 'Security/SOC', budget: '$968K', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 8.9, marginVariance: 1.0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Sentinel baseline + 24x7 SOC delivered on schedule. Connector library reusable.' },
+      { name: 'Contoso Energy NERC CIP',        client: 'Contoso Energy', industry: 'Utilities', serviceLine: 'Security/Compliance', budget: '$870K', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 8.7, marginVariance: 1.0, scheduleVariance: 0, relevance: 'Medium', keyTakeaway: 'Strong sponsor model and analytics rule set directly applicable.' },
+    ],
+    appliedLessons: [
+      { title: 'Sentinel baseline accelerator exceeds Day 45 target consistently', category: 'success_pattern', sourceProject: 'A. Datum', applicability: 95, description: 'Pre-built connector library and analytics rules consistently land the Sentinel baseline ahead of the Day 45 target.', actionable: 'Activate the Sentinel baseline accelerator and connector library at kickoff.' },
+      { title: 'Pre-engagement connector inventory prevents baseline slippage', category: 'risk_mitigation', sourceProject: 'A. Datum', applicability: 88, description: 'A legacy AS/400 connector gap caused a brief slip on a prior engagement; an upfront inventory closes it.', actionable: 'Run a 1-week connector inventory before kickoff.' },
+      { title: 'Bi-weekly RAID reviews reduce escalation frequency by 40%', category: 'process_improvement', sourceProject: 'Lamna Healthcare', applicability: 88, description: 'Bi-weekly cadence catches risk earlier than monthly.', actionable: 'Set bi-weekly RAID cadence from Day 1.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Marco Rossi',  role: 'Project Manager', relevantExperience: '3 SOC modernizations · 100% Green completion', csatHistory: 9.0, capacityBand: 'available', availability: 'Available June 1', trackRecord: '100% Green completion rate' },
+      { pmName: 'Angela Moore', role: 'Technical Lead',  relevantExperience: 'Sentinel baseline accelerator author · 40+ connector library', csatHistory: 8.9, capacityBand: 'available', availability: 'Available June 8', trackRecord: 'Sentinel baseline accelerator developer' },
+      { pmName: 'Elena Marchetti', role: 'Engagement Director', relevantExperience: 'Security domain QA · SOC operating model design', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Recovered 3 of 4 at-risk security engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'green', d90: 'green', end: 'green',
+      predictedEwAtStart: 26, predictedEwAt90: 24, confidence: 'High',
+      rationale: 'Best-in-portfolio pattern match. Predicted to maintain Green throughout with the lowest early-warning score among SOC deals.',
+    },
+    keyMilestones: [
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'low', signal: 'Standard for top-quartile SOC engagement', preventive: 'Validate connector inventory completeness' },
+      { milestone: 'Sentinel baseline operational',    timing: 'Day 45', risk: 'low', signal: 'Proven milestone — exceeded on every analog', preventive: 'Apply connector library accelerator' },
+      { milestone: 'Defender XDR across 3,500 seats',  timing: 'Month 3-4', risk: 'low', signal: 'Seat-rollout coordination', preventive: 'Phased rollout by business unit' },
+      { milestone: '24x7 SOC operational',             timing: 'Month 6', risk: 'low', signal: 'Operational readiness milestone', preventive: 'Runbook dress-rehearsal one month prior' },
+    ],
+    failureModes: [
+      { mode: 'Legacy connector gap delays Sentinel baseline', historicalFrequency: '1 of 6 comparable engagements', earlyWarnings: ['Day 30 maturity below 80', 'Connector inventory incomplete at week 2'], preventiveActions: ['Pre-engagement connector inventory', 'Add legacy access as Day-1 RAID dependency'], costIfMaterializes: '~2 week schedule slip, easily recovered' },
+      { mode: 'SOC operating model not agreed', historicalFrequency: '1 of 6 (rare)', earlyWarnings: ['No 24x7 staffing plan by Day 30', 'Ambiguous escalation ownership'], preventiveActions: ['Lock SOC operating model in steering at Month 2', 'Runbook sign-off gate'], costIfMaterializes: 'Manageable with early agreement' },
+    ],
+    portfolioContext: {
+      similarActive: 2, similarCompleted: 4, overallSuccessRate: 100, avgFinalCsat: 9.0, avgMarginVariance: 0.9, recentTrendDirection: 'stable',
+    },
+  },
+
+  // ─── Blue Yonder Inc (Microsoft Fabric Enterprise Data Platform) ─────────
+  'Blue Yonder Inc': {
+    compositeScore: 8.5,
+    successProbability: 85,
+    confidence: 'High',
+    executiveBrief: {
+      successTier: 'High Confidence',
+      closestAnalog: 'Most similar to Wide World Importers Power BI (Green) and Litware Fabric Lakehouse. Both consolidated fragmented data estates onto OneLake with strong executive BI demand.',
+      successProbability: '85% predicted success based on 4 comparable Fabric / data platform engagements. The 6-tool consolidation scope is the primary complexity driver.',
+      topRiskPattern: 'Historical lesson: replacing 6 legacy data tools amplifies source-data quality surprises. A data profiling sprint before pipeline build is the key preventive measure.',
+      capacityMatch: 'Priya Nair (Wide World Importers Power BI lead, 8.6 CSAT) is the best-fit data architect. Available August. Felix Wagner can advise on OneLake architecture.',
+      decisionGuidance: 'Approve at Tier 2. Priya Nair as data architect lead. Mandatory data profiling sprint before pipeline build. Apply OneLake reference architecture and Purview governance pattern.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 8.6, evidence: '4 comparable Fabric / data platform engagements — 3 Green, 1 recovered', gaps: ['6-tool consolidation is at the high end of complexity'], recommendation: 'Apply Wide World Importers OneLake pattern with data profiling sprint upfront.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 8.7, evidence: 'OneLake reference architecture + Purview governance accelerators directly applicable', gaps: [], recommendation: 'Activate OneLake reference architecture and Purview templates at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 8.5, evidence: 'Priya Nair (Power BI/Fabric lead) available with strong data platform track record', gaps: [], recommendation: 'Priya Nair leads, Felix Wagner advises on OneLake.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 8.0, evidence: 'Data & analytics practice at 78% utilization. Priya Nair available August', gaps: ['Senior Fabric engineers in demand through Q3'], recommendation: 'Stage data engineers for pipeline build phase.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 8.2, evidence: 'Clear executive BI mandate and committed sponsor for the consolidation', gaps: ['Source-data ownership across 6 tools not fully mapped'], recommendation: 'Confirm data domain owners during the profiling sprint.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 8.0, evidence: 'Fabric sizing standard, but migration-from-6-tools variance is higher', gaps: ['Pipeline migration effort historically under-estimated by 15%'], recommendation: 'Buffer 15% on pipeline migration. Re-baseline post-profiling.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 8.8, evidence: 'No special regulatory requirements. Purview governance covers data lineage', gaps: [], recommendation: 'Standard governance plus Purview lineage.' },
+    ],
+    comparables: [
+      { name: 'Wide World Importers Power BI', client: 'Wide World Importers', industry: 'Logistics', serviceLine: 'Data & Analytics', budget: '$640K', duration: '8 months', outcome: 'green', finalHealth: 'green', csat: 8.6, marginVariance: 1.0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'OneLake + Power BI executive suite delivered on schedule. Reference architecture reusable.' },
+      { name: 'Litware Fabric Lakehouse', client: 'Litware Manufacturing', industry: 'Manufacturing', serviceLine: 'Data & Analytics', budget: '$980K', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.4, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Lakehouse + Warehouse pattern with Purview governance. Strong domain-owner engagement.' },
+      { name: 'Tailwind Data Modernization', client: 'Tailwind Traders', industry: 'Retail', serviceLine: 'Data & Analytics', budget: '$760K', duration: '9 months', outcome: 'amber', finalHealth: 'amber', csat: 7.6, marginVariance: -4, scheduleVariance: 5, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: source-data quality surprises on legacy tools caused a 5-week pipeline delay. Recovered with profiling sprint.' },
+    ],
+    appliedLessons: [
+      { title: 'Data profiling sprint before pipeline build prevents quality surprises', category: 'risk_mitigation', sourceProject: 'Tailwind Traders', applicability: 92, description: 'Skipping upfront profiling on Tailwind caused a 5-week pipeline rebuild once source-data quality issues surfaced.', actionable: 'Run a 2-week data profiling sprint across all 6 source tools before pipeline build.' },
+      { title: 'OneLake reference architecture accelerates Lakehouse delivery', category: 'success_pattern', sourceProject: 'Wide World Importers', applicability: 90, description: 'Reusable OneLake + Lakehouse/Warehouse architecture cut design time by 3 weeks.', actionable: 'Activate the OneLake reference architecture at kickoff.' },
+      { title: 'Purview governance baseline reduces lineage rework', category: 'process_improvement', sourceProject: 'Litware Manufacturing', applicability: 85, description: 'Establishing Purview lineage early avoided downstream governance rework.', actionable: 'Stand up Purview governance baseline in the first sprint.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Priya Nair',   role: 'Project Manager', relevantExperience: 'Wide World Importers Power BI lead · Fabric/OneLake specialist', csatHistory: 8.6, capacityBand: 'committed', availability: 'Available August', trackRecord: '3 of 3 data platform engagements Green' },
+      { pmName: 'Felix Wagner', role: 'Technical Lead',  relevantExperience: 'OneLake architecture advisor · Fabric specialist', csatHistory: 8.8, capacityBand: 'available', availability: 'Advisory', trackRecord: 'Best data architect in practice' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Data governance QA · Purview lineage review', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Prevented escalation on 3 data engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'amber', d90: 'green', end: 'green',
+      predictedEwAtStart: 35, predictedEwAt90: 32, confidence: 'High',
+      rationale: 'Day 60 brief amber expected as source-data profiling surfaces quality issues. Recovers to Green by Day 90 if the profiling sprint is rigorous.',
+    },
+    keyMilestones: [
+      { milestone: 'Data profiling sprint', timing: 'Pre-build (2 wk)', risk: 'medium', signal: 'Determines pipeline migration scope', preventive: 'Profile all 6 source tools before pipeline build' },
+      { milestone: 'OneLake + Lakehouse live', timing: 'Month 3', risk: 'medium', signal: 'Core platform foundation', preventive: 'Apply OneLake reference architecture' },
+      { milestone: 'Pipeline migration wave 1', timing: 'Month 4-5', risk: 'medium', signal: 'Legacy-tool migration is the variable', preventive: 'Re-baseline after profiling sprint' },
+      { milestone: 'Executive Power BI suite GA', timing: 'Month 6', risk: 'low', signal: 'Primary adoption milestone', preventive: 'Stakeholder demos from Month 4' },
+    ],
+    failureModes: [
+      { mode: 'Source-data quality surprises across legacy tools', historicalFrequency: '1 of 4 comparable engagements (Tailwind pattern)', earlyWarnings: ['Profiling reveals undocumented schemas', 'Domain owners unidentified by week 2'], preventiveActions: ['Mandatory 2-week profiling sprint', 'Confirm data domain owners upfront'], costIfMaterializes: '~$120K and 5 weeks (Tailwind pattern)' },
+      { mode: 'Pipeline migration effort underestimated', historicalFrequency: '2 of 4 multi-source migrations', earlyWarnings: ['Wave 1 migration overruns', 'Transformation logic more complex than scoped'], preventiveActions: ['Buffer 15% on pipeline effort', 'Re-baseline post-profiling'], costIfMaterializes: '~$90K margin impact' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 3, overallSuccessRate: 88, avgFinalCsat: 8.3, avgMarginVariance: -0.8, recentTrendDirection: 'improving',
+    },
+  },
+
+  // ─── Southridge Video (D365 F&O Transformation) ──────────────────────────
+  'Southridge Video': {
+    compositeScore: 8.8,
+    successProbability: 88,
+    confidence: 'High',
+    executiveBrief: {
+      successTier: 'High Confidence',
+      closestAnalog: 'Most similar to Trey Research D365 (completed Green, 92% adoption) and World Wide Importers D365 CE. The setup discipline that scored Day 30 maturity 92 on this exact engagement type is directly applicable.',
+      successProbability: '88% predicted success based on 5 comparable D365 F&O engagements. PeopleSoft replacement raises data-migration complexity, but the phased 24-month structure de-risks it.',
+      topRiskPattern: 'Historical lesson: ERP data migration fidelity and cutover planning are the primary failure modes. A formal cutover dress-rehearsal per phase is the key preventive measure.',
+      capacityMatch: 'David Chen (highest D365 setup maturity in portfolio, 8.5 CSAT) is the natural fit. Kevin Park is the recommended cutover technical lead.',
+      decisionGuidance: 'Approve at Tier 2. David Chen as PM applying his own setup discipline. Phased rollout with power-user champions from Trey Research. Cutover dress-rehearsal mandatory per phase.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 9.0, evidence: '5 comparable D365 F&O engagements — David Chen scored Day 30 maturity 92 on this type', gaps: ['ERP-replacement subset carries higher data-migration complexity'], recommendation: 'Apply David Chen setup discipline. Trey Research user-rollout pattern.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 9.0, evidence: 'D365 F&O playbook + data migration accelerators directly applicable', gaps: [], recommendation: 'Activate D365 F&O playbook and migration accelerators at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 9.0, evidence: 'David Chen + Kevin Park available with proven D365 F&O cutover experience', gaps: [], recommendation: 'David Chen as PM, Kevin Park as cutover TL.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 8.5, evidence: 'D365 practice at 76% utilization. 24-month phased structure smooths demand', gaps: ['Senior finance consultants in demand'], recommendation: 'Stage finance consultants for design/build phases.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 8.5, evidence: 'Media client with committed sponsor and clear PeopleSoft retirement mandate', gaps: ['Custom media rights module scope needs validation'], recommendation: 'Validate media rights module scope in design phase.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 8.3, evidence: 'D365 sizing standard; PeopleSoft migration variance buffered by phasing', gaps: ['Data migration effort historically under-estimated by 15%'], recommendation: 'Buffer 15% on data migration. Re-baseline per phase.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 9.0, evidence: 'No special regulatory requirements. Standard governance applies', gaps: [], recommendation: 'Standard governance framework.' },
+    ],
+    comparables: [
+      { name: 'Trey Research D365 Sales & CS', client: 'Trey Research Inc', industry: 'Research', serviceLine: 'Dynamics 365', budget: '$1.2M', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 9.0, marginVariance: 1.0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Phased rollout with power-user champions drove 92% adoption.' },
+      { name: 'World Wide Importers D365 CE', client: 'World Wide Importers', industry: 'Logistics', serviceLine: 'Dynamics 365', budget: '$980K', duration: '11 months', outcome: 'green', finalHealth: 'green', csat: 8.3, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Power-user champion model applied with strong setup discipline.' },
+      { name: 'Tailspin Toys D365 F&O', client: 'Tailspin Toys', industry: 'Retail', serviceLine: 'Dynamics 365', budget: '$1.6M', duration: '18 months', outcome: 'amber', finalHealth: 'amber', csat: 7.8, marginVariance: -3, scheduleVariance: 4, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: a rushed cutover caused a brief go-live slip. Recovered via dress-rehearsal discipline.' },
+    ],
+    appliedLessons: [
+      { title: 'Cutover dress-rehearsal per phase prevents go-live slips', category: 'risk_mitigation', sourceProject: 'Tailspin Toys', applicability: 92, description: 'A rushed cutover on Tailspin caused a go-live slip; full dress-rehearsals per phase eliminated the recurrence.', actionable: 'Run a full cutover dress-rehearsal before each of the 3 phase go-lives.' },
+      { title: 'Phased D365 rollout with power-user champions drives 92% adoption', category: 'success_pattern', sourceProject: 'Trey Research', applicability: 90, description: 'Piloting with a power-user group before broad rollout drove 92% adoption at 60 days.', actionable: 'Adopt power-user champion model: finance leads pilot first, then expand.' },
+      { title: 'Setup discipline correlates with Day 30 maturity above 90', category: 'success_pattern', sourceProject: 'Southridge', applicability: 88, description: 'David Chen setup checklist consistently lands Day 30 maturity above 90 on D365 F&O.', actionable: 'Apply the David Chen setup checklist from Day 1.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'David Chen', role: 'Project Manager', relevantExperience: 'D365 F&O PM · highest setup maturity (92) in portfolio', csatHistory: 8.5, capacityBand: 'committed', availability: 'Available July', trackRecord: 'Highest D365 maturity score in portfolio' },
+      { pmName: 'Kevin Park', role: 'Technical Lead', relevantExperience: 'D365 F&O cutover specialist · data migration', csatHistory: 8.4, capacityBand: 'available', availability: 'Available July', trackRecord: 'Clean cutover on 4 D365 F&O programs' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'ERP migration QA · cutover dress-rehearsal lead', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Prevented go-live slips on 3 ERP programs' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'green', d90: 'green', end: 'green',
+      predictedEwAtStart: 34, predictedEwAt90: 32, confidence: 'High',
+      rationale: 'Strong pattern match with Trey Research and David Chen own setup record. Predicted Green throughout, with standard cutover watch at each phase boundary.',
+    },
+    keyMilestones: [
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'low', signal: 'David Chen historically scores 90+', preventive: 'Apply David Chen setup checklist' },
+      { milestone: 'Phase 1 GL/AP/AR go-live', timing: 'Month 8', risk: 'medium', signal: 'First cutover gate', preventive: 'Full cutover dress-rehearsal beforehand' },
+      { milestone: 'Custom media rights module', timing: 'Month 12-14', risk: 'medium', signal: 'Bespoke scope is the variable', preventive: 'Validate scope in design phase' },
+      { milestone: 'Phase 3 final cutover', timing: 'Month 22', risk: 'medium', signal: 'Full PeopleSoft retirement', preventive: 'Dress-rehearsal + hypercare buffer' },
+    ],
+    failureModes: [
+      { mode: 'Data migration fidelity issues at cutover', historicalFrequency: '1 of 5 D365 F&O programs', earlyWarnings: ['Migration test reconciliation failures', 'Source data ownership unclear'], preventiveActions: ['Buffer 15% on migration', 'Cutover dress-rehearsal per phase'], costIfMaterializes: '~$150K and a phase go-live slip' },
+      { mode: 'Custom media rights module scope creep', historicalFrequency: '1 of 5 (bespoke modules)', earlyWarnings: ['Requirements churn in design phase', 'Late media-rights stakeholders'], preventiveActions: ['Lock module scope in design phase', 'Separate change-control gate'], costIfMaterializes: '~$120K margin impact if unmanaged' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 4, overallSuccessRate: 90, avgFinalCsat: 8.5, avgMarginVariance: -0.5, recentTrendDirection: 'stable',
+    },
+  },
+
+  // ─── Adatum Corporation (Azure Landing Zone Build) ───────────────────────
+  'Adatum Corporation': {
+    compositeScore: 7.8,
+    successProbability: 78,
+    confidence: 'Medium',
+    executiveBrief: {
+      successTier: 'Confident',
+      closestAnalog: 'Most similar to the Adatum Cloud Foundation precedent (recovered Amber) and Wide World Importers Azure Migration (Green). ExpressRoute connectivity timing is the recurring swing factor.',
+      successProbability: '78% predicted success based on 4 comparable landing zone / cloud foundation engagements. Smaller scope, but high solution complexity in governance-as-code.',
+      topRiskPattern: 'Historical lesson: ExpressRoute provisioning lead times are the #1 cause of landing-zone schedule slips. Order ExpressRoute on Day 1 and run VPN as an interim path.',
+      capacityMatch: 'Sarah Mitchell (Adatum Cloud Foundation PM, 9.2 CSAT, strong recovery record) is the natural fit. Felix Wagner can advise on Policy-as-Code.',
+      decisionGuidance: 'Approve with conditions. Sarah Mitchell as PM. Order ExpressRoute Day 1 with VPN interim. Apply Policy-as-Code and Defender for Cloud baseline accelerators.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 7.8, evidence: '4 comparable landing zone engagements — 3 Green, 1 recovered Amber', gaps: ['Governance-as-code raises solution complexity'], recommendation: 'Apply Cloud Adoption Framework landing-zone pattern.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 8.5, evidence: 'Landing-zone accelerator + Policy-as-Code + Defender for Cloud baseline reusable', gaps: [], recommendation: 'Activate landing-zone accelerator and Policy-as-Code templates at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 8.2, evidence: 'Sarah Mitchell available with direct cloud foundation experience', gaps: [], recommendation: 'Sarah Mitchell as PM, Felix Wagner advises on governance-as-code.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 7.8, evidence: 'Cloud Adoption practice at 80% utilization; small scope fits', gaps: ['Senior networking architects in demand'], recommendation: 'Stage networking architect for ExpressRoute phase.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 7.2, evidence: 'Clear cloud mandate; governance ownership not yet fully defined', gaps: ['RBAC and policy ownership model not confirmed'], recommendation: 'Confirm governance ownership in the first sprint.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 7.5, evidence: 'Landing-zone sizing standard; networking timing is the variable', gaps: ['ExpressRoute provisioning timing carries schedule risk'], recommendation: 'Treat ExpressRoute as a Day-1 critical-path dependency.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 8.5, evidence: 'No special regulatory requirements; Defender for Cloud covers baseline', gaps: [], recommendation: 'Standard governance plus Defender for Cloud baseline.' },
+    ],
+    comparables: [
+      { name: 'Adatum Cloud Foundation (prior phase)', client: 'Adatum Corporation', industry: 'Technology', serviceLine: 'Cloud Adoption', budget: '$540K', duration: '6 months', outcome: 'amber', finalHealth: 'amber', csat: 7.8, marginVariance: -3, scheduleVariance: 4, relevance: 'High', keyTakeaway: 'CAUTIONARY: ExpressRoute delay caused a 4% schedule slip. Recovered with proactive client communication.' },
+      { name: 'Wide World Importers Azure Migration', client: 'Wide World Importers', industry: 'Logistics', serviceLine: 'Cloud Adoption', budget: '$890K', duration: '12 months', outcome: 'green', finalHealth: 'green', csat: 8.2, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Landing-zone reference architecture and Policy-as-Code delivered clean.' },
+      { name: "Margie's Travel Azure Migration", client: "Margie's Travel", industry: 'Travel', serviceLine: 'Cloud Adoption', budget: '$890K', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.5, marginVariance: 1.0, scheduleVariance: 0, relevance: 'Medium', keyTakeaway: 'Discovery-first sequencing kept the foundation Green.' },
+    ],
+    appliedLessons: [
+      { title: 'Order ExpressRoute Day 1 with VPN interim to avoid schedule slip', category: 'risk_mitigation', sourceProject: 'Adatum Cloud Foundation', applicability: 95, description: 'ExpressRoute provisioning lead times caused the prior Adatum phase to slip 4%; ordering Day 1 with a VPN interim path eliminates the dependency.', actionable: 'Place the ExpressRoute order on Day 1 and stand up VPN connectivity as an interim path.' },
+      { title: 'Policy-as-Code baseline reduces governance rework', category: 'success_pattern', sourceProject: 'Wide World Importers', applicability: 88, description: 'Codified policy and RBAC from the start avoided downstream governance drift.', actionable: 'Activate Policy-as-Code templates and confirm RBAC ownership in sprint 1.' },
+      { title: 'Proactive client communication recovers schedule-slip Amber', category: 'process_improvement', sourceProject: 'Adatum Cloud Foundation', applicability: 82, description: 'Early, transparent communication on the ExpressRoute delay preserved CSAT despite the slip.', actionable: 'Establish a weekly status channel and flag connectivity risk early.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Sarah Mitchell', role: 'Project Manager', relevantExperience: 'Adatum Cloud Foundation PM · strong recovery track record', csatHistory: 9.2, capacityBand: 'committed', availability: 'Available July', trackRecord: 'Recovered Adatum Cloud Foundation to acceptable close' },
+      { pmName: 'Felix Wagner', role: 'Technical Lead', relevantExperience: 'Policy-as-Code + landing-zone architecture specialist', csatHistory: 8.8, capacityBand: 'available', availability: 'Advisory', trackRecord: 'Landing-zone accelerator developer' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Cloud governance QA · Defender for Cloud baseline review', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Prevented escalation on 3 cloud engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'amber', d90: 'green', end: 'green',
+      predictedEwAtStart: 40, predictedEwAt90: 36, confidence: 'Medium',
+      rationale: 'Day 60 amber risk tied to ExpressRoute provisioning. Recovers to Green if ordered Day 1 with VPN interim, mirroring the recovered prior phase.',
+    },
+    keyMilestones: [
+      { milestone: 'ExpressRoute order placed', timing: 'Day 1', risk: 'high', signal: 'Critical-path dependency — longest lead time', preventive: 'Order Day 1, stand up VPN interim path' },
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'medium', signal: 'Governance ownership confirmation', preventive: 'Confirm RBAC and policy ownership' },
+      { milestone: 'Landing zone hub-spoke live', timing: 'Month 2', risk: 'medium', signal: 'Core foundation milestone', preventive: 'Apply landing-zone accelerator' },
+      { milestone: 'FinOps tooling operational', timing: 'Month 3', risk: 'low', signal: 'Cost-optimization handover', preventive: 'Standard FinOps baseline' },
+    ],
+    failureModes: [
+      { mode: 'ExpressRoute provisioning delay slips the foundation', historicalFrequency: '1 of 4 landing-zone engagements (prior Adatum phase)', earlyWarnings: ['Carrier provisioning timeline exceeds 6 weeks', 'No interim VPN path stood up'], preventiveActions: ['Order ExpressRoute Day 1', 'VPN interim connectivity'], costIfMaterializes: '~4% schedule slip (prior phase pattern)' },
+      { mode: 'Governance ownership undefined causes policy drift', historicalFrequency: '1 of 4 cloud foundations', earlyWarnings: ['RBAC ownership unclear at Day 30', 'Policy exceptions accumulating'], preventiveActions: ['Confirm governance ownership in sprint 1', 'Policy-as-Code enforcement'], costIfMaterializes: '~$60K remediation' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 3, overallSuccessRate: 80, avgFinalCsat: 8.0, avgMarginVariance: -1.5, recentTrendDirection: 'improving',
+    },
+  },
+
+  // ─── Margie's Travel (M365 Copilot Deployment) ───────────────────────────
+  "Margie's Travel": {
+    compositeScore: 7.8,
+    successProbability: 78,
+    confidence: 'Medium',
+    executiveBrief: {
+      successTier: 'Confident',
+      closestAnalog: 'Most similar to VanArsdel Manufacturing Copilot (Green, 71% adoption via persona pilots) and VanArsdel Copilot & AI Platform. Both are M365 Copilot adoption programs at scale.',
+      successProbability: '78% predicted success based on 3 comparable Copilot adoption engagements. The 3,500-user scale makes adoption — not technical build — the primary success driver.',
+      topRiskPattern: 'Critical learning from VanArsdel: Copilot adoption stalls without persona-based pre-launch pilots and curated prompt libraries. Skipping persona pilots dropped one engagement below 50% adoption.',
+      capacityMatch: 'James Osei (VanArsdel Copilot PM, 9.0 CSAT) is the strongest match for adoption-led delivery. Mei Chen also strong on CX-adoption programs.',
+      decisionGuidance: 'Approve at Tier 3. James Osei as PM. Mandatory persona-based pilots (travel consultant, team lead) before broad rollout. Build the custom travel-planning prompt library early.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 8.0, evidence: '3 comparable M365 Copilot adoption engagements — all Green with persona pilots', gaps: ['Adoption variance is inherently higher than technical builds'], recommendation: 'Apply VanArsdel Manufacturing persona-pilot pattern directly.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 8.3, evidence: 'Copilot adoption playbook + Responsible AI governance + prompt-library templates applicable', gaps: ['Travel-specific prompt library needs authoring'], recommendation: 'Activate adoption playbook; author travel prompt library in first month.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 8.5, evidence: 'James Osei + Mei Chen available with strong adoption track records', gaps: [], recommendation: 'James Osei leads adoption program.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 8.2, evidence: 'AI practice capacity comfortable for an adoption-led engagement', gaps: [], recommendation: 'Standard staffing plan.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 7.5, evidence: 'Clear mandate to equip 3,500 consultants; change-management readiness unproven', gaps: ['Adoption champions not yet identified'], recommendation: 'Identify persona champions before pilot.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 7.5, evidence: 'Copilot adoption sizing standard; adoption-curve outcome is the variable', gaps: ['Adoption ramp pace uncertain'], recommendation: 'Tie milestones to measurable adoption thresholds.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 8.2, evidence: 'No special regulatory requirements; Responsible AI governance is the control', gaps: [], recommendation: 'Standard governance plus Responsible AI review.' },
+    ],
+    comparables: [
+      { name: 'VanArsdel Manufacturing Copilot', client: 'VanArsdel Manufacturing', industry: 'Manufacturing', serviceLine: 'AI & Copilot', budget: '$720K', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.8, marginVariance: 1.0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Persona-based pre-launch pilots drove 71% adoption (23 points above benchmark).' },
+      { name: 'VanArsdel Copilot & AI Platform', client: 'VanArsdel Ltd', industry: 'Professional Services', serviceLine: 'AI & Copilot', budget: '$1.4M', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 9.0, marginVariance: 1.5, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Weekly demos and curated prompt libraries drove 68% adoption.' },
+      { name: 'The Phone Company Copilot Rollout', client: 'The Phone Company', industry: 'Telecom', serviceLine: 'AI & Copilot', budget: '$420K', duration: '8 months', outcome: 'amber', finalHealth: 'amber', csat: 7.4, marginVariance: -2, scheduleVariance: 3, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: skipping persona pilots dropped early adoption below 50%. Recovered with a re-launch.' },
+    ],
+    appliedLessons: [
+      { title: 'Pre-launch persona-based pilots increase initial adoption by 23 points', category: 'success_pattern', sourceProject: 'VanArsdel Manufacturing', applicability: 92, description: 'Two-week persona pilots delivered 71% adoption vs a 48% benchmark.', actionable: 'Run 2-week persona pilots (consultant, team lead) before broad rollout.' },
+      { title: 'Curated role-based prompt libraries lift sustained usage', category: 'success_pattern', sourceProject: 'VanArsdel', applicability: 88, description: 'Role-specific prompt libraries kept Copilot usage high beyond launch.', actionable: 'Author a custom travel-planning prompt library in the first month.' },
+      { title: 'Skipping persona pilots risks sub-50% adoption', category: 'failure_mode', sourceProject: 'The Phone Company', applicability: 85, description: 'Broad rollout without persona pilots dropped adoption below 50% and forced a costly re-launch.', actionable: 'Make persona pilots a gated prerequisite before broad rollout.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'James Osei', role: 'Project Manager', relevantExperience: 'VanArsdel Copilot PM · adoption-led delivery', csatHistory: 9.0, capacityBand: 'available', availability: 'Available July', trackRecord: '2 of 2 Copilot programs Green' },
+      { pmName: 'Mei Chen', role: 'Technical Lead', relevantExperience: 'CX adoption programs · prompt-library design', csatHistory: 8.7, capacityBand: 'committed', availability: 'Available August', trackRecord: 'Strong adoption-curve outcomes' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Responsible AI framework lead · adoption QA', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Responsible AI sign-off on 4 engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'amber', d90: 'green', end: 'green',
+      predictedEwAtStart: 38, predictedEwAt90: 35, confidence: 'Medium',
+      rationale: 'Day 60 amber risk tied to early adoption ramp. Recovers to Green if persona pilots and prompt libraries land before broad rollout.',
+    },
+    keyMilestones: [
+      { milestone: 'Persona pilot launch', timing: 'Month 1-2', risk: 'medium', signal: 'Determines broad-rollout adoption', preventive: 'Persona pilots (consultant, team lead) before scale-out' },
+      { milestone: 'Travel prompt library live', timing: 'Month 2', risk: 'low', signal: 'Sustained-usage driver', preventive: 'Author curated role-based prompts early' },
+      { milestone: 'Broad rollout to 3,500 users', timing: 'Month 3-4', risk: 'medium', signal: 'Adoption inflection point', preventive: 'Gate rollout on pilot adoption thresholds' },
+      { milestone: '90-day adoption review', timing: 'Day 90', risk: 'low', signal: 'Adoption health check', preventive: 'Measure against adoption KPIs' },
+    ],
+    failureModes: [
+      { mode: 'Adoption stalls below target without persona pilots', historicalFrequency: '1 of 3 Copilot programs (The Phone Company pattern)', earlyWarnings: ['Persona pilots skipped or rushed', 'Early adoption below 50% at pilot'], preventiveActions: ['Mandatory 2-week persona pilots', 'Curated prompt libraries per role'], costIfMaterializes: '~$80K in re-launch effort' },
+      { mode: 'Change-management champions not engaged', historicalFrequency: '1 of 3 adoption programs', earlyWarnings: ['Champions unidentified by week 2', 'Low pilot attendance'], preventiveActions: ['Identify persona champions before pilot', 'Visible sponsor at launch'], costIfMaterializes: 'Slower ramp, manageable with intervention' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 2, overallSuccessRate: 78, avgFinalCsat: 8.4, avgMarginVariance: 0.2, recentTrendDirection: 'improving',
+    },
+  },
+
+  // ─── Lucerne Publishing (Zero Trust Architecture) ────────────────────────
+  'Lucerne Publishing': {
+    compositeScore: 7.6,
+    successProbability: 76,
+    confidence: 'Medium',
+    executiveBrief: {
+      successTier: 'Confident',
+      closestAnalog: 'Most similar to A. Datum Zero Trust + SOC (Green) and Alpine Insurance Zero Trust. The 12-country, 5,000-user footprint adds Conditional Access and identity-coordination complexity.',
+      successProbability: '76% predicted success based on 4 comparable Zero Trust engagements. The multi-country identity scope is the main complexity driver and warrants a cautious read.',
+      topRiskPattern: 'Historical lesson: multi-country Conditional Access rollouts that do not stage by region trigger lockout incidents and helpdesk spikes. Phased regional rollout with break-glass accounts is essential.',
+      capacityMatch: 'Ray Kowalski (Zero Trust + IAM TL, 9.2 CSAT) is a strong identity lead. Sarah Mitchell available as PM with regulated-industry rollout experience.',
+      decisionGuidance: 'Approve with conditions. Sarah Mitchell as PM, Ray Kowalski on IAM. Phased regional Conditional Access rollout with break-glass accounts. Apply the Zero Trust assessment findings to sequence identity work.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 7.8, evidence: '4 comparable Zero Trust engagements — 3 Green, 1 recovered', gaps: ['12-country Conditional Access scope raises coordination complexity'], recommendation: 'Apply A. Datum Zero Trust playbook with phased regional rollout.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 8.2, evidence: 'Zero Trust playbook + Entra ID/PIM + Conditional Access templates reusable', gaps: [], recommendation: 'Activate Zero Trust playbook and Conditional Access templates at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 8.0, evidence: 'Ray Kowalski + Sarah Mitchell available with identity and rollout experience', gaps: [], recommendation: 'Sarah Mitchell as PM, Ray Kowalski on IAM/Conditional Access.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 7.5, evidence: 'Security practice at 78% utilization; identity specialists in demand', gaps: ['Senior IAM architects constrained through July'], recommendation: 'Stage IAM work for August onward.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 7.0, evidence: 'Clear Zero Trust mandate; regional IT coordination unproven', gaps: ['Country-level IT owners not yet identified'], recommendation: 'Identify regional IT owners before Conditional Access rollout.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 7.2, evidence: 'Zero Trust sizing standard; multi-country rollout variance higher', gaps: ['Conditional Access rollout effort scales with country count'], recommendation: 'Buffer for per-region rollout; re-baseline after assessment.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 7.8, evidence: 'No special regulatory requirements; data-residency varies by country', gaps: ['Country-specific identity data residency not validated'], recommendation: 'Confirm per-country residency during the assessment.' },
+    ],
+    comparables: [
+      { name: 'A. Datum Zero Trust + SOC', client: 'A. Datum Corporation', industry: 'Technology', serviceLine: 'Security/Zero Trust', budget: '$1.4M', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 9.1, marginVariance: 0.7, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Zero Trust playbook and Entra ID/PIM pattern directly applicable.' },
+      { name: 'Alpine Insurance Zero Trust', client: 'Alpine Insurance Group', industry: 'Insurance', serviceLine: 'Security/IAM', budget: '$716K', duration: '9 months', outcome: 'green', finalHealth: 'green', csat: 8.5, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Conditional Access and IAM rollout pattern reusable.' },
+      { name: 'Northwind Multi-Country IAM', client: 'Northwind Traders', industry: 'Distribution', serviceLine: 'Security/IAM', budget: '$680K', duration: '8 months', outcome: 'amber', finalHealth: 'amber', csat: 7.5, marginVariance: -4, scheduleVariance: 5, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: a non-staged Conditional Access rollout caused lockout incidents and a helpdesk spike. Recovered via phased re-rollout.' },
+    ],
+    appliedLessons: [
+      { title: 'Phased regional Conditional Access rollout prevents lockout incidents', category: 'risk_mitigation', sourceProject: 'Northwind Traders', applicability: 92, description: 'A non-staged Conditional Access rollout caused lockouts and a helpdesk spike; phased regional rollout with break-glass accounts eliminated it.', actionable: 'Roll out Conditional Access region-by-region with break-glass accounts pre-provisioned.' },
+      { title: 'Zero Trust assessment findings sequence identity work', category: 'success_pattern', sourceProject: 'A. Datum', applicability: 88, description: 'Using assessment findings to prioritize identity remediation kept the Zero Trust rollout on track.', actionable: 'Use the Zero Trust assessment to sequence Entra ID/PIM and Conditional Access work.' },
+      { title: 'Bi-weekly RAID reviews reduce escalation frequency by 40%', category: 'process_improvement', sourceProject: 'Lamna Healthcare', applicability: 82, description: 'Bi-weekly cadence catches risk earlier than monthly.', actionable: 'Set bi-weekly RAID cadence from Day 1.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Sarah Mitchell', role: 'Project Manager', relevantExperience: 'Regulated-industry rollout PM · multi-region experience', csatHistory: 9.2, capacityBand: 'committed', availability: 'Available August', trackRecord: 'Strong recovery and rollout track record' },
+      { pmName: 'Ray Kowalski', role: 'Technical Lead', relevantExperience: 'Zero Trust + IAM TL · Entra ID/PIM specialist', csatHistory: 9.2, capacityBand: 'committed', availability: 'Available July 15', trackRecord: 'On-time, on-budget identity deployments' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Security domain QA · Conditional Access review', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Prevented escalation on 3 security engagements' },
+    ],
+    trajectory: {
+      d30: 'green', d60: 'amber', d90: 'amber', end: 'green',
+      predictedEwAtStart: 42, predictedEwAt90: 40, confidence: 'Medium',
+      rationale: 'Amber expected mid-flight during multi-country Conditional Access rollout. Recovers to Green by end if rollout is staged by region with break-glass accounts.',
+    },
+    keyMilestones: [
+      { milestone: 'Zero Trust assessment complete', timing: 'Month 1', risk: 'low', signal: 'Sequences the identity work', preventive: 'Use findings to prioritize remediation' },
+      { milestone: 'Entra ID + PIM baseline', timing: 'Month 2-3', risk: 'medium', signal: 'Identity foundation', preventive: 'Confirm regional IT owners' },
+      { milestone: 'Conditional Access regional rollout', timing: 'Month 4-6', risk: 'high', signal: 'Highest-risk milestone — lockout potential', preventive: 'Phased by region with break-glass accounts' },
+      { milestone: 'Defender for Endpoint across devices', timing: 'Month 6-7', risk: 'medium', signal: 'Device-side coverage', preventive: 'Intune-led phased deployment' },
+    ],
+    failureModes: [
+      { mode: 'Non-staged Conditional Access causes lockouts', historicalFrequency: '1 of 4 Zero Trust engagements (Northwind pattern)', earlyWarnings: ['Rollout not staged by region', 'No break-glass accounts provisioned', 'Helpdesk ticket spike'], preventiveActions: ['Phased regional rollout', 'Pre-provision break-glass accounts'], costIfMaterializes: '~$100K and a 5-week re-rollout' },
+      { mode: 'Per-country data residency surprise', historicalFrequency: '1 of 4 multi-country engagements', earlyWarnings: ['Country-specific residency review surfaces issue', 'Late regional stakeholders'], preventiveActions: ['Confirm residency during assessment', 'Country-by-country identity map'], costIfMaterializes: '~$70K architecture adjustment' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 3, overallSuccessRate: 76, avgFinalCsat: 8.2, avgMarginVariance: -1.0, recentTrendDirection: 'stable',
+    },
+  },
+
+  // ─── Contoso Sports Network (D365 Customer Engagement) ───────────────────
+  'Contoso Sports Network': {
+    compositeScore: 6.5,
+    successProbability: 65,
+    confidence: 'Low',
+    executiveBrief: {
+      successTier: 'Cautious',
+      closestAnalog: 'Most similar to Contoso Sports D365 CE (cancelled due to M&A) and Tailspin Toys D365 (recovered Amber). The cautionary precedents dominate this profile, hence the cautious read.',
+      successProbability: '65% predicted success based on 4 comparable D365 CE engagements with a mixed record, including one cancellation. Client volatility is the defining risk.',
+      topRiskPattern: 'Critical: a prior Contoso Sports D365 program was cancelled mid-flight after an acquisition ($340K loss). M&A and sponsor-volatility risk must be standing RAID items for this account.',
+      capacityMatch: 'David Chen (D365 setup discipline) is available but this engagement needs strong account-volatility management more than technical depth. Sarah Mitchell brings recovery experience.',
+      decisionGuidance: 'Approve with conditions only. Mandatory M&A/sponsor-volatility risk in the RAID log. Phase the contract so exposure is limited if the account destabilizes. Validate executive sponsorship before execution.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 6.5, evidence: '4 comparable D365 CE engagements with a mixed record (1 cancelled, 1 recovered)', gaps: ['Prior Contoso Sports program cancelled mid-flight'], recommendation: 'Apply D365 CE playbook but front-load account-volatility risk management.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 7.5, evidence: 'D365 Sales playbook + Power Platform CoE accelerators applicable', gaps: [], recommendation: 'Activate D365 Sales playbook at kickoff.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 7.0, evidence: 'Qualified D365 PMs available; volatility management is the differentiator', gaps: ['Account needs senior steering more than build depth'], recommendation: 'Pair David Chen with Sarah Mitchell for account stability.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 7.0, evidence: 'D365 practice capacity adequate for this scope', gaps: [], recommendation: 'Standard staffing plan.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 5.0, evidence: 'Sports media account with history of ownership/sponsor volatility', gaps: ['Executive sponsorship not yet validated', 'M&A exposure unquantified'], recommendation: 'Validate sponsorship and quantify M&A exposure before execution.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 6.5, evidence: 'D365 CE sizing standard; high complexity raises variance', gaps: ['Marketing module scope loosely defined'], recommendation: 'Tighten scope in design phase; phase the contract.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 7.5, evidence: 'No special regulatory requirements', gaps: [], recommendation: 'Standard governance.' },
+    ],
+    comparables: [
+      { name: 'Contoso Sports D365 CE (prior)', client: 'Contoso Sports', industry: 'Sports Media', serviceLine: 'Dynamics 365', budget: '$520K', duration: '12 months', outcome: 'cancelled', finalHealth: 'red', csat: 0, marginVariance: -100, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'CAUTIONARY: cancelled mid-project after acquisition ($340K loss). M&A risk was not in the RAID log.' },
+      { name: 'Tailspin Toys D365 F&O', client: 'Tailspin Toys', industry: 'Retail', serviceLine: 'Dynamics 365', budget: '$1.6M', duration: '18 months', outcome: 'amber', finalHealth: 'amber', csat: 7.8, marginVariance: -3, scheduleVariance: 4, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: scope churn and a rushed cutover caused a slip. Recovered with tighter change control.' },
+      { name: 'World Wide Importers D365 CE', client: 'World Wide Importers', industry: 'Logistics', serviceLine: 'Dynamics 365', budget: '$980K', duration: '11 months', outcome: 'green', finalHealth: 'green', csat: 8.3, marginVariance: 0, scheduleVariance: 0, relevance: 'Medium', keyTakeaway: 'Clean D365 CE delivery when sponsorship and scope were stable from the start.' },
+    ],
+    appliedLessons: [
+      { title: 'M&A risk not captured in RAID log leads to project cancellation', category: 'failure_mode', sourceProject: 'Contoso Sports D365 CE', applicability: 95, description: 'An acquired client cancelled the prior program mid-project, causing a $340K loss because M&A risk was never logged.', actionable: 'Add M&A and sponsor-volatility as standing Day-1 RAID risks. Phase the contract to cap exposure.' },
+      { title: 'Tight change control prevents scope-churn slips', category: 'risk_mitigation', sourceProject: 'Tailspin Toys', applicability: 85, description: 'Formal change control recovered Tailspin from scope-churn-driven slippage.', actionable: 'Establish a formal change-control gate; lock marketing module scope in design.' },
+      { title: 'Early executive sponsor validation stabilizes volatile accounts', category: 'success_pattern', sourceProject: "Munson's Pickles", applicability: 80, description: 'Confirmed, visible C-level sponsorship correlates strongly with delivery stability.', actionable: 'Validate executive sponsorship and steering commitment before contract execution.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'David Chen', role: 'Project Manager', relevantExperience: 'D365 setup discipline · CE implementations', csatHistory: 8.5, capacityBand: 'committed', availability: 'Available August', trackRecord: 'Highest D365 maturity score in portfolio' },
+      { pmName: 'Sarah Mitchell', role: 'Engagement Director', relevantExperience: 'Account-volatility management · recovery experience', csatHistory: 9.2, capacityBand: 'committed', availability: 'Steering support', trackRecord: 'Recovered multiple at-risk engagements' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'D365 CE QA · change-control governance', csatHistory: 9.1, capacityBand: 'available', availability: 'Steering support', trackRecord: 'Prevented escalation on 3 engagements' },
+    ],
+    trajectory: {
+      d30: 'amber', d60: 'amber', d90: 'amber', end: 'amber',
+      predictedEwAtStart: 55, predictedEwAt90: 52, confidence: 'Low',
+      rationale: 'Predicted to track Amber throughout due to account-volatility exposure. Stays out of Red only if M&A risk is actively managed and the contract is phased.',
+    },
+    keyMilestones: [
+      { milestone: 'Executive sponsorship validation', timing: 'Pre-execution', risk: 'high', signal: 'Gate before contract execution', preventive: 'Validate sponsorship and steering commitment' },
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'medium', signal: 'Account stability signal', preventive: 'M&A risk standing in RAID log' },
+      { milestone: 'Phase 1 D365 Sales go-live', timing: 'Month 4', risk: 'medium', signal: 'First delivery gate', preventive: 'Phased contract caps exposure' },
+      { milestone: 'Marketing module + Power Platform CoE', timing: 'Month 6-7', risk: 'high', signal: 'Loosely-scoped workstream', preventive: 'Lock scope in design; change-control gate' },
+    ],
+    failureModes: [
+      { mode: 'Account M&A / acquisition cancels the program', historicalFrequency: '1 of 4 (this exact account, prior program)', earlyWarnings: ['Ownership-change rumors', 'Sponsor turnover', 'Budget freeze signals'], preventiveActions: ['M&A risk as standing Day-1 RAID', 'Phase the contract to cap exposure'], costIfMaterializes: '~$340K loss (prior Contoso Sports pattern)' },
+      { mode: 'Marketing module scope churn', historicalFrequency: '2 of 4 D365 CE engagements', earlyWarnings: ['Requirements churn in design', 'No locked scope baseline'], preventiveActions: ['Lock scope in design phase', 'Formal change-control gate'], costIfMaterializes: '~$100K margin impact' },
+      { mode: 'Executive sponsorship not validated', historicalFrequency: '2 of 4 volatile accounts', earlyWarnings: ['No named sponsor at steering', 'Decisions stalling'], preventiveActions: ['Validate sponsorship pre-execution', 'Monthly steering with named sponsor'], costIfMaterializes: 'Stalled decisions, schedule drift' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 3, overallSuccessRate: 65, avgFinalCsat: 7.2, avgMarginVariance: -8.0, recentTrendDirection: 'declining',
+    },
+  },
+
+  // ─── Wingtip Toys (Cloud Native Modernization) ───────────────────────────
+  'Wingtip Toys': {
+    compositeScore: 6.2,
+    successProbability: 62,
+    confidence: 'Low',
+    executiveBrief: {
+      successTier: 'Cautious',
+      closestAnalog: 'Directly references the Wingtip Toys Cloud Native Modernization precedent (Red — undocumented mainframe dependency) and Fourth Coffee Azure migration. The Red precedent on this exact client dominates the profile.',
+      successProbability: '62% predicted success based on 4 comparable cloud-native modernizations, including the prior Wingtip Red outcome. Application-discovery rigor is the deciding factor.',
+      topRiskPattern: 'Critical: the prior Wingtip program lost 6 weeks and ~$300K to an undocumented mainframe dependency surfaced mid-build. Incomplete application discovery is the dominant, catastrophic failure mode.',
+      capacityMatch: 'Felix Wagner (Wingtip post-recovery TL, learned from the failure) brings essential context. Diego Hernandez available for the migration program management.',
+      decisionGuidance: 'Approve with strict conditions. MANDATORY 2-week pre-execute discovery sprint with independent dependency mapping. Do not rely on client-provided inventory. Phase the contract to cap exposure.',
+    },
+    capabilities: [
+      { key: 'pattern_match', label: 'Pattern Match',           weight: '25%', score: 6.0, evidence: '4 comparable modernizations including the prior Wingtip Red outcome', gaps: ['Prior Wingtip program failed on application-discovery gaps'], recommendation: 'Apply Fourth Coffee discovery-first pattern. Avoid the prior Wingtip shortcut.' },
+      { key: 'ip_leverage',   label: 'IP & Playbook Leverage',  weight: '15%', score: 7.5, evidence: 'Cloud-native modernization playbook + AKS reference architecture available', gaps: [], recommendation: 'Activate modernization playbook with mandatory discovery sprint.' },
+      { key: 'team_match',    label: 'Team Match',              weight: '15%', score: 7.0, evidence: 'Felix Wagner (Wingtip post-recovery TL) brings hard-won context', gaps: ['Best-fit migration PM has competing commitments'], recommendation: 'Felix Wagner as TL, Diego Hernandez as PM.' },
+      { key: 'capacity',      label: 'Delivery Capacity',       weight: '15%', score: 6.5, evidence: 'Cloud Adoption practice at 82% utilization through Q3', gaps: ['Senior cloud-native architects in demand'], recommendation: 'Schedule discovery sprint first, then stage architects.' },
+      { key: 'client_readiness', label: 'Client Readiness',     weight: '10%', score: 5.0, evidence: 'Prior failed program with this client; application inventory unproven', gaps: ['Application dependency map not validated', 'Trust to rebuild after prior Red'], recommendation: 'Mandatory independent discovery; rebuild trust via transparency.' },
+      { key: 'estimation',    label: 'Estimation Accuracy',     weight: '10%', score: 6.0, evidence: '35-app modernization; refactor effort has high variance', gaps: ['Refactor tier historically under-estimated'], recommendation: 'Re-baseline after the discovery sprint.' },
+      { key: 'regulatory',    label: 'Regulatory Posture',      weight: '10%', score: 8.0, evidence: 'No special regulatory requirements', gaps: [], recommendation: 'Standard governance.' },
+    ],
+    comparables: [
+      { name: 'Wingtip Toys Cloud Native Modernization (prior)', client: 'Wingtip Toys', industry: 'Retail', serviceLine: 'Cloud Adoption', budget: '$1.9M', duration: '12 months', outcome: 'red', finalHealth: 'red', csat: 6.0, marginVariance: -15, scheduleVariance: 12, relevance: 'High', keyTakeaway: 'CAUTIONARY: undocumented mainframe dependency triggered a 6-week architecture redesign. Application-discovery failure.' },
+      { name: "Fourth Coffee Azure DC Exit", client: 'Fourth Coffee Corporation', industry: 'Retail', serviceLine: 'Cloud Adoption', budget: '$960K', duration: '10 months', outcome: 'green', finalHealth: 'green', csat: 8.0, marginVariance: 0, scheduleVariance: 0, relevance: 'High', keyTakeaway: 'Discovery-first sequencing kept the migration Green. Independent inventory validation paid off.' },
+      { name: 'Adatum Cloud Foundation', client: 'Adatum Corporation', industry: 'Technology', serviceLine: 'Cloud Adoption', budget: '$540K', duration: '6 months', outcome: 'amber', finalHealth: 'amber', csat: 7.8, marginVariance: -3, scheduleVariance: 4, relevance: 'Medium', keyTakeaway: 'CAUTIONARY: connectivity timing slip; recovered with proactive communication.' },
+    ],
+    appliedLessons: [
+      { title: 'Incomplete application discovery leads to architecture redesign mid-project', category: 'failure_mode', sourceProject: 'Wingtip Toys', applicability: 98, description: '8 of 35 apps had undocumented dependencies; a mainframe dependency forced a 6-week redesign because inventory relied on client-provided data without independent validation.', actionable: 'MANDATORY 2-week pre-execute discovery sprint with independent app dependency mapping.' },
+      { title: 'Independent inventory validation prevents discovery surprises', category: 'risk_mitigation', sourceProject: 'Fourth Coffee', applicability: 92, description: 'Independently validating the app inventory surfaced hidden dependencies before build and kept the migration Green.', actionable: 'Never rely on client-provided inventory alone; validate dependencies independently.' },
+      { title: 'Phase the contract to cap exposure on high-risk modernizations', category: 'risk_mitigation', sourceProject: 'Adatum Cloud Foundation', applicability: 80, description: 'Phasing limits financial exposure if discovery reveals a larger problem.', actionable: 'Structure the contract in phases gated on discovery-sprint findings.' },
+    ],
+    recommendedTeam: [
+      { pmName: 'Diego Hernandez', role: 'Project Manager', relevantExperience: 'Cloud migration PM · discovery-first delivery', csatHistory: 8.5, capacityBand: 'committed', availability: 'Available October', trackRecord: '2 of 2 cloud migrations Green' },
+      { pmName: 'Felix Wagner', role: 'Technical Lead', relevantExperience: 'Wingtip post-recovery TL · learned from the failure · architecture redesign veteran', csatHistory: 7.8, capacityBand: 'available', availability: 'Available October', trackRecord: 'Led the Wingtip architectural redesign' },
+      { pmName: 'Elena Marchetti', role: 'QA Specialist', relevantExperience: 'Migration failure-mode expert · discovery-sprint QA', csatHistory: 9.1, capacityBand: 'available', availability: 'Discovery sprint support', trackRecord: 'Prevented escalation on 3 migrations' },
+    ],
+    trajectory: {
+      d30: 'amber', d60: 'amber', d90: 'green', end: 'green',
+      predictedEwAtStart: 55, predictedEwAt90: 45, confidence: 'Low',
+      rationale: 'Day 30-60 amber expected as the discovery sprint surfaces dependencies. Recovers to Green only if discovery is rigorous; the prior Wingtip Red trajectory is the alternative if discovery is cut short.',
+    },
+    keyMilestones: [
+      { milestone: 'Pre-execute Discovery Sprint', timing: 'Pre-kickoff (2 wk)', risk: 'high', signal: 'Highest-risk milestone — outcome determines the program', preventive: 'Mandatory independent app inventory and dependency mapping' },
+      { milestone: 'Day 30 Setup Maturity Checkpoint', timing: 'Day 30', risk: 'high', signal: 'Discovery findings reflected in RAID', preventive: 'Review discovery findings; re-baseline scope' },
+      { milestone: 'Containerization wave 1', timing: 'Month 3', risk: 'medium', signal: 'First AKS migration batch', preventive: 'Phased approach with hypercare buffer' },
+      { milestone: 'Refactor tier execution', timing: 'Month 6-9', risk: 'high', signal: 'Highest-variance workstream', preventive: 'Re-baseline refactor estimate post-discovery' },
+    ],
+    failureModes: [
+      { mode: 'Incomplete application discovery (prior Wingtip pattern)', historicalFrequency: '1 of 4 — but 100% catastrophic when it materializes (this client)', earlyWarnings: ['Client unable to produce dependency map by week 2', 'Single point-of-contact for inventory', 'Day 30 maturity below 65'], preventiveActions: ['MANDATORY 2-week discovery sprint', 'Independent dependency mapping by Felix Wagner', 'No reliance on client inventory alone'], costIfMaterializes: '~$300K and 6 weeks (prior Wingtip pattern)' },
+      { mode: 'Refactor effort underestimated', historicalFrequency: '2 of 4 modernizations', earlyWarnings: ['Refactor spikes overrun', 'Legacy code more entangled than scoped'], preventiveActions: ['Re-baseline refactor estimate post-discovery', 'Phase the contract'], costIfMaterializes: '~$200K margin impact' },
+      { mode: 'Eroded client trust after prior Red', historicalFrequency: '1 of 1 (this client)', earlyWarnings: ['Skepticism in steering', 'Heightened scrutiny of estimates'], preventiveActions: ['Radical transparency on discovery findings', 'Early visible wins'], costIfMaterializes: 'Relationship risk; slower decisions' },
+    ],
+    portfolioContext: {
+      similarActive: 1, similarCompleted: 3, overallSuccessRate: 62, avgFinalCsat: 7.0, avgMarginVariance: -6.0, recentTrendDirection: 'declining',
+    },
+  },
+
 };

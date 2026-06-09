@@ -21,6 +21,7 @@ export default function Handoffs() {
   return (
     <div>
       <Header
+        eyebrow="Delivery · Sales-to-Delivery Handoff"
         title="Handoff Center"
         subtitle="Sales-to-delivery transition management"
         actions={
@@ -31,23 +32,23 @@ export default function Handoffs() {
       />
 
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="card p-4 border-l-4 border-l-ms-blue">
-          <div className="text-sm text-gray-500">Total Handoffs</div>
-          <div className="text-2xl font-bold mt-1">{handoffs.length}</div>
+        <div className="card p-4 border-l-4 border-l-flux">
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Total Handoffs</div>
+          <div className="kpi-number text-ink mt-1">{handoffs.length}</div>
         </div>
         <div className="card p-4 border-l-4 border-l-ms-green">
-          <div className="text-sm text-gray-500">Completed</div>
-          <div className="text-2xl font-bold mt-1">{handoffs.filter(h => h.status === 'completed').length}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Completed</div>
+          <div className="kpi-number text-ink mt-1">{handoffs.filter(h => h.status === 'completed').length}</div>
         </div>
         <div className="card p-4 border-l-4 border-l-amber-500">
-          <div className="text-sm text-gray-500">Pending</div>
-          <div className="text-2xl font-bold mt-1">{handoffs.filter(h => h.status !== 'completed').length}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Pending</div>
+          <div className="kpi-number text-ink mt-1">{handoffs.filter(h => h.status !== 'completed').length}</div>
         </div>
       </div>
 
       <div className="card">
         {loading ? (
-          <div className="p-8 text-center text-gray-400">Loading...</div>
+          <div className="p-8 text-center text-ink-faint">Loading...</div>
         ) : filtered.length === 0 ? (
           <EmptyState icon={GitBranch} title="No handoffs yet" description="Initiate a handoff from an active contract to transfer knowledge to the delivery team." action={<Link to="/handoffs/new" className="btn-primary">New Handoff</Link>} />
         ) : (
@@ -60,8 +61,8 @@ export default function Handoffs() {
                     : <Clock className="w-5 h-5 text-amber-600" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-medium text-gray-900 truncate">{h.customer_vision?.slice(0, 80)}...</div>
-                  <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
+                  <div className="font-medium text-ink truncate">{h.customer_vision?.slice(0, 80)}...</div>
+                  <div className="flex items-center gap-4 mt-1 text-xs text-ink-soft">
                     <span>{h.pre_sales_owner} → {h.delivery_owner || 'TBD'}</span>
                     <span>·</span>
                     <span>{h.contacts.length} contacts</span>
@@ -71,7 +72,7 @@ export default function Handoffs() {
                     <span>{h.risks.length} risks · {h.pitfalls.length} pitfalls</span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400" />
+                <ArrowRight className="w-4 h-4 text-ink-faint" />
               </Link>
             ))}
           </div>

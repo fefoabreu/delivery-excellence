@@ -51,9 +51,6 @@ const TIER_CFG: Record<number, { label: string; bg: string; text: string; ring: 
   3: { label: 'Tier 3 — Executive Committee', bg: 'bg-purple-700', text: 'text-white', ring: 'ring-purple-200',  TierIcon: Shield },
 };
 
-const SCORE_COLOR = (s: number) =>
-  s >= 8.5 ? 'bg-emerald-500' : s >= 7.0 ? 'bg-blue-500' : s >= 5.5 ? 'bg-amber-500' : 'bg-red-500';
-
 const ACTION_CFG: Record<string, { label: string; bg: string }> = {
   approved:               { label: 'Approved',      bg: 'bg-green-100 text-green-700' },
   conditionally_approved: { label: 'Conditional',   bg: 'bg-amber-100 text-amber-700' },
@@ -185,7 +182,7 @@ function ScoreBar({ label, description, score, glowing, onClick }: {
   glowing?: boolean; onClick?: () => void;
 }) {
   const pct = (score / 10) * 100;
-  const colorCls = SCORE_COLOR(score);
+  const hex = score >= 8.5 ? '#1c7c54' : score >= 7.0 ? '#2540d9' : score >= 5.5 ? '#be7415' : '#b23a3a';
   return (
     <div
       className={clsx('group', glowing && 'cursor-pointer')}
@@ -193,25 +190,24 @@ function ScoreBar({ label, description, score, glowing, onClick }: {
       title={glowing ? 'Click to review SOW quality analysis' : description}
     >
       <div className={clsx(
-        'flex items-center gap-3 py-1.5 rounded transition-colors',
-        glowing && 'hover:bg-blue-50/60 px-1 -mx-1',
+        'flex items-center gap-3 py-1.5 rounded-lg transition-colors',
+        glowing && 'hover:bg-white/40 px-1 -mx-1',
       )}>
         <div className="w-36 flex items-center gap-1.5 flex-shrink-0">
-          <span className={clsx('text-xs font-medium truncate', glowing ? 'text-blue-700' : 'text-gray-600')}>{label}</span>
+          <span className={clsx('text-xs font-medium truncate', glowing ? 'text-flux' : 'text-ink-soft')}>{label}</span>
           {glowing && (
             <span className="relative flex h-2 w-2 flex-shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-              <span className={clsx('relative inline-flex rounded-full h-2 w-2 bg-blue-500 animate-sow-glow')} />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-glow opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-signal" />
             </span>
           )}
         </div>
-        <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-          <div className={clsx('h-full rounded-full transition-all', colorCls)} style={{ width: `${pct}%` }} />
+        <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(20,22,28,0.1)' }}>
+          <div className="h-full rounded-full transition-all"
+            style={{ width: `${pct}%`, background: hex }} />
         </div>
         <div className="w-10 text-right">
-          <span className={clsx('text-xs font-bold', score >= 8.5 ? 'text-emerald-700' : score >= 7.0 ? 'text-blue-700' : score >= 5.5 ? 'text-amber-700' : 'text-red-700')}>
-            {score.toFixed(1)}
-          </span>
+          <span className="font-sans text-xs font-bold tabular-nums" style={{ color: hex }}>{score.toFixed(1)}</span>
         </div>
       </div>
     </div>
@@ -242,8 +238,22 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
   const TierIcon = tierCfg.TierIcon;
 
   const score = p.deal_score;
-  const scoreColor = score >= 80 ? 'text-emerald-700' : score >= 65 ? 'text-blue-700' : score >= 50 ? 'text-amber-700' : 'text-red-700';
-  const scoreBg = score >= 80 ? 'bg-emerald-50 border-emerald-200' : score >= 65 ? 'bg-blue-50 border-blue-200' : score >= 50 ? 'bg-amber-50 border-amber-200' : 'bg-red-50 border-red-200';
+  const scoreHex = score >= 80 ? '#1c7c54' : score >= 65 ? '#2540d9' : score >= 50 ? '#be7415' : '#b23a3a';
+  // Solid tint frosted by the liquid-glass panel — uniform color from the score
+  // Original "happy camper" light pastels (-50 shades), frosted by the glass
+  const scoreTint = score >= 80 ? 'rgba(236,253,245,0.72)'   // emerald-50
+    : score >= 65 ? 'rgba(239,246,255,0.72)'                 // blue-50
+    : score >= 50 ? 'rgba(255,251,235,0.72)'                 // amber-50
+    : 'rgba(254,242,242,0.72)';                              // red-50
+
+  // AI recommendation accent + matching pastel (mirrors the original status palette)
+  const aiHex = p.ai_recommendation_status === 'APPROVE' ? '#1c7c54'
+    : p.ai_recommendation_status === 'APPROVE_WITH_CONDITIONS' ? '#be7415'
+    : p.ai_recommendation_status === 'FLAG_REJECTION' ? '#b23a3a' : '#c2410c';
+  const aiTint = p.ai_recommendation_status === 'APPROVE' ? 'rgba(240,253,244,0.72)'          // green-50
+    : p.ai_recommendation_status === 'APPROVE_WITH_CONDITIONS' ? 'rgba(255,251,235,0.72)'      // amber-50
+    : p.ai_recommendation_status === 'FLAG_REJECTION' ? 'rgba(254,242,242,0.72)'               // red-50
+    : 'rgba(255,247,237,0.72)';                                                                // orange-50 (review)
 
   const handleAction = async (action: string) => {
     if (!actionBy.trim()) return;
@@ -307,71 +317,79 @@ function DealTile({ deal, onActionTaken }: { deal: Deal; onActionTaken: (id: str
           {p.internal_investment_pct > 0 && <span className="text-emerald-600 font-medium">{fmt(deal.total_value * p.internal_investment_pct / 100)} ({p.internal_investment_pct}% ECIF)</span>}
         </div>
 
-        {/* ── Deal Score + Dimensions ── */}
-        <div className={clsx('rounded-xl border p-4 mb-3', scoreBg)}>
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold text-gray-600 uppercase tracking-wide">Deal Health Score</span>
-            <div className="flex items-center gap-2">
-              <div className="relative w-12 h-12">
-                <svg className="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15.5" fill="none" stroke="#e5e7eb" strokeWidth="3" />
-                  <circle cx="18" cy="18" r="15.5" fill="none"
-                    stroke={score >= 80 ? '#10b981' : score >= 65 ? '#3b82f6' : score >= 50 ? '#f59e0b' : '#ef4444'}
-                    strokeWidth="3" strokeDasharray={`${score} 100`} strokeLinecap="round" />
+        {/* ── Deal Health Score — Liquid Glass ── */}
+        <div className="relative mb-3 overflow-hidden rounded-[1.5rem]">
+          <div className="glass-substrate rounded-[1.5rem]" style={{ background: scoreTint }} />
+          <div className="glass glass-deep glass-interactive p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <span className="signal-dot !h-1.5 !w-1.5" />
+                <span className="text-xs font-bold uppercase tracking-wide text-ink-soft">Deal Health Score</span>
+              </div>
+              <div className="relative h-14 w-14">
+                <svg className="h-14 w-14 -rotate-90" viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(20,22,28,0.12)" strokeWidth="2.6" />
+                  <circle cx="18" cy="18" r="15.5" fill="none" stroke={scoreHex} strokeWidth="2.6"
+                    strokeDasharray={`${score} 100`} strokeLinecap="round" />
                 </svg>
-                <span className={clsx('absolute inset-0 flex items-center justify-center text-sm font-bold', scoreColor)}>{Math.round(score)}</span>
+                <span className="absolute inset-0 flex items-center justify-center font-sans text-lg font-bold tabular-nums" style={{ color: scoreHex }}>{Math.round(score)}</span>
               </div>
             </div>
-          </div>
-          <div className="space-y-0.5">
-            {deal.score_dimensions.map(([key, label]) => (
-              p.score_breakdown[key] !== undefined && (
-                <ScoreBar
-                  key={key}
-                  label={label}
-                  description={''}
-                  score={p.score_breakdown[key]}
-                  glowing={(key === 'sow_quality' && !!sowData) || (key === 'risk_profile' && !!riskData) || (key === 'delivery_success' && !!deliveryData)}
-                  onClick={key === 'sow_quality' && sowData ? () => setSowOpen(true) : key === 'risk_profile' && riskData ? () => setRiskOpen(true) : key === 'delivery_success' && deliveryData ? () => setDeliveryOpen(true) : undefined}
-                />
-              )
-            ))}
-            <div className="flex items-center gap-3 py-1.5 border-t border-gray-200 mt-1 pt-2">
-              <div className="w-36 text-xs text-gray-600 font-medium flex-shrink-0">Internal Investment</div>
-              <div className="flex-1 text-xs font-medium">
-                {p.internal_investment_pct > 0
-                  ? <span className="text-emerald-700">{fmt(deal.total_value * p.internal_investment_pct / 100)} ({p.internal_investment_pct}% of contract)</span>
-                  : <span className="text-gray-400">No ECIF committed</span>
-                }
+            <div className="space-y-0.5">
+              {deal.score_dimensions.map(([key, label]) => (
+                p.score_breakdown[key] !== undefined && (
+                  <ScoreBar
+                    key={key}
+                    label={label}
+                    description={''}
+                    score={p.score_breakdown[key]}
+                    glowing={(key === 'sow_quality' && !!sowData) || (key === 'risk_profile' && !!riskData) || (key === 'delivery_success' && !!deliveryData)}
+                    onClick={key === 'sow_quality' && sowData ? () => setSowOpen(true) : key === 'risk_profile' && riskData ? () => setRiskOpen(true) : key === 'delivery_success' && deliveryData ? () => setDeliveryOpen(true) : undefined}
+                  />
+                )
+              ))}
+              <div className="flex items-center gap-3 py-1.5 border-t border-white/40 mt-1 pt-2">
+                <div className="w-36 text-xs text-ink-soft font-semibold flex-shrink-0">Internal Investment</div>
+                <div className="flex-1 text-xs font-medium">
+                  {p.internal_investment_pct > 0
+                    ? <span className="text-[#15633f]">{fmt(deal.total_value * p.internal_investment_pct / 100)} ({p.internal_investment_pct}% of contract)</span>
+                    : <span className="text-ink-faint">No ECIF committed</span>
+                  }
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── AI Recommendation ── */}
-        <div className={clsx('rounded-xl border p-4 mb-3', aiCfg.bg, aiCfg.border)}>
-          <div className="flex items-center justify-between mb-2">
-            <div className={clsx('flex items-center gap-2 font-bold text-sm', aiCfg.text)}>
-              <AICfgIcon className="w-4 h-4" />
-              {aiCfg.label}
+        {/* ── AI Recommendation — Liquid Glass ── */}
+        <div className="relative mb-3 overflow-hidden rounded-[1.5rem]">
+          <div className="glass-substrate rounded-[1.5rem]" style={{ background: aiTint }} />
+          <div className="glass p-4">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2 font-semibold text-sm" style={{ color: aiHex }}>
+                <span className="grid h-6 w-6 place-items-center rounded-lg" style={{ background: `${aiHex}1f` }}>
+                  <AICfgIcon className="w-3.5 h-3.5" />
+                </span>
+                {aiCfg.label}
+              </div>
+              <button onClick={handleRegenerate} disabled={regenerating}
+                className="flex items-center gap-1 font-mono text-[10px] font-semibold uppercase tracking-wide text-ink-faint hover:text-ink transition-colors">
+                <Bot className={clsx('w-3.5 h-3.5', regenerating && 'animate-spin')} />
+                {regenerating ? 'Analysing…' : 'Re-run AI'}
+              </button>
             </div>
-            <button onClick={handleRegenerate} disabled={regenerating}
-              className="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors">
-              <Bot className={clsx('w-3.5 h-3.5', regenerating && 'animate-spin')} />
-              {regenerating ? 'Analysing...' : 'Re-run AI'}
-            </button>
+            <p className="text-xs text-ink-soft leading-relaxed mb-2">{p.ai_recommendation_text}</p>
+            {p.ai_conditions.length > 0 && (
+              <div className="mt-2 space-y-1">
+                <div className="font-mono text-[10px] font-semibold text-ink-faint uppercase tracking-wide">Conditions / Concerns</div>
+                {p.ai_conditions.map((c, i) => (
+                  <div key={i} className="flex items-start gap-1.5 text-xs text-ink-soft">
+                    <span className="mt-0.5 flex-shrink-0" style={{ color: aiHex }}>▸</span> {c}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-          <p className="text-xs text-gray-700 leading-relaxed mb-2">{p.ai_recommendation_text}</p>
-          {p.ai_conditions.length > 0 && (
-            <div className="mt-2 space-y-1">
-              <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wide">Conditions / Concerns</div>
-              {p.ai_conditions.map((c, i) => (
-                <div key={i} className="flex items-start gap-1.5 text-xs text-gray-700">
-                  <span className="text-amber-500 mt-0.5 flex-shrink-0">▸</span> {c}
-                </div>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* ── Expand: scope + service lines ── */}
@@ -544,60 +562,45 @@ export default function DealApprovals() {
       <div className="mb-6">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="page-title flex items-center gap-2">
-              <Bot className="w-7 h-7 text-ms-blue" />
-              AI-Driven Deal Approvals
-            </h1>
-            <p className="text-sm text-gray-500 mt-1 max-w-2xl">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+              <span className="eyebrow">Agentic CLM · Deal Governance</span>
+              <span className="live-chip ml-1"><span className="signal-dot !h-1.5 !w-1.5" />Agent live</span>
+            </div>
+            <h1 className="page-title">AI-Driven Deal Approvals</h1>
+            <p className="text-sm text-ink-faint mt-1.5 max-w-2xl">
               Policy-led, automated, and agent-assisted approvals — shifting from exception-driven workflows to scalable, AI-validated deal governance that accelerates deal velocity while maintaining compliance.
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => navigate('/evals')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 text-xs font-semibold hover:bg-purple-100 transition-colors"
-            >
-              <Target className="w-3.5 h-3.5" />
-              AI Evals
-              <ArrowRight className="w-3 h-3" />
+            <button onClick={() => navigate('/evals')} className="btn-secondary !text-xs">
+              <Target className="w-3.5 h-3.5" /> AI Evals <ArrowRight className="w-3 h-3" />
             </button>
-            <button
-              onClick={() => navigate('/aclm')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-ms-blue/30 bg-ms-blue/5 text-ms-blue text-xs font-semibold hover:bg-ms-blue/10 transition-colors"
-            >
-              <Bot className="w-3.5 h-3.5" />
-              A-CLM Framework
-              <ArrowRight className="w-3 h-3" />
+            <button onClick={() => navigate('/aclm')} className="btn-secondary !text-xs">
+              <Bot className="w-3.5 h-3.5" /> A-CLM Framework <ArrowRight className="w-3 h-3" />
             </button>
             <button onClick={() => { setLoading(true); dealApprovalsApi.list().then(r => setDeals(r.data)).finally(() => setLoading(false)); }}
-              className="btn-ghost flex items-center gap-1 text-gray-400">
+              className="btn-ghost text-ink-faint">
               <RefreshCw className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Portfolio summary */}
-        <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-3">
-          <div className="card p-4 border-l-4 border-l-ms-blue">
-            <div className="text-sm text-gray-500">Pending Pipeline</div>
-            <div className="text-2xl font-bold mt-0.5">{fmt(totalValue)}</div>
-            <div className="text-xs text-gray-400">{deals.length} deals awaiting decision</div>
-          </div>
-          <div className="card p-4 border-l-4 border-l-emerald-500">
-            <div className="text-sm text-gray-500">AI Avg Deal Score</div>
-            <div className="text-2xl font-bold mt-0.5">{avgScore.toFixed(1)}<span className="text-sm font-normal text-gray-400">/100</span></div>
-            <div className="text-xs text-gray-400">{approveCount} of {deals.length} AI-recommended Approve</div>
-          </div>
-          <div className="card p-4 border-l-4 border-l-blue-500">
-            <div className="text-sm text-gray-500">Azure ACR Pipeline</div>
-            <div className="text-2xl font-bold mt-0.5">{fmt(totalACR)}<span className="text-sm font-normal text-gray-400">/mo</span></div>
-            <div className="text-xs text-gray-400">Monthly consumption if all approved</div>
-          </div>
-          <div className="card p-4 border-l-4 border-l-amber-500">
-            <div className="text-sm text-gray-500">Decisions Taken</div>
-            <div className="text-2xl font-bold mt-0.5">{deals.filter(d => d.profile.action_taken).length}<span className="text-sm font-normal text-gray-400"> / {deals.length}</span></div>
-            <div className="text-xs text-gray-400">{deals.filter(d => !d.profile.action_taken).length} awaiting action</div>
-          </div>
+        <div className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { rule: 'linear-gradient(180deg,#2540d9,#10b7c4)', label: 'Pending Pipeline', value: fmt(totalValue), sub: `${deals.length} deals awaiting decision` },
+            { rule: 'linear-gradient(180deg,#1c7c54,#3fae7e)', label: 'AI Avg Deal Score', value: <>{avgScore.toFixed(1)}<span className="text-sm font-sans font-normal text-ink-faint">/100</span></>, sub: `${approveCount} of ${deals.length} AI-recommended Approve` },
+            { rule: 'linear-gradient(180deg,#2540d9,#5b45c9)', label: 'Azure ACR Pipeline', value: <>{fmt(totalACR)}<span className="text-sm font-sans font-normal text-ink-faint">/mo</span></>, sub: 'Monthly consumption if all approved' },
+            { rule: 'linear-gradient(180deg,#be7415,#e0a44e)', label: 'Decisions Taken', value: <>{deals.filter(d => d.profile.action_taken).length}<span className="text-sm font-sans font-normal text-ink-faint"> / {deals.length}</span></>, sub: `${deals.filter(d => !d.profile.action_taken).length} awaiting action` },
+          ].map((k, i) => (
+            <div key={i} className="card is-interactive relative overflow-hidden p-4">
+              <span className="absolute left-0 top-0 h-full w-[3px]" style={{ background: k.rule }} />
+              <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">{k.label}</div>
+              <div className="kpi-number mt-1.5 text-[1.7rem] leading-none text-ink">{k.value}</div>
+              <div className="text-xs text-ink-faint mt-1.5">{k.sub}</div>
+            </div>
+          ))}
         </div>
       </div>
 

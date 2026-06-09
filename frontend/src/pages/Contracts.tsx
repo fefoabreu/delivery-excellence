@@ -33,6 +33,7 @@ export default function Contracts() {
   return (
     <div>
       <Header
+        eyebrow="Pre-Sales · Contracts & SOWs"
         title="Contracts & SOWs"
         subtitle="Statement of Work management and executive approvals"
         actions={
@@ -44,20 +45,20 @@ export default function Contracts() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <div className="card p-4 border-l-4 border-l-ms-blue">
-          <div className="text-sm text-gray-500">Total Contracts</div>
-          <div className="text-2xl font-bold mt-1">{contracts.length}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Total Contracts</div>
+          <div className="kpi-number text-2xl text-ink mt-1">{contracts.length}</div>
         </div>
         <div className="card p-4 border-l-4 border-l-ms-green">
-          <div className="text-sm text-gray-500">Contract Value</div>
-          <div className="text-2xl font-bold mt-1">{fmt(totalValue)}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Contract Value</div>
+          <div className="kpi-number text-2xl text-ink mt-1">{fmt(totalValue)}</div>
         </div>
         <div className="card p-4 border-l-4 border-l-amber-500">
-          <div className="text-sm text-gray-500">Pending Approval</div>
-          <div className="text-2xl font-bold mt-1">{pending.length}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Pending Approval</div>
+          <div className="kpi-number text-2xl text-ink mt-1">{pending.length}</div>
         </div>
         <div className="card p-4 border-l-4 border-l-purple-500">
-          <div className="text-sm text-gray-500">Active</div>
-          <div className="text-2xl font-bold mt-1">{contracts.filter(c => c.status === 'active').length}</div>
+          <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-faint">Active</div>
+          <div className="kpi-number text-2xl text-ink mt-1">{contracts.filter(c => c.status === 'active').length}</div>
         </div>
       </div>
 
@@ -76,7 +77,7 @@ export default function Contracts() {
           <div className="flex gap-2">
             {['', 'draft', 'pending_approval', 'approved', 'active', 'completed'].map(s => (
               <button key={s} onClick={() => setFilter(s)}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filter === s ? 'bg-ms-blue text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filter === s ? 'bg-ms-blue text-white' : 'bg-gray-100 text-ink-soft hover:bg-gray-200'}`}>
                 {s === '' ? 'All' : s.replace('_', ' ')}
               </button>
             ))}
@@ -84,7 +85,7 @@ export default function Contracts() {
         </div>
 
         {loading ? (
-          <div className="p-8 text-center text-gray-400">Loading...</div>
+          <div className="p-8 text-center text-ink-faint">Loading...</div>
         ) : filtered.length === 0 ? (
           <EmptyState icon={FileText} title="No contracts found" description="Create a contract from an approved opportunity." action={<Link to="/contracts/new" className="btn-primary">New Contract</Link>} />
         ) : (
@@ -98,12 +99,12 @@ export default function Contracts() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-gray-900 truncate">{c.name}</span>
+                      <span className="font-medium text-ink truncate">{c.name}</span>
                       <span className={`${scfg.className} text-xs font-medium px-2 py-0.5 rounded-full`}>{scfg.label}</span>
                       {c.has_handoff && <span className="badge-blue">Handoff</span>}
                       {c.has_delivery && <span className="badge-green">Delivery</span>}
                     </div>
-                    <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
+                    <div className="flex items-center gap-3 mt-1 text-xs text-ink-faint">
                       <span>{c.contract_number}</span>
                       <span>·</span>
                       <span>{c.client_name}</span>
@@ -111,8 +112,8 @@ export default function Contracts() {
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="font-semibold text-gray-900">{fmt(c.total_value)}</div>
-                    <div className="text-xs text-gray-400">{c.service_lines.length} service lines</div>
+                    <div className="font-semibold text-ink">{fmt(c.total_value)}</div>
+                    <div className="text-xs text-ink-faint">{c.service_lines.length} service lines</div>
                   </div>
                 </Link>
               );

@@ -5,6 +5,7 @@ import { deliveryApi } from '../api/client';
 import { loadPortfolio, rescueHref, oversightHref, fmtMoney, type UnifiedProject } from '../api/portfolioData';
 import Header from '../components/layout/Header';
 import HealthBadge from '../components/shared/HealthBadge';
+import GlassPanel from '../components/shared/GlassPanel';
 import type { Milestone, RAIDItem, StatusUpdate, HealthStatus } from '../types';
 
 const DIMS: Array<[string, string]> = [
@@ -117,10 +118,10 @@ export default function DeliveryDetail() {
       {tab === 'overview' && (
         <div className="space-y-4">
           {p.hasQA && (
-            <div className="card p-5 border-l-4 border-l-ms-blue">
+            <GlassPanel tint="blue" deep className="p-5">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="section-title flex items-center gap-2"><Gauge className="w-4 h-4 text-ms-blue" /> AI Quality Assurance Intelligence</h3>
-                <Link to="/quality-assurance" className="text-xs text-ms-blue hover:underline">Portfolio Monitor →</Link>
+                <h3 className="section-title flex items-center gap-2"><Gauge className="w-4 h-4 text-flux" /> AI Quality Assurance Intelligence</h3>
+                <Link to="/quality-assurance" className="text-xs text-flux hover:underline">Portfolio Monitor →</Link>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {/* EW score + predictions */}
@@ -128,21 +129,21 @@ export default function DeliveryDetail() {
                   <div className="flex items-center gap-4">
                     <div className="relative w-16 h-16 flex-shrink-0">
                       <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="#e5e7eb" strokeWidth="3" />
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(20,22,28,0.12)" strokeWidth="3" />
                         <circle cx="18" cy="18" r="15.5" fill="none" stroke={ewHex(p.ew || 0)} strokeWidth="3" strokeDasharray={`${p.ew} 100`} strokeLinecap="round" />
                       </svg>
-                      <span className={`absolute inset-0 flex items-center justify-center text-lg font-bold ${ewColor(p.ew || 0)}`}>{p.ew}</span>
+                      <span className={`absolute inset-0 flex items-center justify-center text-lg font-bold tabular-nums ${ewColor(p.ew || 0)}`}>{p.ew}</span>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wide">Early Warning</div>
-                      <div className="flex items-center gap-1 text-sm font-medium text-gray-700"><TrendIcon t={p.trend} /> {p.trend || 'stable'} {p.trend_delta != null && <span className="text-gray-400">({p.trend_delta > 0 ? '+' : ''}{p.trend_delta})</span>}</div>
-                      <div className="text-xs text-gray-400 capitalize">Assessment: {p.ai_assessment}</div>
+                      <div className="text-[11px] font-bold text-ink-soft uppercase tracking-wide">Early Warning</div>
+                      <div className="flex items-center gap-1 text-sm font-medium text-ink-soft"><TrendIcon t={p.trend} /> {p.trend || 'stable'} {p.trend_delta != null && <span className="text-ink-faint">({p.trend_delta > 0 ? '+' : ''}{p.trend_delta})</span>}</div>
+                      <div className="text-xs text-ink-faint capitalize">Assessment: {p.ai_assessment}</div>
                     </div>
                   </div>
                   <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                     {(['prediction_30d', 'prediction_60d', 'prediction_90d'] as const).map((k, i) => (
-                      <div key={k} className="rounded-lg bg-gray-50 py-1.5">
-                        <div className="text-[10px] text-gray-400">{[30, 60, 90][i]}d</div>
+                      <div key={k} className="rounded-lg bg-white/45 py-1.5">
+                        <div className="text-[10px] text-ink-faint">{[30, 60, 90][i]}d</div>
                         <div className={`text-xs font-bold ${predCls(p[k])}`}>{(p[k] || '—').toUpperCase()}</div>
                       </div>
                     ))}
@@ -150,19 +151,19 @@ export default function DeliveryDetail() {
                 </div>
                 {/* component breakdown */}
                 <div className="lg:col-span-2">
-                  <div className="text-xs text-gray-500 uppercase tracking-wide mb-2">Early-Warning Signal Components</div>
+                  <div className="text-[11px] font-bold text-ink-soft uppercase tracking-wide mb-2">Early-Warning Signal Components</div>
                   <div className="grid grid-cols-2 gap-x-5 gap-y-1.5">
                     {Object.entries(p.components || {}).map(([k, v]) => (
                       <div key={k} className="flex items-center gap-2">
-                        <span className="text-xs text-gray-600 capitalize w-32 flex-shrink-0">{k.replace(/_/g, ' ')}</span>
-                        <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden"><div className={`h-full rounded-full ${ewBg(v)}`} style={{ width: `${v}%` }} /></div>
-                        <span className={`text-xs font-bold w-7 text-right ${ewColor(v)}`}>{v}</span>
+                        <span className="text-xs text-ink-soft capitalize w-32 flex-shrink-0">{k.replace(/_/g, ' ')}</span>
+                        <div className="flex-1 h-1.5 bg-black/10 rounded-full overflow-hidden"><div className={`h-full rounded-full ${ewBg(v)}`} style={{ width: `${v}%` }} /></div>
+                        <span className={`text-xs font-bold w-7 text-right tabular-nums ${ewColor(v)}`}>{v}</span>
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
-            </div>
+            </GlassPanel>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">

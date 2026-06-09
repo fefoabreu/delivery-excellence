@@ -39,6 +39,7 @@ export default function Pipeline() {
   return (
     <div>
       <Header
+        eyebrow="Pre-Sales · Dynamics Pipeline"
         title="Sales Pipeline"
         subtitle="Microsoft Dynamics pipeline framework"
         actions={
@@ -63,11 +64,11 @@ export default function Pipeline() {
             <button
               key={s}
               onClick={() => setStage(stage === s ? '' : s)}
-              className={`flex-shrink-0 px-4 py-3 rounded-lg border text-left transition-colors min-w-[140px] ${stage === s ? 'border-ms-blue bg-blue-50' : 'border-gray-200 bg-white hover:border-gray-300'}`}
+              className={`flex-shrink-0 px-4 py-3 rounded-xl border text-left transition-all min-w-[140px] ${stage === s ? 'border-flux bg-flux-light shadow-glow' : 'border-line bg-paper hover:border-flux/40 hover:-translate-y-0.5'}`}
             >
-              <div className="text-xs text-gray-500 capitalize mb-1">{s}</div>
-              <div className="font-bold text-gray-900">{stageOpps.length}</div>
-              <div className="text-xs text-gray-500">{fmt(stageOpps.reduce((s, o) => s + o.estimated_value, 0))}</div>
+              <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-faint capitalize mb-1.5">{s}</div>
+              <div className="kpi-number text-2xl text-ink">{stageOpps.length}</div>
+              <div className="text-xs text-ink-faint mt-0.5">{fmt(stageOpps.reduce((s, o) => s + o.estimated_value, 0))}</div>
             </button>
           );
         })}

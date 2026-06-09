@@ -44,6 +44,7 @@ export default function Delivery() {
   return (
     <div>
       <Header
+        eyebrow="Delivery · Active Engagements"
         title="Delivery Projects"
         subtitle="AI-monitored engagement health · synced with Quality Assurance"
         actions={<Link to="/quality-assurance" className="btn-secondary flex items-center gap-2"><Bot className="w-4 h-4" /> QA Portfolio Monitor</Link>}
@@ -52,7 +53,7 @@ export default function Delivery() {
       <div className="flex flex-wrap items-center gap-2 mb-5">
         {(['active', 'on_hold', 'completed', 'cancelled', ''] as const).map(s => (
           <button key={s} onClick={() => setFilter(s)}
-            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filter === s ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
+            className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${filter === s ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-ink-soft hover:bg-gray-50'}`}>
             {s === '' ? 'All statuses' : s.replace('_', ' ')}
             {s && <span className="ml-1 opacity-60">{(counts as any)[s]}</span>}
           </button>
@@ -60,7 +61,7 @@ export default function Delivery() {
         <div className="ml-auto flex items-center gap-2">
           {([['all', 'All'], ['attention', 'Needs attention'], ['rescue', 'In rescue'], ['oversight', 'Oversight']] as const).map(([v, label]) => (
             <button key={v} onClick={() => setView(v)}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${view === v ? 'bg-gray-900 text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${view === v ? 'bg-ink text-white' : 'bg-white border border-gray-200 text-ink-soft hover:bg-gray-50'}`}>
               {label}
             </button>
           ))}
@@ -68,7 +69,7 @@ export default function Delivery() {
       </div>
 
       {loading ? (
-        <div className="p-8 text-center text-gray-400">Loading...</div>
+        <div className="p-8 text-center text-ink-faint">Loading...</div>
       ) : filtered.length === 0 ? (
         <EmptyState icon={Activity} title="No engagements match" description="Adjust the status or view filters." />
       ) : (
@@ -88,30 +89,30 @@ export default function Delivery() {
                   )}
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <Link to={`/delivery/${p.id}`}><h3 className="font-semibold text-gray-900 hover:text-ms-blue transition-colors">{p.name}</h3></Link>
+                      <Link to={`/delivery/${p.id}`}><h3 className="font-semibold text-ink hover:text-flux transition-colors">{p.name}</h3></Link>
                       <HealthBadge status={p.overall_health as HealthStatus} size="sm" />
                       {p.alert_level && <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${ALERT_CFG[p.alert_level].cls}`}>{ALERT_CFG[p.alert_level].label}</span>}
                       {p.isRescue && <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-600 text-white"><Siren className="w-3 h-3" /> Rescue</span>}
                       {p.isOversight && <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200"><Rocket className="w-3 h-3" /> Oversight</span>}
                     </div>
-                    <div className="text-sm text-gray-500 mt-0.5">{p.client_name} · PM: {p.project_manager || '—'} · {p.phase || '—'}</div>
+                    <div className="text-sm text-ink-faint mt-0.5">{p.client_name} · PM: {p.project_manager || '—'} · {p.phase || '—'}</div>
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <div className="text-sm font-semibold">{fmtMoney(p.budget)}</div>
-                  <div className="text-xs text-gray-400">{p.burn_rate}% burn</div>
+                  <div className="text-sm font-semibold text-ink">{fmtMoney(p.budget)}</div>
+                  <div className="text-xs text-ink-faint">{p.burn_rate}% burn</div>
                 </div>
               </div>
 
               {/* dimensions + predictions */}
               <div className="flex items-center gap-3 flex-wrap mb-3">
                 {DIMS.map(d => (
-                  <div key={d} className="flex items-center gap-1 text-xs text-gray-500">
+                  <div key={d} className="flex items-center gap-1 text-xs text-ink-soft">
                     <div className={`w-2 h-2 rounded-full ${dotCls(p.dims[d])}`} /> {d}
                   </div>
                 ))}
                 {p.hasQA && (
-                  <div className="ml-auto flex items-center gap-2 text-xs text-gray-400">
+                  <div className="ml-auto flex items-center gap-2 text-xs text-ink-faint">
                     <span>30d <span className={`font-semibold ${predCls(p.prediction_30d)}`}>{(p.prediction_30d || '—').toUpperCase()}</span></span>
                     <span>60d <span className={`font-semibold ${predCls(p.prediction_60d)}`}>{(p.prediction_60d || '—').toUpperCase()}</span></span>
                     <span>90d <span className={`font-semibold ${predCls(p.prediction_90d)}`}>{(p.prediction_90d || '—').toUpperCase()}</span></span>
@@ -124,10 +125,10 @@ export default function Delivery() {
                 <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                   <div className="h-full bg-ms-blue rounded-full transition-all" style={{ width: `${p.completion_pct}%` }} />
                 </div>
-                <span className="text-xs text-gray-500 flex-shrink-0">{p.completion_pct}%</span>
+                <span className="text-xs text-ink-soft flex-shrink-0">{p.completion_pct}%</span>
                 {p.isRescue && <Link to={rescueHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white text-[11px] font-semibold px-2.5 py-1 rounded"><Siren className="w-3 h-3" /> Rescue Command</Link>}
                 {p.isOversight && <Link to={oversightHref(p)} className="flex-shrink-0 inline-flex items-center gap-1 bg-gradient-to-r from-sky-600 to-teal-500 hover:from-sky-700 hover:to-teal-600 text-white text-[11px] font-semibold px-2.5 py-1 rounded"><Rocket className="w-3 h-3" /> Oversight Studio</Link>}
-                <Link to={`/delivery/${p.id}`} className="flex-shrink-0 text-xs text-ms-blue hover:underline">Details →</Link>
+                <Link to={`/delivery/${p.id}`} className="flex-shrink-0 text-xs text-flux hover:underline">Details →</Link>
               </div>
             </div>
           ))}

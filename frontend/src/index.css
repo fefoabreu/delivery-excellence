@@ -2,61 +2,261 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ════════════════════════════════════════════════════════════════════════
+   SIGNAL & INK — Editorial Intelligence design system
+   Delivery Excellence · Atelier OS
+   Advisory gravitas (Fraunces serif, ivory dossier) meets agentic AI
+   (ultramarine Flux, luminous cyan signal, mono telemetry).
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --canvas: #f4f1ea;
+  --paper: #fbfaf6;
+  --ink: #16171c;
+  --ink-soft: #3c3f49;
+  --ink-faint: #6c6e78;
+  --line: rgba(20, 22, 28, 0.1);
+  --line-strong: rgba(20, 22, 28, 0.16);
+  --flux: #2540d9;
+  --flux-dark: #1a2ea8;
+  --cyan: #10b7c4;
+  --grid: rgba(20, 22, 28, 0.035);
+}
+
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    @apply text-ink antialiased;
+    background-color: var(--canvas);
+    /* Faint engineering grid + warm vignette → "intelligence dossier" paper */
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      radial-gradient(120% 80% at 78% -10%, rgba(37, 64, 217, 0.05), transparent 60%),
+      radial-gradient(90% 70% at -10% 110%, rgba(16, 183, 196, 0.05), transparent 55%);
+    background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+    font-family: '"Hanken Grotesk"', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.015em;
+  }
+
+  /* Tabular, optical numerals everywhere numbers carry meaning */
+  .tnum,
+  .kpi {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum', 'ss01';
+  }
+
+  ::selection {
+    background: rgba(37, 64, 217, 0.16);
+    color: var(--ink);
+  }
+
+  /* Refined scrollbars to match the editorial chrome */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(20, 22, 28, 0.16);
+    border: 3px solid transparent;
+    border-radius: 99px;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(20, 22, 28, 0.3); background-clip: content-box; }
+}
+
+@layer components {
+  /* ── Surfaces ─────────────────────────────────────────────────────────── */
+  .card {
+    @apply rounded-xl border bg-paper;
+    border-color: var(--line);
+    box-shadow: 0 1px 2px rgba(20, 22, 28, 0.04), 0 10px 28px -16px rgba(20, 22, 28, 0.16);
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+  /* Hover lift only when the card is interactive */
+  a.card:hover,
+  button.card:hover,
+  .card.is-interactive:hover {
+    box-shadow: 0 2px 4px rgba(20, 22, 28, 0.05), 0 22px 46px -22px rgba(20, 22, 28, 0.26);
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+  }
+
+  /* A "dossier" panel — flat, hairline-ruled, for dense report sections */
+  .panel {
+    @apply rounded-xl border bg-paper/70;
+    border-color: var(--line);
+    backdrop-filter: blur(2px);
+  }
+
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg px-4 py-2 text-sm font-semibold text-white;
+    background: linear-gradient(135deg, #2540d9 0%, #2f49e0 55%, #1f37c4 100%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 8px 20px -10px rgba(37, 64, 217, 0.7);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.06); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22) inset, 0 12px 26px -10px rgba(37, 64, 217, 0.8); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border bg-paper px-4 py-2 text-sm font-semibold text-ink-soft;
+    border-color: var(--line-strong);
+    transition: all 0.18s ease;
+  }
+  .btn-secondary:hover { @apply text-ink; border-color: rgba(37, 64, 217, 0.4); background: #fff; box-shadow: 0 8px 20px -14px rgba(20, 22, 28, 0.4); }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium text-ink-faint;
+    transition: all 0.16s ease;
+  }
+  .btn-ghost:hover { @apply text-ink; background: rgba(20, 22, 28, 0.05); }
+
+  /* ── Badges — refined RAG + brand ─────────────────────────────────────── */
+  .badge-green { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; background: rgba(28, 124, 84, 0.12); color: #15633f; }
+  .badge-amber { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; background: rgba(190, 116, 21, 0.14); color: #8a5310; }
+  .badge-red   { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; background: rgba(178, 58, 58, 0.12); color: #8e2c2c; }
+  .badge-blue  { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; background: rgba(37, 64, 217, 0.1); color: #1f37c4; }
+  .badge-gray  { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; background: rgba(20, 22, 28, 0.06); color: #4a463f; }
+
+  /* ── Forms ────────────────────────────────────────────────────────────── */
+  .input {
+    @apply w-full rounded-lg border bg-paper px-3 py-2 text-sm text-ink;
+    border-color: var(--line-strong);
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  }
+  .input:focus { @apply outline-none; border-color: var(--flux); box-shadow: 0 0 0 3px rgba(37, 64, 217, 0.14); }
+  .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-ink-faint; }
+
+  /* ── Typographic roles ────────────────────────────────────────────────── */
+  .page-title { @apply font-display text-[2rem] font-semibold leading-tight text-ink; letter-spacing: -0.02em; }
+  .section-title { @apply font-display text-lg font-semibold text-ink; letter-spacing: -0.01em; }
+
+  /* Kicker / eyebrow above titles — the mono "system label" voice */
+  .eyebrow {
+    @apply font-mono text-[10.5px] font-semibold uppercase text-flux;
+    letter-spacing: 0.24em;
   }
 }
 
 @layer utilities {
-  @keyframes sow-glow {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
-    50% { box-shadow: 0 0 6px 2px rgba(59, 130, 246, 0.35); }
-  }
-  .animate-sow-glow {
-    animation: sow-glow 2s ease-in-out infinite;
-  }
-}
+  .font-display { font-family: 'Fraunces', Georgia, serif; }
 
-@layer components {
-  .card {
-    @apply bg-white rounded-lg border border-gray-200 shadow-sm;
+  /* Big editorial KPI numeral */
+  .kpi-number { @apply font-display font-semibold tabular-nums; letter-spacing: -0.03em; }
+
+  /* Live agentic signal dot */
+  .signal-dot {
+    @apply inline-block h-2 w-2 rounded-full;
+    background: var(--cyan);
+    box-shadow: 0 0 0 0 rgba(16, 183, 196, 0.55);
+    animation: signal-pulse 1.8s ease-in-out infinite;
   }
-  .btn-primary {
-    @apply bg-ms-blue hover:bg-ms-blue-dark text-white px-4 py-2 rounded-md text-sm font-medium transition-colors;
+
+  /* Hairline divider in the editorial tone */
+  .rule { height: 1px; background: var(--line); }
+
+  /* Frosted "live data" chip with sweeping sheen */
+  .live-chip {
+    @apply relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider;
+    border-color: rgba(16, 183, 196, 0.4);
+    color: var(--cyan);
+    background: rgba(16, 183, 196, 0.07);
   }
-  .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-4 py-2 rounded-md text-sm font-medium transition-colors;
+  .live-chip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 38%;
+    background: linear-gradient(90deg, transparent, rgba(95, 227, 236, 0.28), transparent);
+    animation: sweep 2.6s ease-in-out infinite;
   }
-  .btn-ghost {
-    @apply hover:bg-gray-100 text-gray-600 px-3 py-1.5 rounded-md text-sm font-medium transition-colors;
+
+  .text-gradient-flux {
+    background: linear-gradient(120deg, #2540d9, #10b7c4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .badge-green {
-    @apply bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full;
+
+  /* Staggered entrance — apply with inline animation-delay */
+  .rise { animation: rise-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  /* ══════════════════════════════════════════════════════════════════════
+     LIQUID GLASS — for the agentic AI components (Apple iOS vibe).
+     Frosted translucency + saturated refraction + specular edge highlight.
+     Pair with a colored substrate blob behind to get tinted refraction.
+     ══════════════════════════════════════════════════════════════════════ */
+  .glass {
+    position: relative;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 1.5rem;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 0 0 0.5px rgba(20, 22, 28, 0.04),
+      0 16px 40px -22px rgba(20, 22, 28, 0.38);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
   }
-  .badge-amber {
-    @apply bg-amber-100 text-amber-800 text-xs font-medium px-2 py-0.5 rounded-full;
+  /* A single hairline rim of light — the only specular cue. No gradient wash. */
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.06) 45%, rgba(255, 255, 255, 0.14));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
   }
-  .badge-red {
-    @apply bg-red-100 text-red-800 text-xs font-medium px-2 py-0.5 rounded-full;
+  .glass > * { position: relative; z-index: 3; }
+
+  .glass-interactive:hover { transform: translateY(-3px); box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 0 0 0.5px rgba(20, 22, 28, 0.05),
+    0 30px 60px -24px rgba(20, 22, 28, 0.5),
+    0 -16px 34px -28px rgba(20, 22, 28, 0.5) inset; }
+
+  /* Deeper liquid glass — layered ambient + contact shadow + inner thickness,
+     so the panel reads as a thick pane lifted off the canvas. */
+  .glass-deep {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.85) inset,
+      0 -16px 34px -28px rgba(20, 22, 28, 0.5) inset,
+      0 0 0 0.5px rgba(20, 22, 28, 0.06),
+      0 8px 18px -12px rgba(20, 22, 28, 0.3),
+      0 26px 56px -26px rgba(20, 22, 28, 0.5);
   }
-  .badge-blue {
-    @apply bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded-full;
+  .glass-deep.glass-interactive:hover { transform: translateY(-3px); box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 -18px 38px -28px rgba(20, 22, 28, 0.55) inset,
+    0 0 0 0.5px rgba(20, 22, 28, 0.07),
+    0 10px 22px -12px rgba(20, 22, 28, 0.34),
+    0 36px 70px -26px rgba(20, 22, 28, 0.56); }
+
+  /* Solid tint substrate — a single flat color behind a .glass element.
+     The backdrop-filter frosts it into a uniform, solid "liquid" tint
+     dictated by the score/status color (no gradient). */
+  .glass-substrate {
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
   }
-  .badge-gray {
-    @apply bg-gray-100 text-gray-700 text-xs font-medium px-2 py-0.5 rounded-full;
+
+  /* Legacy keyframe kept for SOW review glow */
+  @keyframes sow-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 64, 217, 0); }
+    50% { box-shadow: 0 0 8px 2px rgba(37, 64, 217, 0.35); }
   }
-  .input {
-    @apply border border-gray-300 rounded-md px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-ms-blue focus:border-transparent;
-  }
-  .label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
-  }
-  .section-title {
-    @apply text-lg font-semibold text-gray-900;
-  }
-  .page-title {
-    @apply text-2xl font-bold text-gray-900;
-  }
+  .animate-sow-glow { animation: sow-glow 2s ease-in-out infinite; }
 }

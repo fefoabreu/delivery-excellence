@@ -37,23 +37,23 @@ export default function Catalog() {
 
   return (
     <div>
-      <Header title="Service Catalog" subtitle="Contoso Professional Services offerings — Cloud, AI, Dynamics, Security & Data" />
+      <Header eyebrow="Capability · Service Catalog" title="Service Catalog" subtitle="Contoso Professional Services offerings — Cloud, AI, Dynamics, Security & Data" />
 
       <div className="flex items-center gap-3 mb-6">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
+          <Search className="absolute left-3 top-2.5 w-4 h-4 text-ink-faint" />
           <input className="input pl-9" placeholder="Search services..." value={search} onChange={e => setSearch(e.target.value)} />
         </div>
         <div className="flex gap-2 flex-wrap">
-          <button onClick={() => setCat('')} className={`px-3 py-1.5 rounded-md text-xs font-medium ${!cat ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>All</button>
+          <button onClick={() => setCat('')} className={`px-3 py-1.5 rounded-md text-xs font-medium ${!cat ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-ink-soft hover:bg-gray-50'}`}>All</button>
           {Object.entries(CAT_CONFIG).map(([k, v]) => (
-            <button key={k} onClick={() => setCat(cat === k ? '' : k)} className={`px-3 py-1.5 rounded-md text-xs font-medium ${cat === k ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'}`}>{v.label}</button>
+            <button key={k} onClick={() => setCat(cat === k ? '' : k)} className={`px-3 py-1.5 rounded-md text-xs font-medium ${cat === k ? 'bg-ms-blue text-white' : 'bg-white border border-gray-200 text-ink-soft hover:bg-gray-50'}`}>{v.label}</button>
           ))}
         </div>
       </div>
 
       {loading ? (
-        <div className="p-8 text-center text-gray-400">Loading catalog...</div>
+        <div className="p-8 text-center text-ink-faint">Loading catalog...</div>
       ) : (
         <div className="space-y-6">
           {Object.entries(grouped).map(([category, svcs]) => {
@@ -61,20 +61,20 @@ export default function Catalog() {
             return (
               <div key={category} className="card">
                 <div className="px-6 py-4 border-b border-gray-100 flex items-center gap-3">
-                  <Package className="w-4 h-4 text-gray-400" />
+                  <Package className="w-4 h-4 text-ink-faint" />
                   <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${cfg.color}`}>{cfg.label}</span>
-                  <span className="text-sm text-gray-400">{svcs.length} services</span>
+                  <span className="text-sm text-ink-faint">{svcs.length} services</span>
                 </div>
                 <div className="divide-y divide-gray-100">
                   {svcs.map(s => (
                     <div key={s.id} className="px-6 py-4 flex items-start justify-between gap-6 hover:bg-gray-50">
                       <div className="flex-1">
-                        <div className="font-medium text-gray-900 text-sm">{s.name}</div>
-                        <div className="text-xs text-gray-500 mt-0.5 leading-relaxed">{s.description}</div>
+                        <div className="font-medium text-ink text-sm">{s.name}</div>
+                        <div className="text-xs text-ink-faint mt-0.5 leading-relaxed">{s.description}</div>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="font-semibold text-gray-900">${(s.list_price || 0).toLocaleString()}<span className="font-normal text-gray-400 text-xs">{UNIT_LABELS[s.unit || ''] || ''}</span></div>
-                        <div className="text-xs text-gray-400">{s.practice}</div>
+                        <div className="font-semibold text-ink">${(s.list_price || 0).toLocaleString()}<span className="font-normal text-ink-faint text-xs">{UNIT_LABELS[s.unit || ''] || ''}</span></div>
+                        <div className="text-xs text-ink-faint">{s.practice}</div>
                       </div>
                     </div>
                   ))}
@@ -84,8 +84,8 @@ export default function Catalog() {
           })}
           {filtered.length === 0 && (
             <div className="card p-12 text-center">
-              <Package className="w-8 h-8 text-gray-300 mx-auto mb-3" />
-              <div className="text-gray-400">No services match your search.</div>
+              <Package className="w-8 h-8 text-ink-faint mx-auto mb-3" />
+              <div className="text-ink-faint">No services match your search.</div>
             </div>
           )}
         </div>

@@ -11,6 +11,7 @@ import {
 import { portfolioApi } from '../api/client';
 import { loadPortfolio, rescueHref, oversightHref, fmtMoney, type PortfolioIntel, type UnifiedProject } from '../api/portfolioData';
 import StatCard from '../components/shared/StatCard';
+import GlassPanel from '../components/shared/GlassPanel';
 import type { PipelineMetrics } from '../types';
 
 const STAGE_LABELS: Record<string, string> = {
@@ -43,12 +44,17 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="mb-8 flex items-end justify-between">
+      <div className="mb-8 flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Executive Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-1">Contoso Professional Services — pipeline-to-delivery portfolio, synced with AI Quality Assurance</p>
+          <div className="mb-2 flex items-center gap-2">
+            <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+            <span className="eyebrow">Contoso Professional Services</span>
+            <span className="live-chip ml-1"><span className="signal-dot !h-1.5 !w-1.5" />Live · QA-synced</span>
+          </div>
+          <h1 className="page-title">Executive Dashboard</h1>
+          <p className="mt-1.5 text-sm text-ink-faint">Pipeline-to-delivery portfolio, continuously reconciled with the AI Quality Assurance agent.</p>
         </div>
-        <Link to="/quality-assurance" className="text-xs text-ms-blue hover:underline flex items-center gap-1">
+        <Link to="/quality-assurance" className="btn-secondary !text-xs">
           <Bot className="w-3.5 h-3.5" /> AI Quality Assurance <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
@@ -61,27 +67,35 @@ export default function Dashboard() {
         <StatCard label="Value at Risk" value={fmtMoney(intel.valueAtRisk)} sub={`${intel.alertCounts.critical} critical · ${intel.alertCounts.caution} caution alerts`} icon={AlertTriangle} color="amber" />
       </div>
 
-      {/* QA intelligence strip */}
+      {/* QA intelligence strip — live AI signals (liquid glass) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <Link to="/quality-assurance" className="card p-4 hover:shadow-md transition-shadow border-l-4 border-l-ms-blue">
-          <div className="flex items-center justify-between"><span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Avg Early Warning</span><Gauge className="w-4 h-4 text-ms-blue" /></div>
-          <div className={`text-2xl font-bold mt-1 ${ewColor(intel.avgEW)}`}>{intel.avgEW}<span className="text-sm text-gray-400 font-normal"> /100</span></div>
-          <div className="text-xs text-gray-400">{intel.monitoredCount} engagements monitored</div>
+        <Link to="/quality-assurance" className="block">
+          <GlassPanel tint="blue" deep interactive className="p-4">
+            <div className="flex items-center justify-between"><span className="text-[11px] font-bold uppercase tracking-wide text-ink-soft">Avg Early Warning</span><Gauge className="w-4 h-4 text-flux" /></div>
+            <div className={`text-2xl font-bold tabular-nums mt-1 ${ewColor(intel.avgEW)}`}>{intel.avgEW}<span className="text-sm text-ink-faint font-normal"> /100</span></div>
+            <div className="text-xs text-ink-faint mt-0.5">{intel.monitoredCount} engagements monitored</div>
+          </GlassPanel>
         </Link>
-        <Link to={intel.rescue[0] ? rescueHref(intel.rescue[0]) : '/quality-assurance'} className="card p-4 hover:shadow-md transition-shadow border-l-4 border-l-red-500">
-          <div className="flex items-center justify-between"><span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">In Rescue</span><Siren className="w-4 h-4 text-red-500" /></div>
-          <div className="text-2xl font-bold mt-1 text-red-600">{intel.rescue.length}</div>
-          <div className="text-xs text-gray-400 truncate">{intel.rescue.map(r => r.name.split(' ')[0]).join(', ') || 'None'}</div>
+        <Link to={intel.rescue[0] ? rescueHref(intel.rescue[0]) : '/quality-assurance'} className="block">
+          <GlassPanel tint="red" deep interactive className="p-4">
+            <div className="flex items-center justify-between"><span className="text-[11px] font-bold uppercase tracking-wide text-ink-soft">In Rescue</span><Siren className="w-4 h-4 text-red-500" /></div>
+            <div className="text-2xl font-bold tabular-nums mt-1 text-red-600">{intel.rescue.length}</div>
+            <div className="text-xs text-ink-faint truncate mt-0.5">{intel.rescue.map(r => r.name.split(' ')[0]).join(', ') || 'None'}</div>
+          </GlassPanel>
         </Link>
-        <Link to={intel.oversight[0] ? oversightHref(intel.oversight[0]) : '/quality-assurance'} className="card p-4 hover:shadow-md transition-shadow border-l-4 border-l-sky-500">
-          <div className="flex items-center justify-between"><span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Under Oversight</span><Rocket className="w-4 h-4 text-sky-500" /></div>
-          <div className="text-2xl font-bold mt-1 text-sky-600">{intel.oversight.length}</div>
-          <div className="text-xs text-gray-400 truncate">{intel.oversight.map(r => r.name.split(' ')[0]).join(', ') || 'None'}</div>
+        <Link to={intel.oversight[0] ? oversightHref(intel.oversight[0]) : '/quality-assurance'} className="block">
+          <GlassPanel tint="cyan" deep interactive className="p-4">
+            <div className="flex items-center justify-between"><span className="text-[11px] font-bold uppercase tracking-wide text-ink-soft">Under Oversight</span><Rocket className="w-4 h-4 text-cyan-deep" /></div>
+            <div className="text-2xl font-bold tabular-nums mt-1 text-cyan-deep">{intel.oversight.length}</div>
+            <div className="text-xs text-ink-faint truncate mt-0.5">{intel.oversight.map(r => r.name.split(' ')[0]).join(', ') || 'None'}</div>
+          </GlassPanel>
         </Link>
-        <Link to="/quality-assurance" className="card p-4 hover:shadow-md transition-shadow border-l-4 border-l-emerald-500">
-          <div className="flex items-center justify-between"><span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Get-to-Green</span><TrendingDown className="w-4 h-4 text-emerald-500" /></div>
-          <div className="text-2xl font-bold mt-1 text-emerald-600">{intel.getToGreen.recoveryRate}%</div>
-          <div className="text-xs text-gray-400">{intel.getToGreen.total} recovery plans · {intel.getToGreen.on_track} on track</div>
+        <Link to="/quality-assurance" className="block">
+          <GlassPanel tint="green" deep interactive className="p-4">
+            <div className="flex items-center justify-between"><span className="text-[11px] font-bold uppercase tracking-wide text-ink-soft">Get-to-Green</span><TrendingDown className="w-4 h-4 text-emerald-500" /></div>
+            <div className="text-2xl font-bold tabular-nums mt-1 text-emerald-600">{intel.getToGreen.recoveryRate}%</div>
+            <div className="text-xs text-ink-faint mt-0.5">{intel.getToGreen.total} recovery plans · {intel.getToGreen.on_track} on track</div>
+          </GlassPanel>
         </Link>
       </div>
 

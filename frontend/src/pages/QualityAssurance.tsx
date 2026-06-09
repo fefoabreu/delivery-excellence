@@ -10,6 +10,7 @@ import {
 import clsx from 'clsx';
 import { qualityAssuranceApi } from '../api/client';
 import HealthReviewModal from '../components/shared/HealthReviewModal';
+import GlassPanel, { type GlassTint } from '../components/shared/GlassPanel';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 type HealthStatus = 'green' | 'amber' | 'red';
@@ -117,11 +118,11 @@ const HEALTH_CFG: Record<HealthStatus, { bg: string; text: string; dot: string; 
   red:   { bg: 'bg-red-50',   text: 'text-red-700',   dot: 'bg-red-500',   label: 'Red' },
 };
 
-const ASSESSMENT_CFG: Record<QAAssessment, { label: string; bg: string; text: string; Icon: typeof CheckCircle }> = {
-  continue:  { label: 'Continue',  bg: 'bg-green-50 border-green-200',   text: 'text-green-700',  Icon: CheckCircle },
-  watch:     { label: 'Watch',     bg: 'bg-amber-50 border-amber-200',   text: 'text-amber-700',  Icon: Eye },
-  intervene: { label: 'Intervene', bg: 'bg-orange-50 border-orange-200', text: 'text-orange-700', Icon: AlertTriangle },
-  escalate:  { label: 'Escalate',  bg: 'bg-red-50 border-red-200',       text: 'text-red-700',    Icon: XCircle },
+const ASSESSMENT_CFG: Record<QAAssessment, { label: string; bg: string; text: string; glass: GlassTint; Icon: typeof CheckCircle }> = {
+  continue:  { label: 'Continue',  bg: 'bg-green-50 border-green-200',   text: 'text-green-700',  glass: 'green',  Icon: CheckCircle },
+  watch:     { label: 'Watch',     bg: 'bg-amber-50 border-amber-200',   text: 'text-amber-700',  glass: 'amber',  Icon: Eye },
+  intervene: { label: 'Intervene', bg: 'bg-orange-50 border-orange-200', text: 'text-orange-700', glass: 'orange', Icon: AlertTriangle },
+  escalate:  { label: 'Escalate',  bg: 'bg-red-50 border-red-200',       text: 'text-red-700',    glass: 'red',    Icon: XCircle },
 };
 
 const ALERT_CFG: Record<AlertLevel, { label: string; bg: string; text: string }> = {
@@ -357,10 +358,10 @@ function AlertTiersPanel({ tiers, projects }: { tiers: AlertTier[]; projects: Pr
   const ICONS = [Eye, AlertTriangle, XCircle];
 
   return (
-    <div className="card p-5 mb-6">
+    <GlassPanel tint="blue" deep className="p-5 mb-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="section-title">Early Warning Alert Tiers</h2>
-        <span className="text-xs text-gray-400">Threshold-based · AI-monitored · QA Director validated</span>
+        <span className="text-xs text-ink-faint">Threshold-based · AI-monitored · QA Director validated</span>
       </div>
       <div className="flex items-stretch gap-0 relative">
         {tiers.map((tier, i) => {
@@ -398,7 +399,7 @@ function AlertTiersPanel({ tiers, projects }: { tiers: AlertTier[]; projects: Pr
           );
         })}
       </div>
-    </div>
+    </GlassPanel>
   );
 }
 
@@ -688,40 +689,40 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
                   </div>
                 </div>
 
-                <div className={clsx('rounded-lg border p-3 mb-3', ac.bg)}>
+                <GlassPanel tint={ac.glass} className="p-3 mb-3">
                   <div className={clsx('flex items-center gap-2 text-xs font-bold mb-1', ac.text)}>
                     <Bot className="w-3.5 h-3.5" /> AI Assessment
                   </div>
-                  <p className="text-xs text-gray-700 leading-relaxed">{p.ai_narrative}</p>
+                  <p className="text-xs text-ink-soft leading-relaxed">{p.ai_narrative}</p>
                   {p.qa_director_override && (
-                    <div className="mt-2 pt-2 border-t border-gray-200">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wide mb-1">QA Director Override</div>
-                      <p className="text-xs text-gray-600 italic">{p.qa_director_override}</p>
+                    <div className="mt-2 pt-2 border-t border-white/40">
+                      <div className="text-[11px] font-bold uppercase tracking-wide text-ink-soft mb-1">QA Director Override</div>
+                      <p className="text-xs text-ink-soft italic">{p.qa_director_override}</p>
                     </div>
                   )}
-                </div>
+                </GlassPanel>
 
                 {oversightIds.has(p.project_id) && (() => {
                   const plan = buildOversightPlan(p);
                   return (
-                    <div className="rounded-lg border border-sky-200 bg-gradient-to-br from-sky-50 to-teal-50 p-3 mb-3">
+                    <GlassPanel tint="cyan" className="p-3 mb-3">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2 text-xs font-bold text-sky-800">
-                          <Rocket className="w-3.5 h-3.5" /> Executive Oversight — Performance Plan
+                        <div className="flex items-center gap-2 text-xs font-bold text-ink">
+                          <Rocket className="w-3.5 h-3.5 text-sky-600" /> Executive Oversight — Performance Plan
                         </div>
-                        <span className="text-[10px] text-sky-700/80">Assurance Partner: {plan.partner}</span>
+                        <span className="text-[10px] text-ink-soft">Assurance Partner: {plan.partner}</span>
                       </div>
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wide w-28 flex-shrink-0">Performance percentile</span>
+                        <span className="text-[11px] font-bold uppercase tracking-wide text-ink-soft w-28 flex-shrink-0">Performance percentile</span>
                         <div className="flex-1 h-2 bg-white/70 rounded-full overflow-hidden relative">
                           <div className="h-full bg-sky-400 rounded-full" style={{ width: `${plan.current_percentile}%` }} />
                           <div className="absolute top-1/2 -translate-y-1/2 w-0.5 h-3.5 bg-teal-600" style={{ left: `${plan.target_percentile}%` }} />
                         </div>
-                        <span className="text-[10px] text-sky-800 font-semibold flex-shrink-0">P{plan.current_percentile} → P{plan.target_percentile}</span>
+                        <span className="text-[10px] text-ink font-semibold tabular-nums flex-shrink-0">P{plan.current_percentile} → P{plan.target_percentile}</span>
                       </div>
                       <div className="space-y-1">
                         {plan.plays.map((play, i) => (
-                          <div key={i} className="flex items-start gap-1.5 text-xs text-sky-900/90">
+                          <div key={i} className="flex items-start gap-1.5 text-xs text-ink-soft">
                             <Gauge className="w-3 h-3 text-sky-500 mt-0.5 flex-shrink-0" /> {play}
                           </div>
                         ))}
@@ -732,24 +733,24 @@ function PortfolioMonitorTab({ projects, config }: { projects: ProjectMonitor[];
                           <Rocket className="w-3.5 h-3.5" /> Open Oversight Studio <ArrowRight className="w-3 h-3" />
                         </button>
                       </div>
-                    </div>
+                    </GlassPanel>
                   );
                 })()}
 
                 {isRescueCandidate(p) && (
-                  <div className="rounded-lg border border-red-300 bg-red-50 p-3 mb-3 flex items-center justify-between gap-3">
+                  <GlassPanel tint="red" className="p-3 mb-3 flex items-center justify-between gap-3">
                     <div className="flex items-start gap-2">
                       <Siren className="w-4 h-4 text-red-600 mt-0.5 flex-shrink-0" />
                       <div>
-                        <div className="text-xs font-bold text-red-800">Engagement qualifies for Rescue Mode</div>
-                        <div className="text-[11px] text-red-700/80">Critical alert · EW {ew.score} · {fmt(rescueValueAtRisk(p))} value-at-risk · executive oversight recommended</div>
+                        <div className="text-xs font-bold text-ink">Engagement qualifies for Rescue Mode</div>
+                        <div className="text-[11px] text-ink-soft">Critical alert · EW {ew.score} · {fmt(rescueValueAtRisk(p))} value-at-risk · executive oversight recommended</div>
                       </div>
                     </div>
                     <button onClick={() => launchRescue(p)}
                       className="flex-shrink-0 inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3 py-2 rounded-md transition-colors">
                       <Siren className="w-3.5 h-3.5" /> Enter Rescue Command <ArrowRight className="w-3.5 h-3.5" />
                     </button>
-                  </div>
+                  </GlassPanel>
                 )}
 
                 <button onClick={() => setExpanded(isExpanded ? null : p.project_id)}
@@ -1691,33 +1692,25 @@ export default function QualityAssurance() {
       <div className="mb-6">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="page-title flex items-center gap-2">
-              <Shield className="w-7 h-7 text-ms-blue" />
-              AI-Driven Quality Assurance
-            </h1>
-            <p className="text-sm text-gray-500 mt-1 max-w-2xl">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="h-3 w-[3px] rounded-full bg-flux-sheen" />
+              <span className="eyebrow">Delivery · Always-On Assurance</span>
+              <span className="live-chip ml-1"><span className="signal-dot !h-1.5 !w-1.5" />Monitoring live</span>
+            </div>
+            <h1 className="page-title">AI-Driven Quality Assurance</h1>
+            <p className="text-sm text-ink-faint mt-1.5 max-w-2xl">
               Proactive, always-on portfolio quality monitoring — AI-powered early warning, structured recovery, and institutional knowledge that improves every project.
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => navigate('/qa-evals')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-purple-200 bg-purple-50 text-purple-700 text-xs font-semibold hover:bg-purple-100 transition-colors"
-            >
-              <Target className="w-3.5 h-3.5" />
-              AI-QA Evals
-              <ArrowRight className="w-3 h-3" />
+            <button onClick={() => navigate('/qa-evals')} className="btn-secondary !text-xs">
+              <Target className="w-3.5 h-3.5" /> AI-QA Evals <ArrowRight className="w-3 h-3" />
             </button>
-            <button
-              onClick={() => navigate('/qa-framework')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-ms-blue/30 bg-ms-blue/5 text-ms-blue text-xs font-semibold hover:bg-ms-blue/10 transition-colors"
-            >
-              <Shield className="w-3.5 h-3.5" />
-              AI-QA Framework
-              <ArrowRight className="w-3 h-3" />
+            <button onClick={() => navigate('/qa-framework')} className="btn-secondary !text-xs">
+              <Shield className="w-3.5 h-3.5" /> AI-QA Framework <ArrowRight className="w-3 h-3" />
             </button>
             <button onClick={() => { setLoading(true); Promise.all([qualityAssuranceApi.getConfig(), qualityAssuranceApi.getData()]).then(([c, d]) => { setConfig(c.data); setData(d.data); }).finally(() => setLoading(false)); }}
-              className="btn-ghost flex items-center gap-1 text-gray-400">
+              className="btn-ghost text-ink-faint">
               <RefreshCw className="w-4 h-4" />
             </button>
           </div>
@@ -1739,21 +1732,21 @@ export default function QualityAssurance() {
           return (
             <button key={t.id} onClick={() => setTab(t.id)}
               className={clsx(
-                'relative flex items-center gap-3 p-4 rounded-xl border-2 transition-all text-left',
+                'relative flex items-center gap-3 p-4 rounded-xl border transition-all text-left',
                 isActive
-                  ? 'border-ms-blue bg-ms-blue/5 shadow-sm'
-                  : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+                  ? 'border-flux bg-flux-light shadow-glow'
+                  : 'border-line bg-paper hover:border-flux/40 hover:-translate-y-0.5 hover:shadow-paper'
               )}
             >
               <div className={clsx('w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0',
-                isActive ? 'bg-ms-blue' : 'bg-gray-100')}>
-                <TabIcon className={clsx('w-5 h-5', isActive ? 'text-white' : 'text-gray-500')} />
+                isActive ? 'bg-flux-sheen' : 'bg-gray-100')}>
+                <TabIcon className={clsx('w-5 h-5', isActive ? 'text-white' : 'text-ink-faint')} />
               </div>
               <div>
-                <div className={clsx('text-sm font-semibold', isActive ? 'text-ms-blue' : 'text-gray-700')}>{t.label}</div>
-                <div className="text-[11px] text-gray-400">{counts[t.id]()}</div>
+                <div className={clsx('text-sm font-semibold', isActive ? 'text-flux' : 'text-ink-soft')}>{t.label}</div>
+                <div className="font-mono text-[10px] uppercase tracking-wide text-ink-faint mt-0.5">{counts[t.id]()}</div>
               </div>
-              {isActive && <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-ms-blue rounded-full" />}
+              {isActive && <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-flux-sheen rounded-full" />}
             </button>
           );
         })}

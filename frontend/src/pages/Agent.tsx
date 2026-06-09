@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Bot, Send, FileText, Activity, Zap, RotateCcw } from 'lucide-react';
 import { agentApi } from '../api/client';
 import Header from '../components/layout/Header';
+import GlassPanel from '../components/shared/GlassPanel';
 
 interface Message { role: 'user' | 'assistant'; content: string; timestamp: string; }
 
@@ -51,19 +52,23 @@ export default function Agent() {
   return (
     <div className="flex flex-col h-[calc(100vh-2rem)]">
       <Header
+        eyebrow="Agentic AI · Delivery Copilot"
         title="Delivery Agent"
         subtitle="AI-powered delivery leader — pre-sales, contracts, delivery health"
         actions={
-          <button onClick={() => setMessages([{ role: 'assistant', content: "Hello. I'm your Delivery Excellence AI. What do you need?", timestamp: new Date().toISOString() }])} className="btn-ghost flex items-center gap-1 text-gray-500">
-            <RotateCcw className="w-4 h-4" /> Reset
-          </button>
+          <>
+            <span className="live-chip"><span className="signal-dot" /> Agent online</span>
+            <button onClick={() => setMessages([{ role: 'assistant', content: "Hello. I'm your Delivery Excellence AI. What do you need?", timestamp: new Date().toISOString() }])} className="btn-ghost flex items-center gap-1 text-ink-soft">
+              <RotateCcw className="w-4 h-4" /> Reset
+            </button>
+          </>
         }
       />
 
       {contextType && contextId && (
-        <div className="mb-4 px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-700 flex items-center gap-2">
+        <GlassPanel tint="cyan" className="mb-4 px-4 py-2 text-xs text-ink-soft flex items-center gap-2">
           <Bot className="w-3 h-3" /> Context loaded: {contextType} {contextId.slice(0, 8)}...
-        </div>
+        </GlassPanel>
       )}
 
       {/* Quick Prompts */}
@@ -71,7 +76,7 @@ export default function Agent() {
         {QUICK_PROMPTS.map(qp => {
           const Icon = qp.icon;
           return (
-            <button key={qp.label} onClick={() => send(qp.prompt)} className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs text-gray-600 hover:border-ms-blue hover:text-ms-blue transition-colors">
+            <button key={qp.label} onClick={() => send(qp.prompt)} className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-xs text-ink-soft hover:border-flux hover:text-flux transition-colors">
               <Icon className="w-3 h-3" /> {qp.label}
             </button>
           );
@@ -82,24 +87,30 @@ export default function Agent() {
       <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-1">
         {messages.map((m, i) => (
           <div key={i} className={`flex gap-3 ${m.role === 'user' ? 'flex-row-reverse' : ''}`}>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${m.role === 'assistant' ? 'bg-ms-blue' : 'bg-gray-200'}`}>
-              {m.role === 'assistant' ? <Bot className="w-4 h-4 text-white" /> : <span className="text-xs font-bold text-gray-600">You</span>}
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${m.role === 'assistant' ? 'bg-flux' : 'bg-gray-200'}`}>
+              {m.role === 'assistant' ? <Bot className="w-4 h-4 text-white" /> : <span className="text-xs font-bold text-ink-soft">You</span>}
             </div>
-            <div className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${m.role === 'assistant' ? 'bg-white border border-gray-200 text-gray-800 shadow-sm' : 'bg-ms-blue text-white'}`}>
-              {m.content}
-            </div>
+            {m.role === 'assistant' ? (
+              <GlassPanel tint="blue" className="max-w-[75%] px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap text-ink">
+                {m.content}
+              </GlassPanel>
+            ) : (
+              <div className="max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap bg-flux text-white">
+                {m.content}
+              </div>
+            )}
           </div>
         ))}
         {loading && (
           <div className="flex gap-3">
-            <div className="w-8 h-8 rounded-full bg-ms-blue flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-flux flex items-center justify-center flex-shrink-0">
               <Bot className="w-4 h-4 text-white" />
             </div>
-            <div className="bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm">
+            <GlassPanel tint="blue" className="px-4 py-3">
               <div className="flex gap-1">
                 {[0, 1, 2].map(i => <div key={i} className="w-2 h-2 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />)}
               </div>
-            </div>
+            </GlassPanel>
           </div>
         )}
         <div ref={endRef} />
