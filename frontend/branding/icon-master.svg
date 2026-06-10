@@ -1,0 +1,22 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="40" y1="24" x2="472" y2="496" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2540D9"/>
+      <stop offset="0.55" stop-color="#3A57E8"/>
+      <stop offset="1" stop-color="#10B7C4"/>
+    </linearGradient>
+    <radialGradient id="sheen" cx="0.3" cy="0.22" r="0.9">
+      <stop stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- full-bleed so iOS/Android masking keeps it solid -->
+  <rect width="512" height="512" fill="url(#g)"/>
+  <rect width="512" height="512" fill="url(#sheen)"/>
+  <!-- primary sparkle -->
+  <path d="M0,-150 Q32,-32 150,0 Q32,32 0,150 Q-32,32 -150,0 Q-32,-32 0,-150 Z"
+        transform="translate(232,264)" fill="#ffffff"/>
+  <!-- accent sparkle -->
+  <path d="M0,-58 Q12,-12 58,0 Q12,12 0,58 Q-12,12 -58,0 Q-12,-12 0,-58 Z"
+        transform="translate(372,140)" fill="#7FE6EE"/>
+</svg>

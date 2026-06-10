@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14161D"/>
+      <stop offset="1" stop-color="#0B0D12"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="120" y1="150" x2="240" y2="270" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2540D9"/>
+      <stop offset="0.55" stop-color="#3A57E8"/>
+      <stop offset="1" stop-color="#10B7C4"/>
+    </linearGradient>
+    <linearGradient id="word" x1="120" y1="300" x2="760" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A9B8FF"/>
+      <stop offset="1" stop-color="#7FE6EE"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.6">
+      <stop stop-color="#10B7C4" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#10B7C4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.05" cy="1" r="0.6">
+      <stop stop-color="#2540D9" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2540D9" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- oversized watermark sparkle, bottom-right -->
+  <path d="M0,-230 Q48,-48 230,0 Q48,48 0,230 Q-48,48 -230,0 Q-48,-48 0,-230 Z"
+        transform="translate(1050,560)" fill="#ffffff" fill-opacity="0.04"/>
+
+  <!-- logo mark -->
+  <g transform="translate(96,150)">
+    <rect width="104" height="104" rx="26" fill="url(#mark)"/>
+    <path d="M0,-30 Q6.4,-6.4 30,0 Q6.4,6.4 0,30 Q-6.4,6.4 -30,0 Q-6.4,-6.4 0,-30 Z"
+          transform="translate(52,54)" fill="#ffffff"/>
+    <path d="M0,-11 Q2.3,-2.3 11,0 Q2.3,2.3 0,11 Q-2.3,2.3 -11,0 Q-2.3,-2.3 0,-11 Z"
+          transform="translate(84,22)" fill="#7FE6EE"/>
+  </g>
+
+  <!-- eyebrow -->
+  <text x="98" y="312" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="22" letter-spacing="7" font-weight="700" fill="#7FE6EE">ATELIER&#160;OS &#183; AGENTIC</text>
+
+  <!-- wordmark -->
+  <text x="94" y="406" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="600" fill="#ffffff">Delivery</text>
+  <text x="94" y="516" font-family="Georgia, 'Times New Roman', serif" font-size="104" font-weight="600" font-style="italic" fill="url(#word)">Excellence</text>
+
+  <!-- tagline -->
+  <text x="98" y="576" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="27" fill="#B7BAC4">Agentic AI for the deal&#8209;to&#8209;delivery lifecycle &#183; approvals, quality &amp; delivery success</text>
+
+  <!-- live agents chip -->
+  <g transform="translate(820,150)">
+    <rect width="284" height="46" rx="23" fill="#10B7C4" fill-opacity="0.10" stroke="#10B7C4" stroke-opacity="0.4"/>
+    <circle cx="28" cy="23" r="6" fill="#5FE3EC"/>
+    <text x="48" y="31" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" letter-spacing="2" font-weight="700" fill="#7FE6EE">3 AGENTS ONLINE</text>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="6" y1="4" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2540D9"/>
+      <stop offset="0.55" stop-color="#3A57E8"/>
+      <stop offset="1" stop-color="#10B7C4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#g)"/>
+  <!-- primary sparkle -->
+  <path d="M0,-19 Q4,-4 19,0 Q4,4 0,19 Q-4,4 -19,0 Q-4,-4 0,-19 Z"
+        transform="translate(30,33)" fill="#ffffff"/>
+  <!-- accent sparkle -->
+  <path d="M0,-7 Q1.5,-1.5 7,0 Q1.5,1.5 0,7 Q-1.5,1.5 -7,0 Q-1.5,-1.5 0,-7 Z"
+        transform="translate(48,16)" fill="#7FE6EE"/>
+</svg>
